@@ -1,0 +1,29 @@
+{
+    "compilerOptions": {
+        "resolveJsonModule": true,
+        "baseUrl": ".", // Considera a raiz do projeto como base
+        "paths": {
+            "@utils/*": [
+                "src/utils/*"
+            ],
+            "@templates/*": [
+                "src/templates/*"
+            ],
+            "@img/*": [
+                "img/*"
+            ]
+        },
+        "target": "ES2020", // Para melhor IntelliSense e suporte a recursos modernos
+        "module": "ESNext", // Para permitir 'import/export'
+        "checkJs": false, // Coloque true se quiser verificar erros JS
+        "allowJs": true, // Permite incluir arquivos .js
+        "moduleResolution": "Node" // Para encontrar módulos como o Node faria
+    },
+    "include": [
+        "./src",
+        "./cypress/**/*.js",
+        "./cypress/support/index.d.ts",
+        "./public",
+        "./node_modules/cypress"
+    ]
+}

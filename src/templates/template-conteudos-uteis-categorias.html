@@ -17,31 +17,33 @@
 
 <body>
     {{> view-counter }}
-    <div class="container"><br>
+    <div class="container" id="main-container-categories"><br>
         {{> menu }}
-        <a class="return-index" href="index.html">Retornar</a>
-        <div class="hero downloads">
-            <h1>Materiais Educativos</h1>
-            <p>Visualize e baixe materiais informativos sobre diabetes.</p>
+        <a class="return-index" id="return-index-categories" href="index.html">Retornar</a>
+        {{> notificacoes }}
+
+        <div class="hero downloads" id="hero-section-categories">
+            <h1 id="categories-main-title">Materiais Educativos</h1>
+            <p id="categories-main-description">Visualize e baixe materiais informativos sobre diabetes.</p>
         </div>
 
         <div id='recursos' class="row g-4">
             {{#each categories}}
-            <div class="col-md-4">
-                <div class="card text-center p-3">
-                    <h5 class="card-title">{{this.title}}</h5>
+            <div class="col-md-4" id="card-category-{{@index}}">
+                <div class="card text-center p-3" id="card-category-inner-{{@index}}">
+                    <h5 class="card-title" id="category-title-{{@index}}">{{this.title}}</h5>
                     {{#if this.icon}}
-                    <img src="{{this.icon}}" alt="Ícone da categoria" class="tutorial-menu category-icon mx-auto" />
+                    <img src="{{this.icon}}" alt="Ícone da categoria" class="tutorial-menu category-icon mx-auto" id="category-icon-{{@index}}" />
                     {{/if}}
-                    <p class="card-text">{{this.desc}}</p>
-                    <a href="{{this.url}}" class="btn btn-info">Acessar</a>
+                    <p class="card-text" id="category-desc-{{@index}}">{{this.desc}}</p>
+                    <a href="{{this.url}}" class="btn btn-info" id="open-category-{{@index}}">Acessar</a>
                 </div>
             </div>
             {{/each}}
         </div>
         <br>
-        <h3 class="disclaimer-title">Transparência e Responsabilidade</h3>
-        <p class="disclaimer-body">Os materiais aqui disponibilizados têm como único objetivo auxiliar pessoas no controle e manejo do diabetes. 
+        <h3 class="disclaimer-title" id="categories-disclaimer-title">Transparência e Responsabilidade</h3>
+        <p class="disclaimer-body" id="categories-disclaimer-body">Os materiais aqui disponibilizados têm como único objetivo auxiliar pessoas no controle e manejo do diabetes. 
             Este é um projeto realizado por nossa equipe, totalmente sem fins lucrativos, com o intuito de compartilhar informações úteis e acessíveis. 
             Ressaltamos que boa parte destes materiais são de acesso público, e, nos casos de conteúdos de autoria particular, solicitamos e obtivemos 
             autorização prévia dos respectivos proprietários para disponibilizá-los. Caso algum conteúdo precise ser removido por qualquer motivo, 
@@ -59,6 +61,5 @@
         };
     </script>
     <script src="./js/geral.js"></script>
-    <script src="./js/barra-pesquisa.js"></script>
 </body>
 </html>

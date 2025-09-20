@@ -40,7 +40,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
             rankingData.sort((a, b) => {
                 if (b.score !== a.score) return b.score - a.score;
-                return new Date(b.date) - new Date(a.date);
+                const dateA = new Date(a.created_at).getTime();
+                const dateB = new Date(b.created_at).getTime();
+                return dateB - dateA;
             });
 
             rankingData.forEach((player, index) => {

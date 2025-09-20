@@ -17,12 +17,14 @@
 
 <body>
     {{> view-counter }}
-    <div class="container"><br>
+    <div class="container" id="main-container-pdfs"><br>
         {{> menu }}
-        <a class="return-index" href="conteudos-uteis-categorias.html">Retornar</a>
-        <div class="hero downloads">
-            <h1>{{title}}</h1>
-            <p>{{description}}</p>
+        <a class="return-index" id="return-index-pdfs" href="conteudos-uteis-categorias.html">Retornar</a>
+        {{> notificacoes }}
+
+        <div class="hero downloads" id="hero-section-pdfs">
+            <h1 id="pdfs-main-title">{{title}}</h1>
+            <p id="pdfs-main-description">{{description}}</p>
         </div>
 
         <br>
@@ -30,22 +32,22 @@
         <!-- Seção de PDFs -->
         <div id='recursos' class="row g-4">
             {{#each pdfs}}
-            <div class="col-6 col-md-3 no-padding">
-                <div class="card text-center p-2">
-                    <a href="{{this.url}}" target="_blank">
-                        <img src="{{this.thumbnail}}" class="pdf-thumbnail mx-auto" alt="Prévia do documento">
+            <div class="col-6 col-md-3 no-padding" id="card-pdf-{{@index}}">
+                <div class="card text-center p-2" id="card-pdf-inner-{{@index}}">
+                    <a href="{{this.url}}" target="_blank" id="open-pdf-{{@index}}">
+                        <img src="{{this.thumbnail}}" class="pdf-thumbnail mx-auto" alt="Prévia do documento" id="pdf-thumbnail-{{@index}}">
                     </a>
-                    <div class="card-body no-padding">
-                        <a href="{{this.url}}" class="card-title d-block" target="_blank">{{this.title}}</a>
-                        <a href="{{this.url}}" download class="btn btn-sm btn-info mt-2">Baixar</a>
+                    <div class="card-body no-padding" id="card-pdf-body-{{@index}}">
+                        <a href="{{this.url}}" class="card-title d-block" target="_blank" id="pdf-title-{{@index}}">{{this.title}}</a>
+                        <a href="{{this.url}}" download class="btn btn-sm btn-info mt-2" id="download-pdf-{{@index}}">Baixar</a>
                     </div>
                 </div>
             </div>
             {{/each}}
         </div>
         <br>
-        <h3 class="disclaimer-title">Transparência e Responsabilidade</h3>
-        <p class="disclaimer-body">Os materiais aqui disponibilizados têm como único objetivo auxiliar pessoas no controle e manejo do diabetes. 
+        <h3 class="disclaimer-title" id="pdfs-disclaimer-title">Transparência e Responsabilidade</h3>
+        <p class="disclaimer-body" id="pdfs-disclaimer-body">Os materiais aqui disponibilizados têm como único objetivo auxiliar pessoas no controle e manejo do diabetes. 
             Este é um projeto realizado por nossa equipe, totalmente sem fins lucrativos, com o intuito de compartilhar informações úteis e acessíveis. 
             Ressaltamos que boa parte destes materiais são de acesso público, e, nos casos de conteúdos de autoria particular, solicitamos e obtivemos 
             autorização prévia dos respectivos proprietários para disponibilizá-los. Caso algum conteúdo precise ser removido por qualquer motivo, 

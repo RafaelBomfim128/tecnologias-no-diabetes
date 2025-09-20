@@ -7,7 +7,7 @@ describe('formatLinksDownloads', () => {
         expect(result).toEqual([
             {
                 title: 'File 1',
-                shortPath: 'Path 1',
+                shortPath: 'path-1',
                 fullUrl: 'https://example.com/1',
                 newLink: expect.stringContaining('path-1')
             }

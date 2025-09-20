@@ -15,22 +15,21 @@
     <link rel="stylesheet" href="./css/quiz.css">
 </head>
 
-<body>
+<body id="body-quiz">
     {{> view-counter }}
-    <div class="container"><br>
+    <div class="container" id="main-container-quiz"><br>
         {{> menu }}
-        <a class="return-index" href="index.html">Retornar</a>
+        <a class="return-index" id="return-quiz" href="index.html">Retornar</a>
         {{> notificacoes }}
 
-        <section>
-            <h2 class="category-title" onclick="toggleCategory(this, 'quiz')">Quiz de Diabetes 🧠🏆
-                <span class="arrow"></span>
+        <section id="quiz-section">
+            <h2 class="category-title" id="quiz-title" onclick="toggleCategory(this, 'quiz')">Quiz de Diabetes 🧠🏆
+                <span class="arrow" id="quiz-title-arrow"></span>
             </h2>
-            <p>📅 Novas questões são adicionadas periodicamente! Recomendamos que você refaça o Quiz regularmente para
-                aprender cada vez mais! 📖😄</p>
+            <p id="quiz-description">📅 Novas questões são adicionadas periodicamente! Recomendamos que você refaça o Quiz regularmente para aprender cada vez mais! 📖😄</p>
             <div class="category-content" id="content-quiz">
                 <div id="quiz-container">
-                    <div class="quiz-header">
+                    <div class="quiz-header" id="quiz-header">
                         <span id="category">Diabetes</span>
                         <div id="question-numbers">
                             <span id="current-question">0</span>/<span id="total-questions">0</span>
@@ -38,20 +37,20 @@
                     </div>
 
                     <div id="quiz-start" class="quiz-section">
-                        <h3>Teste seus conhecimentos sobre diabetes</h3>
-                        <p>Responda perguntas rápidas e aprenda mais sobre como cuidar melhor da sua saúde.</p>
+                        <h3 id="quiz-start-title">Teste seus conhecimentos sobre diabetes</h3>
+                        <p id="quiz-start-description">Responda perguntas rápidas e aprenda mais sobre como cuidar melhor da sua saúde.</p>
                         <button id="quiz-start-button">Iniciar Quiz</button>
                     </div>
 
                     <div id="quiz-questions" class="quiz-section" style="display: none;">
-                        <div class="wrapper-question-data">
-                            <div class="container-question-data">
-                                <span>Pontuação atual: <span id="total-score">0</span></span>
+                        <div class="wrapper-question-data" id="wrapper-question-score">
+                            <div class="container-question-data" id="container-total-score">
+                                <span id="label-total-score">Pontuação atual: <span id="total-score">0</span></span>
                             </div>
                         </div>
-                        <div class="wrapper-question-data">
-                            <div class="container-question-data">
-                                <span>Dificuldade: <span id="question-difficulty"></span></span>
+                        <div class="wrapper-question-data" id="wrapper-question-difficulty">
+                            <div class="container-question-data" id="container-question-difficulty">
+                                <span id="label-question-difficulty">Dificuldade: <span id="question-difficulty"></span></span>
                             </div>
                             <div id="container-score-question" class="container-question-data">
                                 <span id="text-score-question">Valendo <span id="score-question">0</span> pontos</span>
@@ -61,20 +60,18 @@
                         <p id="quiz-question-text"></p>
                         <ul id="quiz-options"></ul>
                         <p id="quiz-feedback" class="feedback-text" style="display: none;"></p>
-                        <div class="quiz-actions">
+                        <div class="quiz-actions" id="quiz-actions">
                             <button id="submit-answer" disabled>Enviar Resposta</button>
-                            <button id="next-question" style="display: none;">Próxima
-                                Questão</button>
+                            <button id="next-question" style="display: none;">Próxima Questão</button>
                         </div>
                     </div>
 
                     <div id="quiz-results" class="quiz-section" style="display: none;">
-                        <h3>Parabéns! Você concluiu o quiz 🎉</h3>
-                        <p>Questões acertadas: <span id="correct-count"></span>/<span id="quiz-total-questions"></span>
-                        </p>
-                        <p>Pontuação: <span id="quiz-score"></span>/100</p>
+                        <h3 id="quiz-results-title">Parabéns! Você concluiu o quiz 🎉</h3>
+                        <p id="quiz-results-correct">Questões acertadas: <span id="correct-count"></span>/<span id="quiz-total-questions"></span></p>
+                        <p id="quiz-results-score">Pontuação: <span id="quiz-score"></span>/100</p>
                         <p id="feedback-p">Feedback: <span id="quiz-results-feedback"></span></p>
-                        <div>
+                        <div id="quiz-results-actions">
                             <button id="send-ranking-button">Enviar pontuação para o ranking 📊</button>
                         </div>
                         <button id="share-result">Compartilhar no WhatsApp</button>
@@ -82,25 +79,24 @@
                     </div>
                 </div>
                 <div id="quiz-error" class="quiz-section error-section" style="display: none;">
-                    <h3>Ops! Algo deu errado 😞</h3>
-                    <p id="error-message">Não foi possível carregar o quiz. Entre em contato com o administrador do
-                        site.</p>
+                    <h3 id="quiz-error-title">Ops! Algo deu errado 😞</h3>
+                    <p id="error-message">Não foi possível carregar o quiz. Entre em contato com o administrador do site.</p>
                 </div>
             </div>
         </section>
 
         <section id="ranking-section">
-            <h2 class="category-title">Ranking</h2>
+            <h2 class="category-title" id="ranking-title">Ranking</h2>
             <div id="ranking-loader" class="loader-overlay">
-                <div class="loader"></div>
+                <div class="loader" id="ranking-loader-spinner"></div>
             </div>
 
-            <div class="tabs">
-                <button class="tab-button active" data-tab="daily">Ranking Diário</button>
-                <button class="tab-button" data-tab="general">Ranking Mensal</button>
+            <div class="tabs" id="ranking-tabs">
+                <button class="tab-button active" id="tab-daily" data-tab="daily">Ranking Diário</button>
+                <button class="tab-button" id="tab-monthly" data-tab="general">Ranking Mensal</button>
             </div>
             <div class="tab-content" id="daily">
-                <table class="ranking-table">
+                <table class="ranking-table" id="ranking-table-daily">
                     <thead>
                         <tr>
                             <th>#</th>
@@ -116,7 +112,7 @@
                 </table>
             </div>
             <div class="tab-content" id="general" style="display: none;">
-                <table class="ranking-table">
+                <table class="ranking-table" id="ranking-table-monthly">
                     <thead>
                         <tr>
                             <th>#</th>
@@ -135,11 +131,11 @@
     </div>
 
     <div id="ranking-modal" class="modal" style="display: none;">
-        <div class="modal-content">
-            <h3>Digite seu nome para entrar no ranking</h3>
+        <div class="modal-content" id="ranking-modal-content">
+            <h3 id="ranking-modal-title">Digite seu nome para entrar no ranking</h3>
             <input type="text" id="player-name" placeholder="Seu nome" maxlength="20">
             <p id="name-error" class="error-message" style="display: none;">O nome deve ter entre 3 e 20 caracteres.</p>
-            <div class="modal-actions">
+            <div class="modal-actions" id="ranking-modal-actions">
                 <button id="submit-name">Enviar</button>
                 <button id="cancel-modal">Cancelar</button>
             </div>

@@ -9,7 +9,7 @@ describe('formatLinksTutorials', () => {
         expect(result['Category 1']).toHaveLength(1);
         expect(result['Category 1'][0]).toMatchObject({
             title: 'Tutorial 1',
-            shortPath: 'Path 1',
+            shortPath: 'path-1',
             fullUrl: 'https://example.com/1',
             category: 'Category 1',
             newLink: expect.stringContaining('path-1')
@@ -24,7 +24,7 @@ describe('formatLinksTutorials', () => {
 
         expect(result['Category 1'][0]).toMatchObject({
             title: 'Tutorial 1',
-            shortPath: 'Path 1',
+            shortPath: 'path-1',
             fullUrl: 'https://example.com/1',
             category: 'Category 1',
             newLink: expect.stringContaining('path-1')
@@ -32,7 +32,7 @@ describe('formatLinksTutorials', () => {
 
         expect(result['Category 2'][0]).toMatchObject({
             title: 'Tutorial 1',
-            shortPath: 'Path 1',
+            shortPath: 'path-1',
             fullUrl: 'https://example.com/1',
             category: 'Category 2',
             newLink: expect.stringContaining('path-1')

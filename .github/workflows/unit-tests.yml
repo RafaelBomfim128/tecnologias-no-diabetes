@@ -1,0 +1,33 @@
+name: Unit Tests
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  unit_tests:
+    name: Unit Tests
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Config Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+
+      - name: Install dependences
+        run: npm ci
+
+      - name: Run all tests
+        run: npm run test:jest
+        env:
+            GOOGLE_SHEET_ID: ${{ secrets.GOOGLE_SHEET_ID }}
+            GOOGLE_CREDENTIALS_BASE64: ${{ secrets.GOOGLE_CREDENTIALS_BASE64 }}
+            API_BASE_URL: ${{ secrets.API_BASE_URL_DEV }}
+            API_KEY: ${{ secrets.API_KEY }}
+            NODE_ENV: ${{ env.NODE_ENV }}

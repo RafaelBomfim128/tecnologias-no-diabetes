@@ -35,8 +35,8 @@
                     <li>
                         <span>{{this.title}}</span>
                         <div class="buttons">
-                            <button onclick="window.open('{{this.fullUrl}}', '_blank')">Baixar</button>
-                            <button onclick="copyLink('{{this.newLink}}', this)">Copiar Link</button>
+                            <button data-cy="download" onclick="window.open('{{this.fullUrl}}', '_blank')">Baixar</button>
+                            <button data-cy="copy" onclick="copyLink('{{this.newLink}}', this)">Copiar Link</button>
                         </div>
                     </li>
                     {{/each}}

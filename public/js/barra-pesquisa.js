@@ -1,12 +1,12 @@
 //Se apertar enter, fecha o teclado no mobile
-document.getElementById('searchForm').addEventListener('submit', function (event) {
+document.getElementById('search-form').addEventListener('submit', function (event) {
     event.preventDefault();
-    const searchBar = document.getElementById('searchBar');
+    const searchBar = document.getElementById('search-bar');
     searchBar.blur();
 });
 
 //Pesquisa em tempo real (sem precisar apertar enter)
-document.getElementById('searchBar').addEventListener('input', function () {
+document.getElementById('search-bar').addEventListener('input', function () {
     const query = this.value.trim().toLowerCase();
 
     // Pesquisa nos itens do FAQ

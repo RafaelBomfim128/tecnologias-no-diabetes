@@ -1,0 +1,9 @@
+{
+    "hero_div": ".hero",
+    "title_h1": "h1",
+    "desc_p": ".hero > p",
+    "all_cards_div": ".card",
+    "links_li": "#content-tutorials ul li",
+    "button_access_btn": "[data-cy=access]",
+    "button_copy_link_btn": "[data-cy=copy]"
+}
