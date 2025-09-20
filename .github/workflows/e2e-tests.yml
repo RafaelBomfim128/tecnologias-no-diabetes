@@ -25,6 +25,12 @@ jobs:
 
       - name: Run E2E tests with build
         run: npm run test:build-e2e
+        env:
+            GOOGLE_SHEET_ID: ${{ secrets.GOOGLE_SHEET_ID }}
+            GOOGLE_CREDENTIALS_BASE64: ${{ secrets.GOOGLE_CREDENTIALS_BASE64 }}
+            API_BASE_URL: ${{ secrets.API_BASE_URL }}
+            API_KEY: ${{ secrets.API_KEY }}
+            NODE_ENV: ${{ env.NODE_ENV }}
 
       - name: 📤 Failure artifacts (if exists)
         if: failure()
