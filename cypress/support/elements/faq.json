@@ -1,0 +1,10 @@
+{
+    "hero_div": ".hero",
+    "title_h1": "h1",
+    "desc_p": ".hero > p",
+    "faq_item_div": "[data-cy=faq-item]",
+    "faq_question_btn": "[data-cy=faq-question]",
+    "faq_answer_div": "[data-cy=faq-answer]",
+    "faq_share_item_a": "[data-cy=faq-link-share]",
+    "faq_share_item_img": "[data-cy=faq-img-link-share]"
+}

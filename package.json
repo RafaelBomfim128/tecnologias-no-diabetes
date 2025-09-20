@@ -5,10 +5,16 @@
   "main": "main.js",
   "scripts": {
     "dev": "env NODE_ENV=development node src/main.js",
-    "prod": "env NODE_ENV=production node src/main.js",
     "read_only": "env NODE_ENV=read_only node src/main.js",
-    "test": "jest",
-    "test:coverage": "jest --coverage"
+    "serve-site": "npx kill-port 8080 && http-server public -p 8080 --silent",
+    "test:jest": "jest",
+    "test:jest:coverage": "jest --coverage",
+    "cy:open": "cypress open",
+    "cy:run": "cypress run",
+    "cy:run:html": "cypress run --reporter mochawesome",
+    "test:e2e-only": "wait-on http://localhost:8080 && cypress run",
+    "e2e:serve": "npm-run-all --parallel --race serve-site test:e2e-only",
+    "test:build-e2e": "npm run dev && npm run e2e:serve"
   },
   "keywords": [],
   "author": "",
@@ -23,6 +29,13 @@
   },
   "devDependencies": {
     "@types/jest": "^29.5.14",
-    "jest": "^30.0.0"
+    "cypress": "^14.5.0",
+    "cypress-delete-downloads-folder": "^0.0.6",
+    "cypress-mochawesome-reporter": "^3.8.2",
+    "http-server": "^14.1.1",
+    "jest": "^30.0.0",
+    "kill-port": "^2.0.1",
+    "npm-run-all": "^4.1.5",
+    "wait-on": "^8.0.3"
   }
 }

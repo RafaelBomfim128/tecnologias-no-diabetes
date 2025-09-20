@@ -1,20 +1,21 @@
-name: Run Tests
+name: Unit Tests
 
 on:
   push:
     branches: [ main ]
   pull_request:
     branches: [ main ]
+  workflow_dispatch:
 
 jobs:
-  test:
-    name: Node.js Testes
+  unit_tests:
+    name: Unit Tests
     runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v4
 
-      - name: Configura Node.js
+      - name: Config Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 18
@@ -23,4 +24,4 @@ jobs:
         run: npm ci
 
       - name: Run all tests
-        run: npm test
+        run: npm test:jest

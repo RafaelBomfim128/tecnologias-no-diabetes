@@ -29,7 +29,7 @@ function toggleCategory(element, categoryName) {
 }
 
 function toggleNav() {
-    var sidenav = document.getElementById("mySidenav");
+    var sidenav = document.getElementById("my-sidenav");
     sidenav.classList.toggle("active");
     if (sidenav.classList.contains("active")) {
         document.addEventListener('click', closeNavOnClickOutside);
@@ -39,13 +39,13 @@ function toggleNav() {
 }
 
 function closeNav() {
-    var sidenav = document.getElementById("mySidenav");
+    var sidenav = document.getElementById("my-sidenav");
     sidenav.classList.remove("active");
     document.removeEventListener('click', closeNavOnClickOutside);
 }
 
 function closeNavOnClickOutside(event) {
-    var sidenav = document.getElementById("mySidenav");
+    var sidenav = document.getElementById("my-sidenav");
     var menuButton = document.querySelector('.menu-icon');
     if (!sidenav.contains(event.target) && !menuButton.contains(event.target)) {
         closeNav();
@@ -82,7 +82,7 @@ async function getDailyViews() {
         const response = await fetch(`${apiBaseUrl}/api/dailyviews`);
         if (response.ok) {
             const data = await response.json();
-            const viewCountElement = document.getElementById('dailyViews');
+            const viewCountElement = document.getElementById('daily-views');
             viewCountElement.textContent = data.counter;
         } else {
             console.error('Erro ao obter contador:', response.status);
@@ -97,7 +97,7 @@ async function getMonthlyViews() {
         const response = await fetch(`${apiBaseUrl}/api/monthlyviews`);
         if (response.ok) {
             const data = await response.json();
-            const viewCountElement = document.getElementById('monthlyViews');
+            const viewCountElement = document.getElementById('monthly-views');
             viewCountElement.textContent = data.counter;
         } else {
             console.error('Erro ao obter contador:', response.status);
@@ -112,7 +112,7 @@ async function getTotalViews() {
         const response = await fetch(`${apiBaseUrl}/api/totalviews`);
         if (response.ok) {
             const data = await response.json();
-            const viewCountElement = document.getElementById('totalViews');
+            const viewCountElement = document.getElementById('total-views');
             viewCountElement.textContent = data.counter;
         } else {
             console.error('Erro ao obter contador:', response.status);
@@ -162,9 +162,9 @@ function stopAutoUpdateViews() {
 }
 
 document.addEventListener('DOMContentLoaded', async () => {
-    const isLocal = window.location.protocol === 'file:' || 
-    window.location.hostname === 'localhost' || 
-    window.location.hostname === '127.0.0.1';
+    const isLocal = window.location.protocol === 'file:' ||
+        window.location.hostname === 'localhost' ||
+        window.location.hostname === '127.0.0.1';
 
     if (!isLocal) {
         Promise.all([
@@ -175,7 +175,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             incrementViews();
             startAutoUpdateViews();
         });
-    
+
         document.addEventListener('visibilitychange', () => {
             if (document.visibilityState === 'visible') {
                 setTimeout(() => {
@@ -196,15 +196,17 @@ document.addEventListener("DOMContentLoaded", () => {
     const mostRecentNotificationId = window.env.MOST_RECENT_NOTIFICATION_ID;
     const lastViewedNotificationId = localStorage.getItem("lastViewedNotification");
 
-    if (!lastViewedNotificationId || lastViewedNotificationId !== mostRecentNotificationId) {
+    if ((!lastViewedNotificationId || lastViewedNotificationId !== mostRecentNotificationId) && notificationIcon) {
         notificationIcon.src = "./img/sino-nao-lida.png";
     }
 
     const notificationBell = document.querySelector(".notification-bell a");
-    notificationBell.addEventListener("click", () => {
-        localStorage.setItem("lastViewedNotification", mostRecentNotificationId);
-        notificationIcon.src = "./img/sino.png";
-    });
+    if (notificationBell) {
+        notificationBell.addEventListener("click", () => {
+            localStorage.setItem("lastViewedNotification", mostRecentNotificationId);
+            notificationIcon.src = "./img/sino.png";
+        });
+    }
 });
 
 document.addEventListener("DOMContentLoaded", () => {

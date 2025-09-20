@@ -2,104 +2,108 @@
     "tutorials": [
         {
             "category": "Ponto de partida",
-            "description": "Comece por aqui se você está iniciando nesse mundo de tecnologias no diabetes.",
-            "image": "./img/icons/icon-ponto-partida.png"
+            "description": "Comece por aqui se você está iniciando nesse mundo de tecnologias no diabetes",
+            "image": "img/icons/icon-ponto-partida.png"
         },
         {
             "category": "xDrip",
-            "description": "Conheça e aprenda mais sobre esse aplicativo multifuncional incrível.",
-            "image": "./img/icons/icon-xdrip.png"
+            "description": "Conheça e aprenda mais sobre esse aplicativo multifuncional incrível",
+            "image": "img/icons/icon-xdrip.png"
         },
         {
             "category": "Android APS",
             "description": "Precisando gerenciar sua glicemia com maestria? Então vem pro Android APS!",
-            "image": "./img/icons/icon-android-aps.png"
+            "image": "img/icons/icon-android-aps.png"
         },
         {
             "category": "Sensores",
             "description": "Saiba como utilizar os sensores de monitoramento contínuo em conjunto com as tecnologias",
-            "image": "./img/icons/icon-sensores.png"
+            "image": "img/icons/icon-sensores.png"
         },
         {
             "category": "Libre",
             "description": "Tutoriais sobre Freestyle Libre 1 e 2",
-            "image": "./img/icons/icon-libre.png"
+            "image": "img/icons/icon-libre.png"
         },
         {
             "category": "AiDEX",
             "description": "Tutoriais sobre AiDEX",
-            "image": "./img/icons/icon-aidex.png"
+            "image": "img/icons/icon-aidex.png"
         },
         {
             "category": "Sibionics",
             "description": "Tutoriais sobre Sibionics",
-            "image": "./img/icons/icon-sibionics.png"
+            "image": "img/icons/icon-sibionics.png"
         },
         {
             "category": "Nightscout",
-            "description": "Já conhece o Nightscout? Venha aprender mais sobre essa plataforma que permite monitoramento remoto por familiares.",
-            "image": "./img/icons/icon-nightscout.png"
+            "description": "Já conhece o Nightscout? Venha aprender mais sobre essa plataforma que permite monitoramento remoto por familiares",
+            "image": "img/icons/icon-nightscout.png"
         },
         {
             "category": "iOS",
-            "description": "Veja os tutoriais que temos para iOS.",
-            "image": "./img/icons/icon-ios.png"
+            "description": "Veja os tutoriais que temos para iOS",
+            "image": "img/icons/icon-ios.png"
         },
         {
             "category": "Relógios",
             "description": "Também é possível utilizar smartwatchs conectado às tecnologias para monitoramento da glicemia!",
-            "image": "./img/icons/icon-relogios.png"
+            "image": "img/icons/icon-relogios.png"
         },
         {
             "category": "Bombas",
-            "description": "Bombas de insulina integrada às tecnologias.",
-            "image": "./img/icons/icon-bombas.png"
+            "description": "Bombas de insulina integrada às tecnologias",
+            "image": "img/icons/icon-bombas.png"
         },
         {
             "category": "Dicas e truques",
-            "description": "Dicas e truques para facilitar o uso das tecnologias no diabetes.",
-            "image": "./img/icons/icon-dicas-truques.png"
+            "description": "Dicas e truques para facilitar o uso das tecnologias no diabetes",
+            "image": "img/icons/icon-dicas-truques.png"
         },
         {
             "category": "Outros",
-            "description": "Outros tutoriais que podem te ajudar no dia a dia com as tecnologias no diabetes.",
-            "image": "./img/icons/icon-outros.png"
+            "description": "Outros tutoriais que podem te ajudar no dia a dia com as tecnologias no diabetes",
+            "image": "img/icons/icon-tutorial-default.png"
+        },
+        {
+            "category": "Ver tudo",
+            "description": "Clique aqui se você quer ver todos os tutoriais disponíveis de qualquer categoria"
         }
     ],
     "usefulContents": [
         {
             "category": "Área Kids no Diabetes",
-            "description": "Conteúdos voltados para crianças e adolescentes com diabetes.",
-            "image": "./img/icons/icon-area-kids-diabetes.png"
+            "description": "Conteúdos voltados para crianças e adolescentes com diabetes",
+            "image": "img/icons/icon-area-kids-diabetes.png"
         },
         {
             "category": "Cartões de Identificação",
-            "description": "Cartões de identificação para facilitar a identificação de pessoas com diabetes.",
-            "image": "./img/icons/icon-cartoes-identificacao.png"
+            "description": "Cartões de identificação para facilitar a identificação de pessoas com diabetes",
+            "image": "img/icons/icon-cartoes-identificacao.png"
         },
         {
             "category": "Conscientização nas Escolas (para pais)",
-            "description": "Material para conscientização de professores e funcionários da escola sobre diabetes.",
-            "image": "./img/icons/icon-conscientizacao-escolas.png"
+            "description": "Material para conscientização de professores e funcionários da escola sobre diabetes",
+            "image": "img/icons/icon-conscientizacao-escolas.png"
         },
         {
             "category": "Diversos",
-            "description": "Conteúdos diversos que podem te ajudar no dia a dia com o diabetes.",
-            "image": "./img/icons/icon-diversos.png"
+            "description": "Conteúdos diversos que podem te ajudar no dia a dia com o diabetes",
+            "image": "img/icons/icon-diversos.png"
         },
         {
             "category": "Educação em Diabetes",
-            "description": "Materiais educativos sobre diabetes.",
-            "image": "./img/icons/icon-educacao-diabetes.png"
+            "description": "Materiais educativos sobre diabetes",
+            "image": "img/icons/icon-educacao-diabetes.png"
         },
         {
             "category": "Viagem de Avião",
-            "description": "Dicas para viajar de avião com diabetes.",
-            "image": "./img/icons/icon-viagem-aviao.png"
+            "description": "Dicas para viajar de avião com diabetes",
+            "image": "img/icons/icon-viagem-aviao.png"
         },
         {
             "category": "Ver tudo",
-            "description": "Todos os conteúdos úteis disponíveis no site."
+            "description": "Todos os conteúdos úteis disponíveis no site"
         }
     ]
 }

@@ -1,0 +1,23 @@
+{
+    "view_counter_div": ".view-counter",
+    "notification_icon_img": "#notification-icon",
+    "menu_btn": "#open-menu-btn",
+    "menu_sidenav_div": "#my-sidenav",
+    "menu_close_a": "#close-menu-btn",
+    "menu_home_a": "#menu-home",
+    "menu_downloads_a": "#menu-downloads",
+    "menu_tutorials_a": "#menu-tutorials",
+    "menu_faq_a": "#menu-faq",
+    "menu_quiz_a": "#menu-quiz",
+    "menu_useful_contents_a": "#menu-useful-contents",
+    "menu_useful_tools_a": "#menu-useful-tools",
+    "menu_notifications_a": "#menu-notifications",
+    "share_section_div": ".share-section",
+    "share_button_fb_a": "#share-btn-fb",
+    "share_button_twitter_a": "#share-btn-twitter",
+    "share_button_whatsapp_a": "#share-btn-whatsapp",
+    "share_button_linkedin_a": "#share-btn-linkedin",
+    "footer_p": "footer > p",
+    "search_bar_ipt": "#search-bar",
+    "return_a": "a[class*=return]"
+}

@@ -1,0 +1,166 @@
+{
+  "daily": [
+    {
+      "id": 95,
+      "name": "Juliana",
+      "score": 29,
+      "correct_count": 3,
+      "created_at": "2025-09-08T21:23:59-03:00",
+      "ranking_type": "daily"
+    },
+    {
+      "id": 101,
+      "name": "Lucas",
+      "score": 45,
+      "correct_count": 5,
+      "created_at": "2025-09-08T21:45:12-03:00",
+      "ranking_type": "daily"
+    },
+    {
+      "id": 82,
+      "name": "Carla",
+      "score": 36.8,
+      "correct_count": 3,
+      "created_at": "2025-09-08T20:47:58-03:00",
+      "ranking_type": "daily"
+    },
+    {
+      "id": 97,
+      "name": "Mariana",
+      "score": 42,
+      "correct_count": 4,
+      "created_at": "2025-09-08T21:24:48-03:00",
+      "ranking_type": "daily"
+    },
+    {
+      "id": 74,
+      "name": "Diego",
+      "score": 34.6,
+      "correct_count": 2,
+      "created_at": "2025-09-08T20:24:23-03:00",
+      "ranking_type": "daily"
+    },
+    {
+      "id": 98,
+      "name": "Pedro",
+      "score": 31,
+      "correct_count": 3,
+      "created_at": "2025-09-08T22:06:55-03:00",
+      "ranking_type": "daily"
+    },
+    {
+      "id": 85,
+      "name": "Rafael",
+      "score": 41.1,
+      "correct_count": 2,
+      "created_at": "2025-09-08T21:05:58-03:00",
+      "ranking_type": "daily"
+    },
+    {
+      "id": 88,
+      "name": "Fernanda",
+      "score": 34.3,
+      "correct_count": 3,
+      "created_at": "2025-09-08T21:19:50-03:00",
+      "ranking_type": "daily"
+    },
+    {
+      "id": 86,
+      "name": "João",
+      "score": 36.8,
+      "correct_count": 2,
+      "created_at": "2025-09-08T21:17:40-03:00",
+      "ranking_type": "daily"
+    },
+    {
+      "id": 77,
+      "name": "Camila",
+      "score": 34,
+      "correct_count": 3,
+      "created_at": "2025-09-08T20:46:44-03:00",
+      "ranking_type": "daily"
+    }
+  ],
+  "monthly": [
+    {
+      "id": 210,
+      "name": "Juliana",
+      "score": 17.6,
+      "correct_count": 1,
+      "created_at": "2025-09-08T21:23:59-03:00",
+      "ranking_type": "monthly"
+    },
+    {
+      "id": 201,
+      "name": "Lucas",
+      "score": 31.2,
+      "correct_count": 3,
+      "created_at": "2025-09-05T21:45:12-03:00",
+      "ranking_type": "monthly"
+    },
+    {
+      "id": 208,
+      "name": "Camila",
+      "score": 21.0,
+      "correct_count": 2,
+      "created_at": "2025-09-01T20:46:44-03:00",
+      "ranking_type": "monthly"
+    },
+    {
+      "id": 205,
+      "name": "João",
+      "score": 24.4,
+      "correct_count": 2,
+      "created_at": "2025-09-03T14:17:40-03:00",
+      "ranking_type": "monthly"
+    },
+    {
+      "id": 202,
+      "name": "Mariana",
+      "score": 28.9,
+      "correct_count": 3,
+      "created_at": "2025-09-07T18:24:48-03:00",
+      "ranking_type": "monthly"
+    },
+    {
+      "id": 204,
+      "name": "Carla",
+      "score": 25.5,
+      "correct_count": 2,
+      "created_at": "2025-09-06T15:47:58-03:00",
+      "ranking_type": "monthly"
+    },
+    {
+      "id": 206,
+      "name": "Fernanda",
+      "score": 23.8,
+      "correct_count": 2,
+      "created_at": "2025-09-02T12:19:50-03:00",
+      "ranking_type": "monthly"
+    },
+    {
+      "id": 207,
+      "name": "Diego",
+      "score": 22.4,
+      "correct_count": 2,
+      "created_at": "2025-09-04T11:24:23-03:00",
+      "ranking_type": "monthly"
+    },
+    {
+      "id": 203,
+      "name": "Rafael",
+      "score": 27.6,
+      "correct_count": 3,
+      "created_at": "2025-09-08T21:05:58-03:00",
+      "ranking_type": "monthly"
+    },
+    {
+      "id": 209,
+      "name": "Pedro",
+      "score": 19.8,
+      "correct_count": 1,
+      "created_at": "2025-09-08T22:06:55-03:00",
+      "ranking_type": "monthly"
+    }
+  ]
+}

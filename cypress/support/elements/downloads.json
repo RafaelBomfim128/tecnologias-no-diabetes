@@ -1,0 +1,10 @@
+{
+    "hero_div": ".hero",
+    "title_h1": "h1",
+    "desc_p": ".hero > p",
+    "downloads_section_div": "#content-downloads",
+    "links_ul": "#content-downloads ul",
+    "links_li": "#content-downloads ul li",
+    "button_download_btn": "[data-cy=download]",
+    "button_copy_link_btn": "[data-cy=copy]"
+}

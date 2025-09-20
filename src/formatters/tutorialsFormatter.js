@@ -16,7 +16,7 @@ function formatLinksTutorials(arrItemsSheet) {
 
             formattedObj[category].push({
                 title,
-                shortPath,
+                shortPath: formatPath(shortPath),
                 fullUrl,
                 category,
                 newLink: `${domainSite}${formatPath(shortPath)}`

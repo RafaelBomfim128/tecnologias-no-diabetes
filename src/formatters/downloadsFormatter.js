@@ -6,7 +6,7 @@ function formatLinksDownloads(arrItemsSheet) {
         .filter(([title, shortPath, fullUrl]) => title && shortPath && fullUrl)
         .map(([title, shortPath, fullUrl]) => ({
             title,
-            shortPath,
+            shortPath: formatPath(shortPath),
             fullUrl,
             newLink: `${domainSite}${formatPath(shortPath)}`
         }));
