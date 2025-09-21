@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tecnologias no Diabetes - Ferramentas</title>
+    <link rel="icon" type="image/png" href="./img/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="./img/favicon.svg" />
+    <link rel="shortcut icon" href="./img/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="./img/apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-title" content="Tecnologias no Diabetes" />
+    <link rel="manifest" href="./img/site.webmanifest" />
+    <link rel="stylesheet" href="./css/geral.css">
+    <link rel="stylesheet" href="./css/testador-nightscout.css">
+    <style>
+        .hidden {
+            display: none !important;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 600px;
+            padding: 24px 16px;
+            background: var(--container-bg);
+            box-shadow: 0 2px 8px var(--container-shadow);
+            border-radius: 16px;
+            text-align: center;
+            margin: 0 auto;
+        }
+
+        .category-title {
+            font-size: 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 18px;
+        }
+
+        label {
+            font-weight: 500;
+            color: var(--primary-color);
+            margin-bottom: 6px;
+            display: block;
+            text-align: left;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 12px 14px;
+            border: 1.5px solid var(--primary-color);
+            border-radius: 10px;
+            font-size: 1rem;
+            margin-bottom: 16px;
+            background: var(--light-bg);
+            transition: border-color 0.3s;
+            box-sizing: border-box;
+        }
+
+        input[type="text"]:focus {
+            border-color: var(--accent-color);
+            outline: none;
+        }
+
+        button {
+            padding: 12px 32px;
+            font-size: 1.1rem;
+            background: var(--button-bg);
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+            margin-top: 8px;
+            margin-bottom: 18px;
+            transition: background 0.3s, box-shadow 0.3s;
+        }
+
+        button:hover {
+            background: var(--button-hover-bg);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+        }
+
+        .status-list {
+            list-style: none;
+            padding: 0;
+            margin: 18px 0 0 0;
+            background: var(--light-bg);
+            border-radius: 10px;
+            box-shadow: 0 1px 3px var(--container-shadow);
+        }
+
+        .status-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px 18px;
+            font-size: 1rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .status-item:last-child {
+            border-bottom: none;
+        }
+
+        .status-icon {
+            width: 28px;
+            height: 28px;
+        }
+
+        pre {
+            background: #272822;
+            color: #f8f8f2;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: left;
+            max-height: 300px;
+            overflow-y: auto;
+            font-size: 15px;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            margin-top: 10px;
+        }
+
+        .disclaimer-title {
+            color: var(--primary-color);
+            font-size: 1.2rem;
+            margin-top: 30px;
+        }
+
+        .disclaimer-body {
+            font-size: 1rem;
+            color: var(--text-color);
+            background: var(--light-bg);
+            border-radius: 8px;
+            padding: 12px;
+            margin-top: 8px;
+        }
+
+        .container section ul {
+            margin-left: 0px;
+            margin-right: 0px;
+        }
+
+        @media (max-width: 700px) {
+            .container {
+                max-width: 98vw;
+                padding: 10px 2vw;
+                border-radius: 8px;
+            }
+
+            .category-title {
+                font-size: 1.3rem;
+                gap: 6px;
+            }
+
+            button {
+                font-size: 1rem;
+                padding: 10px 18px;
+            }
+
+            .status-list {
+                margin-left: -2vw;
+                margin-right: -2vw;
+                border-radius: 8px;
+            }
+
+            .status-item {
+                font-size: 0.95rem;
+                padding: 10px 4vw;
+                word-break: break-word;
+            }
+
+            input[type="text"] {
+                font-size: 0.95rem;
+                padding: 10px 10px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 6px 1vw;
+                border-radius: 6px;
+            }
+
+            .category-title {
+                font-size: 1.1rem;
+            }
+
+            button {
+                font-size: 0.95rem;
+                padding: 8px 10px;
+            }
+
+            .status-list {
+                margin-left: -1vw;
+                margin-right: -1vw;
+                border-radius: 6px;
+            }
+
+            .status-item {
+                font-size: 0.9rem;
+                padding: 8px 2vw;
+                word-break: break-word;
+            }
+
+            input[type="text"] {
+                font-size: 0.9rem;
+                padding: 8px 8px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    {{> view-counter }}
+    <div class="container"><br>
+        {{> menu }}
+        <a class="return-index" href="ferramentas.html">Retornar</a>
+        {{> notificacoes }}
+
+        <section>
+            <h2 class="category-title">
+                Testador de Nightscout <img src="./img/icons/icon-nightscout.png" alt="Ícone Nightscout"
+                    class="icon-category" style="width:20px;height:24px;vertical-align:middle;">
+            </h2>
+
+            <p>Essa é uma ferramenta utilizada para ajudar a diagnosticar problemas com o Nightscout. Seu Nightscout
+                está
+                fora do ar, ou você configurou incorretamente? Insira a URL e a API Secret e descubra agora!</p>
+
+            <label for="urlInput">URL do Nightscout:</label>
+            <input type="text" id="urlInput" size="50"
+                placeholder="URL do Nightscout (ex: https://meunightscout.fly.dev)" oninput="gerarQRCode()">
+            <br><br>
+            <label for="apiSecretInput">API Secret do Nightscout:</label>
+            <input type="text" id="apiSecretInput" size="50" placeholder="API Secret do Nightscout"
+                oninput="gerarQRCode()">
+            <br>
+            <button id='testNightscout'>Testar</button>
+
+            <ul class="status-list hidden">
+                <li class="status-item">É uma URL de Nightscout válida? <img id="validUrl" class="status-icon"
+                        src="./img/no-result.png"></li>
+                <li class="status-item">A API Secret está correta? <img id="correctSecret" class="status-icon"
+                        src="./img/no-result.png"></li>
+                <li class="status-item">Há dados recentes? <img id="recentData" class="status-icon"
+                        src="./img/no-result.png"></li>
+                <li class="status-item">Banco de dados está com espaço de sobra? <img id="DbFreeSpace"
+                        class="status-icon" src="./img/no-result.png"></li>
+                <li class="status-item">Tudo funcionando perfeitamente? <img id="EverythingWorking" class="status-icon"
+                        src="./img/no-result.png"></li>
+            </ul>
+            <h2 class="hidden">Resumo:</h2>
+            <pre id="resume" class="hidden">Aguardando testes concluírem...</pre>
+
+            <br><br>
+            <button class="hidden">Limpar dados</button>
+            <button class="hidden">Salvar sessão</button>
+            <button class="hidden">Compartilhar no Whatsapp</button>
+
+            <br>
+            <h3 class="disclaimer-title" id="categories-disclaimer-title">Transparência e Responsabilidade</h3>
+            <p class="disclaimer-body" id="categories-disclaimer-body">Entendemos que a API Secret é um dado sensível,
+                sendo assim, nenhum dado inserido aqui nesta página será
+                enviado ou tramitado sem o consentimento pleno do usuário. Esta ferramenta em questão existe única e
+                exclusivamente para ajudar usuários a diagnosticarem possíveis problemas com o seu Nightscout, a fim de
+                dar autonomia para que cada um consiga corrigir sem ajuda externa dos voluntários do grupo de
+                Tecnologias no Diabetes. Ainda assim, caso não se sinta confortável, não a utilize.
+            </p>
+        </section>
+
+    </div>
+
+    {{> social-media }}
+    {{> footer }}
+    <script>
+        window.env = {
+            API_BASE_URL: "{{apiBaseUrl}}",
+            API_KEY: "{{apiKey}}",
+            MOST_RECENT_NOTIFICATION_ID: "{{mostRecentNotificationId}}"
+        };
+
+        function showElements() {
+            const statusList = document.querySelector('.status-list');
+            if (statusList.classList.contains('hidden')) {
+                statusList.classList.remove('hidden');
+                document.getElementById('resume').classList.remove('hidden');
+                document.querySelector('h2.hidden').classList.remove('hidden');
+                document.querySelectorAll('button.hidden').forEach(btn => btn.classList.remove('hidden'));
+            }
+            const y = statusList.getBoundingClientRect().top + window.pageYOffset - 60;
+            window.scrollTo({ top: y, behavior: 'smooth' });
+        }
+
+        const btnTestNightscout = document.querySelector('#testNightscout');
+        if (btnTestNightscout) {
+            btnTestNightscout.addEventListener('click', function () {
+                setTimeout(showElements, 100);
+            });
+        }
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+    <script src="./js/geral.js"></script>
+    <script src="./js/testador-nightscout.js"></script>
+</body>
+
+</html>

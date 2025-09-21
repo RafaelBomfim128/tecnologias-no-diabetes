@@ -52,13 +52,17 @@
 
 #quiz-questions li {
     background-color: var(--faq-question-bg);
+    display: flex;
+    align-items: center;
     padding: 10px;
+    border: 1px solid var(--border-color);
     border-radius: 5px;
     cursor: pointer;
     margin-bottom: 10px;
     transition: background-color 0.3s;
     min-height: 40px;
     justify-content: center;
+    position: relative;
 }
 
 .quiz-header {

@@ -235,5 +235,12 @@ module.exports = function buildPages({
         data: { apiBaseUrl, apiKey, mostRecentNotificationId }
     });
 
+    // tool Nightscout tester
+    pages.push({
+        template: 'template-testador-nightscout.html',
+        output: 'testador-nightscout.html',
+        data: { apiBaseUrl, apiKey, mostRecentNotificationId }
+    });
+
     return pages;
 };

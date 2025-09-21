@@ -61,7 +61,7 @@ ul {
     line-height: normal;
 }
 
-.container ul li {
+.container ul .links {
     background-color: var(--light-bg);
     padding-left: 4px;
     padding-right: 4px;
@@ -78,7 +78,7 @@ ul {
     margin-right: -10px;
 }
 
-li {
+.links {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -92,7 +92,7 @@ li {
     gap: 10px;
 }
 
-li span {
+.links span {
     flex-grow: 1;
     margin-right: 10px;
     white-space: normal;
@@ -101,7 +101,7 @@ li span {
     max-width: calc(100% - 120px);
 }
 
-li .buttons {
+.links .buttons {
     display: flex;
     flex-direction: column;
     flex-shrink: 0;
@@ -295,6 +295,7 @@ footer {
 
 button.menu-icon {
     transition: background-color 0.3s ease;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.08);
 }
 
 @media (hover: hover) {

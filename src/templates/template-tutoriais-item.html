@@ -32,7 +32,7 @@
                 {{> search-bar }}
                 <ul id="tutorials-item-list">
                     {{#each links}}
-                    <li class="tutorials-item-list-item">
+                    <li class="tutorials-item-list-item links">
                         <span class="tutorials-item-link-title">{{this.title}}</span>
                         <div class="buttons" id="tutorials-item-buttons-{{@index}}">
                             <button data-cy="access" id="btn-access-{{@index}}" onclick="window.open('{{this.fullUrl}}', '_blank')">Acessar</button>

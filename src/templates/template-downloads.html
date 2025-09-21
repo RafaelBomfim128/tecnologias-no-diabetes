@@ -32,7 +32,7 @@
                 {{> search-bar }}
                 <ul>
                     {{#each links}}
-                    <li>
+                    <li class='links'>
                         <span>{{this.title}}</span>
                         <div class="buttons">
                             <button data-cy="download" onclick="window.open('{{this.fullUrl}}', '_blank')">Baixar</button>
