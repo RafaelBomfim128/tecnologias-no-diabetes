@@ -4,6 +4,10 @@ const handlebars = require('handlebars');
 const { paths } = require('../config/constants');
 const registerPartials = require('./partialLoader')
 
+handlebars.registerHelper('eq', function(a, b) {
+  return a === b;
+});
+
 function compile(templateFileName) {
     const tplPath = path.join(paths.templatesDir, templateFileName);
     const content = fs.readFileSync(tplPath, 'utf8');

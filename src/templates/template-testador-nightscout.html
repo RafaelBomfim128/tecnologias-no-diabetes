@@ -19,10 +19,10 @@
     {{> view-counter }}
     <div class="container"><br>
         {{> menu }}
-        <a class="return-index" href="ferramentas.html">Retornar</a>
+        <a class="return-index" href="index.html">Retornar</a>
         {{> notificacoes }}
 
-        <section>
+        <section style="margin-top: 30px;">
             <h2 class="category-title">
                 Testador de Nightscout <img src="./img/icons/icon-nightscout.png" alt="Ícone Nightscout"
                     class="icon-category" style="width:20px;height:24px;vertical-align:middle;">
@@ -34,49 +34,54 @@
 
             <label for="urlInput">URL do Nightscout:</label>
             <input type="text" id="urlInput" size="50"
-                placeholder="URL do Nightscout (ex: https://meunightscout.fly.dev)" oninput="gerarQRCode()">
+                placeholder="URL do Nightscout (ex: https://meunightscout.fly.dev)">
             <div id="urlError" class="error-message hidden">Por favor, informe a URL do Nightscout.</div>
             <br><br>
 
             <label for="apiSecretInput">API Secret do Nightscout:</label>
-            <input type="text" id="apiSecretInput" size="50" placeholder="API Secret do Nightscout"
-                oninput="gerarQRCode()">
+            <input type="text" id="apiSecretInput" size="50" placeholder="API Secret do Nightscout">
             <div id="apiSecretError" class="error-message hidden">Por favor, informe a API Secret do Nightscout.</div>
+            <br>
+            <div style="margin: 10px 0 10px 0; text-align: left;"></div>
+            <div>
+                <input type="checkbox" id="rememberData" style="min-width: 20px; min-height: 20px;">
+                <label for="rememberData" style="font-size: 1rem; cursor:pointer;">Lembrar dados para próxima vez</label>
+            </div>
             <br>
 
             <button id='testNightscout'>Testar</button>
 
             <ul class="status-list hidden">
-                <li class="status-item">É uma URL de Nightscout válida? <img id="validUrl" class="status-icon"
-                        src="./img/no-result.png"></li>
+                <li class="status-item">A URL principal do Nightscout está funcionando? <img id="validUrl"
+                        class="status-icon" src="./img/no-result.png"></li>
                 <li class="status-item">A API Secret está correta? <img id="correctSecret" class="status-icon"
                         src="./img/no-result.png"></li>
                 <li class="status-item">Há dados recentes? <img id="recentData" class="status-icon"
                         src="./img/no-result.png"></li>
-                <li class="status-item">Banco de dados está com espaço de sobra? <img id="DbFreeSpace"
+                <li class="status-item">Banco de dados está com espaço de sobra? <img id="dbFreeSpace"
                         class="status-icon" src="./img/no-result.png"></li>
-                <li class="status-item">Tudo funcionando perfeitamente? <img id="EverythingWorking" class="status-icon"
+                <li class="status-item">Realizando demais testes <img id="moreTests" class="status-icon"
                         src="./img/no-result.png"></li>
             </ul>
-            <h2 class="hidden">Resumo:</h2>
+            <h2 class="resume-title hidden">Resumo:</h2>
             <pre id="resume" class="hidden">Aguardando testes concluírem...</pre>
 
             <br><br>
-            <button class="hidden">Limpar dados</button>
-            <button class="hidden">Salvar sessão</button>
-            <button class="hidden">Compartilhar no Whatsapp</button>
+            <button id="shareWhatsApp" class="hidden">Compartilhar resultado no Whatsapp 📞</button>
 
             <br>
             <h3 class="disclaimer-title" id="categories-disclaimer-title">Transparência e Responsabilidade</h3>
-            <p class="disclaimer-body" id="categories-disclaimer-body">Entendemos que a API Secret é um dado sensível,
-                sendo assim, nenhum dado inserido aqui nesta página será
-                enviado ou tramitado sem o consentimento pleno do usuário. Esta ferramenta em questão existe única e
+            <p class="disclaimer-body" id="categories-disclaimer-body">Esta ferramenta em questão existe única e
                 exclusivamente para ajudar usuários a diagnosticarem possíveis problemas com o seu Nightscout, a fim de
-                dar autonomia para que cada um consiga corrigir sem ajuda externa dos voluntários do grupo de
-                Tecnologias no Diabetes. Ainda assim, caso não se sinta confortável, não a utilize.
+                dar autonomia para que cada um consiga corrigi-los sem ajuda externa dos voluntários do grupo de
+                Tecnologias no Diabetes. Entendemos que a API Secret é um dado sensível e, como tal, será tratada com
+                total sigilo e não será
+                enviada ou tramitada para lugar algum sem o consentimento pleno do usuário. Apenas a URL pode ser
+                enviada para
+                um proxy nosso para contornar um problema de política de CORS. Ainda assim, caso não se sinta
+                confortável, não a utilize.
             </p>
         </section>
-
     </div>
 
     {{> social-media }}

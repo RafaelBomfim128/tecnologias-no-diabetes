@@ -22,10 +22,6 @@ body {
     position: relative;
 }
 
-.container section {
-    padding-top: 18px;
-}
-
 .container section h2 {
     color: var(--secondary-color);
     top: 149px;
@@ -424,7 +420,7 @@ button.menu-icon {
 
 .hero.faq {
     background-image:linear-gradient(to right, #34e89e 0%, #0f3443 100%);
-    margin-bottom: 0px;
+    margin-bottom: 10px;
 }
 
 .hero h1 {
