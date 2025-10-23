@@ -1,56 +1,136 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR" class="smooth-scroll">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tecnologias no Diabetes - FAQ - Perguntas Frequentes</title>
+    <title>FAQ - Perguntas Frequentes - Tecnologias no Diabetes</title>
+    <meta name="description" content="Encontre respostas para as perguntas mais frequentes sobre diabetes, tecnologias, bombas de insulina, sensores de glicose e muito mais.">
     <link rel="icon" type="image/png" href="./img/favicon-96x96.png" sizes="96x96" />
     <link rel="icon" type="image/svg+xml" href="./img/favicon.svg" />
     <link rel="shortcut icon" href="./img/favicon.ico" />
     <link rel="apple-touch-icon" sizes="180x180" href="./img/apple-touch-icon.png" />
     <meta name="apple-mobile-web-app-title" content="Tecnologias no Diabetes" />
     <link rel="manifest" href="./img/site.webmanifest" />
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="./css/tailwind.css">
     <link rel="stylesheet" href="./css/geral.css">
     <link rel="stylesheet" href="./css/faq.css">
 </head>
 
-<body id="body-faq">
+<body class="bg-gray-50" id="body-faq">
     {{> view-counter }}
-    <div class="container" id="main-container-faq"><br>
-        {{> menu }}
-        <a class="return-index" id="return-faq" href="index.html">Retornar</a>
-        {{> notificacoes }}
-
-        <div class="hero faq" id="hero-section-faq">
-            <h1 id="faq-main-title">FAQ - Perguntas Frequentes ❓💡</h1>
-            <p id="faq-main-description">Encontre aqui as respostas para as perguntas mais frequentes sobre diabetes e tecnologias.</p>
+    {{> menu }}
+    
+    <main class="min-h-screen">
+        <!-- Breadcrumb -->
+        <div class="bg-white border-b">
+            <div class="container-custom py-3">
+                <nav class="flex items-center text-sm text-gray-600" aria-label="Breadcrumb">
+                    <a href="index.html" class="hover:text-diabetes-primary transition-colors">
+                        <svg class="w-4 h-4 inline mr-1" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z"/>
+                        </svg>
+                        Início
+                    </a>
+                    <svg class="w-4 h-4 mx-2" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"/>
+                    </svg>
+                    <span class="text-diabetes-primary font-medium">FAQ</span>
+                </nav>
+            </div>
         </div>
 
-        <section id="section-faq">
-            {{> search-bar }}
-            <div class="faq" id="faq-list">
-                {{#each questionAnswer}}
-                <div class="faq-item" data-cy="faq-item" id="faq-item-{{this.id}}" data-id="{{this.id}}">
-                    <button data-cy="faq-question" class="faq-question" id="faq-question-{{this.id}}">
-                        {{this.question}}
-                        <span class="arrow" id="faq-arrow-{{this.id}}"></span>
-                    </button>
-                    <div data-cy="faq-answer" class="faq-answer" id="faq-answer-{{this.id}}">
-                        <a data-cy="faq-link-share" href="#" target="_blank" class="share-icon whatsapp" id="faq-share-btn-whatsapp-{{this.id}}">
-                            <img data-cy="faq-img-link-share" id="whatsapp-icon-{{this.id}}" src="./img/whatsapp-icon.png" alt="Ícone de compartilhar no Whatsapp" />
-                        </a>
-                        {{{this.answer}}}
-                    </div>
+        {{> notificacoes }}
+
+        <!-- Hero Section -->
+        <div class="bg-gradient-to-r from-blue-600 to-indigo-600 text-white py-12 md:py-16 mt-6 mx-4 md:mx-auto md:max-w-7xl rounded-2xl shadow-xl animate-scale-in">
+            <div class="container-custom text-center">
+                <div class="text-6xl mb-4 animate-bounce">❓💡</div>
+                <h1 id="faq-main-title" class="text-4xl md:text-5xl font-bold mb-4 text-white">
+                    Perguntas Frequentes
+                </h1>
+                <p id="faq-main-description" class="text-xl md:text-2xl opacity-90 max-w-3xl mx-auto text-white">
+                    Encontre respostas rápidas sobre diabetes, tecnologias, bombas de insulina, sensores e muito mais
+                </p>
+            </div>
+        </div>
+
+        <!-- Search and FAQ Content -->
+        <section id="section-faq" class="container-custom py-8">
+            <div class="max-w-4xl mx-auto">
+                <!-- Search Bar -->
+                <div class="mb-8 animate-slide-up">
+                    <form id="search-form" action="javascript:void(0);" class="relative" aria-label="Pesquisar perguntas">
+                        <div class="relative">
+                            <svg class="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+                            </svg>
+                            <input 
+                                type="text" 
+                                id="search-bar" 
+                                placeholder="🔍 Pesquise por título ou palavras-chave..." 
+                                aria-label="Pesquisar perguntas"
+                                class="input pl-12 text-base"
+                            />
+                        </div>
+                    </form>
                 </div>
-                {{/each}}
+
+                <!-- FAQ Items -->
+                <div class="faq space-y-4" id="faq-list">
+                    {{#each questionAnswer}}
+                    <div class="faq-item bg-white rounded-xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden animate-slide-up border-2 border-transparent" 
+                         style="animation-delay: {{@index}}00ms;"
+                         data-cy="faq-item" 
+                         id="faq-item-{{this.id}}" 
+                         data-id="{{this.id}}">
+                        <button data-cy="faq-question" 
+                                class="faq-question w-full text-left px-6 py-4 flex items-center justify-between gap-6 hover:bg-gray-50 transition-colors group" 
+                                id="faq-question-{{this.id}}">
+                            <span class="text-lg font-semibold text-gray-800 group-hover:text-diabetes-primary transition-colors pr-4">
+                                {{this.question}}
+                            </span>
+                            <span class="arrow flex-shrink-0 ml-auto" id="faq-arrow-{{this.id}}"></span>
+                        </button>
+                        <div data-cy="faq-answer" 
+                             class="faq-answer text-gray-700 leading-relaxed border-t border-gray-100 overflow-hidden transition-all duration-300" 
+                             id="faq-answer-{{this.id}}"
+                             style="max-height: 0; padding-top: 0; padding-bottom: 0; padding-left: 1.5rem; padding-right: 1.5rem;">
+                            <div class="flex items-start gap-3">
+                                <div class="flex-1 faq-content">
+                                    {{{this.answer}}}
+                                </div>
+                                <a data-cy="faq-link-share" 
+                                   href="#" 
+                                   target="_blank" 
+                                   class="share-icon whatsapp flex-shrink-0 w-10 h-10 bg-green-500 hover:bg-green-600 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110 mt-1" 
+                                   id="faq-share-btn-whatsapp-{{this.id}}"
+                                   title="Compartilhar no WhatsApp">
+                                    <img data-cy="faq-img-link-share" 
+                                         id="whatsapp-icon-{{this.id}}" 
+                                         src="./img/whatsapp-icon.png" 
+                                         alt="Compartilhar no WhatsApp" 
+                                         class="w-6 h-6" />
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    {{/each}}
+                </div>
+
+                <!-- No Results Message -->
+                <div id="no-results" class="text-center py-12 hidden">
+                    <div class="text-6xl mb-4">🔍</div>
+                    <h3 class="text-2xl font-bold text-gray-700 mb-2">Nenhum resultado encontrado</h3>
+                    <p class="text-gray-600">Tente usar outras palavras-chave na sua busca</p>
+                </div>
             </div>
         </section>
-    </div>
+    </main>
+
     {{> social-media }}
     {{> footer }}
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    
     <script>
         window.env = {
             API_BASE_URL: "{{apiBaseUrl}}",

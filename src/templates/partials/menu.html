@@ -1,13 +1,111 @@
-<div id="my-sidenav" class="sidenav">
-    <a href="javascript:void(0)" class="closebtn" id="close-menu-btn" onclick="closeNav()">×</a>
-    <a href="index.html" id="menu-home">Início</a>
-    <a href="downloads.html" id="menu-downloads">Downloads de aplicativos</a>
-    <a href="tutoriais.html" id="menu-tutorials">Tutoriais</a>
-    <a href="faq.html" id="menu-faq">FAQ</a>
-    <a href="quiz.html" id="menu-quiz">Quiz</a>
-    <a href="conteudos-uteis-categorias.html" id="menu-useful-contents">Conteúdos úteis</a>
-    <a href="ferramentas.html" id="menu-useful-tools">Ferramentas úteis</a>
-    <a href="notificacoes.html" id="menu-notifications">Notificações/Avisos</a>
-</div>
+<nav class="sticky bg-white shadow-md animate-fade-in relative" id="main-nav" style="top: 20px; z-index: 40;">
+    <div class="container-custom">
+        <div class="flex justify-between items-center h-16">
+            <!-- Logo/Título -->
+            <a href="index.html" class="flex items-center space-x-2 group" id="nav-logo">
+                <span class="text-2xl">💉</span>
+                <span class="text-xl font-bold gradient-text hidden sm:inline">Tecnologias no Diabetes</span>
+                <span class="text-xl font-bold gradient-text sm:hidden">TnD</span>
+            </a>
+            
+            <!-- Menu Desktop -->
+            <div class="hidden lg:flex items-center space-x-1" id="desktop-menu">
+                <a href="index.html" class="nav-link" id="desktop-menu-home">Início</a>
+                <a href="downloads.html" class="nav-link" id="desktop-menu-downloads">Downloads</a>
+                <a href="tutoriais.html" class="nav-link" id="desktop-menu-tutorials">Tutoriais</a>
+                <a href="quiz.html" class="nav-link" id="desktop-menu-quiz">Quiz</a>
+                <a href="conteudos-uteis-categorias.html" class="nav-link" id="desktop-menu-useful-contents">Conteúdos</a>
+                <a href="ferramentas.html" class="nav-link" id="desktop-menu-useful-tools">Ferramentas</a>
+                <a href="faq.html" class="nav-link" id="desktop-menu-faq">FAQ</a>
+                <a href="notificacoes.html" class="relative nav-link" id="desktop-menu-notifications">
+                    <span>Avisos</span>
+                    <span class="absolute -top-1 -right-1 w-2 h-2 bg-red-500 rounded-full animate-pulse" id="notification-indicator"></span>
+                </a>
+            </div>
+            
+            <!-- Botão Mobile Menu -->
+            <button class="lg:hidden p-2 rounded-md hover:bg-gray-100 transition-colors" 
+                    id="mobile-menu-btn" 
+                    aria-label="Menu de navegação"
+                    onclick="toggleMobileMenu()">
+                <svg class="w-6 h-6 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24" id="menu-icon">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                </svg>
+            </button>
+        </div>
+    </div>
+    
+    <!-- Menu Mobile (dropdown) -->
+    <div class="hidden lg:hidden absolute left-0 right-0 bg-white shadow-lg border-t border-gray-200 animate-slide-up" id="mobile-menu" style="top: 100%;">
+        <div class="container-custom py-4">
+            <div class="flex flex-col space-y-2">
+                <a href="index.html" class="nav-link block py-2 px-3 rounded-md hover:bg-gray-100" id="mobile-menu-home">
+                    <span class="mr-2">🏠</span> Início
+                </a>
+                <a href="downloads.html" class="nav-link block py-2 px-3 rounded-md hover:bg-gray-100" id="mobile-menu-downloads">
+                    <span class="mr-2">💾</span> Downloads
+                </a>
+                <a href="tutoriais.html" class="nav-link block py-2 px-3 rounded-md hover:bg-gray-100" id="mobile-menu-tutorials">
+                    <span class="mr-2">📚</span> Tutoriais
+                </a>
+                <a href="quiz.html" class="nav-link block py-2 px-3 rounded-md hover:bg-gray-100" id="mobile-menu-quiz">
+                    <span class="mr-2">🧠</span> Quiz
+                </a>
+                <a href="conteudos-uteis-categorias.html" class="nav-link block py-2 px-3 rounded-md hover:bg-gray-100" id="mobile-menu-useful-contents">
+                    <span class="mr-2">📰</span> Conteúdos
+                </a>
+                <a href="ferramentas.html" class="nav-link block py-2 px-3 rounded-md hover:bg-gray-100" id="mobile-menu-useful-tools">
+                    <span class="mr-2">🔧</span> Ferramentas
+                </a>
+                <a href="faq.html" class="nav-link block py-2 px-3 rounded-md hover:bg-gray-100" id="mobile-menu-faq">
+                    <span class="mr-2">❓</span> FAQ
+                </a>
+                <a href="notificacoes.html" class="nav-link block py-2 px-3 rounded-md hover:bg-gray-100 relative" id="mobile-menu-notifications">
+                    <span class="mr-2">🔔</span> Avisos
+                    <span class="absolute top-2 left-8 w-2 h-2 bg-red-500 rounded-full animate-pulse" id="mobile-notification-indicator"></span>
+                </a>
+            </div>
+        </div>
+    </div>
+</nav>
 
-<button class="menu-icon" id="open-menu-btn" onclick="toggleNav()">☰</button>
+<script>
+// Função para toggle do menu mobile
+function toggleMobileMenu() {
+    const mobileMenu = document.getElementById('mobile-menu');
+    const menuIcon = document.getElementById('menu-icon');
+    
+    if (mobileMenu.classList.contains('hidden')) {
+        mobileMenu.classList.remove('hidden');
+        // Mudar ícone para X
+        menuIcon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>';
+    } else {
+        mobileMenu.classList.add('hidden');
+        // Mudar ícone para hamburger
+        menuIcon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>';
+    }
+}
+
+// Fechar menu mobile ao clicar em um link
+document.addEventListener('DOMContentLoaded', function() {
+    const mobileMenuLinks = document.querySelectorAll('#mobile-menu a');
+    mobileMenuLinks.forEach(link => {
+        link.addEventListener('click', function() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            const menuIcon = document.getElementById('menu-icon');
+            if (mobileMenu && !mobileMenu.classList.contains('hidden')) {
+                mobileMenu.classList.add('hidden');
+                menuIcon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>';
+            }
+        });
+    });
+    
+    // Marcar página ativa
+    const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+    document.querySelectorAll('.nav-link').forEach(link => {
+        if (link.getAttribute('href') === currentPage) {
+            link.classList.add('nav-link-active');
+        }
+    });
+});
+</script>

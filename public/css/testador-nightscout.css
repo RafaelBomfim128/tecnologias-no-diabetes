@@ -20,7 +20,8 @@ label {
     display: block;
 }
 
-input[type="text"] {
+input[type="text"],
+input[type="password"] {
     width: 100%;
     padding: 12px 14px;
     border: 1.5px solid var(--primary-color);
@@ -45,7 +46,8 @@ input[type="text"] {
     text-align: left;
 }
 
-input[type="text"]:focus {
+input[type="text"]:focus,
+input[type="password"]:focus {
     border-color: var(--accent-color);
     outline: none;
 }
@@ -112,7 +114,7 @@ pre {
 }
 
 .disclaimer-title {
-    color: var(--primary-color);
+    color: var(--secondary-color);
     font-size: 1.2rem;
     margin-top: 30px;
 }
@@ -129,6 +131,10 @@ pre {
 .container section ul {
     margin-left: 0px;
     margin-right: 0px;
+}
+
+#resume a { 
+    color: #00ffea;
 }
 
 @media (max-width: 700px) {
@@ -160,7 +166,8 @@ pre {
         word-break: break-word;
     }
 
-    input[type="text"] {
+    input[type="text"],
+    input[type="password"] {
         font-size: 0.95rem;
         padding: 10px 10px;
     }
@@ -192,8 +199,35 @@ pre {
         word-break: break-word;
     }
 
-    input[type="text"] {
+    input[type="text"],
+    input[type="password"] {
         font-size: 0.9rem;
         padding: 8px 8px;
     }
+}
+
+.usage-counter {
+    font-size: 0.95rem;
+    color: var(--text-color);
+    opacity: 0.75;
+    background: var(--light-bg);
+    border-radius: 8px;
+    padding: 8px 12px;
+    display: inline-block;
+    box-shadow: 0 1px 3px var(--container-shadow);
+    transition: opacity 0.3s;
+}
+
+.usage-counter:hover {
+    opacity: 1;
+}
+
+.usage-counter .usage-label {
+    margin-right: 6px;
+    color: var(--primary-color);
+    font-weight: 500;
+}
+
+.usage-counter .usage-value {
+    font-weight: 600;
 }

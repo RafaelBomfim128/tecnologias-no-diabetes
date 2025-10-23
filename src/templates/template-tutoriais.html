@@ -1,118 +1,271 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR" class="smooth-scroll">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tecnologias no Diabetes - Tutoriais</title>
+    <title>Tutoriais - Tecnologias no Diabetes</title>
+    <meta name="description" content="Tutoriais completos sobre xDrip, Nightscout, Android APS, sensores e muito mais para dominar as tecnologias no diabetes">
     <link rel="icon" type="image/png" href="./img/favicon-96x96.png" sizes="96x96" />
     <link rel="icon" type="image/svg+xml" href="./img/favicon.svg" />
-    <link rel="shortcut ícon" href="./img/favicon.ico" />
+    <link rel="shortcut icon" href="./img/favicon.ico" />
     <link rel="apple-touch-icon" sizes="180x180" href="./img/apple-touch-icon.png" />
     <meta name="apple-mobile-web-app-title" content="Tecnologias no Diabetes" />
     <link rel="manifest" href="./img/site.webmanifest" />
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="./css/tailwind.css">
     <link rel="stylesheet" href="./css/geral.css">
 </head>
 
-<body id="body-tutorials">
+<body class="bg-gray-50">
     {{> view-counter }}
-    <div class="container" id="main-container-tutorials"><br>
-        {{> menu }}
-        <a class="return-index" id="return-index" href="index.html">Retornar</a>
+    {{> menu }}
+    
+    <main class="min-h-screen">
+        <!-- Breadcrumb -->
+        <div class="bg-white border-b">
+            <div class="container-custom py-3">
+                <nav class="flex items-center text-sm text-gray-600" aria-label="Breadcrumb">
+                    <a href="index.html" class="hover:text-diabetes-primary transition-colors">
+                        <svg class="w-4 h-4 inline mr-1" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z"/>
+                        </svg>
+                        Início
+                    </a>
+                    <svg class="w-4 h-4 mx-2" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"/>
+                    </svg>
+                    <span class="text-diabetes-primary font-medium">Tutoriais</span>
+                </nav>
+            </div>
+        </div>
+
         {{> notificacoes }}
 
-        <div class="hero tutoriais" id="hero-section-tutorials">
-            <h1 id="tutorials-main-title">Tutoriais 📚🎥🛠️</h1>
-            <p id="tutorials-main-description">Explore aplicativos e tutoriais para facilitar o gerenciamento do diabetes utilizando tecnologias</p>
+        <!-- Hero Section -->
+        <div class="hero mb-8 mt-6 mx-4 md:mx-auto md:max-w-7xl" id="hero-section-tutorials">
+            <div class="container-custom text-center">
+                <div class="text-6xl mb-4 animate-bounce">📚</div>
+                <h1 id="tutorials-main-title" class="text-4xl md:text-5xl font-bold mb-4">
+                    Tutoriais Completos
+                </h1>
+                <p id="tutorials-main-description" class="text-xl md:text-2xl opacity-90 mb-6">
+                    Aprenda a usar as tecnologias no diabetes com guias passo a passo, vídeos e documentação detalhada
+                </p>
+                <div class="flex flex-wrap justify-center gap-4 text-sm md:text-base">
+                    <div class="flex items-center bg-white bg-opacity-20 rounded-full px-4 py-2">
+                    <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M2 6a2 2 0 012-2h6a2 2 0 012 2v8a2 2 0 01-2 2H4a2 2 0 01-2-2V6zM14.553 7.106A1 1 0 0014 8v4a1 1 0 00.553.894l2 1A1 1 0 0018 13V7a1 1 0 00-1.447-.894l-2 1z"/>
+                    </svg>
+                    <span>Vídeos Passo a Passo</span>
+                </div>
+                <div class="flex items-center bg-white bg-opacity-20 rounded-full px-4 py-2">
+                    <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4z" clip-rule="evenodd"/>
+                    </svg>
+                    <span>Documentação Completa</span>
+                </div>
+                <div class="flex items-center bg-white bg-opacity-20 rounded-full px-4 py-2">
+                    <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M9 4.804A7.968 7.968 0 005.5 4c-1.255 0-2.443.29-3.5.804v10A7.969 7.969 0 015.5 14c1.669 0 3.218.51 4.5 1.385A7.962 7.962 0 0114.5 14c1.255 0 2.443.29 3.5.804v-10A7.968 7.968 0 0014.5 4c-1.255 0-2.443.29-3.5.804V12a1 1 0 11-2 0V4.804z"/>
+                    </svg>
+                    <span>Guias Práticos</span>
+                </div>
+            </div>
         </div>
 
-        <!-- Seção de Recursos -->
-        <div id='recursos' class="row g-4">
-            <div class="col-md-4" id="card-start-point">
-                <div class="card text-center p-3" id="card-start-point-inner">
-                    <h5 class="card-title" id="start-point-title">Ponto de partida</h5>
-                    <img src="img/icons/icon-ponto-partida.png" alt="Ponto de partida ícone" class="tutorial-menu category-icon mx-auto" id="start-point-icon" />
-                    <p class="card-text" id="start-point-description">Comece por aqui se você está iniciando nesse mundo de tecnologias no diabetes</p>
-                    <a href="item-tutorial-ponto-de-partida.html" id="open-start-point" class="btn btn-info">Acessar</a>
+        <!-- Tutorial Categories Grid -->
+        <div class="container-custom pb-12">
+            <!-- Featured Category (Ponto de Partida) -->
+            <div class="mb-8">
+                <div class="bg-gradient-to-r from-green-500 to-emerald-600 text-white rounded-2xl shadow-xl overflow-hidden animate-scale-in">
+                    <div class="p-8 md:p-12 flex flex-col md:flex-row items-center gap-8">
+                        <div class="flex-shrink-0">
+                            <img src="img/icons/icon-ponto-partida.png" alt="Ponto de partida" class="w-24 h-24 md:w-32 md:h-32 object-contain drop-shadow-lg" id="start-point-icon" />
+                        </div>
+                        <div class="flex-1 text-center md:text-left">
+                            <div class="inline-block mb-3">
+                                <span class="badge bg-white bg-opacity-20 text-white px-4 py-1 text-sm font-semibold">
+                                    ⭐ Recomendado para Iniciantes
+                                </span>
+                            </div>
+                            <h2 id="start-point-title" class="text-3xl md:text-4xl font-bold mb-3">Ponto de Partida</h2>
+                            <p id="start-point-description" class="text-lg opacity-90 mb-6">
+                                Comece por aqui se você está iniciando nesse mundo de tecnologias no diabetes. Aprenda os conceitos básicos e primeiros passos.
+                            </p>
+                            <a href="item-tutorial-ponto-de-partida.html" id="open-start-point" class="btn btn-lg bg-white text-green-600 hover:bg-gray-100 inline-flex items-center gap-2">
+                                <span>Começar Agora</span>
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="col-md-4" id="card-xdrip">
-                <div class="card text-center p-3" id="card-xdrip-inner">
-                    <h5 class="card-title" id="xdrip-title">xDrip</h5>
-                    <img src="img/icons/icon-xdrip.png" alt="xDrip ícone" class="tutorial-menu category-icon mx-auto" id="xdrip-icon" />
-                    <p class="card-text" id="xdrip-description">Conheça e aprenda mais sobre esse aplicativo multifuncional incrível</p>
-                    <a href="item-tutorial-xdrip.html" id="open-xdrip" class="btn btn-info">Acessar</a>
-                </div>
-            </div>
-            <div class="col-md-4" id="card-android-aps">
-                <div class="card text-center p-3" id="card-android-aps-inner">
-                    <h5 class="card-title" id="android-aps-title">Android APS</h5>
-                    <img src="img/icons/icon-android-aps.png" alt="xDrip ícone" class="tutorial-menu category-icon mx-auto" id="android-aps-icon" />
-                    <p class="card-text" id="android-aps-description">Precisando gerenciar sua glicemia com maestria? Então vem pro Android APS!</p>
-                    <a href="item-tutorial-android-aps.html" id="open-android-aps" class="btn btn-info">Acessar</a>
-                </div>
-            </div>
-            <div class="col-md-4" id="card-sensors">
-                <div class="card text-center p-3" id="card-sensors-inner">
-                    <h5 class="card-title" id="sensors-title">Sensores</h5>
-                    <img src="img/icons/icon-sensores.png" alt="Sensores ícone" class="tutorial-menu category-icon mx-auto" id="sensors-icon" />
-                    <p class="card-text" id="sensors-description">Saiba como utilizar os sensores de monitoramento contínuo em conjunto com as tecnologias</p>
-                    <a href="tutoriais-sensores.html" id="open-sensors" class="btn btn-info">Acessar</a>
-                </div>
-            </div>
-            <div class="col-md-4" id="card-nightscout">
-                <div class="card text-center p-3" id="card-nightscout-inner">
-                    <h5 class="card-title" id="nightscout-title">Nightscout</h5>
-                    <img src="img/icons/icon-nightscout.png" alt="Nightscout ícone" class="tutorial-menu category-icon mx-auto" id="nightscout-icon" />
-                    <p class="card-text" id="nightscout-description">Já conhece o Nightscout? Venha aprender mais sobre essa plataforma que permite monitoramento remoto por familiares</p>
-                    <a href="item-tutorial-nightscout.html" id="open-nightscout" class="btn btn-info">Acessar</a>
-                </div>
-            </div>
-            <div class="col-md-4" id="card-ios">
-                <div class="card text-center p-3" id="card-ios-inner">
-                    <h5 class="card-title" id="ios-title">iOS</h5>
-                    <img src="img/icons/icon-ios.png" alt="Nightscout ícone" class="tutorial-menu category-icon mx-auto" id="ios-icon" />
-                    <p class="card-text" id="ios-description">Veja os tutoriais que temos para iOS</p>
-                    <a href="item-tutorial-ios.html" id="open-ios" class="btn btn-info">Acessar</a>
-                </div>
-            </div>
-            <div class="col-md-4" id="card-watches">
-                <div class="card text-center p-3" id="card-watches-inner">
-                    <h5 class="card-title" id="watches-title">Relógios</h5>
-                    <img src="img/icons/icon-relogios.png" alt="Relógios ícone" class="tutorial-menu category-icon mx-auto" id="watches-icon" />
-                    <p class="card-text" id="watches-description">Também é possível utilizar smartwatchs conectado às tecnologias para monitoramento da glicemia!</p>
-                    <a href="item-tutorial-relogios.html" id="open-watches" class="btn btn-info">Acessar</a>
-                </div>
-            </div>
-            <div class="col-md-4" id="card-pumps">
-                <div class="card text-center p-3" id="card-pumps-inner">
-                    <h5 class="card-title" id="pumps-title">Bombas</h5>
-                    <img src="img/icons/icon-bombas.png" alt="Bombas ícone" class="tutorial-menu category-icon mx-auto" id="pumps-icon" />
-                    <p class="card-text" id="pumps-description">Bombas de insulina integrada às tecnologias</p>
-                    <a href="item-tutorial-bombas.html" id="open-pumps" class="btn btn-info">Acessar</a>
-                </div>
-            </div>
-            <div class="col-md-4" id="card-others">
-                <div class="card text-center p-3" id="card-others-inner">
-                    <h5 class="card-title" id="others-title">Outros</h5>
-                    <img src="img/icons/icon-tutorial-default.png" alt="xDrip ícone" class="tutorial-menu category-icon mx-auto" id="others-icon" />
-                    <p class="card-text" id="others-description">Outros tutoriais que podem te ajudar no dia a dia com as tecnologias no diabetes</p>
-                    <a href="item-tutorial-outros.html" id="open-others" class="btn btn-info">Acessar</a>
-                </div>
-            </div>
-            <div class="col-md-4" id="card-all-tutorials">
-                <div class="card text-center p-3" id="card-all-tutorials-inner">
-                    <h5 class="card-title" id="all-tutorials-title">Ver tudo</h5>
-                    <p class="card-text" id="all-tutorials-description">Clique aqui se você quer ver todos os tutoriais disponíveis de qualquer categoria</p>
-                    <a href="item-tutorial-total.html" id="open-all-tutorials" class="btn btn-info">Acessar</a>
-                </div>
+
+            <!-- Categories Section -->
+            <h2 class="text-3xl font-bold text-gray-800 mb-8 animate-slide-up">Categorias de Tutoriais</h2>
+            
+            <div id='recursos' class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- xDrip Card -->
+                <article id="card-xdrip" class="card card-hover group animate-scale-in" style="animation-delay: 0ms">
+                    <div class="card-body text-center">
+                        <div class="mb-4 flex justify-center">
+                            <img src="img/icons/icon-xdrip.png" alt="xDrip" class="w-20 h-20 object-contain group-hover:scale-110 transition-transform duration-300" id="xdrip-icon" />
+                        </div>
+                        <span class="badge badge-primary mb-3">App Multifuncional</span>
+                        <h3 id="xdrip-title" class="card-title text-gray-800">xDrip</h3>
+                        <p id="xdrip-description" class="card-text text-gray-600">
+                            Conheça e aprenda mais sobre esse aplicativo multifuncional incrível para monitoramento contínuo de glicose
+                        </p>
+                        <a href="item-tutorial-xdrip.html" id="open-xdrip" class="btn btn-info w-full mt-auto">
+                            Ver Tutoriais
+                        </a>
+                    </div>
+                </article>
+
+                <!-- Android APS Card -->
+                <article id="card-android-aps" class="card card-hover group animate-scale-in" style="animation-delay: 100ms">
+                    <div class="card-body text-center">
+                        <div class="mb-4 flex justify-center">
+                            <img src="img/icons/icon-android-aps.png" alt="Android APS" class="w-20 h-20 object-contain group-hover:scale-110 transition-transform duration-300" id="android-aps-icon" />
+                        </div>
+                        <span class="badge bg-purple-100 text-purple-600 mb-3">Sistema Avançado</span>
+                        <h3 id="android-aps-title" class="card-title text-gray-800">Android APS</h3>
+                        <p id="android-aps-description" class="card-text text-gray-600">
+                            Precisando gerenciar sua glicemia com maestria? Aprenda sobre o sistema de pâncreas artificial
+                        </p>
+                        <a href="item-tutorial-android-aps.html" id="open-android-aps" class="btn btn-info w-full mt-auto">
+                            Ver Tutoriais
+                        </a>
+                    </div>
+                </article>
+
+                <!-- Sensores Card -->
+                <article id="card-sensors" class="card card-hover group animate-scale-in" style="animation-delay: 200ms">
+                    <div class="card-body text-center">
+                        <div class="mb-4 flex justify-center items-center min-h-28">
+                            <img src="img/icons/icon-sensores.png" alt="Sensores" class="w-28 h-28 object-contain group-hover:scale-110 transition-transform duration-300" id="sensors-icon" />
+                        </div>
+                        <span class="badge badge-warning mb-3">Hardware</span>
+                        <h3 id="sensors-title" class="card-title text-gray-800">Sensores CGM</h3>
+                        <p id="sensors-description" class="card-text text-gray-600">
+                            Aprenda a utilizar sensores de monitoramento contínuo em conjunto com as tecnologias
+                        </p>
+                        <a href="tutoriais-sensores.html" id="open-sensors" class="btn btn-info w-full mt-auto">
+                            Ver Tutoriais
+                        </a>
+                    </div>
+                </article>
+
+                <!-- Nightscout Card -->
+                <article id="card-nightscout" class="card card-hover group animate-scale-in" style="animation-delay: 300ms">
+                    <div class="card-body text-center">
+                        <div class="mb-4 flex justify-center">
+                            <img src="img/icons/icon-nightscout.png" alt="Nightscout" class="w-20 h-20 object-contain group-hover:scale-110 transition-transform duration-300" id="nightscout-icon" />
+                        </div>
+                        <span class="badge bg-indigo-100 text-indigo-600 mb-3">Monitoramento Remoto</span>
+                        <h3 id="nightscout-title" class="card-title text-gray-800">Nightscout</h3>
+                        <p id="nightscout-description" class="card-text text-gray-600">
+                            Plataforma que permite monitoramento remoto por familiares e compartilhamento de dados
+                        </p>
+                        <a href="item-tutorial-nightscout.html" id="open-nightscout" class="btn btn-info w-full mt-auto">
+                            Ver Tutoriais
+                        </a>
+                    </div>
+                </article>
+
+                <!-- iOS Card -->
+                <article id="card-ios" class="card card-hover group animate-scale-in" style="animation-delay: 400ms">
+                    <div class="card-body text-center">
+                        <div class="mb-4 flex justify-center items-center min-h-24">
+                            <img src="img/icons/icon-ios.png" alt="iOS" class="w-24 h-24 object-contain group-hover:scale-110 transition-transform duration-300" id="ios-icon" />
+                        </div>
+                        <span class="badge bg-gray-100 text-gray-700 mb-3">Apple</span>
+                        <h3 id="ios-title" class="card-title text-gray-800">iOS</h3>
+                        <p id="ios-description" class="card-text text-gray-600">
+                            Tutoriais específicos para usuários de iPhone e iPad no gerenciamento do diabetes
+                        </p>
+                        <a href="item-tutorial-ios.html" id="open-ios" class="btn btn-info w-full mt-auto">
+                            Ver Tutoriais
+                        </a>
+                    </div>
+                </article>
+
+                <!-- Relógios Card -->
+                <article id="card-watches" class="card card-hover group animate-scale-in" style="animation-delay: 500ms">
+                    <div class="card-body text-center">
+                        <div class="mb-4 flex justify-center items-center min-h-24">
+                            <img src="img/icons/icon-relogios.png" alt="Relógios" class="w-24 h-24 object-contain group-hover:scale-110 transition-transform duration-300" id="watches-icon" />
+                        </div>
+                        <span class="badge bg-blue-100 text-blue-600 mb-3">Wearables</span>
+                        <h3 id="watches-title" class="card-title text-gray-800">Smartwatches</h3>
+                        <p id="watches-description" class="card-text text-gray-600">
+                            Utilize smartwatches conectados às tecnologias para monitoramento prático da glicemia
+                        </p>
+                        <a href="item-tutorial-relogios.html" id="open-watches" class="btn btn-info w-full mt-auto">
+                            Ver Tutoriais
+                        </a>
+                    </div>
+                </article>
+
+                <!-- Bombas Card -->
+                <article id="card-pumps" class="card card-hover group animate-scale-in" style="animation-delay: 600ms">
+                    <div class="card-body text-center">
+                        <div class="mb-4 flex justify-center items-center min-h-24">
+                            <img src="img/icons/icon-bombas.png" alt="Bombas" class="w-24 h-24 object-contain group-hover:scale-110 transition-transform duration-300" id="pumps-icon" />
+                        </div>
+                        <span class="badge bg-red-100 text-red-600 mb-3">Infusão de Insulina</span>
+                        <h3 id="pumps-title" class="card-title text-gray-800">Bombas de Insulina</h3>
+                        <p id="pumps-description" class="card-text text-gray-600">
+                            Bombas de insulina integradas às tecnologias para controle automatizado
+                        </p>
+                        <a href="item-tutorial-bombas.html" id="open-pumps" class="btn btn-info w-full mt-auto">
+                            Ver Tutoriais
+                        </a>
+                    </div>
+                </article>
+
+                <!-- Outros Card -->
+                <article id="card-others" class="card card-hover group animate-scale-in" style="animation-delay: 700ms">
+                    <div class="card-body text-center">
+                        <div class="mb-4 flex justify-center">
+                            <img src="img/icons/icon-tutorial-default.png" alt="Outros" class="w-20 h-20 object-contain group-hover:scale-110 transition-transform duration-300" id="others-icon" />
+                        </div>
+                        <span class="badge bg-gray-100 text-gray-600 mb-3">Diversos</span>
+                        <h3 id="others-title" class="card-title text-gray-800">Outros Tutoriais</h3>
+                        <p id="others-description" class="card-text text-gray-600">
+                            Outros tutoriais úteis que podem te ajudar no dia a dia com as tecnologias
+                        </p>
+                        <a href="item-tutorial-outros.html" id="open-others" class="btn btn-info w-full mt-auto">
+                            Ver Tutoriais
+                        </a>
+                    </div>
+                </article>
+
+                <!-- Ver Tudo Card (Destacado) -->
+                <article id="card-all-tutorials" class="card bg-gradient-to-br from-diabetes-primary to-diabetes-accent text-white group hover:shadow-2xl transition-all duration-300 animate-scale-in" style="animation-delay: 800ms">
+                    <div class="card-body text-center">
+                        <div class="mb-4 flex justify-center">
+                            <svg class="w-20 h-20 group-hover:scale-110 transition-transform duration-300" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M7 3a1 1 0 000 2h6a1 1 0 100-2H7zM4 7a1 1 0 011-1h10a1 1 0 110 2H5a1 1 0 01-1-1zM2 11a2 2 0 012-2h12a2 2 0 012 2v4a2 2 0 01-2 2H4a2 2 0 01-2-2v-4z"/>
+                            </svg>
+                        </div>
+                        <h3 id="all-tutorials-title" class="text-2xl font-bold mb-3 text-white">Ver Todos os Tutoriais</h3>
+                        <p id="all-tutorials-description" class="text-lg opacity-90 mb-6">
+                            Explore a lista completa de todos os tutoriais disponíveis em todas as categorias
+                        </p>
+                        <a href="item-tutorial-total.html" id="open-all-tutorials" class="btn btn-lg bg-white text-diabetes-primary hover:bg-gray-100 w-full">
+                            Explorar Tudo
+                        </a>
+                    </div>
+                </article>
             </div>
         </div>
-    </div>
+    </main>
     {{> social-media }}
     {{> footer }}
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    
     <script>
         window.env = {
             API_BASE_URL: "{{apiBaseUrl}}",
@@ -121,5 +274,28 @@
         };
     </script>
     <script src="./js/geral.js"></script>
+    
+    <script>
+        // Add smooth entrance animations
+        document.addEventListener('DOMContentLoaded', function() {
+            const cards = document.querySelectorAll('#recursos article');
+            
+            // Observer para animar quando entrar na viewport
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animate-scale-in');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+            
+            cards.forEach(card => {
+                observer.observe(card);
+            });
+        });
+    </script>
 </body>
 </html>

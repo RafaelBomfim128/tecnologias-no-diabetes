@@ -180,20 +180,20 @@ button:hover {
 .view-counter {
     font-size: 13px;
     line-height: 12px;
-    position: fixed;
-    top: 20px;
+    position: absolute;
+    top: 0;
     right: 0;
     background-color: #ecf0f1;
     color: var(--text-color);
     padding: 5px 10px;
-    border-radius: 8px;
+    border-radius: 0 0 0 8px;
     box-shadow: 0 1px 3px var(--container-shadow);
     font-weight: bold;
     display: flex;
     align-items: center;
     gap: 15px;
     font-size: 14px;
-    z-index: 2;
+    z-index: 9999;
 }
 
 .view-counter .title {
@@ -429,7 +429,9 @@ button.menu-icon {
     color: white;
 }
 
-.hero p {
+.hero > div > p,
+.hero .container-custom > p,
+.hero > p {
     font-size: 1.2rem;
     margin-top: 15px;
     color: white;

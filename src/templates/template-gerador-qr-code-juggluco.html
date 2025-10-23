@@ -4,54 +4,120 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Tecnologias no Diabetes - Ferramentas</title>
+  <title>Gerador de QR Code Juggluco - Tecnologias no Diabetes</title>
   <link rel="icon" type="image/png" href="./img/favicon-96x96.png" sizes="96x96" />
   <link rel="icon" type="image/svg+xml" href="./img/favicon.svg" />
   <link rel="shortcut icon" href="./img/favicon.ico" />
   <link rel="apple-touch-icon" sizes="180x180" href="./img/apple-touch-icon.png" />
   <meta name="apple-mobile-web-app-title" content="Tecnologias no Diabetes" />
   <link rel="manifest" href="./img/site.webmanifest" />
+  <link rel="stylesheet" href="./css/tailwind.css">
   <link rel="stylesheet" href="./css/geral.css">
   <link rel="stylesheet" href="./css/gerador-qr-code-juggluco.css">
 </head>
 
-<body>
+<body class="bg-gray-50">
   {{> view-counter }}
-  <div class="container"><br>
-    {{> menu }}
-    <a class="return-index" href="ferramentas.html">Retornar</a>
-    {{> notificacoes }}
+  {{> menu }}
 
-    <section style="margin-top: 30px;">
-      <h2 class="category-title">
-        Gerador de QR Code para Sibionics com Juggluco 📷🔳
-      </h2>
+  <!-- Conteúdo Principal -->
+  <main class="container-custom py-8 animate-fade-in">
+    <!-- Breadcrumb -->
+    <nav class="flex items-center space-x-2 text-sm text-gray-600 mb-6" aria-label="Breadcrumb">
+      <a href="index.html" class="hover:text-diabetes-primary transition-colors">Início</a>
+      <span>›</span>
+      <a href="ferramentas.html" class="hover:text-diabetes-primary transition-colors">Ferramentas</a>
+      <span>›</span>
+      <span class="text-diabetes-primary font-medium">Gerador de QR Code</span>
+    </nav>
 
-      <p>💡 Este é um método utilizado quando você está com dificuldades de ler o QR Code apresentado na caixa do
-        Sibionics com o Juggluco.</p>
-      <p>Deve ser feito em um computador, celular ou tablet diferente do celular que está sendo escaneado.</p>
+    <!-- Hero Section -->
+    <div class="hero bg-gradient-to-br from-teal-600 to-cyan-700 mb-8 animate-fade-in">
+      <h1 class="text-white text-3xl md:text-4xl font-bold mb-3">
+        📷 Gerador de QR Code para Sibionics
+      </h1>
+      <p class="text-white/90 text-lg max-w-3xl mx-auto">
+        Utilize o Juggluco quando tiver dificuldades para ler o QR Code da caixa
+      </p>
+    </div>
 
-      <div style="text-align: center;">
-        <img alt="Local dos dígitos na caixa" src="./img/qr-code-sibionics.png" class="box-sibionics-model">
+    <!-- Card Principal -->
+    <div class="card max-w-3xl mx-auto animate-slide-up">
+      <div class="bg-blue-50 border-l-4 border-blue-500 p-4 rounded-lg mb-6">
+        <div class="flex items-start space-x-3">
+          <span class="text-2xl">💡</span>
+          <p class="text-gray-700 leading-relaxed">
+            Este é um método utilizado quando você está com dificuldades de ler o QR Code apresentado na caixa do 
+            Sibionics com o Juggluco. Deve ser feito em um computador, celular ou tablet diferente do celular que 
+            está sendo escaneado.
+          </p>
+        </div>
       </div>
 
-      <p>De acordo com o local indicado na imagem acima, insira os dígitos correspondentes nos campos abaixo:</p>
+      <!-- Imagem de Referência -->
+      <div class="text-center mb-8">
+        <img 
+          alt="Local dos dígitos na caixa" 
+          src="./img/qr-code-sibionics.png" 
+          class="box-sibionics-model inline-block max-w-full h-auto rounded-xl shadow-lg md:max-w-sm">
+        <p class="text-sm text-gray-600 mt-3">Local dos dígitos na caixa do Sibionics</p>
+      </div>
 
+      <p class="text-gray-700 text-center mb-6">
+        De acordo com o local indicado na imagem acima, insira os dígitos correspondentes nos campos abaixo:
+      </p>
+
+      <!-- Formulário de Entrada -->
       <div class="category-content" id="content-qrcode">
-        <div class="qrcode-input">
-          <span>(</span>
-          <input type="text" id="qrInput1" size="1" maxlength="2" oninput="gerarQRCode()">
-          <span>)</span>
-          <input type="text" id="qrInput2" size="15" maxlength="18" placeholder="18 dígitos" oninput="gerarQRCode()">
+        <div class="flex justify-center items-center flex-wrap gap-3 mb-8 text-xl">
+          <span class="text-gray-600 font-medium">(</span>
+          <input 
+            type="text" 
+            id="qrInput1" 
+            maxlength="2" 
+            oninput="gerarQRCode()"
+            class="w-16 px-3 py-2 text-center text-lg border-2 border-diabetes-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-diabetes-accent transition-all"
+            placeholder="00">
+          <span class="text-gray-600 font-medium">)</span>
+          <input 
+            type="text" 
+            id="qrInput2" 
+            maxlength="18" 
+            oninput="gerarQRCode()"
+            class="flex-1 max-w-xs px-3 py-2 text-center text-lg border-2 border-diabetes-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-diabetes-accent transition-all"
+            placeholder="18 dígitos">
         </div>
 
-        <div class="qrcode-output">
-          <img id="qrCode" src="" alt="QR Code será exibido aqui">
+        <!-- QR Code Gerado -->
+        <div class="qrcode-output flex justify-center items-center py-6">
+          <div class="bg-white p-6 rounded-xl shadow-lg border-2 border-gray-200 hover:border-diabetes-accent transition-all">
+            <img 
+              id="qrCode" 
+              src="" 
+              alt="QR Code será exibido aqui" 
+              class="max-w-[250px] w-full transition-transform hover:scale-105">
+          </div>
         </div>
       </div>
-    </section>
 
-  </div>
+      <!-- Instruções Adicionais -->
+      <div class="bg-green-50 border-l-4 border-green-500 p-4 rounded-lg mt-6">
+        <div class="flex items-start space-x-3">
+          <svg class="w-6 h-6 text-green-600 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+          </svg>
+          <div>
+            <h3 class="text-green-900 font-semibold mb-1">Como usar:</h3>
+            <ol class="text-green-800 text-sm space-y-1 list-decimal list-inside">
+              <li>Insira os dígitos exatamente como aparecem na caixa</li>
+              <li>O QR Code será gerado automaticamente</li>
+              <li>Escaneie o QR Code gerado com o aplicativo Juggluco</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
 
   {{> social-media }}
   {{> footer }}
