@@ -3,11 +3,15 @@ const correctSecretId = 'correctSecret';
 const recentDataId = 'recentData';
 const dbFreeSpaceId = 'dbFreeSpace';
 const moreTestsId = 'moreTests';
+let dateResult;
+let hasCors;
 
 document.addEventListener("DOMContentLoaded", () => {
+    getTotalUsage()
     const btnTestNightscout = document.querySelector('#testNightscout');
     const url = document.querySelector('#urlInput');
     const apiSecret = document.querySelector('#apiSecretInput');
+    apiSecret.type = 'password'
 
     const rememberCheckbox = document.getElementById('rememberData');
     const savedUrl = localStorage.getItem('nightscout_url');
@@ -43,7 +47,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 document.getElementById('apiSecretError').classList.add('hidden');
             }
 
-            if (!url.value.startsWith('http') && !url.value.startsWith('https')) {
+            if (!url.value.toLowerCase().startsWith('http') && !url.value.toLowerCase().startsWith('https')) {
                 url.value = `https://${url.value}`
             }
 
@@ -58,30 +62,60 @@ document.addEventListener("DOMContentLoaded", () => {
 
             setTimeout(showResume, 100);
 
+            incrementUsage()
             await checkValidUrl();
             populateResume();
             document.querySelector('#shareWhatsApp').classList.remove('hidden');
+            dateResult = new Date();
         });
     }
 
     url.addEventListener('change', function () {
-        if (url.value.includes('@') && url.value.includes('/api')) {
-            const urlExtracted = url.value.replace('http://', '').replace('https://', '').split('@')[1].split('/api')[0]
-            const apiSecretExtracted = url.value.replace('http://', '').replace('https://', '').split('@')[0]
-            url.value = `https://${urlExtracted}/`
-            apiSecret.value = apiSecretExtracted
-            btnTestNightscout.focus()
+        if (url.value.toLowerCase().includes('@') && url.value.toLowerCase().includes('/api')) {
+            const normalized = url.value.toLowerCase();
+
+            const urlWithoutProtocol = url.value.replace(/^https?:\/\//i, '');
+
+            const urlExtracted = urlWithoutProtocol.split('@')[1].split(/\/api/i)[0];
+            const apiSecretExtracted = urlWithoutProtocol.split('@')[0];
+
+            url.value = `https://${urlExtracted}/`;
+            apiSecret.value = apiSecretExtracted;
+
+            btnTestNightscout.focus();
         }
     })
+
+    apiSecret.addEventListener('focus', function () {
+        apiSecret.type = 'text'
+    })
+
+    apiSecret.addEventListener('blur', function () {
+        apiSecret.type = 'password'
+    })
+
+    document.addEventListener('visibilitychange', () => {
+        if (document.visibilityState === 'visible') {
+            if (dateResult) {
+                const current = new Date().getTime()
+                const diffMinutes = (current - dateResult) / 1000 / 60
+                if (diffMinutes > 15) {
+                    reset()
+                }
+            }
+        }
+    });
 })
 
 let hasRecentData
 let resumeText = '';
 
 function reset() {
-    let hasRecentData = false
+    hasRecentData = false
+    hasCors = true
     resumeText = ''
-    const resume = document.getElementById('resume').textContent = ''
+    dateResult = ''
+    const resume = document.getElementById('resume').textContent = 'Aguardando testes concluírem...'
     document.getElementById('urlError').classList.add('hidden');
     document.getElementById('apiSecretError').classList.add('hidden');
     document.querySelector('.status-list').classList.add('hidden');
@@ -106,26 +140,123 @@ function showResume() {
     window.scrollTo({ top: y, behavior: 'smooth' });
 }
 
-async function checkValidUrl() {
-    setLoadingStatus(validUrlId);
-    const url = document.querySelector('#urlInput').value.trim();
-    let response;
+async function fetchWithTimeout(url, proxy, options = {}, timeout = 10000) {
+    const controller = new AbortController();
+    const id = setTimeout(() => controller.abort(), timeout);
     try {
-        response = await fetch(url, { method: "GET" });
-    } catch (error) {
-        console.error("Erro ao buscar dados da URL pelo client. Tentando pelo proxy:", error);
+        let resp
+        if (hasCors) {
+            resp = await fetch(url, { cache: 'no-store',  redirect: 'follow', ...options, signal: controller.signal });
+        } else {
+            urlProxy = new URL(`/api/proxy?url=${encodeURIComponent(url)}`, window.env.API_BASE_URL).href;
+            resp = await fetch(urlProxy, { ...options, signal: controller.signal });
+        }
+        return resp;
+    } finally {
+        clearTimeout(id);
+    }
+}
+
+function tryNormalizeUrl(input) {
+    try {
+        return new URL(input).href;
+    } catch (e) {
         try {
-            const urlProxy = new URL(`/api/proxy?url=${url}`, window.env.API_BASE_URL).href
-            response = await fetch(urlProxy, { method: "GET" });
-        } catch (error) {
-            console.error("Erro ao buscar dados da URL pelo proxy:", error);
+            return new URL('https://' + input).href;
+        } catch (e2) {
+            return null;
         }
     }
+}
 
-    if (response.ok && response.status === 200) {
-        const htmlText = await response.text();
-        const parser = new DOMParser();
-        const doc = parser.parseFromString(htmlText, "text/html");
+async function checkValidUrl() {
+    await setLoadingStatus(validUrlId);
+    try {
+        const raw = document.querySelector('#urlInput').value.trim();
+        const normalizedUrl = tryNormalizeUrl(raw);
+
+        if (!normalizedUrl) {
+            console.warn('URL inválida fornecida:', raw);
+            setWrong(validUrlId);
+            setResumeText('❌ URL inválida. Verifique o formato (ex: https://example.com) e tente novamente.');
+            return;
+        }
+
+        if (!window.env || !window.env.API_BASE_URL) {
+            console.error('API_BASE_URL não encontrada em window.env. window.env:', window.env);
+            setWrong(validUrlId);
+            setResumeText('❌ Configuração do testador ausente ou incorreta (API_BASE_URL não definida). Contate o administrador do site.');
+            return;
+        }
+
+        let response = null;
+
+        try {
+            response = await fetchWithTimeout(normalizedUrl, { method: "GET" }, 8000);
+        } catch (clientErr) {
+            console.log('Fetch direto falhou (provável CORS/timeout):', clientErr && clientErr.message);
+
+            let urlProxy;
+            try {
+                urlProxy = new URL(`/api/proxy?url=${encodeURIComponent(normalizedUrl)}`, window.env.API_BASE_URL).href;
+                console.log('Proxy URL construída:', urlProxy);
+            } catch (urlErr) {
+                console.error('Erro ao construir URL do proxy:', urlErr);
+                setWrong(validUrlId);
+                setResumeText('❌ Configuração do testador inválida (erro ao construir URL do proxy). Contate o administrador do site.');
+                return;
+            }
+
+            hasCors = false;
+            try {
+                response = await fetchWithTimeout(urlProxy, { method: "GET", mode: "cors" }, 10000);
+                console.log('Resposta do proxy obtida:', response && response.status);
+            } catch (proxyErr) {
+                console.error('Erro ao buscar via proxy:', proxyErr);
+
+                if (proxyErr.name === 'AbortError') {
+                    setWrong(validUrlId);
+                    setResumeText('❌ Tempo esgotado ao contatar o proxy (timeout). Tente novamente mais tarde.');
+                    return;
+                }
+
+                if (proxyErr.name === 'TypeError' && /failed to fetch/i.test(String(proxyErr.message))) {
+                    setWrong(validUrlId);
+                    setResumeText('❌ Não foi possível contatar o serviço de proxy (erro de rede). Verifique sua conexão ou tente novamente mais tarde.');
+                    return;
+                }
+
+                setWrong(validUrlId);
+                setResumeText('❌ Testador temporariamente indisponível (não foi possível contatar o serviço de proxy). Tente novamente mais tarde.');
+                return;
+            }
+        }
+
+        if (!response) {
+            setWrong(validUrlId);
+            setResumeText('❌ Não foi obtida resposta do servidor. Tente novamente.');
+            return;
+        }
+
+        let htmlText = '';
+        try {
+            htmlText = await response.text();
+        } catch (e) {
+            console.error('Erro ao ler body da resposta 200:', e);
+            setWrong(validUrlId);
+            setResumeText('❌ Erro ao processar a resposta do servidor.');
+            return;
+        }
+
+        let parser, doc;
+        try {
+            parser = new DOMParser();
+            doc = parser.parseFromString(htmlText, "text/html");
+        } catch (e) {
+            setWrong(validUrlId);
+            setResumeText('❌ Erro ao processar o HTML retornado pelo servidor.');
+            return;
+        }
 
         const hasCurrentBG = doc.querySelector(".currentBG") !== null;
         const mongoDbUriMissing = Array.from(doc.querySelectorAll("dd")).some(dd => dd.textContent.includes("MONGODB_URI setting is missing"));
@@ -133,184 +264,321 @@ async function checkValidUrl() {
         const shortApiSecret = Array.from(doc.querySelectorAll("dd")).some(dd => dd.textContent.includes("API_SECRET should be at least 12 characters"));
 
         if (hasCurrentBG) {
-            setCorrect(validUrlId)
-            let isValidUrl = true
+            setCorrect(validUrlId);
         } else if (mongoDbUriMissing) {
-            setWrong(validUrlId)
-            setResumeText('❌ Seu Nightscout não foi criado corretamente, pois a variável "MONGODB_URI" não está presente.')
+            setWrong(validUrlId);
+            setResumeText('❌ Seu Nightscout não foi criado corretamente, pois a variável "MONGODB_URI" não está presente.');
             return;
         } else if (mongoDbUriInvalid) {
-            setWrong(validUrlId)
-            setResumeText('❌ As credenciais do MongoDB foram definidas incorretamente durante a criação do seu Nightscout na variável MONGODB_URI.')
+            setWrong(validUrlId);
+            setResumeText('❌ As credenciais do MongoDB foram definidas incorretamente durante a criação do seu Nightscout na variável MONGODB_URI.');
             return;
         } else if (shortApiSecret) {
-            setWrong(validUrlId)
-            setResumeText('❌ Durante a criação do seu Nightscout, foi definida uma API Secret muito curta (menor de 12 caracteres).')
-            return;
-        } else {
-            setWrong(validUrlId)
-            setResumeText('❌ Algum erro desconhecido pelo desenvolvedor desse testador ocorreu no seu Nightscout. Informe no grupo de Tecnologias no Diabetes para maior auxílio.')
+            setWrong(validUrlId);
+            setResumeText('❌ Durante a criação do seu Nightscout, foi definida uma API Secret muito curta (menor de 12 caracteres).');
             return;
         }
-    } else {
-        setWrong(validUrlId)
-        setResumeText('❌ Ocorreu um erro ao buscar dados da URL. Verifique se a URL digitada está correta e se está conectado à internet.')
+
+        if (response.status !== 200) {
+            const proxyErrorType = response.headers.get('x-proxy-error-type');
+            console.log('Status != 200. status=', response.status, 'x-proxy-error-type=', proxyErrorType, 'bodySample=', (htmlText || '').slice(0, 200));
+
+            if (proxyErrorType === 'host-unresolved' || response.status === 422) {
+                setWrong(validUrlId);
+                setResumeText('❌ Domínio inválido / não encontrado. Verifique o nome do host digitado.');
+                return;
+            }
+
+            if (proxyErrorType === 'upstream-unreachable') {
+                setWrong(validUrlId);
+                setResumeText('❌ O Nightscout parece estar inatingível (conexão recusada ou timeout).');
+                return;
+            }
+
+            if (proxyErrorType === 'proxy-error') {
+                setWrong(validUrlId);
+                setResumeText('❌ O testador (proxy) encontrou um erro ao tentar acessar a URL. Tente novamente mais tarde.');
+                return;
+            }
+
+            if (response.status === 502) {
+                setWrong(validUrlId);
+                if (raw.toLowerCase().includes('.nightscout4u.com')) {
+                    setResumeText('❌ O Nightscout retornou erro 502 (Bad Gateway). Detectamos que você usa Nightscout da plataforma "Nightscout4u", e infelizmente esse serviço passou a ser pago. Recomendamos que faça a migração para outra plataforma, como o fly.io.');
+                } else {
+                    setResumeText('❌ O Nightscout retornou erro 502 (Bad Gateway). Pode estar fora do ar ou com erro interno.');
+                }
+                return;
+            }
+
+            if (response.status >= 500 && response.status < 600) {
+                setWrong(validUrlId);
+                setResumeText(`❌ Erro de servidor (status ${response.status}). Seu Nightscout pode estar fora do ar ou com erro interno.`);
+                return;
+            }
+
+            if (response.status === 404) {
+                setWrong(validUrlId);
+                setResumeText('❌ URL não encontrada (404). Verifique se a URL está correta.');
+                return;
+            }
+
+            setWrong(validUrlId);
+            setResumeText(`❌ O servidor retornou status ${response.status}. Pode estar fora do ar ou com erro interno.`);
+            return;
+        }
+
+        if (/502 Bad Gateway|500 Internal Server Error|Service Unavailable|Bad Gateway/i.test(htmlText)) {
+            setWrong(validUrlId);
+            setResumeText('❌ Detectado HTML de erro no conteúdo retornado — o Nightscout pode estar fora do ar.');
+            return;
+        }
+
+        await checkApiSecret();
+    } catch (error) {
+        setWrong(validUrlId);
+        setResumeText('❌ Ocorreu um erro inesperado ao validar a URL do Nightscout.');
+        console.error("Erro inesperado em checkValidUrl:", error);
         return;
     }
-
-    await checkApiSecret();
 }
 
 async function checkApiSecret() {
-    setLoadingStatus(correctSecretId);
+    await setLoadingStatus(correctSecretId);
 
-    const url = document.querySelector('#urlInput').value.trim();
-    const apiSecret = document.querySelector('#apiSecretInput').value.trim();
-    const apiSecretHash = await sha1(apiSecret);
-    const path = `/api/v1/verifyauth?t=${Date.now()}&secret=${apiSecretHash}`;
-    const fullUrl = new URL(path, url).href;
-    let response;
     try {
-        response = await fetch(fullUrl, { method: "GET" });
-    } catch (error) {
-        console.error("Erro ao buscar dados da API Secret:", error);
-    }
+        const url = document.querySelector('#urlInput').value.trim();
+        const apiSecret = document.querySelector('#apiSecretInput').value.trim();
+        const apiSecretHash = await sha1(apiSecret);
+        const path = `/api/v1/verifyauth?t=${Date.now()}&secret=${apiSecretHash}`;
+        const fullUrl = new URL(path, url).href;
+        let response;
+        try {
+            response = await fetchWithTimeout(fullUrl, { method: "GET" });
+        } catch (error) {
+            response = undefined;
+            console.error("Erro ao buscar dados da API Secret:", error);
+        }
 
-    if (response.ok && response.status === 200) {
-        const data = await response.json();
-        if (data?.message?.canRead && data?.message?.canWrite && data?.message?.isAdmin) {
-            setCorrect(correctSecretId)
+        if (response && response.ok && response.status === 200) {
+            let data;
+            try {
+                data = await response.json();
+            } catch (error) {
+                setWrong(correctSecretId);
+                setResumeText('❌ Ocorreu um erro ao converter resposta da API Secret.');
+                return;
+            }
+            if (data?.message?.canRead && data?.message?.canWrite && data?.message?.isAdmin) {
+                setCorrect(correctSecretId)
+            } else {
+                setWrong(correctSecretId)
+                setResumeText('❌ A API Secret inserida está incorreta.')
+                return
+            }
         } else {
             setWrong(correctSecretId)
-            setResumeText('❌ A API Secret inserida está incorreta.')
-            return
+            setResumeText('❌ Ocorreu um erro ao buscar dados da API Secret. Verifique se você está conectado à internet.')
+            return;
         }
-    } else {
-        setWrong(correctSecretId)
-        setResumeText('❌ Ocorreu um erro ao buscar dados da API Secret. Verifique se você está conectado à internet.')
+
+        await checkRecentData()
+    } catch (error) {
+        setWrong(correctSecretId);
+        setResumeText('❌ Ocorreu um erro inesperado ao buscar dados da API Secret.');
+        console.error("Erro inesperado em checkApiSecret:", error);
         return;
     }
-
-    await checkRecentData()
 }
 
 async function checkRecentData() {
-    setLoadingStatus(recentDataId);
-
-    const url = document.querySelector('#urlInput').value.trim();
-    const apiSecret = document.querySelector('#apiSecretInput').value.trim();
-    const apiSecretHash = await sha1(apiSecret);
-    const path = `/api/v1/entries.json?count=1&secret=${apiSecretHash}`;
-    const fullUrl = new URL(path, url).href;
-    let response;
+    await setLoadingStatus(recentDataId);
     try {
-        response = await fetch(fullUrl, { method: "GET" });
-    } catch (error) {
-        console.error("Erro ao buscar dados recentes:", error);
-    }
+        const url = document.querySelector('#urlInput').value.trim();
+        const apiSecret = document.querySelector('#apiSecretInput').value.trim();
+        const apiSecretHash = await sha1(apiSecret);
+        const path = `/api/v1/entries.json?count=1&secret=${apiSecretHash}`;
+        const fullUrl = new URL(path, url).href;
+        let response;
+        try {
+            response = await fetchWithTimeout(fullUrl, { method: "GET" });
+        } catch (error) {
+            response = undefined;
+            console.error("Erro ao buscar dados recentes:", error);
+        }
 
-    if (response.ok && response.status === 200) {
-        const data = await response.json();
+        if (response && response.ok && response.status === 200) {
+            let data;
+            try {
+                data = await response.json();
+            } catch (error) {
+                setWrong(recentDataId);
+                setResumeText('❌ Ocorreu um erro ao converter resposta dos dados recentes.');
+                return;
+            }
 
-        const lastRead = data[0]?.date
-        if (lastRead) {
-            const now = Date.now()
-            const diffMs = now - lastRead
-            const diffMin = diffMs / (1000 * 60)
-            if (diffMin < 15) {
-                setCorrect(recentDataId)
-                hasRecentData = true
+            const lastRead = data[0]?.date
+            if (lastRead) {
+                const now = Date.now()
+                const diffMs = now - lastRead
+                const diffMin = diffMs / (1000 * 60)
+                if (diffMin < 15) {
+                    setCorrect(recentDataId)
+                    hasRecentData = true
+                } else {
+                    setWrong(recentDataId)
+                    setResumeText(`❌ Não há dados recentes de glicemia recebidos: ${parseInt(diffMin)} minutos atrás.`)
+                }
             } else {
-                setWrong(recentDataId)
-                setResumeText('') //Mensagem de resumo informando que não há dados recentes recebidos
+                setWarning(recentDataId)
+                setResumeText('❌ Não foram encontrados dados de glicemia no seu Nightscout.')
             }
         } else {
-            setWarning(recentDataId)
-            setResumeText('') //Mensagem de resumo informando que não há objeto de dados recentes no Nightscout
+            setWrong(recentDataId)
+            setResumeText('❌ Ocorreu um erro ao buscar dados recentes de glicemia.')
+            return;
         }
-    } else {
-        setWrong(recentDataId)
-        setResumeText('') //Mensagem de resumo informando que erro ao buscar dados recentes
+
+        await checkDbFreeSpace()
+    } catch (error) {
+        setWrong(recentDataId);
+        setResumeText('❌ Ocorreu um erro inesperado ao buscar dados recentes de glicemia.');
+        console.error("Erro inesperado em checkRecentData:", error);
         return;
     }
-
-    await checkDbFreeSpace()
 }
 
 async function checkDbFreeSpace() {
-    setLoadingStatus(dbFreeSpaceId);
-
-    const url = document.querySelector('#urlInput').value.trim();
-    const apiSecret = document.querySelector('#apiSecretInput').value.trim();
-    const apiSecretHash = await sha1(apiSecret);
-    const path = `/api/v2/properties/dbsize?secret=${apiSecretHash}`;
-    const fullUrl = new URL(path, url).href;
-    let response;
+    await setLoadingStatus(dbFreeSpaceId);
     try {
-        response = await fetch(fullUrl, { method: "GET" });
-    } catch (error) {
-        console.error("Erro ao buscar dados do tamanho do banco de dados:", error);
-    }
+        const url = document.querySelector('#urlInput').value.trim();
+        const apiSecret = document.querySelector('#apiSecretInput').value.trim();
+        const apiSecretHash = await sha1(apiSecret);
+        const path = `/api/v2/properties/dbsize?secret=${apiSecretHash}`;
+        const fullUrl = new URL(path, url).href;
+        let response;
+        try {
+            response = await fetchWithTimeout(fullUrl, { method: "GET" });
+        } catch (error) {
+            response = undefined;
+            console.error("Erro ao buscar dados do tamanho do banco de dados:", error);
+        }
 
-    if (response.ok && response.status === 200) {
-        const data = await response.json();
+        if (response && response.ok && response.status === 200) {
+            let data;
+            try {
+                data = await response.json();
+                if (!data.dbsize) {
+                    console.warn("Resposta vazia do Nightscout, tentando novamente...");
+                    await new Promise(r => setTimeout(r, 1000));
+                    const retry = await fetchWithTimeout(fullUrl, { method: "GET" });
+                    if (retry.ok) data = await retry.json();
+                }
+            } catch (error) {
+                setWrong(dbFreeSpaceId);
+                setResumeText('❌ Ocorreu um erro ao converter resposta do espaço do banco de dados.');
+                return;
+            }
 
-        let dbSize = data?.dbsize?.dataPercentage
-        if (dbSize) {
-            dbSize = parseInt(dbSize)
-            if (dbSize >= 100) {
-                setWrong(dbFreeSpaceId)
-                setResumeText('') //Mensagem de resumo informando tamanho do banco de dados maior do que 100%
-            } else if (dbSize >= 70) {
-                setWarning(dbFreeSpaceId)
-                setResumeText('') //Mensagem de resumo informando atenção, pois banco de dados está acima de 70%
+            let dbSize = data?.dbsize?.dataPercentage
+            if (dbSize !== undefined) {
+                dbSize = parseInt(dbSize)
+                if (dbSize >= 100) {
+                    setWrong(dbFreeSpaceId)
+                    setResumeText(`❌ O espaço utilizado no banco de dados é de ${dbSize}%. <a target="_blank" href="https://tecnologiasnodiabetes.com.br/apagando-bancodedados">Clique aqui</a> para aprender a resolver este problema.`)
+                } else if (dbSize >= 70) {
+                    setWarning(dbFreeSpaceId)
+                    setResumeText(`⚠️ O espaço utilizado no banco de dados é de ${dbSize}% e, nesse ritmo, em breve irá encher. <a target="_blank" href="https://tecnologiasnodiabetes.com.br/apagando-bancodedados">Clique aqui</a> para aprender a resolver este problema.`)
+                } else {
+                    setCorrect(dbFreeSpaceId)
+                }
             } else {
-                setCorrect(dbFreeSpaceId)
+                setWarning(dbFreeSpaceId)
+                setResumeText('❌ Não foi possível localizar espaço utilizado do banco de dados no seu Nightscout.')
             }
         } else {
-            setWarning(dbFreeSpaceId)
-            setResumeText('') //Mensagem de resumo informando que não encontrou o objeto banco de dados no Nightscout
+            setWrong(dbFreeSpaceId)
+            setResumeText('❌ Ocorreu um erro ao buscar o espaço utilizado do banco de dados.')
+            return;
         }
-    } else {
-        setWrong(dbFreeSpaceId)
-        setResumeText('') //Mensagem de resumo informando erro ao buscar tamanho do banco de dados
+
+        await moreTests()
+    } catch (error) {
+        setWrong(dbFreeSpaceId);
+        setResumeText('❌ Ocorreu um erro inesperado ao buscar espaço do banco de dados.');
+        console.error("Erro inesperado em checkDbFreeSpace:", error);
         return;
     }
-
-    await moreTests()
 }
 
 async function moreTests() {
     let errorFound = false
-    setLoadingStatus(moreTestsId)
-    const url = document.querySelector('#urlInput').value.trim();
-    const apiSecret = document.querySelector('#apiSecretInput').value.trim();
-    const apiSecretHash = await sha1(apiSecret);
-    const pathBattery = `/api/v2/properties/upbat?secret=${apiSecretHash}`;
-    const fullUrlBattery = new URL(pathBattery, url).href;
+    await setLoadingStatus(moreTestsId)
     try {
-        const responseBattery = await fetch(fullUrlBattery, { method: "GET" });
-        if (responseBattery.ok && responseBattery.status === 200) {
-            const dataBattery = await responseBattery.json();
-            const minBattery = parseInt(dataBattery?.upbat?.min?.value)
-            if (minBattery < 15) {
+        const url = document.querySelector('#urlInput').value.trim();
+        const apiSecret = document.querySelector('#apiSecretInput').value.trim();
+        const apiSecretHash = await sha1(apiSecret);
+        const pathDeviceStatus = `/api/v1/devicestatus?secret=${apiSecretHash}`;
+        const fullUrlDeviceStatus = new URL(pathDeviceStatus, url).href
+        let responseDeviceStatus
+
+        try {
+            responseDeviceStatus = await fetchWithTimeout(fullUrlDeviceStatus, { method: "GET" });
+        } catch (error) {
+            errorFound = true
+            setWrong(moreTestsId)
+            setResumeText('❌ Ocorreu um erro ao buscar dados de bateria dos dispositivos conectados.')
+            console.error("Erro ao buscar dados de bateria:", error);
+        }
+
+        if (responseDeviceStatus && responseDeviceStatus.ok && responseDeviceStatus.status === 200) {
+            let dataDeviceStatus;
+            try {
+                dataDeviceStatus = await responseDeviceStatus.json();
+            } catch (error) {
                 errorFound = true
-                setWarning(moreTestsId)
-                if (hasRecentData) {
-                    setResumeText('') //Mensagem de resumo informando que a bateria de um dos dispositivos é menor do que x%
+                setWrong(moreTestsId)
+                setResumeText('❌ Ocorreu um erro ao converter dados de bateria dos dispositivos conectados.')
+                console.error("Erro ao converter dados de bateria:", error);
+            }
+
+            if (dataDeviceStatus) {
+                const devicesFiltered = dataDeviceStatus.filter(item => item.uploader && item.uploader.battery)
+                const devicesGrouped = devicesFiltered.reduce((acc, item) => {
+                    const key = item.device;
+                    if (!acc[key]) acc[key] = [];
+                    acc[key].push(item);
+                    return acc;
+                }, {});
+
+                if (Object.keys(devicesGrouped).length > 0) {
+                    Object.values(devicesGrouped).forEach(items => {
+                        const first = items[0]
+                        if (first.uploader.battery < 30) {
+                            const now = Date.now()
+                            const diffMs = now - new Date(first.created_at)
+                            const diffMin = parseInt(diffMs / (1000 * 60))
+                            errorFound = true
+                            setWarning(moreTestsId)
+                            setResumeText(`⚠️ Dispositivo "${first.device}" conectado ao Nightscout detectado com apenas ${first.uploader.battery}% de bateria${diffMin > 60 ? ` (detecção antiga: ${diffMin} minutos atrás)` : ''}.`)
+                        }
+                    })
                 } else {
-                    setResumeText('') //Mensagem de resumo informando que a bateria de um dos dispositivos é menor do que x%, e talvez seja por isso que não há dados recentes
+                    errorFound = true
+                    setWrong(moreTestsId)
+                    setResumeText(`❌ Não foi encontrado nenhum dado de bateria dos dispositivos conectados ao Nightscout.`)
                 }
             }
-        } else {
+        } else if (!errorFound) {
             errorFound = true
-            setWarning(moreTestsId)
-            setResumeText('') //Mensagem de resumo informando erro ao buscar dados de bateria
+            setWrong(moreTestsId)
+            setResumeText('❌ Ocorreu um erro ao buscar dados de bateria dos dispositivos conectados.')
         }
     } catch (error) {
         errorFound = true
         setWrong(moreTestsId)
-        console.error("Erro ao buscar dados de bateria:", error);
+        setResumeText('❌ Ocorreu um erro inesperado ao buscar dados de bateria dos dispositivos conectados.')
+        console.error("Erro inesperado em moreTests:", error);
     }
 
     if (!errorFound) {
@@ -332,6 +600,7 @@ async function sha1(message) {
 
 function setLoadingStatus(id) {
     document.getElementById(id).src = './img/loading.gif';
+    return new Promise(resolve => setTimeout(resolve, 500));
 }
 
 function setCorrect(id) {
@@ -359,5 +628,39 @@ function populateResume() {
         resumeText = '✅ Seu Nightscout está funcionando corretamente, se algo não parece bem, é provável que seja configuração dentro dos aplicativos.'
     }
     const resume = document.getElementById('resume');
-    resume.textContent = resumeText;
+    resume.innerHTML = resumeText;
+}
+
+async function getTotalUsage() {
+    try {
+        const response = await fetch(`${apiBaseUrl}/api/nightscoutUses`);
+        if (response.ok) {
+            const data = await response.json();
+            const usagesElement = document.getElementById('usageValue');
+            usagesElement.textContent = data.count;
+        } else {
+            console.error('Erro ao obter contador de usos do testador de Nightscout:', response.status);
+        }
+    } catch (error) {
+        console.error('Erro na requisição GET "nightscoutUses":', error);
+    }
+}
+
+async function incrementUsage() {
+    try {
+        const response = await fetch(`${apiBaseUrl}/api/incrementNightcoutUses`, {
+            method: 'POST',
+            headers: {
+                'x-api-key': apiKey,
+                'Content-Type': 'application/json',
+            },
+        });
+        if (response.ok) {
+            getTotalUsage();
+        } else {
+            console.error('Erro ao incrementar contador:', response.status);
+        }
+    } catch (error) {
+        console.error('Erro na requisição POST:', error);
+    }
 }
