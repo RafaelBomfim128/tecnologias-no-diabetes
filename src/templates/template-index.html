@@ -25,42 +25,56 @@
         {{> notificacoes }}
 
         <div class="hero mb-12 relative overflow-hidden" id="hero-section">
-            <!-- Elementos decorativos animados -->
-            <div class="absolute top-10 left-10 w-20 h-20 bg-white bg-opacity-10 rounded-full animate-pulse animate-infinite animate-duration-[1500ms] animate-ease-linear"></div>
-            <div class="absolute bottom-10 right-10 w-32 h-32 bg-white bg-opacity-10 rounded-full animate-pulse animate-infinite animate-duration-[1500ms] animate-ease-linear"></div>
-            <div class="absolute top-1/2 right-1/4 w-16 h-16 bg-white bg-opacity-10 rounded-full animate-pulse animate-infinite animate-duration-[1500ms] animate-ease-linear"></div>
+            <!-- Grid Background Animado -->
+            <div class="absolute inset-0 opacity-10" id="grid-background">
+                <div class="absolute inset-0" style="background-image: linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px); background-size: 50px 50px;"></div>
+            </div>
+            
+            <!-- Partículas Flutuantes -->
+            <div class="absolute inset-0 overflow-hidden pointer-events-none">
+                <div class="particle absolute w-2 h-2 bg-white rounded-full opacity-60 z-0" style="top: 20%; left: 10%; animation: float 6s ease-in-out infinite;"></div>
+                <div class="particle absolute w-3 h-3 bg-white rounded-full opacity-40 z-0" style="top: 60%; left: 80%; animation: float 8s ease-in-out infinite 1s;"></div>
+                <div class="particle absolute w-2 h-2 bg-white rounded-full opacity-50 z-0" style="top: 40%; left: 90%; animation: float 7s ease-in-out infinite 2s;"></div>
+                <div class="particle absolute w-1 h-1 bg-white rounded-full opacity-70 z-0 hidden sm:block" style="top: 80%; left: 20%; animation: float 5s ease-in-out infinite 1.5s;"></div>
+                <div class="particle absolute w-2 h-2 bg-white rounded-full opacity-30 z-0 hidden sm:block" style="top: 30%; left: 60%; animation: float 9s ease-in-out infinite 0.5s;"></div>
+            </div>
+            
+            <!-- Círculos decorativos com efeito pulse suave -->
+            <div class="absolute top-10 left-5 sm:left-10 w-16 h-16 sm:w-20 sm:h-20 bg-white bg-opacity-10 rounded-full pointer-events-none z-0" style="animation: gentlePulse 4s ease-in-out infinite;"></div>
+            <div class="absolute bottom-10 right-5 sm:right-10 w-24 h-24 sm:w-32 sm:h-32 bg-white bg-opacity-10 rounded-full pointer-events-none z-0" style="animation: gentlePulse 5s ease-in-out infinite 1s;"></div>
+            <div class="absolute top-1/2 right-1/4 w-12 h-12 sm:w-16 sm:h-16 bg-white bg-opacity-10 rounded-full pointer-events-none z-0 hidden sm:block" style="animation: gentlePulse 4.5s ease-in-out infinite 2s;"></div>
             
             <div class="relative z-10">
-                <div class="text-6xl md:text-7xl mb-6 animate-bounce">💉🩸</div>
-                <h1 id="main-title" class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 animate-slide-up">
+                <div class="text-6xl md:text-7xl mb-6 inline-block" style="animation: gentleBounce 2s ease-in-out infinite;">💉🩸</div>
+                <h1 id="main-title" class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 animate-slide-up" style="text-shadow: 0 2px 10px rgba(0,0,0,0.1);">
                     Tecnologias no Diabetes
                 </h1>
                 <p id="main-description" class="text-lg md:text-xl lg:text-2xl mb-8 opacity-90 max-w-3xl mx-auto animate-slide-up" style="animation-delay: 0.2s;">
                     Explore aplicativos, tutoriais e ferramentas para facilitar o gerenciamento do diabetes com tecnologia
                 </p>
                 <div class="flex flex-wrap justify-center gap-4 mb-8 animate-scale-in" style="animation-delay: 0.4s;">
-                    <div class="flex items-center bg-white bg-opacity-20 rounded-full px-4 py-2 text-sm backdrop-blur-sm">
+                    <div class="badge-tech flex items-center bg-white bg-opacity-20 rounded-full px-4 py-2 text-sm backdrop-blur-sm hover:bg-opacity-30 transition-all duration-300 hover:scale-105">
                         <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
                             <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
                         </svg>
                         <span>100% Gratuito</span>
                     </div>
-                    <div class="flex items-center bg-white bg-opacity-20 rounded-full px-4 py-2 text-sm backdrop-blur-sm">
+                    <div class="badge-tech flex items-center bg-white bg-opacity-20 rounded-full px-4 py-2 text-sm backdrop-blur-sm hover:bg-opacity-30 transition-all duration-300 hover:scale-105">
                         <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
                             <path d="M9 4.804A7.968 7.968 0 005.5 4c-1.255 0-2.443.29-3.5.804v10A7.969 7.969 0 015.5 14c1.669 0 3.218.51 4.5 1.385A7.962 7.962 0 0114.5 14c1.255 0 2.443.29 3.5.804v-10A7.968 7.968 0 0014.5 4c-1.255 0-2.443.29-3.5.804V12a1 1 0 11-2 0V4.804z"/>
                         </svg>
                         <span>Tutoriais Completos</span>
                     </div>
-                    <div class="flex items-center bg-white bg-opacity-20 rounded-full px-4 py-2 text-sm backdrop-blur-sm">
+                    <div class="badge-tech flex items-center bg-white bg-opacity-20 rounded-full px-4 py-2 text-sm backdrop-blur-sm hover:bg-opacity-30 transition-all duration-300 hover:scale-105">
                         <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
                             <path d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3zM6 8a2 2 0 11-4 0 2 2 0 014 0zM16 18v-3a5.972 5.972 0 00-.75-2.906A3.005 3.005 0 0119 15v3h-3zM4.75 12.094A5.973 5.973 0 004 15v3H1v-3a3 3 0 013.75-2.906z"/>
                         </svg>
                         <span>Comunidade Ativa</span>
                     </div>
                 </div>
-                <a href="#recursos" id="start-now" class="btn btn-lg bg-white text-diabetes-primary hover:bg-gray-100 hover:scale-110 transition-all duration-300 shadow-xl hover:shadow-2xl animate-scale-in inline-flex items-center gap-2" style="animation-delay: 0.6s;">
+                <a href="#recursos" id="start-now" class="btn btn-lg bg-white text-diabetes-primary hover:bg-gray-100 hover:scale-110 transition-all duration-300 shadow-xl hover:shadow-2xl animate-scale-in inline-flex items-center gap-2 group" style="animation-delay: 0.6s;">
                     <span>Comece Agora</span>
-                    <svg class="w-5 h-5 animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg class="w-5 h-5 group-hover:translate-y-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/>
                     </svg>
                 </a>
@@ -79,16 +93,16 @@
         
         <div id='recursos' class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
             <!-- Card Downloads -->
-            <a href="downloads.html" id="card-downloads" class="card card-hover group animate-fade-in cursor-pointer border-2 border-transparent hover:border-diabetes-primary transition-all duration-300" style="animation-delay: 0.1s">
+            <a href="downloads.html" id="card-downloads" class="card card-hover group animate-fade-in cursor-pointer border-2 border-transparent hover:border-diabetes-primary transition-all duration-500 hover:shadow-2xl" style="animation-delay: 0.1s">
                 <div class="card-body text-center" id="card-downloads-inner">
-                    <div class="text-5xl mb-4 group-hover:scale-110 transition-transform duration-300">💾</div>
+                    <div class="text-5xl mb-4 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300">💾</div>
                     <h5 class="card-title text-gray-800" id="downloads-title">Downloads de Aplicativos</h5>
                     <p class="card-text text-gray-600" id="downloads-description">
                         Encontre os melhores aplicativos para gerenciamento do diabetes
                     </p>
-                    <div class="mt-4 inline-flex items-center gap-2 text-diabetes-primary font-semibold group-hover:gap-4 transition-all">
+                    <div class="mt-4 inline-flex items-center gap-2 text-diabetes-primary font-semibold group-hover:gap-4 transition-all duration-300">
                         <span>Acessar</span>
-                        <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
                         </svg>
                     </div>
@@ -96,16 +110,16 @@
             </a>
 
             <!-- Card Tutoriais -->
-            <a href="tutoriais.html" id="card-tutorials" class="card card-hover group animate-fade-in cursor-pointer border-2 border-transparent hover:border-green-500 transition-all duration-300" style="animation-delay: 0.2s">
+            <a href="tutoriais.html" id="card-tutorials" class="card card-hover group animate-fade-in cursor-pointer border-2 border-transparent hover:border-green-500 transition-all duration-500 hover:shadow-2xl" style="animation-delay: 0.2s">
                 <div class="card-body text-center" id="card-tutorials-inner">
-                    <div class="text-5xl mb-4 group-hover:scale-110 transition-transform duration-300">📚</div>
+                    <div class="text-5xl mb-4 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300">📚</div>
                     <h5 class="card-title text-gray-800" id="tutorials-title">Tutoriais Passo a Passo</h5>
                     <p class="card-text text-gray-600" id="tutorials-description">
                         Aprenda com vídeos e documentos detalhados sobre as tecnologias
                     </p>
-                    <div class="mt-4 inline-flex items-center gap-2 text-green-600 font-semibold group-hover:gap-4 transition-all">
+                    <div class="mt-4 inline-flex items-center gap-2 text-green-600 font-semibold group-hover:gap-4 transition-all duration-300">
                         <span>Aprender</span>
-                        <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
                         </svg>
                     </div>
@@ -113,16 +127,16 @@
             </a>
 
             <!-- Card FAQ -->
-            <a href="faq.html" id="card-faq" class="card card-hover group animate-fade-in cursor-pointer border-2 border-transparent hover:border-blue-500 transition-all duration-300" style="animation-delay: 0.3s">
+            <a href="faq.html" id="card-faq" class="card card-hover group animate-fade-in cursor-pointer border-2 border-transparent hover:border-blue-500 transition-all duration-500 hover:shadow-2xl" style="animation-delay: 0.3s">
                 <div class="card-body text-center" id="card-faq-inner">
-                    <div class="text-5xl mb-4 group-hover:scale-110 transition-transform duration-300">❓💡</div>
+                    <div class="text-5xl mb-4 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300">❓💡</div>
                     <h5 class="card-title text-gray-800" id="faq-title">Perguntas Frequentes</h5>
                     <p class="card-text text-gray-600" id="faq-description">
                         Encontre respostas para as dúvidas mais comuns sobre tecnologias
                     </p>
-                    <div class="mt-4 inline-flex items-center gap-2 text-blue-600 font-semibold group-hover:gap-4 transition-all">
+                    <div class="mt-4 inline-flex items-center gap-2 text-blue-600 font-semibold group-hover:gap-4 transition-all duration-300">
                         <span>Explorar</span>
-                        <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
                         </svg>
                     </div>
@@ -130,16 +144,16 @@
             </a>
 
             <!-- Card Quiz -->
-            <a href="quiz.html" id="card-quiz" class="card card-hover group animate-fade-in cursor-pointer border-2 border-transparent hover:border-purple-500 transition-all duration-300" style="animation-delay: 0.4s">
+            <a href="quiz.html" id="card-quiz" class="card card-hover group animate-fade-in cursor-pointer border-2 border-transparent hover:border-purple-500 transition-all duration-500 hover:shadow-2xl" style="animation-delay: 0.4s">
                 <div class="card-body text-center" id="card-quiz-inner">
-                    <div class="text-5xl mb-4 group-hover:scale-110 transition-transform duration-300">🧠</div>
+                    <div class="text-5xl mb-4 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300">🧠</div>
                     <h5 class="card-title text-gray-800" id="quiz-title">Quiz de Conhecimentos</h5>
                     <p class="card-text text-gray-600" id="quiz-description">
                         Teste seus conhecimentos sobre cuidados com o diabetes
                     </p>
-                    <div class="mt-4 inline-flex items-center gap-2 text-purple-600 font-semibold group-hover:gap-4 transition-all">
+                    <div class="mt-4 inline-flex items-center gap-2 text-purple-600 font-semibold group-hover:gap-4 transition-all duration-300">
                         <span>Jogar</span>
-                        <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
                         </svg>
                     </div>
@@ -147,16 +161,16 @@
             </a>
 
             <!-- Card Conteúdos Úteis -->
-            <a href="conteudos-uteis-categorias.html" id="card-useful-contents" class="card card-hover group animate-fade-in cursor-pointer border-2 border-transparent hover:border-indigo-500 transition-all duration-300" style="animation-delay: 0.5s">
+            <a href="conteudos-uteis-categorias.html" id="card-useful-contents" class="card card-hover group animate-fade-in cursor-pointer border-2 border-transparent hover:border-indigo-500 transition-all duration-500 hover:shadow-2xl" style="animation-delay: 0.5s">
                 <div class="card-body text-center" id="card-useful-contents-inner">
-                    <div class="text-5xl mb-4 group-hover:scale-110 transition-transform duration-300">📰</div>
+                    <div class="text-5xl mb-4 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300">📰</div>
                     <h5 class="card-title text-gray-800" id="useful-contents-title">Conteúdos Úteis</h5>
                     <p class="card-text text-gray-600" id="useful-contents-description">
                         Acesse materiais informativos e educativos sobre diabetes
                     </p>
-                    <div class="mt-4 inline-flex items-center gap-2 text-indigo-600 font-semibold group-hover:gap-4 transition-all">
+                    <div class="mt-4 inline-flex items-center gap-2 text-indigo-600 font-semibold group-hover:gap-4 transition-all duration-300">
                         <span>Explorar</span>
-                        <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
                         </svg>
                     </div>
@@ -164,16 +178,16 @@
             </a>
 
             <!-- Card Ferramentas -->
-            <a href="ferramentas.html" id="card-useful-tools" class="card card-hover group animate-fade-in cursor-pointer border-2 border-transparent hover:border-diabetes-accent transition-all duration-300" style="animation-delay: 0.6s">
+            <a href="ferramentas.html" id="card-useful-tools" class="card card-hover group animate-fade-in cursor-pointer border-2 border-transparent hover:border-diabetes-accent transition-all duration-500 hover:shadow-2xl" style="animation-delay: 0.6s">
                 <div class="card-body text-center" id="card-useful-tools-inner">
-                    <div class="text-5xl mb-4 group-hover:scale-110 transition-transform duration-300">🔧</div>
+                    <div class="text-5xl mb-4 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300">🔧</div>
                     <h5 class="card-title text-gray-800" id="useful-tools-title">Ferramentas Úteis</h5>
                     <p class="card-text text-gray-600" id="useful-tools-description">
                         Ferramentas práticas para gerenciamento das tecnologias
                     </p>
-                    <div class="mt-4 inline-flex items-center gap-2 text-diabetes-accent font-semibold group-hover:gap-4 transition-all">
+                    <div class="mt-4 inline-flex items-center gap-2 text-diabetes-accent font-semibold group-hover:gap-4 transition-all duration-300">
                         <span>Explorar</span>
-                        <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
                         </svg>
                     </div>
@@ -350,6 +364,7 @@
     </script>
     
     <style>
+        /* Animação de ripple nos cards */
         @keyframes ripple {
             to {
                 transform: scale(4);
@@ -366,9 +381,155 @@
             pointer-events: none;
         }
         
+        /* Animação de flutuação suave para partículas */
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0) translateX(0);
+                opacity: 0.6;
+            }
+            25% {
+                transform: translateY(-20px) translateX(10px);
+                opacity: 0.8;
+            }
+            50% {
+                transform: translateY(-40px) translateX(-10px);
+                opacity: 1;
+            }
+            75% {
+                transform: translateY(-20px) translateX(10px);
+                opacity: 0.8;
+            }
+        }
+        
+        /* Pulse suave e tecnológico */
+        @keyframes gentlePulse {
+            0%, 100% {
+                transform: scale(1);
+                opacity: 0.1;
+            }
+            50% {
+                transform: scale(1.1);
+                opacity: 0.15;
+            }
+        }
+        
+        /* Bounce suave para emoji */
+        @keyframes gentleBounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+        
+        /* Grid animado sutil */
+        @keyframes gridShift {
+            0% {
+                background-position: 0 0;
+            }
+            100% {
+                background-position: 50px 50px;
+            }
+        }
+        
+        #grid-background > div {
+            animation: gridShift 20s linear infinite;
+        }
+        
+        /* Efeito de brilho nos cards */
         #recursos > a {
             position: relative;
             overflow: hidden;
+        }
+        
+        #recursos > a::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(
+                45deg,
+                transparent 30%,
+                rgba(255, 255, 255, 0.1) 50%,
+                transparent 70%
+            );
+            transform: translateX(-100%) translateY(-100%);
+            transition: transform 0.6s ease;
+        }
+        
+        #recursos > a:hover::before {
+            transform: translateX(50%) translateY(50%);
+        }
+        
+        /* Badges com efeito glow sutil ao hover */
+        .badge-tech {
+            position: relative;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .badge-tech::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 9999px;
+            background: rgba(255, 255, 255, 0.2);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .badge-tech:hover::after {
+            opacity: 1;
+        }
+        
+        /* Shadow dinâmica nos cards */
+        #recursos > a {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        #recursos > a:hover {
+            box-shadow: 
+                0 20px 25px -5px rgba(0, 0, 0, 0.1),
+                0 10px 10px -5px rgba(0, 0, 0, 0.04),
+                0 0 0 1px rgba(59, 130, 246, 0.1);
+        }
+        
+        /* Transição suave no botão CTA */
+        #start-now {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        #start-now::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(
+                135deg,
+                transparent 0%,
+                rgba(37, 99, 235, 0.1) 50%,
+                transparent 100%
+            );
+            transform: translateX(-100%);
+            transition: transform 0.5s ease;
+        }
+        
+        #start-now:hover::before {
+            transform: translateX(100%);
+        }
+        
+        /* Partículas responsivas */
+        @media (max-width: 768px) {
+            .particle {
+                display: none;
+            }
+        }
+        
+        /* Performance optimization */
+        .card-hover, .badge-tech, #start-now {
+            will-change: transform;
         }
     </style>
 </body>
