@@ -367,7 +367,7 @@
 
   /* Tab buttons */
   .tab-button.active {
-    @apply text-diabetes-primary border-diabetes-primary;
+    @apply text-diabetes-primary border-diabetes-primary text-white;
   }
 
   /* Modal styling */

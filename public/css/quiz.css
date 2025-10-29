@@ -300,7 +300,8 @@ button:disabled {
 
 .ranking-table th:nth-child(1),
 .ranking-table td:nth-child(1) {
-    width: 10px;
+    width: 40px;
+    min-width: 40px;
     text-align: center;
 }
 
@@ -308,21 +309,59 @@ button:disabled {
 .ranking-table td:nth-child(2) {
     width: auto;
     word-break: break-word;
-    max-width: 200px;
+    min-width: 100px;
+    max-width: none;
 }
 
 .ranking-table th:nth-child(3),
-.ranking-table td:nth-child(3),
+.ranking-table td:nth-child(3) {
+    width: 60px;
+    min-width: 60px;
+    text-align: center;
+}
+
 .ranking-table th:nth-child(4),
 .ranking-table td:nth-child(4) {
-    width: 10px;
+    width: 70px;
+    min-width: 70px;
     text-align: center;
 }
 
 .ranking-table th:nth-child(5),
 .ranking-table td:nth-child(5) {
-    width: 65px;
+    width: 110px;
+    min-width: 110px;
     text-align: center;
+}
+
+/* Responsivo para mobile */
+@media (max-width: 768px) {
+    .ranking-table th:nth-child(1),
+    .ranking-table td:nth-child(1) {
+        width: 35px;
+        min-width: 35px;
+        padding: 8px 4px;
+    }
+    
+    .ranking-table th:nth-child(2),
+    .ranking-table td:nth-child(2) {
+        min-width: 80px;
+        padding: 8px 6px;
+    }
+    
+    .ranking-table th:nth-child(3),
+    .ranking-table td:nth-child(3) {
+        width: 50px;
+        min-width: 50px;
+        padding: 8px 4px;
+    }
+    
+    .ranking-table th:nth-child(4),
+    .ranking-table td:nth-child(4) {
+        width: 55px;
+        min-width: 55px;
+        padding: 8px 4px;
+    }
 }
 
 /* Estilos do Modal */
