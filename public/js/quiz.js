@@ -502,14 +502,18 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     function showLoader() {
-        document.getElementById("ranking-loader").style.display = "flex";
-        document.getElementById("ranking-section").classList.add("ranking-loading");
+        const globalLoader = document.getElementById("global-loader");
+        if (globalLoader) {
+            globalLoader.style.display = "flex";
+        }
     }
     
     function hideLoader() {
-        document.getElementById("ranking-loader").style.display = "none";
-        document.getElementById("ranking-section").classList.remove("ranking-loading");
-    }    
+        const globalLoader = document.getElementById("global-loader");
+        if (globalLoader) {
+            globalLoader.style.display = "none";
+        }
+    }
 
     const obfusKey = 17;
     function encodeAndEncrypt(score, correctCount) {

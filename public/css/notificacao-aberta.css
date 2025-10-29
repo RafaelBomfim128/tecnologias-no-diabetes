@@ -31,3 +31,36 @@
     align-items: center;
     margin-bottom: 15px;
 }
+
+/* Garantir que conteúdo não quebre o layout mobile */
+.notification-content {
+    max-width: 100%;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    word-break: break-word;
+}
+
+.notification-content img {
+    max-width: 100% !important;
+    height: auto !important;
+    display: block;
+}
+
+.notification-content iframe,
+.notification-content video {
+    max-width: 100% !important;
+    height: auto !important;
+}
+
+.notification-content table {
+    max-width: 100%;
+    overflow-x: auto;
+    display: block;
+}
+
+.notification-content pre {
+    max-width: 100%;
+    overflow-x: auto;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}

@@ -13,7 +13,7 @@ function getCategoryGradient(category) {
         'Bombas': 'hero-orange',
         'Ponto de partida': 'hero-gradient-soft',
         'Libre': 'hero-blue',
-        'AiDEX': 'hero-green',
+        'Smart': 'hero-green',
         'Sibionics': 'hero-purple',
         'Sensores': 'hero-indigo',
         'Dicas e truques': 'hero-pink',
@@ -114,16 +114,16 @@ module.exports = function buildPages({
         }
     });
 
-    // aidex category
+    // smart category
     pages.push({
         template: 'template-tutoriais-item.html',
-        output: 'item-tutorial-aidex.html',
+        output: 'item-tutorial-smart.html',
         data: {
-            links: tutorialsFormatted['AiDEX'],
-            title: 'AiDEX',
-            desc: labels.tutorials.find(item => item.category === 'AiDEX').description,
-            image: labels.tutorials.find(item => item.category === 'AiDEX').image,
-            heroGradient: getCategoryGradient('AiDEX'),
+            links: tutorialsFormatted['Smart'],
+            title: 'Smart',
+            desc: labels.tutorials.find(item => item.category === 'Smart').description,
+            image: labels.tutorials.find(item => item.category === 'Smart').image,
+            heroGradient: getCategoryGradient('Smart'),
             apiBaseUrl, apiKey, mostRecentNotificationId
         }
     });

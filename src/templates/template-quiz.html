@@ -5,7 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quiz de Diabetes - Tecnologias no Diabetes</title>
-    <meta name="description" content="Teste seus conhecimentos sobre diabetes com nosso quiz interativo. Aprenda enquanto joga e compare sua pontuação no ranking!">
+    <meta name="description"
+        content="Teste seus conhecimentos sobre diabetes com nosso quiz interativo. Aprenda enquanto joga e compare sua pontuação no ranking!">
     <link rel="icon" type="image/png" href="./img/favicon-96x96.png" sizes="96x96" />
     <link rel="icon" type="image/svg+xml" href="./img/favicon.svg" />
     <link rel="shortcut icon" href="./img/favicon.ico" />
@@ -20,7 +21,7 @@
 <body class="bg-gray-50">
     {{> view-counter }}
     {{> menu }}
-    
+
     <main class="min-h-screen">
         <!-- Breadcrumb -->
         <div class="bg-white border-b">
@@ -28,12 +29,15 @@
                 <nav class="flex items-center text-sm text-gray-600" aria-label="Breadcrumb">
                     <a href="index.html" class="hover:text-diabetes-primary transition-colors">
                         <svg class="w-4 h-4 inline mr-1" fill="currentColor" viewBox="0 0 20 20">
-                            <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z"/>
+                            <path
+                                d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z" />
                         </svg>
                         Início
                     </a>
                     <svg class="w-4 h-4 mx-2" fill="currentColor" viewBox="0 0 20 20">
-                        <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"/>
+                        <path fill-rule="evenodd"
+                            d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                            clip-rule="evenodd" />
                     </svg>
                     <span class="text-diabetes-primary font-medium">Quiz</span>
                 </nav>
@@ -43,7 +47,8 @@
         {{> notificacoes }}
 
         <!-- Hero Section -->
-        <div class="bg-gradient-to-r from-purple-600 to-pink-600 text-white py-12 md:py-16 mt-6 mx-4 md:mx-auto md:max-w-7xl rounded-2xl shadow-xl animate-scale-in">
+        <div
+            class="bg-gradient-to-r from-purple-600 to-pink-600 text-white py-12 md:py-16 mt-6 mx-4 md:mx-auto md:max-w-7xl rounded-2xl shadow-xl animate-scale-in">
             <div class="container-custom text-center">
                 <div class="text-6xl mb-4 animate-bounce">🧠</div>
                 <h1 class="text-4xl md:text-5xl font-bold mb-4 text-white">Quiz de Diabetes</h1>
@@ -53,20 +58,25 @@
                 <div class="flex flex-wrap justify-center gap-4 text-sm md:text-base">
                     <div class="flex items-center bg-white bg-opacity-20 rounded-full px-4 py-2">
                         <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd"/>
+                            <path fill-rule="evenodd"
+                                d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z"
+                                clip-rule="evenodd" />
                         </svg>
                         <span>Questões Rápidas</span>
                     </div>
                     <div class="flex items-center bg-white bg-opacity-20 rounded-full px-4 py-2">
                         <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                            <path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z"/>
-                            <path fill-rule="evenodd" d="M4 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v11a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm9.707 5.707a1 1 0 00-1.414-1.414L9 12.586l-1.293-1.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                            <path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z" />
+                            <path fill-rule="evenodd"
+                                d="M4 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v11a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm9.707 5.707a1 1 0 00-1.414-1.414L9 12.586l-1.293-1.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                                clip-rule="evenodd" />
                         </svg>
                         <span>Sistema de Pontuação</span>
                     </div>
                     <div class="flex items-center bg-white bg-opacity-20 rounded-full px-4 py-2">
                         <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                            <path d="M2 11a1 1 0 011-1h2a1 1 0 011 1v5a1 1 0 01-1 1H3a1 1 0 01-1-1v-5zM8 7a1 1 0 011-1h2a1 1 0 011 1v9a1 1 0 01-1 1H9a1 1 0 01-1-1V7zM14 4a1 1 0 011-1h2a1 1 0 011 1v12a1 1 0 01-1 1h-2a1 1 0 01-1-1V4z"/>
+                            <path
+                                d="M2 11a1 1 0 011-1h2a1 1 0 011 1v5a1 1 0 01-1 1H3a1 1 0 01-1-1v-5zM8 7a1 1 0 011-1h2a1 1 0 011 1v9a1 1 0 01-1 1H9a1 1 0 01-1-1V7zM14 4a1 1 0 011-1h2a1 1 0 011 1v12a1 1 0 01-1 1h-2a1 1 0 01-1-1V4z" />
                         </svg>
                         <span>Ranking Global</span>
                     </div>
@@ -80,11 +90,15 @@
                 <!-- Update Notice -->
                 <div class="bg-blue-50 border-l-4 border-diabetes-primary rounded-lg p-4 mb-8 animate-slide-up">
                     <div class="flex items-start">
-                        <svg class="w-6 h-6 text-diabetes-primary mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                            <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"/>
+                        <svg class="w-6 h-6 text-diabetes-primary mr-3 flex-shrink-0" fill="currentColor"
+                            viewBox="0 0 20 20">
+                            <path fill-rule="evenodd"
+                                d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z"
+                                clip-rule="evenodd" />
                         </svg>
                         <p id="quiz-description" class="text-sm md:text-base text-gray-700">
-                            📅 <strong>Novas questões são adicionadas periodicamente!</strong> Recomendamos que você refaça o Quiz regularmente para aprender cada vez mais! 📖😄
+                            📅 <strong>Novas questões são adicionadas periodicamente!</strong> Recomendamos que você
+                            refaça o Quiz regularmente para aprender cada vez mais! 📖😄
                         </p>
                     </div>
                 </div>
@@ -94,14 +108,16 @@
                     <!-- Quiz Header with Progress -->
                     <div class="bg-gradient-to-r from-purple-600 to-pink-600 text-white p-6" id="quiz-header">
                         <div class="flex justify-between items-center mb-4">
-                            <span id="category" class="px-4 py-1 bg-white bg-opacity-20 rounded-full text-sm font-semibold">Diabetes</span>
+                            <span id="category"
+                                class="px-4 py-1 bg-white bg-opacity-20 rounded-full text-sm font-semibold">Diabetes</span>
                             <div id="question-numbers" class="text-2xl font-bold">
                                 <span id="current-question">0</span>/<span id="total-questions">0</span>
                             </div>
                         </div>
                         <!-- Progress Bar -->
                         <div class="w-full bg-white bg-opacity-20 rounded-full h-3 overflow-hidden">
-                            <div id="quiz-progress-bar" class="bg-white h-full transition-all duration-500" style="width: 0%"></div>
+                            <div id="quiz-progress-bar" class="bg-white h-full transition-all duration-500"
+                                style="width: 0%"></div>
                         </div>
                     </div>
 
@@ -112,12 +128,16 @@
                             Teste seus conhecimentos sobre diabetes
                         </h3>
                         <p id="quiz-start-description" class="text-lg text-gray-600 mb-8 max-w-2xl mx-auto">
-                            Responda perguntas rápidas e aprenda mais sobre como cuidar melhor da sua saúde com as tecnologias disponíveis.
+                            Responda perguntas rápidas e aprenda mais sobre como cuidar melhor da sua saúde com as
+                            tecnologias disponíveis.
                         </p>
-                        <button id="quiz-start-button" class="btn btn-lg bg-gradient-to-r from-purple-600 to-pink-600 text-white hover:from-purple-700 hover:to-pink-700 inline-flex items-center gap-2 shadow-xl">
+                        <button id="quiz-start-button"
+                            class="btn btn-lg bg-gradient-to-r from-purple-600 to-pink-600 text-white hover:from-purple-700 hover:to-pink-700 inline-flex items-center gap-2 shadow-xl">
                             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"/>
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                             </svg>
                             <span>Iniciar Quiz</span>
                         </button>
@@ -127,18 +147,20 @@
                     <div id="quiz-questions" class="quiz-section p-6 md:p-8" style="display: none;">
                         <!-- Score and Difficulty Info -->
                         <div class="wrapper-question-data grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
-                            <div id="container-score-question" class="container-question-data bg-gradient-to-r from-green-500 to-emerald-600 text-white rounded-xl p-4 text-center shadow-lg">
+                            <div id="container-score-question"
+                                class="container-question-data bg-gradient-to-r from-green-500 to-emerald-600 text-white rounded-xl p-4 text-center shadow-lg">
                                 <div id="text-score-question" class="text-sm opacity-90 mb-1">
                                     Valendo <span id="score-question" class="text-2xl font-bold">0</span> pontos
                                 </div>
                                 <div id="result-score-question" class="text-lg font-bold" style="display: none;"></div>
-                                <div class="text-2xl font-bold mt-1">
+                                <div class="font-bold mt-1">
                                     Total: <span id="total-score">0</span> pts
                                 </div>
                             </div>
-                            <div class="container-question-data bg-gradient-to-r from-blue-500 to-indigo-600 text-white rounded-xl p-4 text-center shadow-lg">
+                            <div
+                                class="container-question-data bg-gradient-to-r text-white rounded-xl p-4 text-center shadow-lg">
                                 <div class="text-sm opacity-90 mb-1">Dificuldade</div>
-                                <div id="question-difficulty" class="text-2xl font-bold"></div>
+                                <div id="question-difficulty" class="text-sm font-bold"></div>
                             </div>
                         </div>
 
@@ -151,90 +173,93 @@
                         <ul id="quiz-options" class="space-y-3 mb-6"></ul>
 
                         <!-- Feedback -->
-                        <div id="quiz-feedback" class="feedback-text p-4 rounded-xl mb-6 animate-scale-in" style="display: none;"></div>
+                        <div id="quiz-feedback" class="feedback-text p-4 rounded-xl mb-6 animate-scale-in"
+                            style="display: none;"></div>
 
                         <!-- Actions -->
                         <div class="quiz-actions flex flex-col sm:flex-row gap-3" id="quiz-actions">
                             <button id="submit-answer" disabled class="btn btn-lg btn-primary flex-1">
                                 <svg class="w-5 h-5 inline mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                                 </svg>
                                 Enviar Resposta
                             </button>
-                            <button id="next-question" class="btn btn-lg bg-gradient-to-r from-purple-600 to-pink-600 text-white hover:from-purple-700 hover:to-pink-700 flex-1" style="display: none;">
+                            <button id="next-question"
+                                class="btn btn-lg bg-gradient-to-r from-purple-600 to-pink-600 text-white hover:from-purple-700 hover:to-pink-700 flex-1"
+                                style="display: none;">
                                 <span>Próxima Questão</span>
                                 <svg class="w-5 h-5 inline ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M13 7l5 5m0 0l-5 5m5-5H6" />
                                 </svg>
                             </button>
                         </div>
-                    </div>
-                            </button>
-                            <button id="next-question" style="display: none;" class="btn btn-lg btn-success flex-1 inline-flex items-center justify-center gap-2">
-                                <span>Próxima Questão</span>
-                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
-                                </svg>
-                            </button>
-                        </div>
-                    </div>
-
-                    <!-- Quiz Results Screen -->
-                    <div id="quiz-results" class="quiz-section p-8 md:p-12 text-center" style="display: none;">
-                        <div class="text-6xl mb-6 animate-bounce">🎉</div>
-                        <h3 id="quiz-results-title" class="text-3xl md:text-4xl font-bold text-gray-800 mb-6">
-                            Parabéns! Você concluiu o quiz!
-                        </h3>
-                        
-                        <!-- Results Cards -->
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8 max-w-2xl mx-auto">
-                            <div class="bg-gradient-to-br from-green-500 to-emerald-600 text-white rounded-2xl p-6 shadow-xl">
-                                <div class="text-sm opacity-90 mb-2">Questões Acertadas</div>
-                                <div class="text-4xl font-bold">
-                                    <span id="correct-count"></span>/<span id="quiz-total-questions"></span>
-                                </div>
-                            </div>
-                            <div class="bg-gradient-to-br from-purple-500 to-pink-600 text-white rounded-2xl p-6 shadow-xl">
-                                <div class="text-sm opacity-90 mb-2">Pontuação Final</div>
-                                <div class="text-4xl font-bold">
-                                    <span id="quiz-score"></span>/100
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Feedback -->
-                        <div class="bg-blue-50 border-l-4 border-blue-500 rounded-lg p-6 mb-8 max-w-2xl mx-auto">
-                            <p class="text-gray-700"><strong>Feedback:</strong> <span id="quiz-results-feedback"></span></p>
-                        </div>
-
-                        <!-- Actions -->
-                        <div id="quiz-results-actions" class="flex flex-col sm:flex-row gap-4 justify-center mb-4">
-                            <button id="send-ranking-button" class="btn btn-lg bg-gradient-to-r from-yellow-500 to-orange-500 text-white hover:from-yellow-600 hover:to-orange-600 inline-flex items-center gap-2 shadow-xl">
-                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                                    <path d="M2 11a1 1 0 011-1h2a1 1 0 011 1v5a1 1 0 01-1 1H3a1 1 0 01-1-1v-5zM8 7a1 1 0 011-1h2a1 1 0 011 1v9a1 1 0 01-1 1H9a1 1 0 01-1-1V7zM14 4a1 1 0 011-1h2a1 1 0 011 1v12a1 1 0 01-1 1h-2a1 1 0 01-1-1V4z"/>
-                                </svg>
-                                <span>Enviar para o Ranking</span>
-                            </button>
-                            <button id="share-result" class="btn btn-lg bg-green-500 text-white hover:bg-green-600 inline-flex items-center gap-2">
-                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L0 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
-                                </svg>
-                                <span>Compartilhar no WhatsApp</span>
-                            </button>
-                        </div>
-                        <button id="restart-quiz" class="btn btn-lg btn-secondary">
-                            🔄 Tentar Novamente
-                        </button>
-                    </div>
-
-                    <!-- Quiz Error Screen -->
-                    <div id="quiz-error" class="quiz-section error-section p-8 text-center" style="display: none;">
-                        <div class="text-6xl mb-6">😞</div>
-                        <h3 id="quiz-error-title" class="text-2xl font-bold text-gray-800 mb-4">Ops! Algo deu errado</h3>
-                        <p id="error-message" class="text-gray-600 mb-6">Não foi possível carregar o quiz. Entre em contato com o administrador do site.</p>
                     </div>
                 </div>
             </div>
+
+            <!-- Quiz Results Screen -->
+            <div id="quiz-results" class="quiz-section p-8 md:p-12 text-center" style="display: none;">
+                <div class="text-6xl mb-6 animate-bounce">🎉</div>
+                <h3 id="quiz-results-title" class="text-3xl md:text-4xl font-bold text-gray-800 mb-6">
+                    Parabéns! Você concluiu o quiz!
+                </h3>
+
+                <!-- Results Cards -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8 max-w-2xl mx-auto">
+                    <div class="bg-gradient-to-br from-green-500 to-emerald-600 text-white rounded-2xl p-6 shadow-xl">
+                        <div class="text-sm opacity-90 mb-2">Questões Acertadas</div>
+                        <div class="text-4xl font-bold">
+                            <span id="correct-count"></span>/<span id="quiz-total-questions"></span>
+                        </div>
+                    </div>
+                    <div class="bg-gradient-to-br from-purple-500 to-pink-600 text-white rounded-2xl p-6 shadow-xl">
+                        <div class="text-sm opacity-90 mb-2">Pontuação Final</div>
+                        <div class="text-4xl font-bold">
+                            <span id="quiz-score"></span>/100
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Feedback -->
+                <div class="bg-blue-50 border-l-4 border-blue-500 rounded-lg p-6 mb-8 max-w-2xl mx-auto">
+                    <p class="text-gray-700"><strong>Feedback:</strong> <span id="quiz-results-feedback"></span></p>
+                </div>
+
+                <!-- Actions -->
+                <div id="quiz-results-actions" class="flex flex-col sm:flex-row gap-4 justify-center mb-4">
+                    <button id="send-ranking-button"
+                        class="btn btn-lg bg-gradient-to-r from-yellow-500 to-orange-500 text-white hover:from-yellow-600 hover:to-orange-600 inline-flex items-center gap-2 shadow-xl">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                            <path
+                                d="M2 11a1 1 0 011-1h2a1 1 0 011 1v5a1 1 0 01-1 1H3a1 1 0 01-1-1v-5zM8 7a1 1 0 011-1h2a1 1 0 011 1v9a1 1 0 01-1 1H9a1 1 0 01-1-1V7zM14 4a1 1 0 011-1h2a1 1 0 011 1v12a1 1 0 01-1 1h-2a1 1 0 01-1-1V4z" />
+                        </svg>
+                        <span>Enviar para o Ranking</span>
+                    </button>
+                    <button id="share-result"
+                        class="btn btn-lg bg-green-500 text-white hover:bg-green-600 inline-flex items-center gap-2">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                            <path
+                                d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L0 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z" />
+                        </svg>
+                        <span>Compartilhar no WhatsApp</span>
+                    </button>
+                </div>
+                <button id="restart-quiz" class="btn btn-lg btn-secondary">
+                    🔄 Tentar Novamente
+                </button>
+            </div>
+
+            <!-- Quiz Error Screen -->
+            <div id="quiz-error" class="quiz-section error-section p-8 text-center" style="display: none;">
+                <div class="text-6xl mb-6">😞</div>
+                <h3 id="quiz-error-title" class="text-2xl font-bold text-gray-800 mb-4">Ops! Algo deu errado</h3>
+                <p id="error-message" class="text-gray-600 mb-6">Não foi possível carregar o quiz. Entre em contato com
+                    o administrador do site.</p>
+            </div>
+        </div>
+        </div>
         </div>
 
         <!-- Ranking Section -->
@@ -245,35 +270,35 @@
                     <div class="bg-gradient-to-r from-yellow-500 to-orange-500 text-white p-6">
                         <div class="flex items-center justify-center gap-3">
                             <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 20 20">
-                                <path d="M2 11a1 1 0 011-1h2a1 1 0 011 1v5a1 1 0 01-1 1H3a1 1 0 01-1-1v-5zM8 7a1 1 0 011-1h2a1 1 0 011 1v9a1 1 0 01-1 1H9a1 1 0 01-1-1V7zM14 4a1 1 0 011-1h2a1 1 0 011 1v12a1 1 0 01-1 1h-2a1 1 0 01-1-1V4z"/>
+                                <path
+                                    d="M2 11a1 1 0 011-1h2a1 1 0 011 1v5a1 1 0 01-1 1H3a1 1 0 01-1-1v-5zM8 7a1 1 0 011-1h2a1 1 0 011 1v9a1 1 0 01-1 1H9a1 1 0 01-1-1V7zM14 4a1 1 0 011-1h2a1 1 0 011 1v12a1 1 0 01-1 1h-2a1 1 0 01-1-1V4z" />
                             </svg>
                             <h2 id="ranking-title" class="text-3xl font-bold text-white">Ranking de Jogadores</h2>
-                        </div>
-                    </div>
-
-                    <!-- Loading Overlay -->
-                    <div id="ranking-loader" class="loader-overlay" style="display: none;">
-                        <div class="flex flex-col items-center justify-center p-12">
-                            <div class="spinner w-12 h-12 mb-4" id="ranking-loader-spinner"></div>
-                            <p class="text-gray-600">Carregando ranking...</p>
                         </div>
                     </div>
 
                     <!-- Tabs -->
                     <div class="border-b border-gray-200" id="ranking-tabs">
                         <div class="flex">
-                            <button class="tab-button flex-1 px-6 py-4 text-center font-semibold transition-colors border-b-2 border-transparent hover:text-diabetes-primary hover:border-diabetes-primary active" id="tab-daily" data-tab="daily">
+                            <button
+                                class="tab-button flex-1 px-6 py-4 text-center font-semibold transition-colors border-b-2 border-transparent hover:text-diabetes-primary hover:border-diabetes-primary active"
+                                id="tab-daily" data-tab="daily">
                                 <span class="inline-flex items-center gap-2">
                                     <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                                        <path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd"/>
+                                        <path fill-rule="evenodd"
+                                            d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z"
+                                            clip-rule="evenodd" />
                                     </svg>
                                     Ranking Diário
                                 </span>
                             </button>
-                            <button class="tab-button flex-1 px-6 py-4 text-center font-semibold transition-colors border-b-2 border-transparent hover:text-diabetes-primary hover:border-diabetes-primary" id="tab-monthly" data-tab="general">
+                            <button
+                                class="tab-button flex-1 px-6 py-4 text-center font-semibold transition-colors border-b-2 border-transparent hover:text-diabetes-primary hover:border-diabetes-primary"
+                                id="tab-monthly" data-tab="general">
                                 <span class="inline-flex items-center gap-2">
                                     <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                                        <path d="M10 2a6 6 0 00-6 6v3.586l-.707.707A1 1 0 004 14h12a1 1 0 00.707-1.707L16 11.586V8a6 6 0 00-6-6zM10 18a3 3 0 01-3-3h6a3 3 0 01-3 3z"/>
+                                        <path
+                                            d="M10 2a6 6 0 00-6 6v3.586l-.707.707A1 1 0 004 14h12a1 1 0 00.707-1.707L16 11.586V8a6 6 0 00-6-6zM10 18a3 3 0 01-3-3h6a3 3 0 01-3 3z" />
                                     </svg>
                                     Ranking Mensal
                                 </span>
@@ -287,11 +312,21 @@
                             <table class="ranking-table w-full" id="ranking-table-daily">
                                 <thead class="bg-gray-50">
                                     <tr>
-                                        <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">#</th>
-                                        <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Nome</th>
-                                        <th class="px-4 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">Pontos</th>
-                                        <th class="px-4 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">Acertos</th>
-                                        <th class="px-4 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider hidden md:table-cell">Data e Hora</th>
+                                        <th
+                                            class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                            #</th>
+                                        <th
+                                            class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                            Nome</th>
+                                        <th
+                                            class="px-4 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                            Pontos</th>
+                                        <th
+                                            class="px-4 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                            Acertos</th>
+                                        <th
+                                            class="px-4 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider hidden md:table-cell">
+                                            Data e Hora</th>
                                     </tr>
                                 </thead>
                                 <tbody id="daily-ranking" class="bg-white divide-y divide-gray-200">
@@ -307,11 +342,21 @@
                             <table class="ranking-table w-full" id="ranking-table-monthly">
                                 <thead class="bg-gray-50">
                                     <tr>
-                                        <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">#</th>
-                                        <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Nome</th>
-                                        <th class="px-4 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">Pontos</th>
-                                        <th class="px-4 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">Acertos</th>
-                                        <th class="px-4 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider hidden md:table-cell">Data e Hora</th>
+                                        <th
+                                            class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                            #</th>
+                                        <th
+                                            class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                            Nome</th>
+                                        <th
+                                            class="px-4 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                            Pontos</th>
+                                        <th
+                                            class="px-4 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                            Acertos</th>
+                                        <th
+                                            class="px-4 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider hidden md:table-cell">
+                                            Data e Hora</th>
                                     </tr>
                                 </thead>
                                 <tbody id="monthly-ranking" class="bg-white divide-y divide-gray-200">
@@ -325,9 +370,22 @@
         </div>
     </main>
 
+    <!-- Global Loading Overlay -->
+    <div id="global-loader" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50"
+        style="display: none;">
+        <div class="bg-white rounded-2xl p-8 shadow-2xl">
+            <div class="flex flex-col items-center">
+                <div class="spinner w-16 h-16 mb-4"></div>
+                <p class="text-gray-700 text-lg font-medium">Enviando para o ranking...</p>
+            </div>
+        </div>
+    </div>
+
     <!-- Ranking Modal -->
-    <div id="ranking-modal" class="modal fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50" style="display: none;">
-        <div class="modal-content bg-white rounded-2xl shadow-2xl max-w-md w-full animate-scale-in" id="ranking-modal-content">
+    <div id="ranking-modal" class="modal fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50"
+        style="display: none;">
+        <div class="modal-content bg-white rounded-2xl shadow-2xl max-w-md w-full animate-scale-in"
+            id="ranking-modal-content">
             <div class="p-6 md:p-8">
                 <div class="text-center mb-6">
                     <div class="text-5xl mb-4">🏆</div>
@@ -336,13 +394,8 @@
                     </h3>
                 </div>
                 <div class="mb-6">
-                    <input 
-                        type="text" 
-                        id="player-name" 
-                        placeholder="Seu nome (3-20 caracteres)" 
-                        maxlength="20"
-                        class="input w-full text-center text-lg"
-                    />
+                    <input type="text" id="player-name" placeholder="Seu nome (3-20 caracteres)" maxlength="20"
+                        class="input w-full text-center text-lg" />
                     <p id="name-error" class="error-message text-red-500 text-sm mt-2" style="display: none;">
                         O nome deve ter entre 3 e 20 caracteres.
                     </p>
