@@ -7,7 +7,8 @@ let dateResult;
 let hasCors;
 
 document.addEventListener("DOMContentLoaded", () => {
-    getTotalUsage()
+    // Tenta obter contador de uso sem quebrar a inicialização se o elemento não existir
+    try { getTotalUsage(); } catch (_) { }
     const btnTestNightscout = document.querySelector('#testNightscout');
     const url = document.querySelector('#urlInput');
     const apiSecret = document.querySelector('#apiSecretInput');
@@ -65,7 +66,8 @@ document.addEventListener("DOMContentLoaded", () => {
             incrementUsage()
             await checkValidUrl();
             populateResume();
-            document.querySelector('#shareWhatsApp').classList.remove('hidden');
+            const shareBtn = document.querySelector('#shareWhatsApp');
+            if (shareBtn) shareBtn.classList.remove('hidden');
             dateResult = new Date();
         });
     }
@@ -107,6 +109,24 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 })
 
+// Toast helper
+function showToast(message, type = 'error') {
+    try {
+        const container = document.getElementById('toast-container');
+        if (!container) return;
+        const toast = document.createElement('div');
+        toast.className = `toast ${type}`;
+        const icon = type === 'success' ? '✅' : type === 'warning' ? '⚠️' : '❌';
+        toast.innerHTML = `<span class="toast-icon">${icon}</span><p class="toast-message">${message}</p>`;
+        container.appendChild(toast);
+        setTimeout(() => {
+            toast.style.opacity = '0';
+            toast.style.transform = 'translateY(-6px)';
+            setTimeout(() => toast.remove(), 200);
+        }, 4000);
+    } catch (_) { /* no-op */ }
+}
+
 let hasRecentData
 let resumeText = '';
 
@@ -121,7 +141,8 @@ function reset() {
     document.querySelector('.status-list').classList.add('hidden');
     document.getElementById('resume').classList.add('hidden');
     document.querySelector('.resume-title').classList.add('hidden');
-    document.getElementById('shareWhatsApp').classList.add('hidden');
+    const shareBtn = document.getElementById('shareWhatsApp');
+    if (shareBtn) shareBtn.classList.add('hidden');
     setNoResult(validUrlId)
     setNoResult(correctSecretId)
     setNoResult(recentDataId)
@@ -140,15 +161,27 @@ function showResume() {
     window.scrollTo({ top: y, behavior: 'smooth' });
 }
 
-async function fetchWithTimeout(url, proxy, options = {}, timeout = 10000) {
+async function fetchWithTimeout(url, optionsOrTimeout, maybeTimeout) {
+    // Suporta chamadas como (url, options, timeout) ou (url, timeout)
+    let options = {};
+    let timeout = 10000;
+    if (typeof optionsOrTimeout === 'number') {
+        timeout = optionsOrTimeout;
+    } else if (typeof optionsOrTimeout === 'object' && optionsOrTimeout) {
+        options = optionsOrTimeout;
+    }
+    if (typeof maybeTimeout === 'number') {
+        timeout = maybeTimeout;
+    }
+
     const controller = new AbortController();
     const id = setTimeout(() => controller.abort(), timeout);
     try {
-        let resp
+        let resp;
         if (hasCors) {
-            resp = await fetch(url, { cache: 'no-store',  redirect: 'follow', ...options, signal: controller.signal });
+            resp = await fetch(url, { cache: 'no-store', redirect: 'follow', ...options, signal: controller.signal });
         } else {
-            urlProxy = new URL(`/api/proxy?url=${encodeURIComponent(url)}`, window.env.API_BASE_URL).href;
+            const urlProxy = new URL(`/api/proxy?url=${encodeURIComponent(url)}`, window.env.API_BASE_URL).href;
             resp = await fetch(urlProxy, { ...options, signal: controller.signal });
         }
         return resp;
@@ -195,6 +228,7 @@ async function checkValidUrl() {
             response = await fetchWithTimeout(normalizedUrl, { method: "GET" }, 8000);
         } catch (clientErr) {
             console.log('Fetch direto falhou (provável CORS/timeout):', clientErr && clientErr.message);
+            showToast('Não foi possível contatar seu Nightscout diretamente (CORS/timeout). Tentando via proxy...', 'warning');
 
             let urlProxy;
             try {
@@ -213,6 +247,7 @@ async function checkValidUrl() {
                 console.log('Resposta do proxy obtida:', response && response.status);
             } catch (proxyErr) {
                 console.error('Erro ao buscar via proxy:', proxyErr);
+                showToast('Falha ao contatar o serviço de proxy. Verifique sua conexão e tente novamente.', 'error');
 
                 if (proxyErr.name === 'AbortError') {
                     setWrong(validUrlId);
@@ -245,6 +280,7 @@ async function checkValidUrl() {
             console.error('Erro ao ler body da resposta 200:', e);
             setWrong(validUrlId);
             setResumeText('❌ Erro ao processar a resposta do servidor.');
+            showToast('Erro ao processar a resposta do servidor.', 'error');
             return;
         }
 
@@ -255,6 +291,7 @@ async function checkValidUrl() {
         } catch (e) {
             setWrong(validUrlId);
             setResumeText('❌ Erro ao processar o HTML retornado pelo servidor.');
+            showToast('Erro ao processar o HTML retornado.', 'error');
             return;
         }
 
@@ -277,9 +314,11 @@ async function checkValidUrl() {
             setWrong(validUrlId);
             setResumeText('❌ Durante a criação do seu Nightscout, foi definida uma API Secret muito curta (menor de 12 caracteres).');
             return;
-        }
-
-        if (response.status !== 200) {
+        } else if (/502 Bad Gateway|500 Internal Server Error|Service Unavailable|Bad Gateway/i.test(htmlText)) {
+            setWrong(validUrlId);
+            setResumeText('❌ Detectado HTML de erro no conteúdo retornado — o Nightscout pode estar fora do ar.');
+            return;
+        } else if (response.status !== 200) {
             const proxyErrorType = response.headers.get('x-proxy-error-type');
             console.log('Status != 200. status=', response.status, 'x-proxy-error-type=', proxyErrorType, 'bodySample=', (htmlText || '').slice(0, 200));
 
@@ -326,11 +365,9 @@ async function checkValidUrl() {
             setWrong(validUrlId);
             setResumeText(`❌ O servidor retornou status ${response.status}. Pode estar fora do ar ou com erro interno.`);
             return;
-        }
-
-        if (/502 Bad Gateway|500 Internal Server Error|Service Unavailable|Bad Gateway/i.test(htmlText)) {
+        } else {
             setWrong(validUrlId);
-            setResumeText('❌ Detectado HTML de erro no conteúdo retornado — o Nightscout pode estar fora do ar.');
+            setResumeText('❌ Não foi possível identificar uma URL de Nightscout. Verifique se a URL está correta.');
             return;
         }
 
@@ -339,6 +376,7 @@ async function checkValidUrl() {
         setWrong(validUrlId);
         setResumeText('❌ Ocorreu um erro inesperado ao validar a URL do Nightscout.');
         console.error("Erro inesperado em checkValidUrl:", error);
+        showToast('Erro inesperado ao validar a URL.', 'error');
         return;
     }
 }
@@ -358,6 +396,7 @@ async function checkApiSecret() {
         } catch (error) {
             response = undefined;
             console.error("Erro ao buscar dados da API Secret:", error);
+            showToast('Erro de rede ao validar a API Secret.', 'error');
         }
 
         if (response && response.ok && response.status === 200) {
@@ -367,6 +406,7 @@ async function checkApiSecret() {
             } catch (error) {
                 setWrong(correctSecretId);
                 setResumeText('❌ Ocorreu um erro ao converter resposta da API Secret.');
+                showToast('Erro ao converter resposta da API Secret.', 'error');
                 return;
             }
             if (data?.message?.canRead && data?.message?.canWrite && data?.message?.isAdmin) {
@@ -379,6 +419,7 @@ async function checkApiSecret() {
         } else {
             setWrong(correctSecretId)
             setResumeText('❌ Ocorreu um erro ao buscar dados da API Secret. Verifique se você está conectado à internet.')
+            showToast('Erro ao buscar dados da API Secret.', 'error');
             return;
         }
 
@@ -387,6 +428,7 @@ async function checkApiSecret() {
         setWrong(correctSecretId);
         setResumeText('❌ Ocorreu um erro inesperado ao buscar dados da API Secret.');
         console.error("Erro inesperado em checkApiSecret:", error);
+        showToast('Erro inesperado ao buscar dados da API Secret.', 'error');
         return;
     }
 }
@@ -405,6 +447,7 @@ async function checkRecentData() {
         } catch (error) {
             response = undefined;
             console.error("Erro ao buscar dados recentes:", error);
+            showToast('Erro de rede ao buscar dados recentes.', 'error');
         }
 
         if (response && response.ok && response.status === 200) {
@@ -414,6 +457,7 @@ async function checkRecentData() {
             } catch (error) {
                 setWrong(recentDataId);
                 setResumeText('❌ Ocorreu um erro ao converter resposta dos dados recentes.');
+                showToast('Erro ao converter dados recentes.', 'error');
                 return;
             }
 
@@ -436,6 +480,7 @@ async function checkRecentData() {
         } else {
             setWrong(recentDataId)
             setResumeText('❌ Ocorreu um erro ao buscar dados recentes de glicemia.')
+            showToast('Erro ao buscar dados recentes de glicemia.', 'error');
             return;
         }
 
@@ -444,6 +489,7 @@ async function checkRecentData() {
         setWrong(recentDataId);
         setResumeText('❌ Ocorreu um erro inesperado ao buscar dados recentes de glicemia.');
         console.error("Erro inesperado em checkRecentData:", error);
+        showToast('Erro inesperado ao buscar dados recentes.', 'error');
         return;
     }
 }
@@ -462,6 +508,7 @@ async function checkDbFreeSpace() {
         } catch (error) {
             response = undefined;
             console.error("Erro ao buscar dados do tamanho do banco de dados:", error);
+            showToast('Erro de rede ao buscar tamanho do banco de dados.', 'error');
         }
 
         if (response && response.ok && response.status === 200) {
@@ -477,6 +524,7 @@ async function checkDbFreeSpace() {
             } catch (error) {
                 setWrong(dbFreeSpaceId);
                 setResumeText('❌ Ocorreu um erro ao converter resposta do espaço do banco de dados.');
+                showToast('Erro ao converter espaço do banco de dados.', 'error');
                 return;
             }
 
@@ -499,6 +547,7 @@ async function checkDbFreeSpace() {
         } else {
             setWrong(dbFreeSpaceId)
             setResumeText('❌ Ocorreu um erro ao buscar o espaço utilizado do banco de dados.')
+            showToast('Erro ao buscar o espaço do banco de dados.', 'error');
             return;
         }
 
@@ -507,6 +556,7 @@ async function checkDbFreeSpace() {
         setWrong(dbFreeSpaceId);
         setResumeText('❌ Ocorreu um erro inesperado ao buscar espaço do banco de dados.');
         console.error("Erro inesperado em checkDbFreeSpace:", error);
+        showToast('Erro inesperado ao buscar espaço do banco.', 'error');
         return;
     }
 }
@@ -529,6 +579,7 @@ async function moreTests() {
             setWrong(moreTestsId)
             setResumeText('❌ Ocorreu um erro ao buscar dados de bateria dos dispositivos conectados.')
             console.error("Erro ao buscar dados de bateria:", error);
+            showToast('Erro de rede ao buscar dados de bateria.', 'error');
         }
 
         if (responseDeviceStatus && responseDeviceStatus.ok && responseDeviceStatus.status === 200) {
@@ -540,6 +591,7 @@ async function moreTests() {
                 setWrong(moreTestsId)
                 setResumeText('❌ Ocorreu um erro ao converter dados de bateria dos dispositivos conectados.')
                 console.error("Erro ao converter dados de bateria:", error);
+                showToast('Erro ao converter dados de bateria.', 'error');
             }
 
             if (dataDeviceStatus) {
@@ -573,12 +625,14 @@ async function moreTests() {
             errorFound = true
             setWrong(moreTestsId)
             setResumeText('❌ Ocorreu um erro ao buscar dados de bateria dos dispositivos conectados.')
+            showToast('Erro ao buscar dados de bateria.', 'error');
         }
     } catch (error) {
         errorFound = true
         setWrong(moreTestsId)
         setResumeText('❌ Ocorreu um erro inesperado ao buscar dados de bateria dos dispositivos conectados.')
         console.error("Erro inesperado em moreTests:", error);
+        showToast('Erro inesperado ao buscar dados de bateria.', 'error');
     }
 
     if (!errorFound) {
@@ -637,7 +691,7 @@ async function getTotalUsage() {
         if (response.ok) {
             const data = await response.json();
             const usagesElement = document.getElementById('usageValue');
-            usagesElement.textContent = data.count;
+            if (usagesElement) usagesElement.textContent = data.count;
         } else {
             console.error('Erro ao obter contador de usos do testador de Nightscout:', response.status);
         }
@@ -656,7 +710,7 @@ async function incrementUsage() {
             },
         });
         if (response.ok) {
-            getTotalUsage();
+            try { await getTotalUsage(); } catch (_) { }
         } else {
             console.error('Erro ao incrementar contador:', response.status);
         }
