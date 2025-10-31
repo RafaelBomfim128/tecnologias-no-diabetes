@@ -44,7 +44,7 @@ describe('Tutorials section', () => {
                 screen: 'Sensores',
                 children: {
                     libre: { screen: 'Freestyle Libre 1 e 2', sheet: 'Libre' },
-                    aidex: { screen: 'AiDEX', sheet: 'AiDEX' },
+                    smart: { screen: 'Smart', sheet: 'Smart' },
                     sibionics: { screen: 'Sibionics', sheet: 'Sibionics' }
                 }
             },

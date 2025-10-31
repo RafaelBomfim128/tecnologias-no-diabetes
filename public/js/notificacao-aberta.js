@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-    const notificationElement = document.querySelector(".notification-opened");
+    const notificationElement = document.querySelector("article[data-id]") || document.querySelector(".notification-opened");
     const notificationId = notificationElement?.dataset.id;
 
     if (notificationId) {
@@ -13,14 +13,23 @@ document.addEventListener("DOMContentLoaded", () => {
         if (notificationId === window.env.MOST_RECENT_NOTIFICATION_ID) {
             localStorage.setItem("lastViewedNotification", notificationId);
             const notificationIcon = document.getElementById("notification-icon");
-            notificationIcon.src = "./img/sino.png";
+            if (notificationIcon) {
+                notificationIcon.src = "./img/sino.png";
+            }
         }
     }
-});
 
-document.addEventListener("DOMContentLoaded", () => {
     const currentUrl = encodeURIComponent(window.location.href);
-    const notificationTitle = document.querySelector('.notification-title').textContent.trim();
+    const notificationTitle = (
+        document.querySelector('article h1')?.textContent.trim() || 
+        document.querySelector('.notification-title')?.textContent.trim() ||
+        document.title
+    );
 
-    document.querySelector('.share-icon.whatsapp').href = `https://wa.me/?text=${encodeURIComponent(notificationTitle)}%0A%0A${currentUrl}`;
+    const whatsappButton = document.getElementById('whatsapp-share') || document.querySelector('.share-icon.whatsapp');
+    
+    if (whatsappButton && notificationTitle) {
+        const whatsappText = `${notificationTitle}%0A%0A${currentUrl}`;
+        whatsappButton.href = `https://wa.me/?text=${whatsappText}`;
+    }
 });

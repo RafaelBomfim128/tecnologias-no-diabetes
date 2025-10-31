@@ -9,64 +9,66 @@ document.getElementById('search-form').addEventListener('submit', function (even
 document.getElementById('search-bar').addEventListener('input', function () {
     const query = this.value.trim().toLowerCase();
 
+    // Pesquisa nos tutoriais
+    const tutorialItems = document.querySelectorAll('.tutorials-item-list-item');
+    let visibleCount = 0;
+
+    tutorialItems.forEach(item => {
+        const title = item.querySelector('.tutorials-item-link-title').textContent.trim().toLowerCase();
+        if (title.includes(query)) {
+            item.style.display = ''; // Exibe o item
+            visibleCount++;
+        } else {
+            item.style.display = 'none'; // Oculta o item
+        }
+    });
+
     // Pesquisa nos itens do FAQ
     const faqItems = document.querySelectorAll('.faq-item');
-    let faqVisibleCount = 0;
-
     faqItems.forEach(item => {
-        const question = item.querySelector('.faq-question').textContent.trim().toLowerCase();
-        const answer = item.querySelector('.faq-answer').textContent.trim().toLowerCase();
+        if (item) {
+            const question = item.querySelector('.faq-question')?.textContent.trim().toLowerCase();
+            const answer = item.querySelector('.faq-answer')?.textContent.trim().toLowerCase();
 
-        if (question.includes(query) || answer.includes(query)) {
-            item.style.display = ''; // Exibe o item do FAQ
-            faqVisibleCount++;
-        } else {
-            item.style.display = 'none'; // Oculta o item do FAQ
+            if (question && answer && (question.includes(query) || answer.includes(query))) {
+                item.style.display = ''; // Exibe o item do FAQ
+                visibleCount++;
+            } else {
+                item.style.display = 'none'; // Oculta o item do FAQ
+            }
         }
     });
 
     // Pesquisa nos itens da lista
     const listItems = document.querySelectorAll('ul li');
-    let listVisibleCount = 0;
-
     listItems.forEach(item => {
-        const title = item.querySelector('span').textContent.trim().toLowerCase();
-        if (title.includes(query)) {
+        const title = item.querySelector('span')?.textContent.trim().toLowerCase();
+        if (title && title.includes(query)) {
             item.style.display = ''; // Exibe o item da lista
-            listVisibleCount++;
+            visibleCount++;
         } else {
             item.style.display = 'none'; // Oculta o item da lista
         }
     });
 
-    // Pesquisa nos cards dos conteúdos úteis
-    const cardItems = document.querySelectorAll('.card');
-    let cardVisibleCount = 0;
-
-    cardItems.forEach(card => {
-        const cardTitle = card.querySelector('.card-title').textContent.trim().toLowerCase();
-
-        if (cardTitle.includes(query)) {
-            card.parentElement.style.display = ''; // Exibe o card e ajusta a coluna
-            cardVisibleCount++;
-        } else {
-            card.parentElement.style.display = 'none'; // Oculta o card e a coluna
-        }
-    });
-
     // Nenhum resultado encontrado
-    const totalVisibleCount = faqVisibleCount + listVisibleCount + cardVisibleCount;
-    if (totalVisibleCount === 0) {
-        if (!document.getElementById('noResultsMessage')) {
+    const noResultsContainer = document.getElementById('no-results-container');
+    const contentContainer = document.getElementById('tutorials-item-list');
+    
+    if (visibleCount === 0) {
+        if (!noResultsContainer) {
+            const container = document.createElement('div');
+            container.id = 'no-results-container';
+            container.className = 'text-center py-8';
+            
             const message = document.createElement('p');
-            message.id = 'noResultsMessage';
+            message.className = 'text-gray-500 text-lg';
             message.textContent = 'Nenhum resultado encontrado.';
-            message.style.color = '#999';
-            message.style.textAlign = 'center';
-            document.querySelector('.container').appendChild(message);
+            
+            container.appendChild(message);
+            contentContainer.insertAdjacentElement('afterend', container);
         }
-    } else {
-        const noResultsMessage = document.getElementById('noResultsMessage');
-        if (noResultsMessage) noResultsMessage.remove();
+    } else if (noResultsContainer) {
+        noResultsContainer.remove();
     }
 });

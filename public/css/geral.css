@@ -22,10 +22,6 @@ body {
     position: relative;
 }
 
-.container section {
-    padding-top: 18px;
-}
-
 .container section h2 {
     color: var(--secondary-color);
     top: 149px;
@@ -61,7 +57,7 @@ ul {
     line-height: normal;
 }
 
-.container ul li {
+.container ul .links {
     background-color: var(--light-bg);
     padding-left: 4px;
     padding-right: 4px;
@@ -78,7 +74,7 @@ ul {
     margin-right: -10px;
 }
 
-li {
+.links {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -92,7 +88,7 @@ li {
     gap: 10px;
 }
 
-li span {
+.links span {
     flex-grow: 1;
     margin-right: 10px;
     white-space: normal;
@@ -101,7 +97,7 @@ li span {
     max-width: calc(100% - 120px);
 }
 
-li .buttons {
+.links .buttons {
     display: flex;
     flex-direction: column;
     flex-shrink: 0;
@@ -146,6 +142,7 @@ button:hover {
     margin-bottom: 5px;
     border-bottom: 1px solid var(--border-color);
     padding-bottom: 5px;
+    font-size: 2rem;
 }
 
 .category-content {
@@ -183,20 +180,20 @@ button:hover {
 .view-counter {
     font-size: 13px;
     line-height: 12px;
-    position: fixed;
-    top: 20px;
+    position: absolute;
+    top: 0;
     right: 0;
     background-color: #ecf0f1;
     color: var(--text-color);
     padding: 5px 10px;
-    border-radius: 8px;
+    border-radius: 0 0 0 8px;
     box-shadow: 0 1px 3px var(--container-shadow);
     font-weight: bold;
     display: flex;
     align-items: center;
     gap: 15px;
     font-size: 14px;
-    z-index: 2;
+    z-index: 9999;
 }
 
 .view-counter .title {
@@ -228,7 +225,6 @@ footer {
 }
 
 #search-bar {
-    margin-bottom: 20px;
     padding: 10px;
     width: 100%;
     border: 1px solid var(--border-color);
@@ -295,6 +291,7 @@ footer {
 
 button.menu-icon {
     transition: background-color 0.3s ease;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.08);
 }
 
 @media (hover: hover) {
@@ -422,7 +419,7 @@ button.menu-icon {
 
 .hero.faq {
     background-image:linear-gradient(to right, #34e89e 0%, #0f3443 100%);
-    margin-bottom: 0px;
+    margin-bottom: 10px;
 }
 
 .hero h1 {
@@ -431,7 +428,9 @@ button.menu-icon {
     color: white;
 }
 
-.hero p {
+.hero > div > p,
+.hero .container-custom > p,
+.hero > p {
     font-size: 1.2rem;
     margin-top: 15px;
     color: white;

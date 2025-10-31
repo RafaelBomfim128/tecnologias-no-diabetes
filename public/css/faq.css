@@ -1,9 +1,5 @@
 @import url('variables.css');
 
-.faq {
-    margin-top: 20px;
-}
-
 .faq-item {
     margin-bottom: 10px;
     border: 1px solid var(--border-color);

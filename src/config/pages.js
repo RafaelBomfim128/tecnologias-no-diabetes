@@ -2,6 +2,27 @@
 const labels = require('../config/labels.json');
 const formatPath = require('../utils/formatPath');
 
+// Helper function to get gradient color class based on category
+function getCategoryGradient(category) {
+    const gradientMap = {
+        'xDrip': 'hero-blue',
+        'Android APS': 'hero-green',
+        'Nightscout': 'hero-purple',
+        'iOS': 'hero-indigo',
+        'Relógios': 'hero-teal',
+        'Bombas': 'hero-orange',
+        'Ponto de partida': 'hero-gradient-soft',
+        'Libre': 'hero-blue',
+        'Smart': 'hero-green',
+        'Sibionics': 'hero-purple',
+        'Sensores': 'hero-indigo',
+        'Dicas e truques': 'hero-pink',
+        'Outros': 'hero-teal',
+        'Todos os tutoriais': 'hero-gradient-soft'
+    };
+    return gradientMap[category] || 'hero-blue';
+}
+
 module.exports = function buildPages({
     downloadsFormatted,
     tutorialsFormatted,
@@ -60,6 +81,7 @@ module.exports = function buildPages({
                 title: category,
                 desc: labels.tutorials.find(t => t.category === category)?.description || '',
                 image: labels.tutorials.find(t => t.category === category)?.image || '',
+                heroGradient: getCategoryGradient(category),
                 apiBaseUrl, apiKey, mostRecentNotificationId
             }
         });
@@ -73,6 +95,7 @@ module.exports = function buildPages({
             links: tutorialsTotal,
             title: 'Todos os tutoriais',
             desc: 'Todos os tutoriais disponíveis em uma única página.',
+            heroGradient: getCategoryGradient('Todos os tutoriais'),
             apiBaseUrl, apiKey, mostRecentNotificationId
         }
     });
@@ -86,19 +109,21 @@ module.exports = function buildPages({
             title: 'Freestyle Libre 1 e 2',
             desc: labels.tutorials.find(item => item.category === 'Libre').description,
             image: labels.tutorials.find(item => item.category === 'Libre').image,
+            heroGradient: getCategoryGradient('Libre'),
             apiBaseUrl, apiKey, mostRecentNotificationId
         }
     });
 
-    // aidex category
+    // smart category
     pages.push({
         template: 'template-tutoriais-item.html',
-        output: 'item-tutorial-aidex.html',
+        output: 'item-tutorial-smart.html',
         data: {
-            links: tutorialsFormatted['AiDEX'],
-            title: 'AiDEX',
-            desc: labels.tutorials.find(item => item.category === 'AiDEX').description,
-            image: labels.tutorials.find(item => item.category === 'AiDEX').image,
+            links: tutorialsFormatted['Smart'],
+            title: 'Smart',
+            desc: labels.tutorials.find(item => item.category === 'Smart').description,
+            image: labels.tutorials.find(item => item.category === 'Smart').image,
+            heroGradient: getCategoryGradient('Smart'),
             apiBaseUrl, apiKey, mostRecentNotificationId
         }
     });
@@ -112,6 +137,7 @@ module.exports = function buildPages({
             title: 'Sibionics',
             desc: labels.tutorials.find(item => item.category === 'Sibionics').description,
             image: labels.tutorials.find(item => item.category === 'Sibionics').image,
+            heroGradient: getCategoryGradient('Sibionics'),
             apiBaseUrl, apiKey, mostRecentNotificationId
         }
     });
@@ -232,6 +258,13 @@ module.exports = function buildPages({
     pages.push({
         template: 'template-gerador-qr-code-juggluco.html',
         output: 'gerador-qr-code-juggluco.html',
+        data: { apiBaseUrl, apiKey, mostRecentNotificationId }
+    });
+
+    // tool Nightscout tester
+    pages.push({
+        template: 'template-testador-nightscout.html',
+        output: 'testador-nightscout.html',
         data: { apiBaseUrl, apiKey, mostRecentNotificationId }
     });
 
