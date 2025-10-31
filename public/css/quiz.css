@@ -29,10 +29,10 @@
     margin-bottom: 30px;
 }
 
-#send-ranking-button {
+#send-ranking-button,
+#share-result {
     padding: 10px 20px;
     font-size: 16px;
-    background-color: var(--primary-color);
     color: white;
     border: none;
     border-radius: 5px;

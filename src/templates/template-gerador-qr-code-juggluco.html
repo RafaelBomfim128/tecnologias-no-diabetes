@@ -16,7 +16,7 @@
   <link rel="stylesheet" href="./css/gerador-qr-code-juggluco.css">
 </head>
 
-<body class="bg-gray-50">
+<body class="bg-gray-50" id="page-tools-qr">
     {{> view-counter }}
     {{> menu }}  <!-- Conteúdo Principal -->
   <main class="container-custom py-8 animate-fade-in">
@@ -31,8 +31,9 @@
 
     <!-- Hero Section -->
     <div class="hero bg-gradient-to-br from-teal-600 to-cyan-700 mb-8 animate-fade-in">
+      <div class="text-6xl mb-4 animate-bounce">📷</div>
       <h1 class="text-white text-3xl md:text-4xl font-bold mb-3">
-        📷 Gerador de QR Code para Sibionics
+        Gerador de QR Code para Sibionics
       </h1>
       <p class="text-white/90 text-lg max-w-3xl mx-auto">
         Utilize o Juggluco quando tiver dificuldades para ler o QR Code da caixa
@@ -93,7 +94,7 @@
               id="qrCode" 
               src="" 
               alt="QR Code será exibido aqui" 
-              class="max-w-[250px] w-full transition-transform hover:scale-105">
+              class="max-w-[250px] w-full">
           </div>
         </div>
       </div>

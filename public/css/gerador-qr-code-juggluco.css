@@ -41,9 +41,10 @@
     border-radius: 8px;
 }
 
-.qrcode-output img:hover {
-    transform: scale(1.1);
-    opacity: 0.9;
+/* Remover qualquer zoom no hover especificamente nesta página */
+#page-tools-qr .qrcode-output img:hover {
+    transform: none;
+    opacity: 1;
 }
 
 @media (max-width: 768px) {
@@ -62,4 +63,9 @@ input[type="text"] {
 input[type="text"]:focus {
     border-color: #007BFF;
     outline: none;
+}
+
+/* Desativar zoom de cards nesta página */
+#page-tools-qr .card:hover {
+    transform: none !important;
 }

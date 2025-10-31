@@ -231,3 +231,8 @@ pre {
 .usage-counter .usage-value {
     font-weight: 600;
 }
+
+/* Desativar zoom de card somente nesta página */
+#page-nightscout-tester .card:hover {
+    transform: none !important;
+}
