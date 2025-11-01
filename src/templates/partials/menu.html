@@ -19,7 +19,7 @@
                 <a href="faq.html" class="nav-link" id="desktop-menu-faq">FAQ</a>
                 <a href="notificacoes.html" class="relative nav-link" id="desktop-menu-notifications">
                     <span>Avisos</span>
-                    <span class="absolute -top-1 -right-1 w-2 h-2 bg-red-500 rounded-full animate-pulse" id="notification-indicator"></span>
+                    <span class="absolute -top-1 -right-1 w-2 h-2 bg-red-500 rounded-full animate-pulse hidden" id="notification-indicator"></span>
                 </a>
             </div>
             
@@ -62,7 +62,7 @@
                 </a>
                 <a href="notificacoes.html" class="nav-link block py-2 px-3 rounded-md hover:bg-gray-100 relative" id="mobile-menu-notifications">
                     <span class="mr-2">🔔</span> Avisos
-                    <span class="absolute top-2 left-8 w-2 h-2 bg-red-500 rounded-full animate-pulse" id="mobile-notification-indicator"></span>
+                    <span class="absolute top-2 left-8 w-2 h-2 bg-red-500 rounded-full animate-pulse hidden" id="mobile-notification-indicator"></span>
                 </a>
             </div>
         </div>
@@ -107,5 +107,34 @@ document.addEventListener('DOMContentLoaded', function() {
             link.classList.add('nav-link-active');
         }
     });
+
+    try {
+        const desktopIndicator = document.getElementById('notification-indicator');
+        const mobileIndicator = document.getElementById('mobile-notification-indicator');
+        const desktopLink = document.getElementById('desktop-menu-notifications');
+        const mobileLink = document.getElementById('mobile-menu-notifications');
+
+        const mostRecentNotificationId = window.env && window.env.MOST_RECENT_NOTIFICATION_ID;
+        const lastViewedNotificationId = localStorage.getItem('lastViewedNotification');
+        const hasUnread = Boolean(mostRecentNotificationId) && (!lastViewedNotificationId || lastViewedNotificationId !== mostRecentNotificationId);
+
+        const setIndicator = (visible) => {
+            if (desktopIndicator) desktopIndicator.classList.toggle('hidden', !visible);
+            if (mobileIndicator) mobileIndicator.classList.toggle('hidden', !visible);
+        };
+
+        setIndicator(hasUnread);
+
+        const markAsRead = () => {
+            if (!mostRecentNotificationId) return;
+            localStorage.setItem('lastViewedNotification', mostRecentNotificationId);
+            setIndicator(false);
+        };
+
+        if (desktopLink) desktopLink.addEventListener('click', markAsRead);
+        if (mobileLink) mobileLink.addEventListener('click', markAsRead);
+    } catch (e) {
+        console.debug('Avisos indicator setup skipped:', e);
+    }
 });
 </script>
