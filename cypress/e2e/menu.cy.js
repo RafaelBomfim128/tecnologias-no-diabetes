@@ -15,8 +15,8 @@ describe('Menu tests', () => {
 
         cy.visit('/')
         cy.get(layout.menu_btn).should('be.visible').highlight().click()
-        cy.get(layout.menu_sidenav_div).should('be.visible').find('a').should('have.length', menuLinks.length + 1) //+1 because close button
-        cy.get(layout.menu_close_a).should('be.visible').highlight().click()
+        cy.get(layout.menu_sidenav_div).should('be.visible').find('a').should('have.length', menuLinks.length)
+        cy.get(layout.menu_btn).should('be.visible').highlight().click()
         cy.get(layout.menu_sidenav_div).should('not.be.visible')
 
         menuLinks.forEach(item => {

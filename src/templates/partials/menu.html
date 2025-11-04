@@ -1,6 +1,6 @@
-<nav class="rounded-md shadow-lg ring sticky bg-white animate-fade-in relative" id="main-nav" style="top: 20px; z-index: 40;">
+<nav class="rounded-md shadow-lg ring sticky bg-white animate-fade-in relative" id="main-nav" style="top: 25px; z-index: 40;">
     <div class="container-custom">
-        <div class="flex justify-between items-center h-16">
+        <div class="flex justify-between items-center h-10">
             <!-- Logo/Título -->
             <a href="index.html" class="flex items-center space-x-2 group" id="nav-logo">
                 <span class="text-2xl">💉</span>
@@ -24,10 +24,10 @@
             </div>
             
             <!-- Botão Mobile Menu -->
-            <button class="lg:hidden p-2 rounded-md hover:bg-gray-100 transition-colors" 
+            <button class="ml-2 lg:hidden p-1 rounded-md bg-blue-300 hover:bg-blue-300 transition-colors"
                     id="mobile-menu-btn" 
                     aria-label="Menu de navegação"
-                    onclick="toggleMobileMenu()">
+                    onclick="toggleMobileMenu(event)">
                 <svg class="w-6 h-6 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24" id="menu-icon">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
                 </svg>
@@ -36,7 +36,7 @@
     </div>
     
     <!-- Menu Mobile (dropdown) -->
-    <div class="hidden lg:hidden absolute left-0 right-0 bg-white shadow-lg border-t border-gray-200 animate-slide-up" id="mobile-menu" style="top: 100%;">
+    <div id="mobile-menu" class="hidden lg:hidden absolute left-0 right-0 bg-white shadow-lg border-t border-gray-200 animate-slide-up" style="top: 100%;">
         <div class="container-custom py-4">
             <div class="flex flex-col space-y-2">
                 <a href="index.html" class="nav-link block py-2 px-3 rounded-md hover:bg-gray-100" id="mobile-menu-home">
@@ -70,8 +70,11 @@
 </nav>
 
 <script>
-// Função para toggle do menu mobile
-function toggleMobileMenu() {
+function toggleMobileMenu(evt) {
+    if (evt) {
+        evt.preventDefault();
+        evt.stopPropagation();
+    }
     const mobileMenu = document.getElementById('mobile-menu');
     const menuIcon = document.getElementById('menu-icon');
     
@@ -86,7 +89,6 @@ function toggleMobileMenu() {
     }
 }
 
-// Fechar menu mobile ao clicar em um link
 document.addEventListener('DOMContentLoaded', function() {
     const mobileMenuLinks = document.querySelectorAll('#mobile-menu a');
     mobileMenuLinks.forEach(link => {
@@ -100,7 +102,25 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
-    // Marcar página ativa
+    document.addEventListener('click', function(e) {
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuBtn = document.getElementById('mobile-menu-btn');
+        const menuIcon = document.getElementById('menu-icon');
+        if (!mobileMenu) return;
+        const isOpen = !mobileMenu.classList.contains('hidden');
+        if (!isOpen) return;
+
+        const clickInsideMenu = e.target.closest('#mobile-menu') !== null;
+        const clickOnButton = e.target.closest('#mobile-menu-btn') !== null;
+
+        if (!clickInsideMenu && !clickOnButton) {
+            mobileMenu.classList.add('hidden');
+            if (menuIcon) {
+                menuIcon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>';
+            }
+        }
+    });
+
     const currentPage = window.location.pathname.split('/').pop() || 'index.html';
     document.querySelectorAll('.nav-link').forEach(link => {
         if (link.getAttribute('href') === currentPage) {
@@ -135,6 +155,23 @@ document.addEventListener('DOMContentLoaded', function() {
         if (mobileLink) mobileLink.addEventListener('click', markAsRead);
     } catch (e) {
         console.debug('Avisos indicator setup skipped:', e);
+    }
+
+    try {
+        const nav = document.getElementById('main-nav');
+        if (nav) {
+            const defaultTop = '25px';
+            const stuckTop = '0px';
+            const onScroll = () => {
+                const y = window.scrollY || window.pageYOffset || 0;
+                const nextTop = y > 0 ? stuckTop : defaultTop;
+                if (nav.style.top !== nextTop) nav.style.top = nextTop;
+            };
+            onScroll();
+            window.addEventListener('scroll', onScroll, { passive: true });
+        }
+    } catch (e) {
+        // no-op
     }
 });
 </script>

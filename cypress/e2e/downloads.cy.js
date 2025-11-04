@@ -9,11 +9,11 @@ describe('Downloads section', () => {
         cy.get(downloads.hero_div).should('be.visible').highlight()
         cy.get(downloads.title_h1).should('be.visible').highlight()
         cy.get(downloads.desc_p).should('be.visible').highlight()
-        cy.get(downloads.links_ul).should('be.visible').highlight()
-        cy.get(downloads.links_li).should('be.visible').highlight()
-        cy.get(downloads.links_li).each($el => {
+        cy.get(downloads.links_card_div).should('be.visible').highlight()
+        cy.get(downloads.links_card_div).each($el => {
             cy.wrap($el).find(downloads.button_download_btn).should('be.visible').highlight()
             cy.wrap($el).find(downloads.button_copy_link_btn).should('be.visible').highlight()
+            cy.wrap($el).find(downloads.short_link_p).should('be.visible').highlight()
         })
     })
 
@@ -22,10 +22,15 @@ describe('Downloads section', () => {
         cy.get(home.downloads_open_a).click()
         cy.getDownloadsDataSheet().then(data => {
             data.forEach((item, i) => {
-                cy.get(downloads.links_li).eq(i).highlight().then($el => {
-                    cy.wrap($el).find('span').should('have.text', item.title)
-                    cy.wrap($el).find(downloads.button_download_btn).should('have.attr', 'onclick', `window.open('${item.fullUrl}', '_blank')`)
-                    cy.wrap($el).find(downloads.button_copy_link_btn).should('have.attr', 'onclick', `copyLink('${item.newLink}', this)`)
+                cy.get(downloads.links_card_div).eq(i).highlight().then($el => {
+                    cy.wrap($el).find('h3').highlight().invoke('text').then(title => {
+                        expect(title.trim()).to.eq(item.title.trim())
+                    })
+                    cy.wrap($el).find(downloads.button_download_btn).should('have.attr', 'onclick', `window.open('${item.fullUrl}', '_blank')`).highlight()
+                    cy.wrap($el).find(downloads.button_copy_link_btn).should('have.attr', 'onclick', `copyDownloadLink('${item.newLink}', this)`).highlight()
+                    cy.wrap($el).find(downloads.short_link_p).highlight().invoke('text').then(text => {
+                        expect(text.trim()).to.contain(item.newLink)
+                    })
                 })
             })
         })

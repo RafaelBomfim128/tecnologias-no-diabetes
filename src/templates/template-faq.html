@@ -43,7 +43,7 @@
         {{> notificacoes }}
 
         <!-- Hero Section -->
-        <div class="bg-gradient-to-r from-blue-600 to-indigo-600 text-white py-12 md:py-16 mt-6 mx-4 md:mx-auto md:max-w-7xl rounded-2xl shadow-xl animate-scale-in">
+        <div class="hero bg-gradient-to-r from-blue-600 to-indigo-600 text-white py-12 md:py-16 mt-6 mx-4 md:mx-auto md:max-w-7xl rounded-2xl shadow-xl animate-scale-in">
             <div class="container-custom text-center">
                 <div class="text-6xl mb-4 animate-bounce">❓💡</div>
                 <h1 id="faq-main-title" class="text-4xl md:text-5xl font-bold mb-4 text-white">
@@ -56,7 +56,7 @@
         </div>
 
         <!-- Search and FAQ Content -->
-        <section id="section-faq" class="container-custom py-8">
+        <section id="section-faq" class="container-custom">
             <div class="max-w-4xl mx-auto">
                 <!-- Search Bar -->
                 <div class="mb-4 mt-4 animate-slide-up">
@@ -90,7 +90,7 @@
                             <span class="arrow flex-shrink-0 ml-auto" id="faq-arrow-{{this.id}}"></span>
                         </button>
                         <div data-cy="faq-answer" 
-                             class="faq-answer text-gray-700 leading-relaxed border-t border-gray-100 overflow-hidden transition-all duration-300" 
+                             class="faq-answer text-gray-700 mb-2 leading-relaxed border-t border-gray-100 overflow-hidden transition-all duration-300" 
                              id="faq-answer-{{this.id}}"
                              style="max-height: 0; padding-top: 0; padding-bottom: 0; padding-left: 1.5rem; padding-right: 1.5rem;">
                             <div class="flex items-start gap-3">
