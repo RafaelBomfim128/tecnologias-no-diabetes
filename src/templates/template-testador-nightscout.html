@@ -23,13 +23,30 @@
     <!-- Conteúdo Principal -->
     <main class="container-custom py-8 animate-fade-in">
         <!-- Breadcrumb -->
-        <nav class="flex items-center space-x-2 text-sm text-gray-600 mb-6" aria-label="Breadcrumb">
-            <a href="index.html" class="hover:text-diabetes-primary transition-colors">Início</a>
-            <span>›</span>
-            <a href="ferramentas.html" class="hover:text-diabetes-primary transition-colors">Ferramentas</a>
-            <span>›</span>
-            <span class="text-diabetes-primary font-medium">Testador de Nightscout</span>
-        </nav>
+        <div class="bg-white border-b overflow-hidden">
+            <div class="container-custom py-3">
+                <nav class="flex flex-wrap items-center text-sm text-gray-600 gap-1" aria-label="Breadcrumb">
+                    <a href="index.html" class="hover:text-diabetes-primary transition-colors flex-shrink-0">
+                        <svg class="w-4 h-4 inline mr-1" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z"/>
+                        </svg>
+                        Início
+                    </a>
+                    <svg class="w-4 h-4 mx-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"/>
+                    </svg>
+                    <a href="ferramentas.html" class="hover:text-diabetes-primary transition-colors flex-shrink-0">
+                        Ferramentas
+                    </a>
+                    <svg class="w-4 h-4 mx-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"/>
+                    </svg>
+                    <span class="text-diabetes-primary font-medium truncate overflow-hidden text-ellipsis whitespace-nowrap" style="max-width: calc(100vw - 200px);">Testador de Nightscout</span>
+                </nav>
+            </div>
+        </div>
+
+        {{> notificacoes }}
 
         <!-- Hero Section -->
         <div class="hero bg-gradient-to-br from-indigo-600 to-purple-700 mb-8 animate-fade-in">

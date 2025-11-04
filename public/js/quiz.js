@@ -390,6 +390,7 @@ document.addEventListener("DOMContentLoaded", () => {
     function restartQuiz() {
         resetVariables();
         updateQuestionCounter();
+        document.getElementById('total-score').innerText = '0';
         document.getElementById('quiz-results').style.display = 'none';
         document.getElementById('quiz-start').style.display = 'block';
         document.getElementById('quiz-start-button').textContent = 'Iniciar Quiz';

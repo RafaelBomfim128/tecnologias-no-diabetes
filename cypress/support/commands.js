@@ -21,7 +21,7 @@ Cypress.Commands.add('validateLayout', (returnBtn = true, searchBar = true) => {
     cy.get(layout.view_counter_div).should('be.visible').highlight()
     cy.get(layout.notification_icon_img).should('be.visible').highlight()
     cy.get(layout.menu_btn).should('be.visible').highlight()
-    if (returnBtn) cy.get(layout.return_a).should('be.visible').highlight()
+    if (returnBtn) cy.get(layout.breadcumb_nav).should('be.visible').highlight()
     if (searchBar) cy.get(layout.search_bar_ipt).should('be.visible').highlight()
     cy.get(layout.share_section_div).should('be.visible').highlight()
     cy.get(layout.share_button_fb_a).should('be.visible').highlight()

@@ -1,6 +1,6 @@
 {
     "hero_div": ".hero",
     "title_h1": "h1",
-    "desc_p": ".hero > p",
+    "desc_p": ".hero > .container-custom:eq(0) p",
     "all_cards_div": ".card"
 }

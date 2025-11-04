@@ -1,10 +1,9 @@
 {
     "hero_div": ".hero",
     "title_h1": "h1",
-    "desc_p": ".hero > p",
-    "downloads_section_div": "#content-downloads",
-    "links_ul": "#content-downloads ul",
-    "links_li": "#content-downloads ul li",
+    "desc_p": ".hero > .container-custom:eq(0) p",
+    "links_card_div": "#downloads-grid .card-body:not(.coming-soon)",
     "button_download_btn": "[data-cy=download]",
-    "button_copy_link_btn": "[data-cy=copy]"
+    "button_copy_link_btn": "[data-cy=copy]",
+    "short_link_p": "[data-cy=short-link]"
 }
