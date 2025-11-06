@@ -20,16 +20,16 @@ describe('Tutorials section', () => {
             'Relógios',
             'Bombas',
             'Outros',
-            'Ver tudo'
+            'Ver Todos os Tutoriais'
         ]
         macroCategories.forEach((item, idx) => {
             cy.get(tutorials.all_cards_div).eq(idx).then($el => {
-                const category = $el.find('h5').text()
+                const category = $el.find('h2').text()
                 expect(category).to.eq(item)
-                if (item !== 'Ver tudo') {
+                if (item !== 'Ver Todos os Tutoriais') {
                     cy.wrap($el).find('img').should('be.visible').highlight().should('have.attr', 'src', labels.tutorials.find(t => t.category === category)?.image)
                 }
-                cy.wrap($el).find('p').should('be.visible').highlight().should('have.text', labels.tutorials.find(t => t.category === category)?.description)
+                cy.wrap($el).find('p').should('be.visible').highlight().invoke('text').then(text => expect(text.trim()).to.eq(labels.tutorials.find(t => t.category === category)?.description))
                 cy.wrap($el).find('a').should('be.visible').highlight().invoke('attr', 'href').should('not.equal', '')
             })
         })
@@ -53,7 +53,7 @@ describe('Tutorials section', () => {
             watches: { screen: 'Relógios', sheet: 'Relógios' },
             pumps: { screen: 'Bombas', sheet: 'Bombas' },
             others: { screen: 'Outros', sheet: 'Outros' },
-            all: { screen: 'Ver tudo', sheet: null }
+            all: { screen: 'Ver Todos os Tutoriais', sheet: null }
         }
 
         cy.visit('/')
@@ -83,10 +83,11 @@ describe('Tutorials section', () => {
                 } else if (node.sheet) {// Is not a group (direct links)
                     const itemsSheet = data[node.sheet] || []
                     itemsSheet.forEach((item, idx) => {
-                        cy.get(tutorials.links_li).eq(idx).highlight().within(() => {
-                            cy.get('span').should('have.text', item.title)
+                        cy.get(tutorials.all_cards_div).eq(idx).highlight().within(() => {
+                            cy.get('h3').invoke('text').then(text => expect(text.trim()).to.eq(item.title.trim()))
                             cy.get(tutorials.button_access_btn).should('be.visible').and('have.attr', 'onclick', `window.open('${item.fullUrl}', '_blank')`)
                             cy.get(tutorials.button_copy_link_btn).should('be.visible').and('have.attr', 'onclick', `copyLink('${item.newLink}', this)`)
+                            cy.wait(10)
                         })
                     })
                 }
@@ -104,10 +105,11 @@ describe('Tutorials section', () => {
             navigateTo([allCategories.all.screen])
 
             uniqueLinks.forEach((item, idx) => {
-                cy.get(tutorials.links_li).eq(idx).highlight().within(() => {
-                    cy.get('span').should('have.text', item.title)
+                cy.get(tutorials.all_cards_div).eq(idx).highlight().within(() => {
+                    cy.get('h3').invoke('text').then(text => expect(text.trim()).to.eq(item.title.trim()))
                     cy.get(tutorials.button_access_btn).should('be.visible').and('have.attr', 'onclick', `window.open('${item.fullUrl}', '_blank')`)
                     cy.get(tutorials.button_copy_link_btn).should('be.visible').and('have.attr', 'onclick', `copyLink('${item.newLink}', this)`)
+                    cy.wait(10)
                 })
             })
         })

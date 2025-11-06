@@ -6,8 +6,9 @@ describe('Quiz section', () => {
         cy.visit('/')
         cy.get(home.quiz_open_a).click()
         cy.validateLayout(true, false)
-        cy.get(quiz.title_h2).should('be.visible').highlight()
+        cy.get(quiz.title_h1).should('be.visible').highlight()
         cy.get(quiz.desc_p).should('be.visible').highlight()
+        cy.get(quiz.tooltip_info_p).should('be.visible').highlight()
 
         cy.get(quiz.quiz_container_div).should('be.visible').highlight()
         cy.get(quiz.quiz_category_span).should('be.visible').highlight()
@@ -76,8 +77,8 @@ describe('Quiz section', () => {
 
         for (let i = 0; i < 10; i++) {
             cy.get(quiz.quiz_option_1_btn).click().scrollIntoView({ offset: { top: -300 } }).wait(700)
-            cy.get(quiz.quiz_submit_answer_btn).click().scrollIntoView({ offset: { top: 200 } }).wait(700)
-            cy.get(quiz.quiz_next_question_p).click().scrollIntoView({ offset: { top: 100 } }).wait(700)
+            cy.get(quiz.quiz_submit_answer_btn).click().scrollIntoView({ offset: { top: 800 } }).wait(700)
+            cy.get(quiz.quiz_next_question_p).click().scrollIntoView({ offset: { top: 800 } }).wait(700)
         }
 
         cy.get(quiz.quiz_send_ranking_btn).click()

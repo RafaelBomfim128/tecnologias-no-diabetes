@@ -1,6 +1,7 @@
 {
-    "title_h2": "#quiz-title",
+    "title_h1": "#quiz-title",
     "desc_p": "#quiz-description",
+    "tooltip_info_p": "#tooltip-info",
     "quiz_container_div": "#quiz-container",
     "quiz_category_span": "#category",
     "current_question_span": "#current-question",
