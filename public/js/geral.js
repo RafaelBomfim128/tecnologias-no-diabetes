@@ -191,6 +191,40 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
 });
 
+function adjustTopOverlays() {
+    try {
+        const viewCounter = document.getElementById('view-counter');
+        const bell = document.querySelector('.notification-bell');
+
+        if (!viewCounter) return;
+
+        const BELL_BASE_TOP = 35;
+        const EXTRA_MARGIN = 10;
+
+        const h = viewCounter.offsetHeight || 0;
+        const desiredTop = h > 0 ? (h + EXTRA_MARGIN) : 0;
+
+        if (bell) {
+            const top = Math.max(BELL_BASE_TOP, desiredTop);
+            bell.style.top = `${top}px`;
+        }
+    } catch (e) {
+        console.debug('adjustTopOverlays skipped:', e);
+    }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    setTimeout(adjustTopOverlays, 0);
+
+    const viewCounter = document.getElementById('view-counter');
+    if (viewCounter && 'ResizeObserver' in window) {
+        const ro = new ResizeObserver(() => adjustTopOverlays());
+        ro.observe(viewCounter);
+    } else {
+        window.addEventListener('resize', adjustTopOverlays);
+    }
+});
+
 document.addEventListener("DOMContentLoaded", () => {
     const notificationIcon = document.getElementById("notification-icon");
     const mostRecentNotificationId = window.env.MOST_RECENT_NOTIFICATION_ID;
