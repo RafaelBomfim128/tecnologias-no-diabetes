@@ -1,15 +1,62 @@
+function attachAutoHeight(answer) {
+    const setHeight = () => {
+        answer.style.maxHeight = answer.scrollHeight + 10 + 'px';
+    };
+
+    let ro;
+    if ('ResizeObserver' in window) {
+        ro = new ResizeObserver(setHeight);
+        ro.observe(answer);
+    }
+
+    const imgs = Array.from(answer.querySelectorAll('img'));
+    const imgListeners = [];
+    imgs.forEach(img => {
+        if (!img.complete) {
+            const onLoad = () => setHeight();
+            img.addEventListener('load', onLoad, { once: true });
+            imgListeners.push({ img, onLoad });
+        }
+    });
+
+    const timeouts = [0, 200, 600, 1200].map(ms => setTimeout(setHeight, ms));
+
+    return function detach() {
+        timeouts.forEach(t => clearTimeout(t));
+        imgListeners.forEach(({ img, onLoad }) => img.removeEventListener('load', onLoad));
+        if (ro) ro.disconnect();
+    };
+}
+
+function openAnswer(button, answer) {
+    if (button.classList.contains('active')) return;
+    button.classList.add('active');
+    answer.style.paddingTop = '10px';
+    answer.style.paddingBottom = '10px';
+    answer._detachAutoHeight && answer._detachAutoHeight();
+    answer._detachAutoHeight = attachAutoHeight(answer);
+    answer.style.maxHeight = answer.scrollHeight + 10 + 'px';
+}
+
+function closeAnswer(button, answer) {
+    if (!button.classList.contains('active')) return;
+    button.classList.remove('active');
+    answer.style.maxHeight = '0';
+    answer.style.paddingTop = '0';
+    answer.style.paddingBottom = '0';
+    if (answer._detachAutoHeight) {
+        answer._detachAutoHeight();
+        delete answer._detachAutoHeight;
+    }
+}
+
 document.querySelectorAll('.faq-question').forEach(button => {
     button.addEventListener('click', () => {
         const answer = button.nextElementSibling;
-        button.classList.toggle('active');
         if (button.classList.contains('active')) {
-            answer.style.maxHeight = answer.scrollHeight + 10 + "px";
-            answer.style.paddingTop = "10px";
-            answer.style.paddingBottom = "10px";
+            closeAnswer(button, answer);
         } else {
-            answer.style.maxHeight = "0";
-            answer.style.paddingTop = "0";
-            answer.style.paddingBottom = "0";
+            openAnswer(button, answer);
         }
     });
 
@@ -35,26 +82,20 @@ document.addEventListener("DOMContentLoaded", () => {
 //Scrolla para a pergunta do FAQ e abre a resposta
 document.addEventListener("DOMContentLoaded", () => {
     const urlParams = new URLSearchParams(window.location.search);
-    const faqId = urlParams.get('id'); // Obtém o parâmetro 'id' da URL
+    const faqId = urlParams.get('id');
 
     if (faqId) {
         const targetFaq = document.querySelector(`.faq-item[data-id="${faqId}"]`);
 
         if (targetFaq) {
-            //Scroll
-            targetFaq.scrollIntoView({ behavior: 'smooth' });
-
-            //Destaque
-            targetFaq.classList.add('highlighted');
-
-            //Abre a resposta
             const button = targetFaq.querySelector('.faq-question');
             const answer = button.nextElementSibling;
+            openAnswer(button, answer);
 
-            button.classList.add('active');
-            answer.style.maxHeight = answer.scrollHeight + 10 + "px";
-            answer.style.paddingTop = "10px";
-            answer.style.paddingBottom = "10px";
+            targetFaq.classList.add('highlighted');
+            requestAnimationFrame(() => {
+                targetFaq.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            });
         }
     }
 });

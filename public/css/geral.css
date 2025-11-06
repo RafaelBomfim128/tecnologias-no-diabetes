@@ -190,10 +190,11 @@ button:hover {
     box-shadow: 0 1px 3px var(--container-shadow);
     font-weight: bold;
     display: flex;
-    align-items: center;
+    align-items: baseline; /* alinha pelo baseline para evitar desalinhamento quando um valor quebra linha */
     gap: 15px;
     font-size: 14px;
     z-index: 9999;
+    pointer-events: none; /* evita bloquear cliques no sino/menu quando houver sobreposição */
 }
 
 .view-counter .title {
@@ -215,6 +216,26 @@ button:hover {
 
 .view-counter .values.last-value {
     border-right: none;
+}
+
+#view-counter > span {
+    display: inline-flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 6px;
+    padding-right: 10px;
+    border-right: 1px solid rgba(0, 120, 215, 0.3);
+}
+
+#view-counter > span:last-child {
+    border-right: none;
+    padding-right: 0;
+}
+
+.view-counter .values,
+.view-counter .title {
+    border-right: none !important;
+    padding-right: 0;
 }
 
 footer {
@@ -286,7 +307,7 @@ footer {
     font-size: 30px;
     color: var(--primary-color);
     cursor: pointer;
-    z-index: 1000;
+    z-index: 10001;
 }
 
 button.menu-icon {
@@ -326,6 +347,7 @@ button.menu-icon {
     top: 35px;
     right: 20px;
     cursor: pointer;
+    z-index: 10001;
 }
 
 .notification-bell img {

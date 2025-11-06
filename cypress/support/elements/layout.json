@@ -19,5 +19,5 @@
     "share_button_linkedin_a": "#share-btn-linkedin",
     "footer_p": "footer > p",
     "search_bar_ipt": "#search-bar",
-    "breadcumb_nav": "[aria-label=Breadcrumb]"
+    "breadcrumb_nav": "[aria-label=Breadcrumb]"
 }
