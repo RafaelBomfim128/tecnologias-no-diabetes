@@ -1,4 +1,4 @@
-.hidden {
+.hidden-element {
     display: none !important;
 }
 
@@ -17,7 +17,6 @@ label {
     font-weight: 500;
     color: var(--primary-color);
     margin-bottom: 6px;
-    display: block;
 }
 
 input[type="text"],

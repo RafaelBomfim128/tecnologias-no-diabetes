@@ -39,21 +39,40 @@ document.getElementById('search-bar').addEventListener('input', function () {
         }
     });
 
-    // Pesquisa nos itens da lista
+    // Pesquisa nas listas simples (ex: página "Ver tudo" de tutoriais)
     const listItems = document.querySelectorAll('ul li');
     listItems.forEach(item => {
-        const title = item.querySelector('span')?.textContent.trim().toLowerCase();
+        const span = item.querySelector('span');
+        if (!span) return; // ignora menus/breadcrumbs
+        const title = span.textContent.trim().toLowerCase();
         if (title && title.includes(query)) {
-            item.style.display = ''; // Exibe o item da lista
+            item.style.display = '';
             visibleCount++;
         } else {
-            item.style.display = 'none'; // Oculta o item da lista
+            item.style.display = 'none';
+        }
+    });
+
+    // Pesquisa nos PDFs (conteúdos úteis) - cards dentro de #recursos
+    const pdfCards = document.querySelectorAll('#recursos > div');
+    pdfCards.forEach(wrapper => {
+        const titleEl = wrapper.querySelector('.card-title');
+        if (!titleEl) return; // não é um card de pdf
+        const title = titleEl.textContent.trim().toLowerCase();
+        if (title.includes(query)) {
+            wrapper.style.display = '';
+            visibleCount++;
+        } else {
+            wrapper.style.display = 'none';
         }
     });
 
     // Nenhum resultado encontrado
     const noResultsContainer = document.getElementById('no-results-container');
-    const contentContainer = document.getElementById('tutorials-item-list');
+    // Define onde anexar a mensagem dependendo da página
+    let contentContainer = document.getElementById('tutorials-item-list');
+    if (!contentContainer) contentContainer = document.getElementById('recursos');
+    if (!contentContainer) contentContainer = document.querySelector('main');
     
     if (visibleCount === 0) {
         if (!noResultsContainer) {
@@ -66,7 +85,7 @@ document.getElementById('search-bar').addEventListener('input', function () {
             message.textContent = 'Nenhum resultado encontrado.';
             
             container.appendChild(message);
-            contentContainer.insertAdjacentElement('afterend', container);
+            if (contentContainer) contentContainer.insertAdjacentElement('afterend', container);
         }
     } else if (noResultsContainer) {
         noResultsContainer.remove();
