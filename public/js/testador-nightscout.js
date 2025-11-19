@@ -31,21 +31,21 @@ document.addEventListener("DOMContentLoaded", () => {
             if (!url.value) {
                 url.classList.add('error-input');
                 url.focus();
-                document.getElementById('urlError').classList.remove('hidden');
+                document.getElementById('urlError').classList.remove('hidden-element');
                 return;
             } else {
                 url.classList.remove('error-input');
-                document.getElementById('urlError').classList.add('hidden');
+                document.getElementById('urlError').classList.add('hidden-element');
             }
 
             if (!apiSecret.value) {
                 apiSecret.classList.add('error-input');
                 apiSecret.focus();
-                document.getElementById('apiSecretError').classList.remove('hidden');
+                document.getElementById('apiSecretError').classList.remove('hidden-element');
                 return;
             } else {
                 apiSecret.classList.remove('error-input');
-                document.getElementById('apiSecretError').classList.add('hidden');
+                document.getElementById('apiSecretError').classList.add('hidden-element');
             }
 
             if (!url.value.toLowerCase().startsWith('http') && !url.value.toLowerCase().startsWith('https')) {
@@ -67,7 +67,7 @@ document.addEventListener("DOMContentLoaded", () => {
             await checkValidUrl();
             populateResume();
             const shareBtn = document.querySelector('#shareWhatsApp');
-            if (shareBtn) shareBtn.classList.remove('hidden');
+            if (shareBtn) shareBtn.classList.remove('hidden-element');
             dateResult = new Date();
         });
     }
@@ -136,13 +136,13 @@ function reset() {
     resumeText = ''
     dateResult = ''
     const resume = document.getElementById('resume').textContent = 'Aguardando testes concluírem...'
-    document.getElementById('urlError').classList.add('hidden');
-    document.getElementById('apiSecretError').classList.add('hidden');
-    document.querySelector('.status-list').classList.add('hidden');
-    document.getElementById('resume').classList.add('hidden');
-    document.querySelector('.resume-title').classList.add('hidden');
+    document.getElementById('urlError').classList.add('hidden-element');
+    document.getElementById('apiSecretError').classList.add('hidden-element');
+    document.querySelector('.status-list').classList.add('hidden-element');
+    document.getElementById('resume').classList.add('hidden-element');
+    document.querySelector('.resume-title').classList.add('hidden-element');
     const shareBtn = document.getElementById('shareWhatsApp');
-    if (shareBtn) shareBtn.classList.add('hidden');
+    if (shareBtn) shareBtn.classList.add('hidden-element');
     setNoResult(validUrlId)
     setNoResult(correctSecretId)
     setNoResult(recentDataId)
@@ -152,10 +152,10 @@ function reset() {
 
 function showResume() {
     const statusList = document.querySelector('.status-list');
-    if (statusList.classList.contains('hidden')) {
-        statusList.classList.remove('hidden');
-        document.getElementById('resume').classList.remove('hidden');
-        document.querySelector('.resume-title.hidden').classList.remove('hidden');
+    if (statusList.classList.contains('hidden-element')) {
+        statusList.classList.remove('hidden-element');
+        document.getElementById('resume').classList.remove('hidden-element');
+        document.querySelector('.resume-title.hidden-element').classList.remove('hidden-element');
     }
     const y = statusList.getBoundingClientRect().top + window.pageYOffset - 100;
     window.scrollTo({ top: y, behavior: 'smooth' });
