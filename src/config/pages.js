@@ -15,6 +15,7 @@ function getCategoryGradient(category) {
         'Libre': 'hero-blue',
         'Smart': 'hero-green',
         'Sibionics': 'hero-purple',
+        'Accu-Chek SmartGuide': 'hero-blue',
         'Sensores': 'hero-indigo',
         'Dicas e truques': 'hero-pink',
         'Outros': 'hero-teal',
@@ -120,7 +121,7 @@ module.exports = function buildPages({
         output: 'item-tutorial-smart.html',
         data: {
             links: tutorialsFormatted['Smart'],
-            title: 'Smart',
+            title: 'Smart Medlevensohn',
             desc: labels.tutorials.find(item => item.category === 'Smart').description,
             image: labels.tutorials.find(item => item.category === 'Smart').image,
             heroGradient: getCategoryGradient('Smart'),
@@ -138,6 +139,20 @@ module.exports = function buildPages({
             desc: labels.tutorials.find(item => item.category === 'Sibionics').description,
             image: labels.tutorials.find(item => item.category === 'Sibionics').image,
             heroGradient: getCategoryGradient('Sibionics'),
+            apiBaseUrl, apiKey, mostRecentNotificationId
+        }
+    });
+
+    // accu-chek smartguide category
+    pages.push({
+        template: 'template-tutoriais-item.html',
+        output: 'item-tutorial-accu-chek-smartguide.html',
+        data: {
+            links: tutorialsFormatted['Accu-Chek SmartGuide'],
+            title: 'Accu-Chek SmartGuide',
+            desc: labels.tutorials.find(item => item.category === 'Accu-Chek SmartGuide').description,
+            image: labels.tutorials.find(item => item.category === 'Accu-Chek SmartGuide').image,
+            heroGradient: getCategoryGradient('Accu-Chek SmartGuide'),
             apiBaseUrl, apiKey, mostRecentNotificationId
         }
     });
@@ -183,6 +198,7 @@ module.exports = function buildPages({
         data: { apiBaseUrl, apiKey, mostRecentNotificationId }
     });
 
+    //useful contents
     const pdfCategoriesPages = [];
     const allPdfs = [];
 
@@ -214,6 +230,7 @@ module.exports = function buildPages({
     }
 
     // useful contents total
+    const seeAllLabel = labels.usefulContents.find(item => item.category === 'Ver tudo') || {};
     pages.push({
         template: 'template-conteudos-uteis.html',
         output: 'conteudos-uteis-total.html',
@@ -223,11 +240,10 @@ module.exports = function buildPages({
             mostRecentNotificationId,
             pdfs: allPdfs,
             title: 'Todos os conteúdos úteis',
-            description: 'Todos os conteúdos úteis disponíveis em uma única página'
+            description: seeAllLabel.description
         }
     });
 
-    const seeAllLabel = labels.usefulContents.find(item => item.category === 'Ver tudo') || {};
     pdfCategoriesPages.push({
         title: seeAllLabel.category,
         icon: undefined,

@@ -36,6 +36,11 @@
             "image": "img/icons/icon-sibionics.png"
         },
         {
+            "category": "Accu-Chek SmartGuide",
+            "description": "Tutoriais sobre Accu-Chek SmartGuide",
+            "image": "img/icons/icon-accu-chek-smartguide.png"
+        },
+        {
             "category": "Nightscout",
             "description": "Plataforma que permite monitoramento remoto por familiares e compartilhamento de dados",
             "image": "img/icons/icon-nightscout.png"
@@ -72,11 +77,6 @@
     ],
     "usefulContents": [
         {
-            "category": "Área Kids no Diabetes",
-            "description": "Conteúdos voltados para crianças e adolescentes com diabetes",
-            "image": "img/icons/icon-area-kids-diabetes.png"
-        },
-        {
             "category": "Cartões de Identificação",
             "description": "Cartões de identificação para facilitar a identificação de pessoas com diabetes",
             "image": "img/icons/icon-cartoes-identificacao.png"
@@ -100,6 +100,11 @@
             "category": "Viagem de Avião",
             "description": "Dicas para viajar de avião com diabetes",
             "image": "img/icons/icon-viagem-aviao.png"
+        },
+        {
+            "category": "Área Kids no Diabetes",
+            "description": "Conteúdos voltados para crianças e adolescentes com diabetes",
+            "image": "img/icons/icon-area-kids-diabetes.png"
         },
         {
             "category": "Ver tudo",
