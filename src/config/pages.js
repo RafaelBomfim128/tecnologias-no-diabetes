@@ -121,7 +121,7 @@ module.exports = function buildPages({
         output: 'item-tutorial-smart.html',
         data: {
             links: tutorialsFormatted['Smart'],
-            title: 'Smart',
+            title: 'Smart Medlevensohn',
             desc: labels.tutorials.find(item => item.category === 'Smart').description,
             image: labels.tutorials.find(item => item.category === 'Smart').image,
             heroGradient: getCategoryGradient('Smart'),

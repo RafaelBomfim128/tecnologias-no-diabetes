@@ -44,8 +44,9 @@ describe('Tutorials section', () => {
                 screen: 'Sensores',
                 children: {
                     libre: { screen: 'Freestyle Libre 1 e 2', sheet: 'Libre' },
-                    smart: { screen: 'Smart', sheet: 'Smart' },
-                    sibionics: { screen: 'Sibionics', sheet: 'Sibionics' }
+                    smart: { screen: 'Smart Medlevensohn', sheet: 'Smart' },
+                    sibionics: { screen: 'Sibionics', sheet: 'Sibionics' },
+                    accuChekSmartGuide: { screen: 'Accu-Chek SmartGuide', sheet: 'Accu-Chek SmartGuide' }
                 }
             },
             nightscout: { screen: 'Nightscout', sheet: 'Nightscout' },
