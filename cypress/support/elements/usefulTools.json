@@ -1,0 +1,13 @@
+{
+    "hero_div": "#hero-section-tools",
+    "title_h1": "h1",
+    "desc_p": "#hero-section-tools > .container-custom:eq(0) p",
+    "all_cards_div": ".card",
+    "all_access_button_btn": "button:contains(Acessar)",
+    "all_copy_button_btn": "button:contains(Copiar)",
+    "info_box_div": "#info-box",
+    "qr_code_generator_open_btn": ".card:contains(Gerador de QR Code Juggluco) button:contains(Acessar)",
+    "qr_code_generator_1_ipt": "#qrInput1",
+    "qr_code_generator_2_ipt": "#qrInput2",
+    "qr_code_image_img": "#qrCode"
+}

@@ -2,5 +2,10 @@
     "hero_div": ".hero",
     "title_h1": "h1",
     "desc_p": ".hero > .container-custom:eq(0) p",
-    "all_cards_div": ".card"
+    "all_cards_div": ".card",
+    "disclaimer_text_p": ".disclaimer-body",
+    "item_title_h1": "#pdfs-main-title",
+    "all_items_div": "[id^=card-pdf-inner]",
+    "item_title_a": "[id^=pdf-title]",
+    "download_button_a": "[id^=download-pdf]"
 }

@@ -3,6 +3,8 @@ const { beforeRunHook, afterRunHook } = require('cypress-mochawesome-reporter/li
 require('dotenv').config();
 const readSheetData = require('./src/utils/readSheetData');
 const { removeDirectory } = require('cypress-delete-downloads-folder');
+const fs = require('fs')
+const path = require('path')
 
 module.exports = defineConfig({
     reporter: 'cypress-mochawesome-reporter',
@@ -21,7 +23,18 @@ module.exports = defineConfig({
                 getSheedData(range) {
                     return readSheetData(range)
                 },
-                removeDirectory
+                removeDirectory,
+                readDirectory({ folderPath, extension = null }) {
+                    const absolutePath = path.resolve(folderPath)
+                    let files = fs.readdirSync(absolutePath)
+                    if (extension && typeof extension === 'string') {
+                        if (!extension.startsWith('.')) {
+                            extension = `.${extension}`
+                        }
+                        files = files.filter(file => file.toLowerCase().endsWith(extension.toLowerCase()))
+                    }
+                    return files
+                }
             })
         },
         watchForFileChanges: false,
