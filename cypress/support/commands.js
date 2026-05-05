@@ -48,3 +48,7 @@ Cypress.Commands.add('getFaqDataSheet', () => {
         return faqFormatter(result)
     })
 })
+
+Cypress.Commands.add('readDirectory', (folderPath, extension = null) => {
+    cy.task('readDirectory', { folderPath: folderPath, extension: extension} )
+})

@@ -24,6 +24,14 @@ declare namespace Cypress {
         highlight(): Chainable<any>
 
         /**
+         * @description Reads the contents of a directory.
+         * @param {string} path - The path of the directory to read.
+         * @param {string} [extension] - Optional file extension to filter the results.
+         * @returns {Chainable<string[]>} An array of filenames in the directory.
+         */
+        readDirectory(path: string, extension?: string): Chainable<string[]>
+
+        /**
          * @description Validate fixed/common layout elements.
          * @param {boolean} [returnBtn=true] - If true, checks for the return button.
          * @param {boolean} [searchBar=true] - If true, checks for the
