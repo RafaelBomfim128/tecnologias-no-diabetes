@@ -231,8 +231,9 @@ pre {
     font-weight: 600;
 }
 
-/* Desativar zoom de card somente nesta página */
-#page-nightscout-tester .card:hover {
+/* Desativar zoom de card somente nestas páginas */
+#page-nightscout-tester .card:hover,
+#page-nightscout-viewer .card:hover {
     transform: none !important;
 }
 

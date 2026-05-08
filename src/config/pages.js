@@ -284,5 +284,12 @@ module.exports = function buildPages({
         data: { apiBaseUrl, apiKey, mostRecentNotificationId }
     });
 
+    // tool Nightscout viewer
+    pages.push({
+        template: 'template-visualizador-glicemias-nightscout.html',
+        output: 'visualizador-glicemias-nightscout.html',
+        data: { apiBaseUrl, apiKey, mostRecentNotificationId }
+    });
+
     return pages;
 };

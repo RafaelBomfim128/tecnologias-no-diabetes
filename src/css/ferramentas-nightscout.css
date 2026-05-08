@@ -1,0 +1,46 @@
+/* estilos específicos para o Visualizador Nightscout (campos de data - esqueleto) */
+
+/* Reserva espaço para o ícone do calendário dentro do input */
+.ns-date-input {
+  padding-right: 2.5rem;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+.ns-date-btn {
+  background: transparent;
+  border: 0;
+  padding: 0.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 2.25rem;
+  cursor: pointer;
+}
+
+.ns-date-input[disabled] {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
+.ns-date-btn[disabled] {
+  cursor: not-allowed;
+  color: #9ca3af; /* gray-400 */
+}
+
+/* Pequenos ajustes de responsividade */
+.ns-date-field { min-width: 0; }
+@media (min-width: 640px) {
+  .ns-date-field { min-width: 12rem; }
+}
+
+/* Indicação sutil de foco (componente também tem classes Tailwind para foco) */
+.ns-date-input:focus {
+  box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.08);
+}
+
+/* Mensagens de ajuda/erro já existentes usam .error-message / .hidden-element */
+
+/* Nota: comportamento do calendário (pré-seleção, habilitar/desabilitar e validações)
+   deve ser implementado via JS posteriormente. Aqui deixamos apenas o esqueleto visual. */
