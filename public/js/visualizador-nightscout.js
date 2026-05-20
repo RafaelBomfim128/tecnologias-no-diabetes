@@ -831,7 +831,7 @@ function scrollToViewerResults() {
         return;
     }
 
-    const y = resultsSection.getBoundingClientRect().top + window.pageYOffset - 100;
+    const y = resultsSection.getBoundingClientRect().top + window.pageYOffset - 200;
     window.scrollTo({ top: y, behavior: 'smooth' });
 }
 
