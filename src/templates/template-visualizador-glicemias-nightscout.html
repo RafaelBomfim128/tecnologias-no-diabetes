@@ -75,7 +75,7 @@
         </div>
 
         <!-- Card Principal -->
-        <div class="card max-w-3xl mx-auto animate-slide-up">
+        <div id="viewerMainCard" class="card max-w-3xl mx-auto animate-slide-up">
             <div class="card-body">
                 <div class="flex items-start space-x-3 mb-6">
                     <img src="./img/icons/icon-nightscout.png" alt="Nightscout" class="w-12 h-12 rounded-lg shadow-md">
@@ -84,14 +84,14 @@
                         <p class="text-gray-600">
                             Esta ferramenta permite que você visualize suas glicemias do Nightscout em formato de
                             tabela, facilitando a análise e o acompanhamento dos seus dados. Basta inserir a URL do seu
-                            Nightscout e a API Secret para acessar as informações de forma rápida e prática. Ideal para
-                            quem deseja ter uma visão clara e organizada das glicemias, sem complicações!
+                            Nightscout, a API Secret e selecionar uma data para acessar as informações de forma rápida e
+                            prática.
                         </p>
                     </div>
                 </div>
 
                 <!-- Formulário -->
-                <div class="space-y-6">
+                <div id="viewerContentSection" class="space-y-6">
                     <div>
                         <label for="urlInput" class="block text-sm font-semibold text-diabetes-primary mb-2">
                             URL do Nightscout:
@@ -118,52 +118,76 @@
                         </div>
                     </div>
 
-                    <!-- Date Range Skeleton: Data Início / Data Fim -->
-                    <div id="dateRangeContainer" class="mt-4" data-max-range-days="15" aria-hidden="false">
-                        <label class="block text-sm font-semibold text-diabetes-primary mb-2">Período</label>
-                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                            <!-- Data Início -->
+                    <section id="dateRangeContainer" class="ns-date-range" data-max-range-days="3"
+                        aria-labelledby="dateRangeTitle">
+                        <div class="ns-date-range__header">
+                            <label id="dateRangeTitle" class="block text-sm font-semibold text-diabetes-primary mb-0">
+                                Período
+                            </label>
+                            <span class="ns-date-badge">até 3 dias</span>
+                        </div>
+
+                        <div class="ns-date-range__grid">
                             <div class="ns-date-field">
-                                <label for="dateStart" class="block text-sm font-medium text-gray-700 mb-1">Data início</label>
-                                <div class="relative">
-                                    <input type="text" id="dateStart" name="dateStart"
-                                        class="w-full px-4 py-3 border-2 border-diabetes-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-diabetes-accent transition-all ns-date-input"
-                                        placeholder="DD/MM/AAAA"
-                                        data-role="date-start"
-                                        data-preselect-today="true"
-                                        aria-haspopup="dialog"
-                                        aria-label="Data início (abre calendário)">
-                                    <button type="button" class="absolute right-2 top-1/2 -translate-y-1/2 text-gray-500 ns-date-btn" aria-hidden="true" tabindex="-1">
-                                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3M3 11h18M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+                                <label for="dateStartPicker" class="block text-sm font-medium text-gray-700 mb-2">
+                                    Data início
+                                </label>
+                                <div class="ns-date-shell" tabindex="0" role="button" aria-haspopup="dialog"
+                                    aria-label="Selecionar data início">
+                                    <input type="text" id="dateStartInput" name="dateStart" class="ns-date-input w-full"
+                                        placeholder="dd/mm/yyyy" readonly tabindex="-1"
+                                        style="pointer-events:none;user-select:none;" autocomplete="off"
+                                        spellcheck="false" aria-hidden="true" aria-describedby="dateStartError">
+                                    <input type="date" id="dateStartPicker" class="ns-date-native"
+                                        style="position:absolute;inset:0;width:100%;height:100%;opacity:0;pointer-events:none;z-index:3;"
+                                        data-role="date-start-picker">
+                                    <span id="dateStartButton" class="ns-date-trigger"
+                                        style="position:absolute;top:50%;right:8px;transform:translateY(-50%);display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:10px;background:rgba(0,120,215,.08);color:var(--primary-color);pointer-events:none;box-shadow:none;z-index:1;"
+                                        aria-hidden="true">
+                                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                            style="width:20px;height:20px;">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M8 7V3m8 4V3M3 11h18M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
                                         </svg>
-                                    </button>
+                                    </span>
                                 </div>
-                                <div id="dateStartError" class="error-message hidden-element mt-2 text-diabetes-error text-sm font-medium">Por favor, selecione a data início.</div>
+                                <div id="dateStartError"
+                                    class="error-message hidden-element mt-2 text-diabetes-error text-sm font-medium">
+                                    Informe uma data início válida.
+                                </div>
                             </div>
 
-                            <!-- Data Fim (desabilitado até selecionar início) -->
-                            <div class="ns-date-field">
-                                <label for="dateEnd" class="block text-sm font-medium text-gray-700 mb-1">Data fim</label>
-                                <div class="relative">
-                                    <input type="text" id="dateEnd" name="dateEnd"
-                                        class="w-full px-4 py-3 border-2 border-diabetes-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-diabetes-accent transition-all ns-date-input"
-                                        placeholder="DD/MM/AAAA"
-                                        data-role="date-end"
-                                        disabled
-                                        aria-disabled="true"
-                                        aria-label="Data fim (desabilitado até selecionar início)">
-                                    <button type="button" class="absolute right-2 top-1/2 -translate-y-1/2 text-gray-400 ns-date-btn" aria-hidden="true" tabindex="-1" disabled>
-                                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3M3 11h18M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+                            <div class="ns-date-field ns-date-field--disabled">
+                                <label for="dateEndPicker" class="block text-sm font-medium text-gray-700 mb-2">
+                                    Data fim
+                                </label>
+                                <div class="ns-date-shell" tabindex="-1" role="button" aria-haspopup="dialog"
+                                    aria-label="Selecionar data fim" aria-disabled="true">
+                                    <input type="text" id="dateEndInput" name="dateEnd" class="ns-date-input w-full"
+                                        placeholder="dd/mm/yyyy" readonly tabindex="-1"
+                                        style="pointer-events:none;user-select:none;" autocomplete="off"
+                                        spellcheck="false" aria-hidden="true" disabled aria-disabled="true"
+                                        aria-describedby="dateEndError">
+                                    <input type="date" id="dateEndPicker" class="ns-date-native"
+                                        style="position:absolute;inset:0;width:100%;height:100%;opacity:0;pointer-events:none;z-index:3;"
+                                        data-role="date-end-picker" disabled>
+                                    <span id="dateEndButton" class="ns-date-trigger"
+                                        style="position:absolute;top:50%;right:8px;transform:translateY(-50%);display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:10px;background:rgba(0,120,215,.08);color:var(--primary-color);pointer-events:none;box-shadow:none;z-index:1;"
+                                        aria-hidden="true">
+                                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                            style="width:20px;height:20px;">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M8 7V3m8 4V3M3 11h18M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
                                         </svg>
-                                    </button>
+                                    </span>
                                 </div>
-                                <div id="dateEndError" class="error-message hidden-element mt-2 text-diabetes-error text-sm font-medium">A data fim não pode ser maior que a data início.</div>
-                                <div class="text-xs text-gray-500 mt-1">Máx. 15 dias entre início e fim.</div>
+                                <div id="dateEndError"
+                                    class="error-message hidden-element mt-2 text-diabetes-error text-sm font-medium">
+                                    A data fim não pode ser maior que a data início.
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    </section>
 
                     <div class="flex items-center space-x-3 py-2">
                         <input type="checkbox" id="rememberData"
@@ -176,6 +200,44 @@
                     <button id='viewNightscout' class="btn btn-primary w-full md:w-auto px-8 py-3 text-lg font-bold">
                         🔍 Visualizar Agora
                     </button>
+
+                    <ul class="status-list hidden-element mt-8 space-y-3 bg-gray-50 rounded-lg p-6">
+                        <li
+                            class="status-item flex items-center justify-between py-3 px-4 bg-white rounded-lg shadow-sm">
+                            <span class="text-gray-700">A URL principal do Nightscout está funcionando?</span>
+                            <img id="validUrl" class="status-icon w-7 h-7" src="./img/no-result.png" alt="Status">
+                        </li>
+                        <li
+                            class="status-item flex items-center justify-between py-3 px-4 bg-white rounded-lg shadow-sm">
+                            <span class="text-gray-700">A API Secret está correta?</span>
+                            <img id="correctSecret" class="status-icon w-7 h-7" src="./img/no-result.png" alt="Status">
+                        </li>
+                        <li
+                            class="status-item flex items-center justify-between py-3 px-4 bg-white rounded-lg shadow-sm">
+                            <span class="text-gray-700">Há dados no período selecionado?</span>
+                            <img id="periodData" class="status-icon w-7 h-7" src="./img/no-result.png" alt="Status">
+                        </li>
+                    </ul>
+
+                    <h2 class="resume-title hidden-element text-xl font-bold text-gray-900 mt-8 mb-4">Resumo:</h2>
+                    <div id="resume"
+                        class="viewer-resume hidden-element p-6 rounded-lg text-sm overflow-x-auto border border-gray-200"
+                        style="white-space: pre-wrap; background: #ffffff; color: #1f2937;">Aguardando validações
+                        concluírem...</div>
+
+                    <section id="viewerResults" class="viewer-results hidden-element" aria-live="polite">
+                        <div class="viewer-results__header">
+                            <div>
+                                <h2 class="viewer-results__title">Glicemias do período</h2>
+                                <p id="viewerResultsMeta" class="viewer-results__meta"></p>
+                            </div>
+                            <button id="printViewerResults" type="button"
+                                class="btn btn-primary viewer-results__print-button" hidden aria-hidden="true">
+                                📄 Baixar tabela em PDF
+                            </button>
+                        </div>
+                        <div id="viewerResultsContent" class="viewer-results__content"></div>
+                    </section>
                 </div>
 
 
@@ -224,7 +286,10 @@
         };
     </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.8.2/jspdf.plugin.autotable.min.js"></script>
     <script src="./js/geral.js"></script>
+    <script src="./js/nightscout-common.js"></script>
     <script src="./js/visualizador-nightscout.js"></script>
 </body>
 
