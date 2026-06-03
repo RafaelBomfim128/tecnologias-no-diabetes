@@ -38,10 +38,10 @@ describe('Quiz section', () => {
                 for (let i = 0; i < 9; i++) {
                     cy.get(tr).eq(i).highlightBlue().then(current => {
                         const scoreCurrent = parseFloat(current.find('td:eq(2)').text().replace(',', '.'))
-                        const dateTimeCurrent = getTimeFromBrazilianDateTime(current.find('td:eq(4)').text())
+                        const dateTimeCurrent = getTimeFromBrazilianDateTime(current.find('td:eq(4) span:eq(0)').text(), current.find('td:eq(4) span:eq(1)').text())
                         cy.get(tr).eq(i + 1).then(next => {
                             const scoreNext = parseFloat(next.find('td:eq(2)').text().replace(',', '.'))
-                            const dateTimeNext = getTimeFromBrazilianDateTime(next.find('td:eq(4)').text())
+                            const dateTimeNext = getTimeFromBrazilianDateTime(next.find('td:eq(4) span:eq(0)').text(), next.find('td:eq(4) span:eq(1)').text())
                             cy.wrap(scoreCurrent > scoreNext || scoreCurrent === scoreNext && dateTimeCurrent > dateTimeNext).should('be.true')
                             cy.wrap(next).highlightBlue()
                         })
@@ -54,10 +54,10 @@ describe('Quiz section', () => {
                 for (let i = 0; i < 9; i++) {
                     cy.get(tr).eq(i).highlightBlue().then(current => {
                         const scoreCurrent = parseFloat(current.find('td:eq(2)').text().replace(',', '.'))
-                        const dateTimeCurrent = getTimeFromBrazilianDateTime(current.find('td:eq(4)').text())
+                        const dateTimeCurrent = getTimeFromBrazilianDateTime(current.find('td:eq(4) span:eq(0)').text(), current.find('td:eq(4) span:eq(1)').text())
                         cy.get(tr).eq(i + 1).then(next => {
                             const scoreNext = parseFloat(next.find('td:eq(2)').text().replace(',', '.'))
-                            const dateTimeNext = getTimeFromBrazilianDateTime(next.find('td:eq(4)').text())
+                            const dateTimeNext = getTimeFromBrazilianDateTime(next.find('td:eq(4) span:eq(0)').text(), next.find('td:eq(4) span:eq(1)').text())
                             cy.wrap(scoreCurrent > scoreNext || scoreCurrent === scoreNext && dateTimeCurrent > dateTimeNext).should('be.true')
                             cy.wrap(next).highlightBlue()
                         })
@@ -107,10 +107,9 @@ describe('Quiz section', () => {
     })
 })
 
-function getTimeFromBrazilianDateTime(dateTime) {
-    const [datePart, timePart] = dateTime.split(' ');
+function getTimeFromBrazilianDateTime(datePart, timePart) {
     const [day, month, year] = datePart.split('/');
-    const [hour, minute] = timePart.split(':');
-    const dateObj = new Date(year, month - 1, day, hour, minute);
+    const [hour, minute, second] = timePart.split(':');
+    const dateObj = new Date(year, month - 1, day, hour, minute, second);
     return dateObj.getTime();
 }

@@ -25,7 +25,7 @@ describe('Useful Contents section', () => {
 
         macroCategories.forEach((item, idx) => {
             cy.get(usefulContents.all_cards_div).eq(idx).then($el => {
-                const category = $el.find('h5').text().trim()
+                const category = $el.find('h3').text().trim()
                 expect(category).to.eq(item)
                 if (item !== 'Ver tudo') {
                     cy.wrap($el).find('img').should('be.visible').highlight().should('have.attr', 'src', labels.usefulContents.find(item => item.category === category)?.image)
@@ -46,7 +46,7 @@ describe('Useful Contents section', () => {
 
         macroCategories.forEach(category => {
             cy.visit('/conteudos-uteis-categorias.html')
-            cy.get(usefulContents.all_cards_div).filter(`:has(h5:contains(${category}))`).find('a').click()
+            cy.get(usefulContents.all_cards_div).filter(`:has(h3:contains(${category}))`).find('a').click()
             if (category !== 'Ver tudo') {
                 cy.get(usefulContents.item_title_h1).should('be.visible').highlight().invoke('text').then(text => expect(text.trim()).to.eq(category))
                 cy.readDirectory(`public/pdfs/${category}`).then(files => {

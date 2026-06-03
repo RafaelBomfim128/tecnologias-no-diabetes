@@ -43,15 +43,38 @@
         {{> notificacoes }}
 
         <!-- Hero Section -->
-        <div class="hero bg-gradient-to-r from-blue-600 to-indigo-600 text-white py-12 md:py-16 mt-6 mx-4 md:mx-auto md:max-w-7xl rounded-2xl shadow-xl animate-scale-in">
-            <div class="container-custom text-center">
-                <div class="text-6xl mb-4 animate-bounce">❓💡</div>
-                <h1 id="faq-main-title" class="text-4xl md:text-5xl font-bold mb-4 text-white">
+        <div class="hero mb-12 relative overflow-hidden rounded-3xl bg-gradient-to-br from-indigo-600 to-violet-600 shadow-2xl mx-4 md:mx-auto md:max-w-7xl animate-fade-in mt-6" id="hero-section">
+            <div class="absolute inset-0 opacity-10" style="background-image: radial-gradient(circle at 2px 2px, white 1px, transparent 0); background-size: 32px 32px;"></div>
+            
+            <div class="container-custom relative z-10 md:py-20 text-center max-w-5xl mx-auto pl-0 pr-0">
+                <div class="w-14 h-14 mx-auto mb-6 rounded-2xl bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center text-white shadow-lg animate-bounce">
+                    <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                    </svg>
+                </div>
+                
+                <h1 id="faq-main-title" class="text-3xl md:text-5xl font-extrabold mb-4 tracking-tight text-white animate-slide-up">
                     Perguntas Frequentes
                 </h1>
-                <p id="faq-main-description" class="text-xl md:text-2xl opacity-90 max-w-3xl mx-auto text-white">
+                
+                <p id="faq-main-description" class="text-sm md:text-xl mb-8 text-indigo-100 max-w-2xl mx-auto leading-relaxed animate-slide-up" style="animation-delay: 0.1s;">
                     Encontre respostas rápidas sobre diabetes, tecnologias, bombas de insulina, sensores e muito mais
                 </p>
+
+                <div class="flex flex-wrap items-center justify-center gap-2.5 md:gap-3 text-xs md:text-sm font-semibold animate-slide-up" style="animation-delay: 0.2s;">
+                    <div class="bg-white/10 backdrop-blur-md border border-white/10 rounded-full px-3.5 py-1.5 text-white flex items-center gap-1.5">
+                        <span>💬</span>
+                        <span>Respostas Verificadas</span>
+                    </div>
+                    <div class="bg-white/10 backdrop-blur-md border border-white/10 rounded-full px-3.5 py-1.5 text-white flex items-center gap-1.5">
+                        <span>⚡</span>
+                        <span>Acesso Rápido</span>
+                    </div>
+                    <div class="bg-white/10 backdrop-blur-md border border-white/10 rounded-full px-3.5 py-1.5 text-white flex items-center gap-1.5">
+                        <span>📋</span>
+                        <span>{{questionAnswer.length}} Perguntas</span>
+                    </div>
+                </div>
             </div>
         </div>
 

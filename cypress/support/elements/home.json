@@ -20,5 +20,9 @@
     "useful_contents_open_a": "#open-useful-contents",
     "useful_tools_title_h5": "#useful-tools-title",
     "useful_tools_description_p": "#useful-tools-description",
-    "useful_tools_open_a": "#open-useful-tools"
+    "useful_tools_open_a": "#open-useful-tools",
+    "tool_qr_code_generator_a": "#tool-qr-code-generator",
+    "tool_nightscout_tester_a": "#tool-nightscout-tester",
+    "tool_nightscout_viewer_a": "#tool-nightscout-viewer",
+    "tool_tndscout_a": "#tool-tndscout"
 }

@@ -24,58 +24,27 @@
     <main class="container-custom py-6 md:py-8">
         {{> notificacoes }}
 
-        <div class="hero mb-12 relative overflow-hidden" id="hero-section">
-            <!-- Grid Background Animado -->
-            <div class="absolute inset-0 opacity-10" id="grid-background">
-                <div class="absolute inset-0" style="background-image: linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px); background-size: 50px 50px;"></div>
-            </div>
+        <div class="mb-12 relative overflow-hidden rounded-3xl bg-gradient-to-br from-[#0078d7] to-[#003d7a] shadow-2xl" id="hero-section">
+            <div class="absolute inset-0 opacity-10" style="background-image: radial-gradient(circle at 2px 2px, white 1px, transparent 0); background-size: 32px 32px;"></div>
             
-            <!-- Partículas Flutuantes -->
-            <div class="absolute inset-0 overflow-hidden pointer-events-none">
-                <div class="particle absolute w-2 h-2 bg-white rounded-full opacity-60 z-0" style="top: 20%; left: 10%; animation: float 6s ease-in-out infinite;"></div>
-                <div class="particle absolute w-3 h-3 bg-white rounded-full opacity-40 z-0" style="top: 60%; left: 80%; animation: float 8s ease-in-out infinite 1s;"></div>
-                <div class="particle absolute w-2 h-2 bg-white rounded-full opacity-50 z-0" style="top: 40%; left: 90%; animation: float 7s ease-in-out infinite 2s;"></div>
-                <div class="particle absolute w-1 h-1 bg-white rounded-full opacity-70 z-0" style="top: 80%; left: 20%; animation: float 5s ease-in-out infinite 1.5s;"></div>
-                <div class="particle absolute w-2 h-2 bg-white rounded-full opacity-30 z-0" style="top: 30%; left: 60%; animation: float 9s ease-in-out infinite 0.5s;"></div>
-            </div>
-            
-            <!-- Círculos decorativos com efeito pulse suave -->
-            <div class="absolute top-10 left-5 sm:left-10 w-16 h-16 sm:w-20 sm:h-20 bg-white bg-opacity-20 rounded-full pointer-events-none z-0" style="animation: gentlePulse 4s ease-in-out infinite;"></div>
-            <div class="absolute bottom-10 right-5 sm:right-10 w-24 h-24 sm:w-32 sm:h-32 bg-white bg-opacity-20 rounded-full pointer-events-none z-0" style="animation: gentlePulse 5s ease-in-out infinite 1s;"></div>
-            <div class="absolute top-1/2 right-1/4 w-12 h-12 sm:w-16 sm:h-16 bg-white bg-opacity-20 rounded-full pointer-events-none z-0" style="animation: gentlePulse 4.5s ease-in-out infinite 2s;"></div>
-            
-            <div class="relative z-10">
-                <div class="text-6xl md:text-7xl mb-6 inline-block" style="animation: gentleBounce 2s ease-in-out infinite;">💉🩸</div>
-                <h1 id="main-title" class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 animate-slide-up" style="text-shadow: 0 2px 10px rgba(0,0,0,0.1);">
+            <div class="relative z-10 px-6 py-16 md:py-24 text-center max-w-5xl mx-auto">
+                <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 backdrop-blur-md border border-white/20 shadow-sm text-white font-medium text-sm mb-8 animate-slide-up">
+                    <span class="w-2 h-2 rounded-full bg-green-400 animate-pulse"></span>
                     Tecnologias no Diabetes
-                </h1>
-                <p id="main-description" class="text-lg md:text-xl lg:text-2xl mb-8 opacity-90 max-w-3xl mx-auto animate-slide-up" style="animation-delay: 0.2s;">
-                    Explore aplicativos, tutoriais e ferramentas para facilitar o gerenciamento do diabetes com tecnologia
-                </p>
-                <div class="flex flex-wrap justify-center gap-4 mb-8 animate-scale-in" style="animation-delay: 0.4s;">
-                    <div class="badge-tech flex items-center bg-white bg-opacity-20 rounded-full px-4 py-2 text-sm backdrop-blur-sm hover:bg-opacity-30 transition-all duration-300 hover:scale-105">
-                        <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
-                        </svg>
-                        <span>100% Gratuito</span>
-                    </div>
-                    <div class="badge-tech flex items-center bg-white bg-opacity-20 rounded-full px-4 py-2 text-sm backdrop-blur-sm hover:bg-opacity-30 transition-all duration-300 hover:scale-105">
-                        <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                            <path d="M9 4.804A7.968 7.968 0 005.5 4c-1.255 0-2.443.29-3.5.804v10A7.969 7.969 0 015.5 14c1.669 0 3.218.51 4.5 1.385A7.962 7.962 0 0114.5 14c1.255 0 2.443.29 3.5.804v-10A7.968 7.968 0 0014.5 4c-1.255 0-2.443.29-3.5.804V12a1 1 0 11-2 0V4.804z"/>
-                        </svg>
-                        <span>Tutoriais Completos</span>
-                    </div>
-                    <div class="badge-tech flex items-center bg-white bg-opacity-20 rounded-full px-4 py-2 text-sm backdrop-blur-sm hover:bg-opacity-30 transition-all duration-300 hover:scale-105">
-                        <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                            <path d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3zM6 8a2 2 0 11-4 0 2 2 0 014 0zM16 18v-3a5.972 5.972 0 00-.75-2.906A3.005 3.005 0 0119 15v3h-3zM4.75 12.094A5.973 5.973 0 004 15v3H1v-3a3 3 0 013.75-2.906z"/>
-                        </svg>
-                        <span>Comunidade Ativa</span>
-                    </div>
                 </div>
-                <a href="#recursos" id="start-now" class="btn btn-lg bg-white text-diabetes-primary hover:bg-gray-100 hover:scale-110 transition-all duration-300 shadow-xl hover:shadow-2xl animate-scale-in inline-flex items-center gap-2 group" style="animation-delay: 0.6s;">
+                
+                <h1 id="main-title" class="text-4xl md:text-6xl lg:text-7xl font-extrabold mb-6 animate-slide-up tracking-tight text-white" style="animation-delay: 0.1s;">
+                    Gerencie o diabetes com a ajuda da <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-300 to-cyan-200">tecnologia</span>
+                </h1>
+                
+                <p id="main-description" class="text-lg md:text-xl lg:text-2xl mb-10 text-blue-100 max-w-3xl mx-auto animate-slide-up leading-relaxed" style="animation-delay: 0.2s;">
+                    Explore aplicativos modernos, tutoriais completos e ferramentas essenciais para simplificar o seu dia a dia.
+                </p>
+                
+                <a href="#recursos" id="start-now" class="btn btn-lg bg-white text-blue-700 hover:bg-gray-50 hover:shadow-lg hover:shadow-white/20 transition-all duration-300 animate-scale-in inline-flex items-center gap-3 px-8 py-4 rounded-full group font-bold text-lg" style="animation-delay: 0.4s;">
                     <span>Comece Agora</span>
                     <svg class="w-5 h-5 group-hover:translate-y-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 14l-7 7m0 0l-7-7m7 7V3"/>
                     </svg>
                 </a>
             </div>
@@ -91,18 +60,22 @@
             </p>
         </div>
         
-        <div id='recursos' class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+        <div id='recursos' class="grid grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-6 mb-12">
             <!-- Card Downloads -->
-            <a href="downloads.html" id="card-downloads" class="card card-hover group animate-fade-in cursor-pointer border-2 border-transparent hover:border-diabetes-primary transition-all duration-500 hover:shadow-2xl" style="animation-delay: 0.1s">
-                <div class="card-body text-center" id="card-downloads-inner">
-                    <div class="text-5xl mb-4 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300">💾</div>
-                    <h5 class="card-title text-gray-800" id="downloads-title">Downloads de Aplicativos</h5>
-                    <p class="card-text text-gray-600" id="downloads-description">
-                        Encontre os melhores aplicativos para gerenciamento do diabetes
+            <a href="downloads.html" id="card-downloads" class="premium-card group animate-fade-in cursor-pointer rounded-2xl p-4 sm:p-6" style="animation-delay: 0.1s">
+                <div class="card-body text-center flex flex-col items-center h-full" id="card-downloads-inner">
+                    <div class="w-12 h-12 sm:w-16 sm:h-16 mb-3 sm:mb-5 rounded-full bg-blue-50 text-blue-600 flex items-center justify-center group-hover:scale-110 group-hover:bg-blue-600 group-hover:text-white transition-all duration-300 shadow-sm">
+                        <svg class="w-6 h-6 sm:w-8 sm:h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/>
+                        </svg>
+                    </div>
+                    <h5 class="card-title text-lg sm:text-2xl font-bold text-gray-800 mb-2 sm:mb-3 leading-tight" id="downloads-title">Downloads</h5>
+                    <p class="card-text text-sm sm:text-base text-gray-600 mb-4 sm:mb-6 flex-grow leading-tight" id="downloads-description">
+                        Baixe os aplicativos
                     </p>
-                    <div id="open-downloads" class="mt-4 inline-flex items-center gap-2 text-diabetes-primary font-semibold group-hover:gap-4 transition-all duration-300">
+                    <div id="open-downloads" class="mt-auto inline-flex items-center gap-1 sm:gap-2 text-blue-600 font-semibold group-hover:gap-2 transition-all duration-300 bg-blue-50 px-2 sm:px-4 py-2 rounded-lg group-hover:bg-blue-100 w-full justify-center text-sm sm:text-base">
                         <span>Acessar</span>
-                        <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <svg class="w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
                         </svg>
                     </div>
@@ -110,16 +83,20 @@
             </a>
 
             <!-- Card Tutoriais -->
-            <a href="tutoriais.html" id="card-tutorials" class="card card-hover group animate-fade-in cursor-pointer border-2 border-transparent hover:border-green-500 transition-all duration-500 hover:shadow-2xl" style="animation-delay: 0.2s">
-                <div class="card-body text-center" id="card-tutorials-inner">
-                    <div class="text-5xl mb-4 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300">📚</div>
-                    <h5 class="card-title text-gray-800" id="tutorials-title">Tutoriais Passo a Passo</h5>
-                    <p class="card-text text-gray-600" id="tutorials-description">
-                        Aprenda com vídeos e documentos detalhados sobre as tecnologias
+            <a href="tutoriais.html" id="card-tutorials" class="premium-card group animate-fade-in cursor-pointer rounded-2xl p-4 sm:p-6" style="animation-delay: 0.2s">
+                <div class="card-body text-center flex flex-col items-center h-full" id="card-tutorials-inner">
+                    <div class="w-12 h-12 sm:w-16 sm:h-16 mb-3 sm:mb-5 rounded-full bg-green-50 text-green-600 flex items-center justify-center group-hover:scale-110 group-hover:bg-green-600 group-hover:text-white transition-all duration-300 shadow-sm">
+                        <svg class="w-6 h-6 sm:w-8 sm:h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
+                        </svg>
+                    </div>
+                    <h5 class="card-title text-lg sm:text-2xl font-bold text-gray-800 mb-2 sm:mb-3 leading-tight" id="tutorials-title">Tutoriais</h5>
+                    <p class="card-text text-sm sm:text-base text-gray-600 mb-4 sm:mb-6 flex-grow leading-tight" id="tutorials-description">
+                        Aprenda com vídeos passo a passo
                     </p>
-                    <div id="open-tutorials" class="mt-4 inline-flex items-center gap-2 text-green-600 font-semibold group-hover:gap-4 transition-all duration-300">
+                    <div id="open-tutorials" class="mt-auto inline-flex items-center gap-1 sm:gap-2 text-green-600 font-semibold group-hover:gap-2 transition-all duration-300 bg-green-50 px-2 sm:px-4 py-2 rounded-lg group-hover:bg-green-100 w-full justify-center text-sm sm:text-base">
                         <span>Aprender</span>
-                        <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <svg class="w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
                         </svg>
                     </div>
@@ -127,16 +104,20 @@
             </a>
 
             <!-- Card FAQ -->
-            <a href="faq.html" id="card-faq" class="card card-hover group animate-fade-in cursor-pointer border-2 border-transparent hover:border-blue-500 transition-all duration-500 hover:shadow-2xl" style="animation-delay: 0.3s">
-                <div class="card-body text-center" id="card-faq-inner">
-                    <div class="text-5xl mb-4 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300">❓💡</div>
-                    <h5 class="card-title text-gray-800" id="faq-title">Perguntas Frequentes</h5>
-                    <p class="card-text text-gray-600" id="faq-description">
-                        Encontre respostas para as dúvidas mais comuns sobre tecnologias
+            <a href="faq.html" id="card-faq" class="premium-card group animate-fade-in cursor-pointer rounded-2xl p-4 sm:p-6" style="animation-delay: 0.3s">
+                <div class="card-body text-center flex flex-col items-center h-full" id="card-faq-inner">
+                    <div class="w-12 h-12 sm:w-16 sm:h-16 mb-3 sm:mb-5 rounded-full bg-cyan-50 text-cyan-600 flex items-center justify-center group-hover:scale-110 group-hover:bg-cyan-600 group-hover:text-white transition-all duration-300 shadow-sm">
+                        <svg class="w-6 h-6 sm:w-8 sm:h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                        </svg>
+                    </div>
+                    <h5 class="card-title text-lg sm:text-2xl font-bold text-gray-800 mb-2 sm:mb-3 leading-tight" id="faq-title">Dúvidas (FAQ)</h5>
+                    <p class="card-text text-sm sm:text-base text-gray-600 mb-4 sm:mb-6 flex-grow leading-tight" id="faq-description">
+                        Respostas para perguntas comuns
                     </p>
-                    <div id="open-faq" class="mt-4 inline-flex items-center gap-2 text-blue-600 font-semibold group-hover:gap-4 transition-all duration-300">
+                    <div id="open-faq" class="mt-auto inline-flex items-center gap-1 sm:gap-2 text-cyan-600 font-semibold group-hover:gap-2 transition-all duration-300 bg-cyan-50 px-2 sm:px-4 py-2 rounded-lg group-hover:bg-cyan-100 w-full justify-center text-sm sm:text-base">
                         <span>Explorar</span>
-                        <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <svg class="w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
                         </svg>
                     </div>
@@ -144,16 +125,20 @@
             </a>
 
             <!-- Card Quiz -->
-            <a href="quiz.html" id="card-quiz" class="card card-hover group animate-fade-in cursor-pointer border-2 border-transparent hover:border-purple-500 transition-all duration-500 hover:shadow-2xl" style="animation-delay: 0.4s">
-                <div class="card-body text-center" id="card-quiz-inner">
-                    <div class="text-5xl mb-4 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300">🧠</div>
-                    <h5 class="card-title text-gray-800" id="quiz-title">Quiz de Conhecimentos</h5>
-                    <p class="card-text text-gray-600" id="quiz-description">
-                        Teste seus conhecimentos sobre cuidados com o diabetes
+            <a href="quiz.html" id="card-quiz" class="premium-card group animate-fade-in cursor-pointer rounded-2xl p-4 sm:p-6" style="animation-delay: 0.4s">
+                <div class="card-body text-center flex flex-col items-center h-full" id="card-quiz-inner">
+                    <div class="w-12 h-12 sm:w-16 sm:h-16 mb-3 sm:mb-5 rounded-full bg-purple-50 text-purple-600 flex items-center justify-center group-hover:scale-110 group-hover:bg-purple-600 group-hover:text-white transition-all duration-300 shadow-sm">
+                        <svg class="w-6 h-6 sm:w-8 sm:h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/>
+                        </svg>
+                    </div>
+                    <h5 class="card-title text-lg sm:text-2xl font-bold text-gray-800 mb-2 sm:mb-3 leading-tight" id="quiz-title">Quiz</h5>
+                    <p class="card-text text-sm sm:text-base text-gray-600 mb-4 sm:mb-6 flex-grow leading-tight" id="quiz-description">
+                        Teste seus conhecimentos do dia a dia
                     </p>
-                    <div id="open-quiz" class="mt-4 inline-flex items-center gap-2 text-purple-600 font-semibold group-hover:gap-4 transition-all duration-300">
+                    <div id="open-quiz" class="mt-auto inline-flex items-center gap-1 sm:gap-2 text-purple-600 font-semibold group-hover:gap-2 transition-all duration-300 bg-purple-50 px-2 sm:px-4 py-2 rounded-lg group-hover:bg-purple-100 w-full justify-center text-sm sm:text-base">
                         <span>Jogar</span>
-                        <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <svg class="w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
                         </svg>
                     </div>
@@ -161,16 +146,20 @@
             </a>
 
             <!-- Card Conteúdos Úteis -->
-            <a href="conteudos-uteis-categorias.html" id="card-useful-contents" class="card card-hover group animate-fade-in cursor-pointer border-2 border-transparent hover:border-indigo-500 transition-all duration-500 hover:shadow-2xl" style="animation-delay: 0.5s">
-                <div class="card-body text-center" id="card-useful-contents-inner">
-                    <div class="text-5xl mb-4 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300">📰</div>
-                    <h5 class="card-title text-gray-800" id="useful-contents-title">Conteúdos Úteis</h5>
-                    <p class="card-text text-gray-600" id="useful-contents-description">
-                        Acesse materiais informativos e educativos sobre diabetes
+            <a href="conteudos-uteis-categorias.html" id="card-useful-contents" class="premium-card group animate-fade-in cursor-pointer rounded-2xl p-4 sm:p-6" style="animation-delay: 0.5s">
+                <div class="card-body text-center flex flex-col items-center h-full" id="card-useful-contents-inner">
+                    <div class="w-12 h-12 sm:w-16 sm:h-16 mb-3 sm:mb-5 rounded-full bg-indigo-50 text-indigo-600 flex items-center justify-center group-hover:scale-110 group-hover:bg-indigo-600 group-hover:text-white transition-all duration-300 shadow-sm">
+                        <svg class="w-6 h-6 sm:w-8 sm:h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z"/>
+                        </svg>
+                    </div>
+                    <h5 class="card-title text-lg sm:text-2xl font-bold text-gray-800 mb-2 sm:mb-3 leading-tight" id="useful-contents-title">Conteúdos</h5>
+                    <p class="card-text text-sm sm:text-base text-gray-600 mb-4 sm:mb-6 flex-grow leading-tight" id="useful-contents-description">
+                        Materiais informativos e educativos
                     </p>
-                    <div id="open-useful-contents" class="mt-4 inline-flex items-center gap-2 text-indigo-600 font-semibold group-hover:gap-4 transition-all duration-300">
+                    <div id="open-useful-contents" class="mt-auto inline-flex items-center gap-1 sm:gap-2 text-indigo-600 font-semibold group-hover:gap-2 transition-all duration-300 bg-indigo-50 px-2 sm:px-4 py-2 rounded-lg group-hover:bg-indigo-100 w-full justify-center text-sm sm:text-base">
                         <span>Explorar</span>
-                        <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <svg class="w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
                         </svg>
                     </div>
@@ -178,16 +167,21 @@
             </a>
 
             <!-- Card Ferramentas -->
-            <a href="ferramentas.html" id="card-useful-tools" class="card card-hover group animate-fade-in cursor-pointer border-2 border-transparent hover:border-diabetes-accent transition-all duration-500 hover:shadow-2xl" style="animation-delay: 0.6s">
-                <div class="card-body text-center" id="card-useful-tools-inner">
-                    <div class="text-5xl mb-4 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300">🔧</div>
-                    <h5 class="card-title text-gray-800" id="useful-tools-title">Ferramentas Úteis</h5>
-                    <p class="card-text text-gray-600" id="useful-tools-description">
-                        Ferramentas práticas para gerenciamento das tecnologias
+            <a href="ferramentas.html" id="card-useful-tools" class="premium-card group animate-fade-in cursor-pointer rounded-2xl p-4 sm:p-6" style="animation-delay: 0.6s">
+                <div class="card-body text-center flex flex-col items-center h-full" id="card-useful-tools-inner">
+                    <div class="w-12 h-12 sm:w-16 sm:h-16 mb-3 sm:mb-5 rounded-full bg-teal-50 text-teal-600 flex items-center justify-center group-hover:scale-110 group-hover:bg-teal-600 group-hover:text-white transition-all duration-300 shadow-sm">
+                        <svg class="w-6 h-6 sm:w-8 sm:h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+                        </svg>
+                    </div>
+                    <h5 class="card-title text-lg sm:text-2xl font-bold text-gray-800 mb-2 sm:mb-3 leading-tight" id="useful-tools-title">Ferramentas</h5>
+                    <p class="card-text text-sm sm:text-base text-gray-600 mb-4 sm:mb-6 flex-grow leading-tight" id="useful-tools-description">
+                        Práticas para gerenciamento
                     </p>
-                    <div id="open-useful-tools" class="mt-4 inline-flex items-center gap-2 text-diabetes-accent font-semibold group-hover:gap-4 transition-all duration-300">
+                    <div id="open-useful-tools" class="mt-auto inline-flex items-center gap-1 sm:gap-2 text-teal-600 font-semibold group-hover:gap-2 transition-all duration-300 bg-teal-50 px-2 sm:px-4 py-2 rounded-lg group-hover:bg-teal-100 w-full justify-center text-sm sm:text-base">
                         <span>Explorar</span>
-                        <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <svg class="w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
                         </svg>
                     </div>
@@ -195,38 +189,78 @@
             </a>
         </div>
 
-        <!-- Seção de Estatísticas -->
-        <div id="statistics" class="bg-gradient-to-br from-diabetes-primary to-diabetes-accent rounded-2xl shadow-2xl p-8 md:p-12 mb-12 text-center text-white relative overflow-hidden">
-            <!-- Elementos decorativos -->
-            <div class="absolute top-0 right-0 w-64 h-64 bg-white bg-opacity-10 rounded-full -mr-32 -mt-32"></div>
-            <div class="absolute bottom-0 left-0 w-48 h-48 bg-white bg-opacity-10 rounded-full -ml-24 -mb-24"></div>
-            
-            <div class="relative z-10">
-                <h2 id="statistics-title" class="text-2xl md:text-3xl font-bold mb-3 animate-slide-up text-white">Por que usar tecnologia no diabetes?</h2>
-                <p id="statistics-description" class="text-lg opacity-90 mb-10 max-w-2xl mx-auto animate-slide-up" style="animation-delay: 0.1s;">
-                    Milhares de pessoas já estão transformando o gerenciamento do diabetes com tecnologia
-                </p>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    <div id="statistic-1" class="group animate-fade-in hover:scale-110 transition-transform duration-300" style="animation-delay: 0.2s">
-                        <div class="bg-white bg-opacity-20 backdrop-blur-sm rounded-2xl p-6 hover:bg-opacity-30 transition-all">
-                            <div class="text-5xl md:text-6xl font-bold mb-2 group-hover:scale-110 transition-transform">90%</div>
-                            <p class="text-sm md:text-base opacity-90">dos usuários relatam melhor controle glicêmico</p>
-                        </div>
-                    </div>
-                    <div id="statistic-2" class="group animate-fade-in hover:scale-110 transition-transform duration-300" style="animation-delay: 0.4s">
-                        <div class="bg-white bg-opacity-20 backdrop-blur-sm rounded-2xl p-6 hover:bg-opacity-30 transition-all">
-                            <div class="text-5xl md:text-6xl font-bold mb-2 group-hover:scale-110 transition-transform">24/7</div>
-                            <p class="text-sm md:text-base opacity-90">monitoramento contínuo de glicose</p>
-                        </div>
-                    </div>
-                    <div id="statistic-3" class="group animate-fade-in hover:scale-110 transition-transform duration-300" style="animation-delay: 0.6s">
-                        <div class="bg-white bg-opacity-20 backdrop-blur-sm rounded-2xl p-6 hover:bg-opacity-30 transition-all">
-                            <div class="text-5xl md:text-6xl font-bold mb-2 group-hover:scale-110 transition-transform">100+</div>
-                            <p class="text-sm md:text-base opacity-90">recursos e tutoriais disponíveis</p>
-                        </div>
-                    </div>
+        <!-- Seção de Ferramentas -->
+        <div class="mb-8 mt-16 border-t pt-12 border-gray-200">
+            <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-3 animate-slide-up">
+                Nossas Ferramentas
+            </h2>
+            <p class="text-center text-gray-600 mb-10 max-w-2xl mx-auto animate-slide-up" style="animation-delay: 0.1s;">
+                Acesse ferramentas criadas especialmente para facilitar sua rotina
+            </p>
+        </div>
+        
+        <div id="tools-showcase" class="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 mb-12">
+            <!-- QR Code -->
+            <a id="tool-qr-code-generator" href="gerador-qr-code-juggluco.html" class="premium-card flex flex-row items-center p-4 sm:p-6 rounded-2xl group animate-fade-in" style="animation-delay: 0.1s;">
+                <div class="w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-violet-50 text-violet-600 flex items-center justify-center mr-4 sm:mr-5 flex-shrink-0 group-hover:scale-110 group-hover:bg-violet-600 group-hover:text-white transition-all duration-300 shadow-sm">
+                    <svg class="w-6 h-6 sm:w-8 sm:h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 4v1m6 11h2m-6 0h-2v4m0-11v3m0 0h.01M12 12h4.01M16 20h4M4 12h4m12 0h.01M5 8h2a1 1 0 001-1V5a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1zm12 0h2a1 1 0 001-1V5a1 1 0 00-1-1h-2a1 1 0 00-1 1v2a1 1 0 001 1zM5 20h2a1 1 0 001-1v-2a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1z"/></svg>
                 </div>
-            </div>
+                <div>
+                    <h3 class="text-base sm:text-xl font-bold text-gray-800 mb-1 group-hover:text-violet-700 transition-colors">Gerador de QR Code</h3>
+                    <p class="text-xs sm:text-sm text-gray-600">Gerar QR Code para sensor Sibionics no Juggluco</p>
+                </div>
+            </a>
+            
+            <!-- Testador NS -->
+            <a id="tool-nightscout-tester" href="testador-nightscout.html" class="premium-card flex flex-row items-center p-4 sm:p-6 rounded-2xl group animate-fade-in" style="animation-delay: 0.2s;">
+                <div class="w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-indigo-50 text-indigo-600 flex items-center justify-center mr-4 sm:mr-5 flex-shrink-0 group-hover:scale-110 group-hover:bg-indigo-600 group-hover:text-white transition-all duration-300 shadow-sm">
+                    <svg class="w-6 h-6 sm:w-8 sm:h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                </div>
+                <div>
+                    <h3 class="text-base sm:text-xl font-bold text-gray-800 mb-1 group-hover:text-indigo-700 transition-colors">Testador Nightscout</h3>
+                    <p class="text-xs sm:text-sm text-gray-600">Verifique se seu Nightscout está online e funcional</p>
+                </div>
+            </a>
+            
+            <!-- Visualizador de NS -->
+            <a id="tool-nightscout-viewer" href="visualizador-glicemias-nightscout.html" class="premium-card flex flex-row items-center p-4 sm:p-6 rounded-2xl group animate-fade-in" style="animation-delay: 0.3s;">
+                <div class="w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-blue-50 text-blue-600 flex items-center justify-center mr-4 sm:mr-5 flex-shrink-0 group-hover:scale-110 group-hover:bg-blue-600 group-hover:text-white transition-all duration-300 shadow-sm">
+                    <svg class="w-6 h-6 sm:w-8 sm:h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="12" rx="2" stroke-width="1.5"></rect><path stroke-width="1.5" d="M8 20h8M12 16v4"></path><rect x="7" y="9" width="2" height="6" fill="currentColor"></rect><rect x="11" y="11" width="2" height="4" fill="currentColor"></rect><rect x="15" y="7" width="2" height="8" fill="currentColor"></rect></svg>
+                </div>
+                <div>
+                    <h3 class="text-base sm:text-xl font-bold text-gray-800 mb-1 group-hover:text-blue-700 transition-colors">Glicemias em Tabela</h3>
+                    <p class="text-xs sm:text-sm text-gray-600">Visualize as glicemias do Nightscout em uma tabela rápida</p>
+                </div>
+            </a>
+            
+            <!-- TnDScout -->
+            <a id="tool-tndscout" href="https://tndscout.vercel.app/" target="_blank" rel="noopener noreferrer" class="premium-card flex flex-row items-center p-4 sm:p-6 rounded-2xl group animate-fade-in" style="animation-delay: 0.4s;">
+                <div class="w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-teal-50 text-teal-600 flex items-center justify-center mr-4 sm:mr-5 flex-shrink-0 group-hover:scale-110 group-hover:bg-teal-600 group-hover:text-white transition-all duration-300 shadow-sm">
+                    <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 sm:w-8 sm:h-8" aria-hidden="true" role="img">
+                        <defs>
+                            <linearGradient id="tndLogoDropGrad" x1="16" y1="4" x2="16" y2="25" gradientUnits="userSpaceOnUse">
+                                <stop offset="0%" stop-color="#ef4444" />
+                                <stop offset="100%" stop-color="#991b1b" />
+                            </linearGradient>
+                            <linearGradient id="tndLogoWingGrad" x1="4" y1="12" x2="28" y2="22" gradientUnits="userSpaceOnUse">
+                                <stop offset="0%" stop-color="#38bdf8" />
+                                <stop offset="50%" stop-color="#8b5cf6" />
+                                <stop offset="100%" stop-color="#ec4899" />
+                            </linearGradient>
+                        </defs>
+                        <path d="M12 14C9.5 12 5 11 3 13C2 14 2 16.5 4 17.5C6.5 18.5 9.5 19 12 20C10.5 18.5 9.5 17 9 15.5C10 15 11 14.5 12 14Z" fill="url(#tndLogoWingGrad)" opacity="0.85" />
+                        <path d="M20 14C22.5 12 27 11 29 13C30 14 30 16.5 28 17.5C25.5 18.5 22.5 19 20 20C21.5 18.5 22.5 17 23 15.5C22 15 21 14.5 20 14Z" fill="url(#tndLogoWingGrad)" opacity="0.85" />
+                        <path d="M11 18C8 17 5 17 4 19C3.5 20 4.5 21 6 21C8.5 21 10.5 21.5 11 22.5C10.5 21 10 19.5 11 18Z" fill="url(#tndLogoWingGrad)" opacity="0.6" />
+                        <path d="M21 18C24 17 27 17 28 19C28.5 20 27.5 21 26 21C23.5 21 21.5 21.5 21 22.5C21.5 21 22 19.5 21 18Z" fill="url(#tndLogoWingGrad)" opacity="0.6" />
+                        <path d="M16 4C16 4 9 13 9 18C9 21.866 12.134 25 16 25C19.866 25 23 21.866 23 18C23 13 16 4 16 4Z" fill="url(#tndLogoDropGrad)" />
+                        <path d="M14.5 15.5C14.5 15.5 13.5 17 13.5 18.5C13.5 19 13.8 19.3 14.2 19.3C14.6 19.3 15 19 15 18.5C15 17.5 15.5 16.8 15.5 16.8" stroke="white" stroke-width="0.8" stroke-linecap="round" opacity="0.5" />
+                    </svg>
+                </div>
+                <div class="flex-grow">
+                    <h3 class="text-base sm:text-xl font-bold text-gray-800 mb-1 group-hover:text-teal-700 transition-colors flex items-center gap-2">Painel TnDScout <svg class="w-4 h-4 text-gray-400 hidden sm:block" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg></h3>
+                    <p class="text-xs sm:text-sm text-gray-600">Gráficos e relatórios do Nightscout avançados</p>
+                </div>
+            </a>
         </div>
     </main>
 
@@ -250,12 +284,14 @@
             if (startButton) {
                 startButton.addEventListener("click", function (event) {
                     event.preventDefault();
-                    
-                    document.getElementById('recursos').scrollIntoView({ 
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                    
+
+                    const target = document.getElementById('recursos');
+                    if (target) {
+                        const offset = 30;
+                        const top = target.getBoundingClientRect().top + window.pageYOffset - offset;
+                        window.scrollTo({ top: Math.max(0, top), behavior: 'smooth' });
+                    }
+
                     resourceCards.forEach((card, index) => {
                         setTimeout(() => {
                             card.style.animation = 'none';
@@ -375,154 +411,72 @@
         .ripple-effect {
             position: absolute;
             border-radius: 50%;
-            background: rgba(37, 99, 235, 0.3);
+            background: rgba(37, 99, 235, 0.2);
             transform: scale(0);
-            animation: ripple 0.6s ease-out;
+            animation: ripple 0.6s cubic-bezier(0.4, 0, 0.2, 1);
             pointer-events: none;
         }
         
-        /* Animação de flutuação suave para partículas */
-        @keyframes float {
-            0%, 100% {
-                transform: translateY(0) translateX(0);
-                opacity: 0.6;
-            }
-            25% {
-                transform: translateY(-20px) translateX(10px);
-                opacity: 0.8;
-            }
-            50% {
-                transform: translateY(-40px) translateX(-10px);
-                opacity: 1;
-            }
-            75% {
-                transform: translateY(-20px) translateX(10px);
-                opacity: 0.8;
-            }
-        }
-        
-        /* Pulse suave e tecnológico */
-        @keyframes gentlePulse {
-            0%, 100% {
-                transform: scale(1);
-            }
-            50% {
-                transform: scale(1.1);
-            }
-        }
-        
-        /* Bounce suave para emoji */
-        @keyframes gentleBounce {
-            0%, 100% {
-                transform: translateY(0);
-            }
-            50% {
-                transform: translateY(-10px);
-            }
-        }
-        
-        /* Grid animado sutil */
-        @keyframes gridShift {
-            0% {
-                background-position: 0 0;
-            }
-            100% {
-                background-position: 50px 50px;
-            }
-        }
-        
-        #grid-background > div {
-            animation: gridShift 20s linear infinite;
-        }
-        
-        /* Efeito de brilho nos cards */
-        #recursos > a {
+        .premium-card {
+            background: #ffffff;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             position: relative;
-            overflow: hidden;
+            z-index: 1;
         }
         
-        #recursos > a::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: linear-gradient(
-                45deg,
-                transparent 30%,
-                rgba(255, 255, 255, 0.1) 50%,
-                transparent 70%
-            );
-            transform: translateX(-100%) translateY(-100%);
-            transition: transform 0.6s ease;
+        .premium-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 25px -5px rgba(0, 120, 215, 0.1), 0 10px 10px -5px rgba(0, 120, 215, 0.04);
+            border-color: rgba(0, 120, 215, 0.2);
         }
         
-        #recursos > a:hover::before {
-            transform: translateX(50%) translateY(50%);
-        }
-        
-        /* Badges com efeito glow sutil ao hover */
         .badge-tech {
+            will-change: transform;
+            overflow: hidden;
             position: relative;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
         
-        .badge-tech::after {
+        .badge-tech::before {
             content: '';
             position: absolute;
-            inset: 0;
-            border-radius: 9999px;
-            background: rgba(255, 255, 255, 0.2);
-            opacity: 0;
-            transition: opacity 0.3s ease;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.8), transparent);
+            transition: all 0.5s ease;
         }
         
-        .badge-tech:hover::after {
-            opacity: 1;
+        .badge-tech:hover::before {
+            left: 100%;
         }
         
-        /* Shadow dinâmica nos cards */
-        #recursos > a {
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        
-        #recursos > a:hover {
-            box-shadow: 
-                0 20px 25px -5px rgba(0, 0, 0, 0.1),
-                0 10px 10px -5px rgba(0, 0, 0, 0.04),
-                0 0 0 1px rgba(59, 130, 246, 0.1);
-        }
-        
-        /* Transição suave no botão CTA */
         #start-now {
             position: relative;
             overflow: hidden;
         }
         
-        #start-now::before {
+        #start-now::after {
             content: '';
             position: absolute;
-            inset: 0;
-            background: linear-gradient(
-                135deg,
-                transparent 0%,
-                rgba(37, 99, 235, 0.1) 50%,
-                transparent 100%
-            );
-            transform: translateX(-100%);
-            transition: transform 0.5s ease;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: all 0.6s ease;
         }
         
-        #start-now:hover::before {
-            transform: translateX(100%);
+        #start-now:hover::after {
+            left: 100%;
         }
         
-        /* Partículas responsivas - removido display: none para mostrar no mobile */
-        
-        /* Performance optimization */
-        .card-hover, .badge-tech, #start-now {
-            will-change: transform;
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
         }
     </style>
 </body>

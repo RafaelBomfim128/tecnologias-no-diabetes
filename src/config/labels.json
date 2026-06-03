@@ -2,22 +2,22 @@
     "tutorials": [
         {
             "category": "Ponto de partida",
-            "description": "Comece por aqui se você está iniciando nesse mundo de tecnologias no diabetes",
+            "description": "Comece aqui: guias para iniciantes",
             "image": "img/icons/icon-ponto-partida.png"
         },
         {
             "category": "xDrip",
-            "description": "Conheça e aprenda mais sobre esse aplicativo multifuncional incrível para monitoramento contínuo de glicose",
+            "description": "Guias e recursos sobre xDrip",
             "image": "img/icons/icon-xdrip.png"
         },
         {
             "category": "Android APS",
-            "description": "Precisando gerenciar sua glicemia com maestria? Aprenda sobre o sistema de pâncreas artificial",
+            "description": "Guia do Android APS para gestão de glicemia",
             "image": "img/icons/icon-android-aps.png"
         },
         {
             "category": "Sensores",
-            "description": "Aprenda a utilizar sensores de monitoramento contínuo em conjunto com as tecnologias",
+            "description": "Uso de sensores de monitoramento contínuo",
             "image": "img/icons/icon-sensores.png"
         },
         {
@@ -42,22 +42,22 @@
         },
         {
             "category": "Nightscout",
-            "description": "Plataforma que permite monitoramento remoto por familiares e compartilhamento de dados",
+            "description": "Monitoramento remoto e compartilhamento de dados",
             "image": "img/icons/icon-nightscout.png"
         },
         {
             "category": "iOS",
-            "description": "Tutoriais específicos para usuários de iPhone e iPad no gerenciamento do diabetes",
+            "description": "Tutoriais iOS para gestão do diabetes",
             "image": "img/icons/icon-ios.png"
         },
         {
             "category": "Relógios",
-            "description": "Utilize smartwatches conectados às tecnologias para monitoramento prático da glicemia",
+            "description": "Smartwatches para monitoramento da glicemia",
             "image": "img/icons/icon-relogios.png"
         },
         {
             "category": "Bombas",
-            "description": "Bombas de insulina integradas às tecnologias para controle automatizado",
+            "description": "Bombas de insulina integradas ao sistema",
             "image": "img/icons/icon-bombas.png"
         },
         {
@@ -67,12 +67,12 @@
         },
         {
             "category": "Outros",
-            "description": "Outros tutoriais úteis que podem te ajudar no dia a dia com as tecnologias",
+            "description": "Tutoriais diversos úteis no dia a dia",
             "image": "img/icons/icon-tutorial-default.png"
         },
         {
             "category": "Ver Todos os Tutoriais",
-            "description": "Explore a lista completa de todos os tutoriais disponíveis em todas as categorias"
+            "description": "Lista completa de tutoriais por categoria"
         }
     ],
     "usefulContents": [
