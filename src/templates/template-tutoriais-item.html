@@ -46,18 +46,29 @@
         {{> notificacoes }}
 
         <!-- Hero Section -->
-        <div class="hero {{heroGradient}} mb-8 mt-6 mx-4 md:mx-auto md:max-w-7xl" id="hero-section-tutorials-item">
-            <h1 class="text-4xl md:text-5xl font-bold mb-4" id="tutorials-item-title">
-                {{this.title}}
-            </h1>
-            <p class="text-xl md:text-2xl opacity-90 mb-6" id="tutorials-item-description">
-                {{this.desc}}
-            </p>
+        <div class="hero {{heroGradient}} mb-12 relative overflow-hidden rounded-3xl shadow-2xl mx-4 md:mx-auto md:max-w-7xl animate-fade-in" id="hero-section-tutorials-item">
+            <div class="absolute inset-0 opacity-10" style="background-image: radial-gradient(circle at 2px 2px, white 1px, transparent 0); background-size: 32px 32px;"></div>
+            
+            <div class="container-custom relative z-10 md:py-20 text-center max-w-5xl mx-auto pl-0 pr-0">
+                <div class="w-14 h-14 mx-auto mb-6 rounded-2xl bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center text-white shadow-lg animate-bounce">
+                    <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
+                    </svg>
+                </div>
+                
+                <h1 id="tutorials-item-title" class="text-3xl md:text-5xl font-extrabold mb-4 tracking-tight text-white animate-slide-up">
+                    {{this.title}}
+                </h1>
+                
+                <p id="tutorials-item-description" class="text-sm md:text-xl mb-8 text-white/95 max-w-2xl mx-auto leading-relaxed animate-slide-up" style="animation-delay: 0.1s;">
+                    {{this.desc}}
+                </p>
+            </div>
         </div>
 
         <!-- Search Section -->
-        <div class="container-custom mb-8 mb-4 mt-4">
-            <div class="bg-white rounded-xl shadow-card p-6 animate-slide-up" id="content-tutorials">
+        <div class="container-custom mb-6 mt-4">
+            <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-4 md:p-6 animate-slide-up" id="content-tutorials">
                 {{> search-bar }}
             </div>
         </div>
@@ -81,53 +92,63 @@
 
         <!-- Tutoriais Grid -->
         <div class="container-custom pb-12" id="section-tutorials-item">
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 animate-scale-in" id="tutorials-item-list">
+            <div class="grid grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-6 animate-scale-in" id="tutorials-item-list">
                     {{#each links}}
-                    <article class="card card-hover group tutorials-item-list-item links">
-                        <div class="card-body">
-                            <!-- Ícone -->
-                            <div class="w-16 h-16 bg-gradient-to-br from-diabetes-primary to-diabetes-accent rounded-2xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300 shadow-lg">
-                                <svg class="w-9 h-9 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 6.75C3 5.784 3.784 5 4.75 5H9.5c1.381 0 2.5 1.119 2.5 2.5V20.5c-1.05-.9-2.35-1.5-4.25-1.5H4.75A1.75 1.75 0 013 17.25V6.75z" />
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 6.75C21 5.784 20.216 5 19.25 5H14.5C13.119 5 12 6.119 12 7.5V20.5c1.05-.9 2.35-1.5 4.25-1.5h3A1.75 1.75 0 0021 17.25V6.75z" />
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 7.5V20.5" />
-                                </svg>
-                            </div>
+                    <article class="card premium-card group tutorials-item-list-item links rounded-2xl flex flex-col justify-between" data-title="{{this.title}}">
+                        <div class="card-body flex flex-col h-full justify-between p-4 sm:p-6 text-center">
+                            <!-- Header Section -->
+                            <div class="flex-grow flex flex-col justify-center mb-4 sm:mb-6">
+                                <div class="flex flex-col items-center gap-3.5">
+                                    <!-- Ícone -->
+                                    <div class="w-12 h-12 sm:w-14 sm:h-14 bg-gradient-to-br from-teal-500 to-emerald-600 rounded-xl flex items-center justify-center flex-shrink-0 shadow-md group-hover:scale-115 group-hover:rotate-3 transition-all duration-300">
+                                        <svg class="w-6 h-6 sm:w-7 sm:h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
+                                        </svg>
+                                    </div>
 
-                            <!-- Título -->
-                            <h3 class="text-lg font-semibold text-gray-900 group-hover:text-diabetes-primary transition-colors mb-4 tutorials-item-link-title min-h-[3.5rem]">
-                                {{this.title}}
-                            </h3>
-                            
-                            <!-- Botões -->
-                            <div class="flex flex-col sm:flex-row gap-3 buttons" id="tutorials-item-buttons-{{@index}}">
-                                <button 
-                                    data-cy="access" 
-                                    id="btn-access-{{@index}}" 
-                                    onclick="window.open('{{this.fullUrl}}', '_blank')"
-                                    class="btn btn-primary flex-1 flex items-center justify-center gap-2 group/btn">
-                                    <svg class="w-5 h-5 flex-shrink-0 group-hover/btn:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
-                                    </svg>
-                                    <span>Acessar</span>
-                                </button>
-                                <button 
-                                    data-cy="copy" 
-                                    id="btn-copy-{{@index}}" 
-                                    onclick="copyLink('{{this.newLink}}', this)"
-                                    class="btn btn-secondary flex-1 flex items-center justify-center gap-2 group/btn">
-                                    <svg class="w-5 h-5 flex-shrink-0 group-hover/btn:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/>
-                                    </svg>
-                                    <span class="copy-text">Copiar Link</span>
-                                </button>
+                                    <!-- Título -->
+                                    <h3 class="text-base sm:text-lg text-gray-800 leading-snug whitespace-normal break-words tutorials-item-link-title">
+                                        {{this.title}}
+                                    </h3>
+                                </div>
                             </div>
                             
-                            <!-- Link Curto -->
-                            <div class="mt-3 pt-3 border-t border-gray-100">
-                                <p class="text-xs text-gray-500 break-all">
-                                    <span class="font-medium">Link curto:</span> {{this.newLink}}
-                                </p>
+                            <!-- Botões e Link Curto -->
+                            <div class="mt-auto">
+                                <!-- Botões -->
+                                <div class="flex flex-col sm:flex-row gap-2.5 sm:gap-3 buttons" id="tutorials-item-buttons-{{@index}}">
+                                    <button 
+                                        data-cy="access" 
+                                        id="btn-access-{{@index}}" 
+                                        onclick="window.open('{{this.fullUrl}}', '_blank')"
+                                        class="flex-1 flex items-center justify-center gap-1.5 sm:gap-2 text-white bg-teal-500 hover:bg-teal-600 rounded-xl py-2.5 px-3 sm:py-3 sm:px-4 text-sm sm:text-base font-bold transition-all shadow-sm hover:shadow-md active:scale-95 group/btn"
+                                        aria-label="Acessar {{this.title}}"
+                                    >
+                                        <svg class="w-4 h-4 sm:w-5 sm:h-5 flex-shrink-0 group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+                                        </svg>
+                                        <span>Acessar</span>
+                                    </button>
+                                    <button 
+                                        data-cy="copy" 
+                                        id="btn-copy-{{@index}}" 
+                                        onclick="copyLink('{{this.newLink}}', this)"
+                                        class="flex-1 flex items-center justify-center gap-1.5 sm:gap-2 text-gray-700 border border-gray-300 bg-gray-100 hover:bg-gray-200 rounded-xl py-2.5 px-3 sm:py-3 sm:px-4 text-sm sm:text-base font-bold transition-all active:scale-95 group/btn"
+                                        aria-label="Copiar link de {{this.title}}"
+                                    >
+                                        <svg class="w-4 h-4 sm:w-5 sm:h-5 flex-shrink-0 group-hover/btn:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/>
+                                        </svg>
+                                        <span class="copy-text">Copiar Link</span>
+                                    </button>
+                                </div>
+                                
+                                <!-- Link Curto -->
+                                <!-- <div class="mt-3.5 pt-3.5 border-t border-gray-100">
+                                    <p class="text-xs sm:text-sm text-gray-500 break-all leading-normal">
+                                        <span class="font-medium text-gray-700">Link curto:</span> {{this.newLink}}
+                                    </p>
+                                </div> -->
                             </div>
                         </div>
                     </article>
@@ -148,5 +169,27 @@
     </script>
     <script src="./js/geral.js"></script>
     <script src="./js/barra-pesquisa.js"></script>
+    
+    <style>
+        .premium-card {
+            background: #ffffff;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            z-index: 1;
+            align-items: stretch !important; /* Force internal containers to fill full card width */
+        }
+        
+        .premium-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 25px -5px rgba(13, 148, 136, 0.1), 0 10px 10px -5px rgba(13, 148, 136, 0.04);
+            border-color: rgba(13, 148, 136, 0.2);
+        }
+
+        .premium-card .buttons span {
+            max-width: none !important;
+            margin-right: 0 !important;
+        }
+    </style>
 </body>
 </html>

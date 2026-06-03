@@ -23,15 +23,19 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     async function loadRanking() {
-        function formatDate(isoString) {
+        function formatDateParts(isoString) {
             const date = new Date(isoString);
-            return date.toLocaleString('pt-BR', {
+            const datePart = date.toLocaleDateString('pt-BR', {
                 day: '2-digit',
                 month: '2-digit',
-                year: 'numeric',
+                year: 'numeric'
+            });
+            const timePart = date.toLocaleTimeString('pt-BR', {
                 hour: '2-digit',
                 minute: '2-digit',
-            }).replace(',', '');
+                second: '2-digit'
+            });
+            return { datePart, timePart };
         }
 
         function populateRanking(rankingData, tbodyId) {
@@ -49,19 +53,25 @@ document.addEventListener("DOMContentLoaded", () => {
                 const tr = document.createElement('tr');
 
                 const posTd = document.createElement('td');
+                posTd.classList.add('ranking-pos');
                 posTd.innerHTML = index === 0 ? "🥇" : index === 1 ? "🥈" : index === 2 ? "🥉" : index + 1;
 
                 const nameTd = document.createElement('td');
+                nameTd.classList.add('ranking-name');
                 nameTd.textContent = player.name;
 
                 const scoreTd = document.createElement('td');
+                scoreTd.classList.add('ranking-score');
                 scoreTd.textContent = player.score.toFixed(1).replace('.', ',');
 
                 const correctCount = document.createElement('td');
+                correctCount.classList.add('ranking-correct');
                 correctCount.textContent = player.correct_count;
 
                 const dateTd = document.createElement('td');
-                dateTd.textContent = formatDate(player.created_at);
+                dateTd.classList.add('ranking-datetime');
+                const parts = formatDateParts(player.created_at);
+                dateTd.innerHTML = `<span class="ranking-date">${parts.datePart}</span><span class="ranking-time">${parts.timePart}</span>`;
 
                 tr.appendChild(posTd);
                 tr.appendChild(nameTd);
@@ -205,6 +215,8 @@ document.addEventListener("DOMContentLoaded", () => {
         submitButton.style.cursor = 'not-allowed';
         submitButton.style.opacity = '0.6';
         submitButton.style.display = 'block';
+
+        document.getElementById('quiz-questions').scrollIntoView({ behavior: 'smooth' });
     }
 
     function selectOption(element, index, multiple = false) {
@@ -313,6 +325,8 @@ document.addEventListener("DOMContentLoaded", () => {
         if (currentQuestionIndex + 1 === totalQuestionsCount) {
             nextQuestionButton.textContent = 'Ver pontuação'
         }
+
+        document.getElementById('quiz-options').scrollIntoView({ behavior: 'smooth' });
     }
 
     function loadNextQuestion() {
@@ -385,6 +399,8 @@ document.addEventListener("DOMContentLoaded", () => {
             console.error(err)
             localStorage.setItem('answersQuiz', JSON.stringify([]));
         }
+
+        document.getElementById('quiz-results').scrollIntoView({ behavior: 'smooth' });
     }
 
     function restartQuiz() {
@@ -508,7 +524,7 @@ document.addEventListener("DOMContentLoaded", () => {
             globalLoader.style.display = "flex";
         }
     }
-    
+
     function hideLoader() {
         const globalLoader = document.getElementById("global-loader");
         if (globalLoader) {
@@ -591,7 +607,7 @@ document.addEventListener("DOMContentLoaded", () => {
         sessionStorage.removeItem("sessionID");
         sessionStorage.removeItem("signature");
 
-        setTimeout(async () =>  {
+        setTimeout(async () => {
             hideLoader();
             await loadRanking();
             document.getElementById("ranking-section").scrollIntoView({ behavior: "smooth" });

@@ -42,33 +42,43 @@
         {{> notificacoes }}
 
         <!-- Hero Section -->
-        <div class="hero mb-8 mt-6 mx-4 md:mx-auto md:max-w-7xl" id="hero-section-tutorials">
-            <div class="container-custom text-center">
-                <div class="text-6xl mb-4 animate-bounce">📚</div>
-                <h1 id="tutorials-main-title" class="text-4xl md:text-5xl font-bold mb-4">
+        <div class="hero mb-12 relative overflow-hidden rounded-3xl bg-gradient-to-br from-[#0d9488] to-[#059669] shadow-2xl mx-4 md:mx-auto md:max-w-7xl animate-fade-in" id="hero-section-tutorials">
+            <div class="absolute inset-0 opacity-10" style="background-image: radial-gradient(circle at 2px 2px, white 1px, transparent 0); background-size: 32px 32px;"></div>
+            
+            <div class="container-custom relative z-10 md:py-20 text-center max-w-5xl mx-auto pl-0 pr-0">
+                <div class="w-14 h-14 mx-auto mb-6 rounded-2xl bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center text-white shadow-lg animate-bounce">
+                    <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
+                    </svg>
+                </div>
+                
+                <h1 id="tutorials-main-title" class="text-3xl md:text-5xl font-extrabold mb-4 tracking-tight text-white animate-slide-up">
                     Tutoriais Completos
                 </h1>
-                <p id="tutorials-main-description" class="text-xl md:text-2xl opacity-90 mb-6">
+                
+                <p id="tutorials-main-description" class="text-sm md:text-xl mb-8 text-teal-50 max-w-2xl mx-auto leading-relaxed animate-slide-up" style="animation-delay: 0.1s;">
                     Aprenda a usar as tecnologias no diabetes com guias passo a passo, vídeos e documentação detalhada
                 </p>
-                <div class="flex flex-wrap justify-center gap-4 text-sm md:text-base">
-                    <div class="flex items-center bg-white bg-opacity-20 rounded-full px-4 py-2">
-                    <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                        <path d="M2 6a2 2 0 012-2h6a2 2 0 012 2v8a2 2 0 01-2 2H4a2 2 0 01-2-2V6zM14.553 7.106A1 1 0 0014 8v4a1 1 0 00.553.894l2 1A1 1 0 0018 13V7a1 1 0 00-1.447-.894l-2 1z"/>
-                    </svg>
-                    <span>Vídeos Passo a Passo</span>
-                </div>
-                <div class="flex items-center bg-white bg-opacity-20 rounded-full px-4 py-2">
-                    <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                        <path fill-rule="evenodd" d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4z" clip-rule="evenodd"/>
-                    </svg>
-                    <span>Documentação Completa</span>
-                </div>
-                <div class="flex items-center bg-white bg-opacity-20 rounded-full px-4 py-2">
-                    <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                        <path d="M9 4.804A7.968 7.968 0 005.5 4c-1.255 0-2.443.29-3.5.804v10A7.969 7.969 0 015.5 14c1.669 0 3.218.51 4.5 1.385A7.962 7.962 0 0114.5 14c1.255 0 2.443.29 3.5.804v-10A7.968 7.968 0 0014.5 4c-1.255 0-2.443.29-3.5.804V12a1 1 0 11-2 0V4.804z"/>
-                    </svg>
-                    <span>Guias Práticos</span>
+                
+                <div class="flex flex-wrap justify-center gap-2 sm:gap-3 text-xs md:text-sm animate-slide-up" style="animation-delay: 0.2s;">
+                    <div class="flex items-center bg-white/10 backdrop-blur-md border border-white/10 rounded-full px-3.5 py-1.5 text-white font-medium shadow-sm">
+                        <svg class="w-4 h-4 mr-1.5 text-teal-300" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M2 6a2 2 0 012-2h6a2 2 0 012 2v8a2 2 0 01-2 2H4a2 2 0 01-2-2V6zM14.553 7.106A1 1 0 0014 8v4a1 1 0 00.553.894l2 1A1 1 0 0018 13V7a1 1 0 00-1.447-.894l-2 1z"/>
+                        </svg>
+                        <span>Vídeos Passo a Passo</span>
+                    </div>
+                    <div class="flex items-center bg-white/10 backdrop-blur-md border border-white/10 rounded-full px-3.5 py-1.5 text-white font-medium shadow-sm">
+                        <svg class="w-4 h-4 mr-1.5 text-emerald-300" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4z" clip-rule="evenodd"/>
+                        </svg>
+                        <span>Documentação Completa</span>
+                    </div>
+                    <div class="flex items-center bg-white/10 backdrop-blur-md border border-white/10 rounded-full px-3.5 py-1.5 text-white font-medium shadow-sm">
+                        <svg class="w-4 h-4 mr-1.5 text-cyan-300" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M9 4.804A7.968 7.968 0 005.5 4c-1.255 0-2.443.29-3.5.804v10A7.969 7.969 0 015.5 14c1.669 0 3.218.51 4.5 1.385A7.962 7.962 0 0114.5 14c1.255 0 2.443.29 3.5.804v-10A7.968 7.968 0 0014.5 4c-1.255 0-2.443.29-3.5.804V12a1 1 0 11-2 0V4.804z"/>
+                        </svg>
+                        <span>Guias Práticos</span>
+                    </div>
                 </div>
             </div>
         </div>
@@ -77,22 +87,24 @@
         <div class="container-custom pb-12">
             <!-- Featured Category (Ponto de Partida) -->
             <div class="mb-8 mt-4">
-                <div class="card bg-gradient-to-r from-green-500 to-emerald-600 text-white rounded-2xl shadow-xl overflow-hidden animate-scale-in">
-                    <div class="p-8 md:p-12 flex flex-col md:flex-row items-center gap-8">
-                        <div class="flex-shrink-0">
+                <div class="card bg-gradient-to-br from-[#0d9488] to-[#0f766e] text-white rounded-3xl shadow-xl overflow-hidden animate-scale-in relative border border-teal-500/30">
+                    <!-- Subtle pattern overlay -->
+                    <div class="absolute inset-0 opacity-10" style="background-image: radial-gradient(circle at 1px 1px, white 1px, transparent 0); background-size: 16px 16px;"></div>
+                    <div class="p-8 md:p-12 flex flex-col md:flex-row items-center gap-8 relative z-10">
+                        <div class="flex-shrink-0 bg-white/10 backdrop-blur-md p-4 rounded-3xl border border-white/20 shadow-inner group-hover:scale-105 transition-transform duration-300">
                             <img src="img/icons/icon-ponto-partida.png" alt="Ponto de partida" class="w-24 h-24 md:w-32 md:h-32 object-contain drop-shadow-lg" id="start-point-icon" />
                         </div>
                         <div class="flex-1 text-center md:text-left">
                             <div class="inline-block mb-3">
-                                <span class="badge bg-white bg-opacity-20 text-white px-4 py-1 text-sm font-semibold">
+                                <span class="bg-white/10 backdrop-blur-md border border-white/15 text-white py-1 text-sm font-semibold rounded-full shadow-sm">
                                     ⭐ Recomendado para Iniciantes
                                 </span>
                             </div>
-                            <h2 id="start-point-title" class="text-white text-3xl md:text-4xl font-bold mb-3">Ponto de partida</h2>
-                            <p id="start-point-description" class="text-lg opacity-90 mb-6">
-                                Comece por aqui se você está iniciando nesse mundo de tecnologias no diabetes
+                            <h2 id="start-point-title" class="text-white text-3xl md:text-4xl font-extrabold mb-3 tracking-tight">Ponto de partida</h2>
+                            <p id="start-point-description" class="text-base md:text-lg opacity-90 mb-6 leading-relaxed">
+                                Comece aqui: guias para iniciantes
                             </p>
-                            <a href="item-tutorial-ponto-de-partida.html" id="open-start-point" class="btn btn-lg bg-white text-green-600 hover:bg-gray-100 inline-flex items-center gap-2">
+                            <a href="item-tutorial-ponto-de-partida.html" id="open-start-point" class="bg-white text-teal-800 hover:bg-teal-50 hover:text-teal-900 px-6 py-3 rounded-xl inline-flex items-center gap-2 font-bold transition-all hover:shadow-lg active:scale-95 shadow-md">
                                 <span>Começar Agora</span>
                                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
@@ -106,157 +118,255 @@
             <!-- Categories Section -->
             <h2 class="text-3xl font-bold text-gray-800 mb-8 animate-slide-up">Categorias de Tutoriais</h2>
             
-            <div id='recursos' class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div id='recursos' class="grid grid-cols-2 lg:grid-cols-3 gap-2 sm:gap-6">
                 <!-- xDrip Card -->
-                <article id="card-xdrip" class="card card-hover group animate-scale-in" style="animation-delay: 0ms">
-                    <div class="card-body text-center">
-                        <div class="mb-4 flex justify-center">
-                            <img src="img/icons/icon-xdrip.png" alt="xDrip" class="w-20 h-20 object-contain group-hover:scale-110 transition-transform duration-300" id="xdrip-icon" />
+                <article id="card-xdrip" class="card premium-card group rounded-2xl flex flex-col justify-between animate-scale-in" style="animation-delay: 0ms">
+                    <div class="card-body flex flex-col h-full justify-between p-4 sm:p-6 text-center">
+                        <div class="flex-grow flex flex-col justify-center mb-4 sm:mb-6">
+                            <div class="flex flex-col items-center gap-3">
+                                <!-- Icon Container -->
+                                <div class="w-16 h-16 sm:w-20 sm:h-20 bg-teal-50 rounded-2xl flex items-center justify-center flex-shrink-0 shadow-inner group-hover:scale-110 transition-transform duration-300">
+                                    <img src="img/icons/icon-xdrip.png" alt="xDrip" class="w-12 h-12 sm:w-16 sm:h-16 object-contain" id="xdrip-icon" />
+                                </div>
+                                
+                                <span class="bg-teal-50 text-teal-700 border border-teal-100 text-xs font-semibold px-2.5 py-0.5 rounded-full">App Multifuncional</span>
+                                
+                                <h2 id="xdrip-title" class="card-title sm:text-lg font-bold text-gray-800 leading-snug whitespace-normal break-words">xDrip</h2>
+                                <p id="xdrip-description" class="text-base text-gray-500 leading-relaxed max-w-[240px] mx-auto">
+                                    Guias e recursos sobre xDrip
+                                </p>
+                            </div>
                         </div>
-                        <span class="badge badge-primary mb-3">App Multifuncional</span>
-                        <h2 id="xdrip-title" class="card-title text-gray-800">xDrip</h2>
-                        <p id="xdrip-description" class="card-text text-gray-600">
-                            Conheça e aprenda mais sobre esse aplicativo multifuncional incrível para monitoramento contínuo de glicose
-                        </p>
-                        <a href="item-tutorial-xdrip.html" id="open-xdrip" class="btn btn-info w-full mt-auto">
-                            Ver Tutoriais
+                        
+                        <a href="item-tutorial-xdrip.html" id="open-xdrip" class="w-full flex items-center justify-center gap-1.5 sm:gap-2 text-white bg-teal-500 hover:bg-teal-600 rounded-xl py-2.5 px-3 sm:py-3 sm:px-4 text-sm sm:text-base font-bold transition-all shadow-sm hover:shadow-md active:scale-95 group/btn">
+                            <span>Ver Tutoriais</span>
+                            <svg class="w-4 h-4 sm:w-5 sm:h-5 group-hover/btn:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/>
+                            </svg>
                         </a>
                     </div>
                 </article>
 
                 <!-- Android APS Card -->
-                <article id="card-android-aps" class="card card-hover group animate-scale-in" style="animation-delay: 100ms">
-                    <div class="card-body text-center">
-                        <div class="mb-4 flex justify-center">
-                            <img src="img/icons/icon-android-aps.png" alt="Android APS" class="w-20 h-20 object-contain group-hover:scale-110 transition-transform duration-300" id="android-aps-icon" />
+                <article id="card-android-aps" class="card premium-card group rounded-2xl flex flex-col justify-between animate-scale-in" style="animation-delay: 100ms">
+                    <div class="card-body flex flex-col h-full justify-between p-4 sm:p-6 text-center">
+                        <div class="flex-grow flex flex-col justify-center mb-4 sm:mb-6">
+                            <div class="flex flex-col items-center gap-3">
+                                <!-- Icon Container -->
+                                <div class="w-16 h-16 sm:w-20 sm:h-20 bg-purple-50 rounded-2xl flex items-center justify-center flex-shrink-0 shadow-inner group-hover:scale-110 transition-transform duration-300">
+                                    <img src="img/icons/icon-android-aps.png" alt="Android APS" class="w-12 h-12 sm:w-16 sm:h-16 object-contain" id="android-aps-icon" />
+                                </div>
+                                
+                                <span class="bg-purple-50 text-purple-700 border border-purple-100 text-xs font-semibold px-2.5 py-0.5 rounded-full">Sistema Avançado</span>
+                                
+                                <h2 id="android-aps-title" class="card-title sm:text-lg font-bold text-gray-800 leading-snug whitespace-normal break-words">Android APS</h2>
+                                <p id="android-aps-description" class="text-base text-gray-500 leading-relaxed max-w-[240px] mx-auto">
+                                    Guia do Android APS para gestão de glicemia
+                                </p>
+                            </div>
                         </div>
-                        <span class="badge bg-purple-100 text-purple-600 mb-3">Sistema Avançado</span>
-                        <h2 id="android-aps-title" class="card-title text-gray-800">Android APS</h2>
-                        <p id="android-aps-description" class="card-text text-gray-600">
-                            Precisando gerenciar sua glicemia com maestria? Aprenda sobre o sistema de pâncreas artificial
-                        </p>
-                        <a href="item-tutorial-android-aps.html" id="open-android-aps" class="btn btn-info w-full mt-auto">
-                            Ver Tutoriais
+                        
+                        <a href="item-tutorial-android-aps.html" id="open-android-aps" class="w-full flex items-center justify-center gap-1.5 sm:gap-2 text-white bg-teal-500 hover:bg-teal-600 rounded-xl py-2.5 px-3 sm:py-3 sm:px-4 text-sm sm:text-base font-bold transition-all shadow-sm hover:shadow-md active:scale-95 group/btn">
+                            <span>Ver Tutoriais</span>
+                            <svg class="w-4 h-4 sm:w-5 sm:h-5 group-hover/btn:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/>
+                            </svg>
                         </a>
                     </div>
                 </article>
 
                 <!-- Sensores Card -->
-                <article id="card-sensors" class="card card-hover group animate-scale-in" style="animation-delay: 200ms">
-                    <div class="card-body text-center">
-                        <div class="mb-4 flex justify-center items-center min-h-28">
-                            <img src="img/icons/icon-sensores.png" alt="Sensores" class="w-28 h-28 object-contain group-hover:scale-110 transition-transform duration-300" id="sensors-icon" />
+                <article id="card-sensors" class="card premium-card group rounded-2xl flex flex-col justify-between animate-scale-in" style="animation-delay: 200ms">
+                    <div class="card-body flex flex-col h-full justify-between p-4 sm:p-6 text-center">
+                        <div class="flex-grow flex flex-col justify-center mb-4 sm:mb-6">
+                            <div class="flex flex-col items-center gap-3">
+                                <!-- Icon Container -->
+                                <div class="w-16 h-16 sm:w-20 sm:h-20 bg-blue-50 rounded-2xl flex items-center justify-center flex-shrink-0 shadow-inner group-hover:scale-110 transition-transform duration-300">
+                                    <img src="img/icons/icon-sensores.png" alt="Sensores" class="w-12 h-12 sm:w-16 sm:h-16 object-contain shadow-sm" id="sensors-icon" />
+                                </div>
+                                
+                                <span class="bg-blue-50 text-blue-700 border border-blue-100 text-xs font-semibold px-2.5 py-0.5 rounded-full">Hardware</span>
+                                
+                                <h2 id="sensors-title" class="card-title sm:text-lg font-bold text-gray-800 leading-snug whitespace-normal break-words">Sensores</h2>
+                                <p id="sensors-description" class="text-base text-gray-500 leading-relaxed max-w-[240px] mx-auto">
+                                    Uso de sensores de monitoramento contínuo
+                                </p>
+                            </div>
                         </div>
-                        <span class="badge badge-warning mb-3">Hardware</span>
-                        <h2 id="sensors-title" class="card-title text-gray-800">Sensores</h2>
-                        <p id="sensors-description" class="card-text text-gray-600">
-                            Aprenda a utilizar sensores de monitoramento contínuo em conjunto com as tecnologias
-                        </p>
-                        <a href="tutoriais-sensores.html" id="open-sensors" class="btn btn-info w-full mt-auto">
-                            Ver Tutoriais
+                        
+                        <a href="tutoriais-sensores.html" id="open-sensors" class="w-full flex items-center justify-center gap-1.5 sm:gap-2 text-white bg-teal-500 hover:bg-teal-600 rounded-xl py-2.5 px-3 sm:py-3 sm:px-4 text-sm sm:text-base font-bold transition-all shadow-sm hover:shadow-md active:scale-95 group/btn">
+                            <span>Ver Tutoriais</span>
+                            <svg class="w-4 h-4 sm:w-5 sm:h-5 group-hover/btn:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/>
+                            </svg>
                         </a>
                     </div>
                 </article>
 
                 <!-- Nightscout Card -->
-                <article id="card-nightscout" class="card card-hover group animate-scale-in" style="animation-delay: 300ms">
-                    <div class="card-body text-center">
-                        <div class="mb-4 flex justify-center">
-                            <img src="img/icons/icon-nightscout.png" alt="Nightscout" class="w-20 h-20 object-contain group-hover:scale-110 transition-transform duration-300" id="nightscout-icon" />
+                <article id="card-nightscout" class="card premium-card group rounded-2xl flex flex-col justify-between animate-scale-in" style="animation-delay: 300ms">
+                    <div class="card-body flex flex-col h-full justify-between p-4 sm:p-6 text-center">
+                        <div class="flex-grow flex flex-col justify-center mb-4 sm:mb-6">
+                            <div class="flex flex-col items-center gap-3">
+                                <!-- Icon Container -->
+                                <div class="w-16 h-16 sm:w-20 sm:h-20 bg-indigo-50 rounded-2xl flex items-center justify-center flex-shrink-0 shadow-inner group-hover:scale-110 transition-transform duration-300">
+                                    <img src="img/icons/icon-nightscout.png" alt="Nightscout" class="w-12 h-12 sm:w-16 sm:h-16 object-contain shadow-sm" id="nightscout-icon" />
+                                </div>
+                                
+                                <span class="bg-indigo-50 text-indigo-700 border border-indigo-100 text-xs font-semibold px-2.5 py-0.5 rounded-full">Monitoramento Remoto</span>
+                                
+                                <h2 id="nightscout-title" class="card-title sm:text-lg font-bold text-gray-800 leading-snug whitespace-normal break-words">Nightscout</h2>
+                                <p id="nightscout-description" class="text-base text-gray-500 leading-relaxed max-w-[240px] mx-auto">
+                                    Monitoramento remoto e compartilhamento de dados
+                                </p>
+                            </div>
                         </div>
-                        <span class="badge bg-indigo-100 text-indigo-600 mb-3">Monitoramento Remoto</span>
-                        <h2 id="nightscout-title" class="card-title text-gray-800">Nightscout</h2>
-                        <p id="nightscout-description" class="card-text text-gray-600">
-                            Plataforma que permite monitoramento remoto por familiares e compartilhamento de dados
-                        </p>
-                        <a href="item-tutorial-nightscout.html" id="open-nightscout" class="btn btn-info w-full mt-auto">
-                            Ver Tutoriais
+                        
+                        <a href="item-tutorial-nightscout.html" id="open-nightscout" class="w-full flex items-center justify-center gap-1.5 sm:gap-2 text-white bg-teal-500 hover:bg-teal-600 rounded-xl py-2.5 px-3 sm:py-3 sm:px-4 text-sm sm:text-base font-bold transition-all shadow-sm hover:shadow-md active:scale-95 group/btn">
+                            <span>Ver Tutoriais</span>
+                            <svg class="w-4 h-4 sm:w-5 sm:h-5 group-hover/btn:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/>
+                            </svg>
                         </a>
                     </div>
                 </article>
 
                 <!-- iOS Card -->
-                <article id="card-ios" class="card card-hover group animate-scale-in" style="animation-delay: 400ms">
-                    <div class="card-body text-center">
-                        <div class="mb-4 flex justify-center items-center min-h-24">
-                            <img src="img/icons/icon-ios.png" alt="iOS" class="w-24 h-24 object-contain group-hover:scale-110 transition-transform duration-300" id="ios-icon" />
+                <article id="card-ios" class="card premium-card group rounded-2xl flex flex-col justify-between animate-scale-in" style="animation-delay: 400ms">
+                    <div class="card-body flex flex-col h-full justify-between p-4 sm:p-6 text-center">
+                        <div class="flex-grow flex flex-col justify-center mb-4 sm:mb-6">
+                            <div class="flex flex-col items-center gap-3">
+                                <!-- Icon Container -->
+                                <div class="w-16 h-16 sm:w-20 sm:h-20 bg-gray-50 rounded-2xl flex items-center justify-center flex-shrink-0 shadow-inner group-hover:scale-110 transition-transform duration-300">
+                                    <img src="img/icons/icon-ios.png" alt="iOS" class="w-12 h-12 sm:w-16 sm:h-16 object-contain" id="ios-icon" />
+                                </div>
+                                
+                                <span class="bg-gray-50 text-gray-700 border border-gray-150 text-xs font-semibold px-2.5 py-0.5 rounded-full">Apple</span>
+                                
+                                <h2 id="ios-title" class="card-title sm:text-lg font-bold text-gray-800 leading-snug whitespace-normal break-words">iOS</h2>
+                                <p id="ios-description" class="text-base text-gray-500 leading-relaxed max-w-[240px] mx-auto">
+                                    Tutoriais iOS para gestão do diabetes
+                                </p>
+                            </div>
                         </div>
-                        <span class="badge bg-gray-100 text-gray-700 mb-3">Apple</span>
-                        <h2 id="ios-title" class="card-title text-gray-800">iOS</h2>
-                        <p id="ios-description" class="card-text text-gray-600">
-                            Tutoriais específicos para usuários de iPhone e iPad no gerenciamento do diabetes
-                        </p>
-                        <a href="item-tutorial-ios.html" id="open-ios" class="btn btn-info w-full mt-auto">
-                            Ver Tutoriais
+                        
+                        <a href="item-tutorial-ios.html" id="open-ios" class="w-full flex items-center justify-center gap-1.5 sm:gap-2 text-white bg-teal-500 hover:bg-teal-600 rounded-xl py-2.5 px-3 sm:py-3 sm:px-4 text-sm sm:text-base font-bold transition-all shadow-sm hover:shadow-md active:scale-95 group/btn">
+                            <span>Ver Tutoriais</span>
+                            <svg class="w-4 h-4 sm:w-5 sm:h-5 group-hover/btn:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/>
+                            </svg>
                         </a>
                     </div>
                 </article>
 
                 <!-- Relógios Card -->
-                <article id="card-watches" class="card card-hover group animate-scale-in" style="animation-delay: 500ms">
-                    <div class="card-body text-center">
-                        <div class="mb-4 flex justify-center items-center min-h-24">
-                            <img src="img/icons/icon-relogios.png" alt="Relógios" class="w-24 h-24 object-contain group-hover:scale-110 transition-transform duration-300" id="watches-icon" />
+                <article id="card-watches" class="card premium-card group rounded-2xl flex flex-col justify-between animate-scale-in" style="animation-delay: 500ms">
+                    <div class="card-body flex flex-col h-full justify-between p-4 sm:p-6 text-center">
+                        <div class="flex-grow flex flex-col justify-center mb-4 sm:mb-6">
+                            <div class="flex flex-col items-center gap-3">
+                                <!-- Icon Container -->
+                                <div class="w-16 h-16 sm:w-20 sm:h-20 bg-sky-50 rounded-2xl flex items-center justify-center flex-shrink-0 shadow-inner group-hover:scale-110 transition-transform duration-300">
+                                    <img src="img/icons/icon-relogios.png" alt="Relógios" class="w-12 h-12 sm:w-16 sm:h-16 object-contain" id="watches-icon" />
+                                </div>
+                                
+                                <span class="bg-sky-50 text-sky-700 border border-sky-100 text-xs font-semibold px-2.5 py-0.5 rounded-full">Wearables</span>
+                                
+                                <h2 id="watches-title" class="card-title sm:text-lg font-bold text-gray-800 leading-snug whitespace-normal break-words">Relógios</h2>
+                                <p id="watches-description" class="text-base text-gray-500 leading-relaxed max-w-[240px] mx-auto">
+                                    Smartwatches para monitoramento da glicemia
+                                </p>
+                            </div>
                         </div>
-                        <span class="badge bg-blue-100 text-blue-600 mb-3">Wearables</span>
-                        <h2 id="watches-title" class="card-title text-gray-800">Relógios</h2>
-                        <p id="watches-description" class="card-text text-gray-600">
-                            Utilize smartwatches conectados às tecnologias para monitoramento prático da glicemia
-                        </p>
-                        <a href="item-tutorial-relogios.html" id="open-watches" class="btn btn-info w-full mt-auto">
-                            Ver Tutoriais
+                        
+                        <a href="item-tutorial-relogios.html" id="open-watches" class="w-full flex items-center justify-center gap-1.5 sm:gap-2 text-white bg-teal-500 hover:bg-teal-600 rounded-xl py-2.5 px-3 sm:py-3 sm:px-4 text-sm sm:text-base font-bold transition-all shadow-sm hover:shadow-md active:scale-95 group/btn">
+                            <span>Ver Tutoriais</span>
+                            <svg class="w-4 h-4 sm:w-5 sm:h-5 group-hover/btn:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/>
+                            </svg>
                         </a>
                     </div>
                 </article>
 
                 <!-- Bombas Card -->
-                <article id="card-pumps" class="card card-hover group animate-scale-in" style="animation-delay: 600ms">
-                    <div class="card-body text-center">
-                        <div class="mb-4 flex justify-center items-center min-h-24">
-                            <img src="img/icons/icon-bombas.png" alt="Bombas" class="w-24 h-24 object-contain group-hover:scale-110 transition-transform duration-300" id="pumps-icon" />
+                <article id="card-pumps" class="card premium-card group rounded-2xl flex flex-col justify-between animate-scale-in" style="animation-delay: 600ms">
+                    <div class="card-body flex flex-col h-full justify-between p-4 sm:p-6 text-center">
+                        <div class="flex-grow flex flex-col justify-center mb-4 sm:mb-6">
+                            <div class="flex flex-col items-center gap-3">
+                                <!-- Icon Container -->
+                                <div class="w-16 h-16 sm:w-20 sm:h-20 bg-rose-50 rounded-2xl flex items-center justify-center flex-shrink-0 shadow-inner group-hover:scale-110 transition-transform duration-300">
+                                    <img src="img/icons/icon-bombas.png" alt="Bombas" class="w-12 h-12 sm:w-16 sm:h-16 object-contain" id="pumps-icon" />
+                                </div>
+                                
+                                <span class="bg-rose-50 text-rose-700 border border-rose-100 text-xs font-semibold px-2.5 py-0.5 rounded-full">Infusão de Insulina</span>
+                                
+                                <h2 id="pumps-title" class="card-title sm:text-lg font-bold text-gray-800 leading-snug whitespace-normal break-words">Bombas</h2>
+                                <p id="pumps-description" class="text-base text-gray-500 leading-relaxed max-w-[240px] mx-auto">
+                                    Bombas de insulina integradas ao sistema
+                                </p>
+                            </div>
                         </div>
-                        <span class="badge bg-red-100 text-red-600 mb-3">Infusão de Insulina</span>
-                        <h2 id="pumps-title" class="card-title text-gray-800">Bombas</h2>
-                        <p id="pumps-description" class="card-text text-gray-600">
-                            Bombas de insulina integradas às tecnologias para controle automatizado
-                        </p>
-                        <a href="item-tutorial-bombas.html" id="open-pumps" class="btn btn-info w-full mt-auto">
-                            Ver Tutoriais
+                        
+                        <a href="item-tutorial-bombas.html" id="open-pumps" class="w-full flex items-center justify-center gap-1.5 sm:gap-2 text-white bg-teal-500 hover:bg-teal-600 rounded-xl py-2.5 px-3 sm:py-3 sm:px-4 text-sm sm:text-base font-bold transition-all shadow-sm hover:shadow-md active:scale-95 group/btn">
+                            <span>Ver Tutoriais</span>
+                            <svg class="w-4 h-4 sm:w-5 sm:h-5 group-hover/btn:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/>
+                            </svg>
                         </a>
                     </div>
                 </article>
 
                 <!-- Outros Card -->
-                <article id="card-others" class="card card-hover group animate-scale-in" style="animation-delay: 700ms">
-                    <div class="card-body text-center">
-                        <div class="mb-4 flex justify-center">
-                            <img src="img/icons/icon-tutorial-default.png" alt="Outros" class="w-20 h-20 object-contain group-hover:scale-110 transition-transform duration-300" id="others-icon" />
+                <article id="card-others" class="card premium-card group rounded-2xl flex flex-col justify-between animate-scale-in" style="animation-delay: 700ms">
+                    <div class="card-body flex flex-col h-full justify-between p-4 sm:p-6 text-center">
+                        <div class="flex-grow flex flex-col justify-center mb-4 sm:mb-6">
+                            <div class="flex flex-col items-center gap-3">
+                                <!-- Icon Container -->
+                                <div class="w-16 h-16 sm:w-20 sm:h-20 bg-slate-50 rounded-2xl flex items-center justify-center flex-shrink-0 shadow-inner group-hover:scale-110 transition-transform duration-300">
+                                    <img src="img/icons/icon-tutorial-default.png" alt="Outros" class="w-12 h-12 sm:w-16 sm:h-16 object-contain shadow-sm" id="others-icon" />
+                                </div>
+                                
+                                <span class="bg-slate-50 text-slate-700 border border-slate-150 text-xs font-semibold px-2.5 py-0.5 rounded-full">Diversos</span>
+                                
+                                <h2 id="others-title" class="card-title sm:text-lg font-bold text-gray-800 leading-snug whitespace-normal break-words">Outros</h2>
+                                <p id="others-description" class="text-base text-gray-500 leading-relaxed max-w-[240px] mx-auto">
+                                    Tutoriais diversos úteis no dia a dia
+                                </p>
+                            </div>
                         </div>
-                        <span class="badge bg-gray-100 text-gray-600 mb-3">Diversos</span>
-                        <h2 id="others-title" class="card-title text-gray-800">Outros</h2>
-                        <p id="others-description" class="card-text text-gray-600">
-                            Outros tutoriais úteis que podem te ajudar no dia a dia com as tecnologias
-                        </p>
-                        <a href="item-tutorial-outros.html" id="open-others" class="btn btn-info w-full mt-auto">
-                            Ver Tutoriais
+                        
+                        <a href="item-tutorial-outros.html" id="open-others" class="w-full flex items-center justify-center gap-1.5 sm:gap-2 text-white bg-teal-500 hover:bg-teal-600 rounded-xl py-2.5 px-3 sm:py-3 sm:px-4 text-sm sm:text-base font-bold transition-all shadow-sm hover:shadow-md active:scale-95 group/btn">
+                            <span>Ver Tutoriais</span>
+                            <svg class="w-4 h-4 sm:w-5 sm:h-5 group-hover/btn:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/>
+                            </svg>
                         </a>
                     </div>
                 </article>
 
                 <!-- Ver Tudo Card (Destacado) -->
-                <article id="card-all-tutorials" class="card bg-gradient-to-br from-diabetes-primary to-diabetes-accent text-white group hover:shadow-2xl transition-all duration-300 animate-scale-in" style="animation-delay: 800ms">
-                    <div class="card-body text-center">
-                        <div class="mb-4 flex justify-center">
-                            <svg class="w-20 h-20 group-hover:scale-110 transition-transform duration-300" fill="currentColor" viewBox="0 0 20 20">
-                                <path d="M7 3a1 1 0 000 2h6a1 1 0 100-2H7zM4 7a1 1 0 011-1h10a1 1 0 110 2H5a1 1 0 01-1-1zM2 11a2 2 0 012-2h12a2 2 0 012 2v4a2 2 0 01-2 2H4a2 2 0 01-2-2v-4z"/>
-                            </svg>
+                <article id="card-all-tutorials" class="card bg-gradient-to-br from-[#0d9488] to-[#059669] text-white group rounded-2xl flex flex-col justify-between shadow-lg hover:shadow-2xl transition-all duration-300 animate-scale-in" style="animation-delay: 800ms">
+                    <div class="card-body flex flex-col h-full justify-between p-4 sm:p-6 text-center">
+                        <div class="flex-grow flex flex-col justify-center mb-4 sm:mb-6">
+                            <div class="flex flex-col items-center gap-3">
+                                <!-- Icon Container -->
+                                <div class="w-16 h-16 sm:w-20 sm:h-20 bg-white/10 backdrop-blur-md rounded-2xl flex items-center justify-center flex-shrink-0 shadow-inner group-hover:scale-110 transition-transform duration-300">
+                                    <svg class="w-10 h-10 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                        <path d="M7 3a1 1 0 000 2h6a1 1 0 100-2H7zM4 7a1 1 0 011-1h10a1 1 0 110 2H5a1 1 0 01-1-1zM2 11a2 2 0 012-2h12a2 2 0 012 2v4a2 2 0 01-2 2H4a2 2 0 01-2-2v-4z"/>
+                                    </svg>
+                                </div>
+                                
+                                <h2 id="all-tutorials-title" class="sm:text-lg font-bold text-white leading-snug whitespace-normal break-words">Ver Todos os Tutoriais</h2>
+                                <p id="all-tutorials-description" class="text-base opacity-90 leading-relaxed max-w-[240px] mx-auto">
+                                    Lista completa de tutoriais por categoria
+                                </p>
+                            </div>
                         </div>
-                        <h2 id="all-tutorials-title" class="text-2xl font-bold mb-3 text-white">Ver Todos os Tutoriais</h2>
-                        <p id="all-tutorials-description" class="text-lg opacity-90 mb-6">
-                            Explore a lista completa de todos os tutoriais disponíveis em todas as categorias
-                        </p>
-                        <a href="item-tutorial-total.html" id="open-all-tutorials" class="btn btn-lg bg-white text-diabetes-primary hover:bg-gray-100 w-full">
-                            Explorar Tudo
+                        
+                        <a href="item-tutorial-total.html" id="open-all-tutorials" class="w-full flex items-center justify-center gap-1.5 sm:gap-2 text-[#0d9488] bg-white hover:bg-teal-50 rounded-xl py-2.5 px-3 sm:py-3 sm:px-4 text-sm sm:text-base font-bold transition-all shadow-sm hover:shadow-md active:scale-95 group/btn">
+                            <span>Explorar Tudo</span>
+                            <svg class="w-4 h-4 sm:w-5 sm:h-5 group-hover/btn:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/>
+                            </svg>
                         </a>
                     </div>
                 </article>
@@ -297,5 +407,26 @@
             });
         });
     </script>
+    
+    <style>
+        .premium-card {
+            background: #ffffff;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            z-index: 1;
+        }
+        
+        .premium-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 25px -5px rgba(13, 148, 136, 0.1), 0 10px 10px -5px rgba(13, 148, 136, 0.04);
+            border-color: rgba(13, 148, 136, 0.2);
+        }
+        
+        .hover\:scale-115:hover {
+            transform: scale(1.15);
+        }
+    </style>
 </body>
 </html>
+

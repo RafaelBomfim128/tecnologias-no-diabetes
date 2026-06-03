@@ -31,91 +31,132 @@
         </nav>
 
         <!-- Hero Section -->
-        <div class="hero bg-gradient-to-br from-purple-600 to-pink-600 mb-8 animate-fade-in" id="hero-section-tutorials-sensors">
-            <h1 class="text-white text-3xl md:text-4xl font-bold mb-3" id="tutorials-sensors-title">📡 Sensores</h1>
-            <p class="text-white/90 text-lg max-w-3xl mx-auto" id="tutorials-sensors-description">
-                Escolha um sensor para encontrar os tutoriais que temos disponíveis
-            </p>
+        <div class="hero mb-12 relative overflow-hidden rounded-3xl bg-gradient-to-br from-[#0d9488] to-[#059669] shadow-2xl mx-4 md:mx-auto md:max-w-7xl animate-fade-in" id="hero-section-tutorials-sensors">
+            <div class="absolute inset-0 opacity-10" style="background-image: radial-gradient(circle at 2px 2px, white 1px, transparent 0); background-size: 32px 32px;"></div>
+            
+            <div class="container-custom relative z-10 md:py-20 text-center max-w-5xl mx-auto pl-0 pr-0">
+                <div class="w-14 h-14 mx-auto mb-6 rounded-2xl bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center text-white shadow-lg animate-bounce">
+                    <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+                    </svg>
+                </div>
+                
+                <h1 id="tutorials-sensors-title" class="text-3xl md:text-5xl font-extrabold mb-4 tracking-tight text-white animate-slide-up">
+                    📡 Sensores
+                </h1>
+                
+                <p id="tutorials-sensors-description" class="text-sm md:text-xl mb-8 text-teal-50 max-w-2xl mx-auto leading-relaxed animate-slide-up" style="animation-delay: 0.1s;">
+                    Escolha um sensor para encontrar os tutoriais que temos disponíveis
+                </p>
+            </div>
         </div>
 
         <!-- Grid de Sensores -->
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto" id='recursos'>
+        <div class="grid grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-6 max-w-6xl mx-auto mb-12" id='recursos'>
             <!-- Freestyle Libre -->
-            <div class="card p-3 card-hover group text-center animate-slide-up" id="card-libre">
-                <div id="card-libre-inner">
-                    <div class="flex justify-center mb-4">
-                        <div class="w-24 h-24 flex items-center justify-center bg-blue-100 rounded-2xl group-hover:scale-110 transition-transform">
-                            <img src="img/icons/icon-libre.png" alt="Freestyle Libre" class="tutorial-menu libre category-icon max-w-[80px] max-h-[80px]" id="libre-icon" />
+            <div class="card premium-card group rounded-2xl flex flex-col justify-between animate-slide-up" id="card-libre">
+                <div class="card-body flex flex-col h-full justify-between p-4 sm:p-6 text-center">
+                    <div class="flex-grow flex flex-col justify-center mb-4 sm:mb-6">
+                        <div class="flex flex-col items-center gap-3">
+                            <div class="w-16 h-16 sm:w-20 sm:h-20 flex items-center justify-center bg-blue-50 rounded-2xl group-hover:scale-110 transition-transform duration-300 shadow-inner">
+                                <img src="img/icons/icon-libre.png" alt="Freestyle Libre" class="tutorial-menu libre category-icon max-w-[50px] max-h-[50px] sm:max-w-[70px] sm:max-h-[70px] object-contain" id="libre-icon" />
+                            </div>
+                            
+                            <h5 class="card-title text-base sm:text-lg font-bold text-gray-800 leading-snug whitespace-normal break-words" id="libre-title">
+                                Freestyle Libre 1 e 2
+                            </h5>
+                            <p class="text-base sm:text-sm text-gray-500 leading-relaxed max-w-[240px] mx-auto" id="libre-description">
+                                Tutoriais sobre Freestyle Libre 1 e 2
+                            </p>
                         </div>
                     </div>
-                    <h5 class="card-title text-xl font-bold text-gray-900 mb-3 group-hover:text-diabetes-primary transition-colors" id="libre-title">
-                        Freestyle Libre 1 e 2
-                    </h5>
-                    <p class="card-text text-gray-600 mb-6" id="libre-description">
-                        Tutoriais sobre Freestyle Libre 1 e 2
-                    </p>
-                    <a href="item-tutorial-libre.html" id="open-libre" class="btn btn-primary w-full">
-                        Acessar Tutoriais
+                    
+                    <a href="item-tutorial-libre.html" id="open-libre" class="w-full flex items-center justify-center gap-1.5 sm:gap-2 text-white bg-teal-500 hover:bg-teal-600 rounded-xl py-2.5 px-3 sm:py-3 sm:px-4 text-sm sm:text-base font-bold transition-all shadow-sm hover:shadow-md active:scale-95 group/btn">
+                        <span>Acessar Tutoriais</span>
+                        <svg class="w-4 h-4 sm:w-5 sm:h-5 group-hover/btn:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/>
+                        </svg>
                     </a>
                 </div>
             </div>
 
             <!-- Smart Medlevensohn -->
-            <div class="card p-3 card-hover group text-center animate-slide-up" style="animation-delay: 0.1s;" id="card-smart">
-                <div id="card-smart-inner">
-                    <div class="flex justify-center mb-4">
-                        <div class="w-24 h-24 flex items-center justify-center bg-green-100 rounded-2xl group-hover:scale-110 transition-transform">
-                            <img src="img/icons/icon-smart.png" alt="smart" class="tutorial-menu category-icon max-w-[80px] max-h-[80px]" id="smart-icon" />
+            <div class="card premium-card group rounded-2xl flex flex-col justify-between animate-slide-up" style="animation-delay: 0.1s;" id="card-smart">
+                <div class="card-body flex flex-col h-full justify-between p-4 sm:p-6 text-center">
+                    <div class="flex-grow flex flex-col justify-center mb-4 sm:mb-6">
+                        <div class="flex flex-col items-center gap-3">
+                            <div class="w-16 h-16 sm:w-20 sm:h-20 flex items-center justify-center bg-green-50 rounded-2xl group-hover:scale-110 transition-transform duration-300 shadow-inner">
+                                <img src="img/icons/icon-smart.png" alt="smart" class="tutorial-menu category-icon max-w-[50px] max-h-[50px] sm:max-w-[70px] sm:max-h-[70px] object-contain" id="smart-icon" />
+                            </div>
+                            
+                            <h5 class="card-title text-base sm:text-lg font-bold text-gray-800 leading-snug whitespace-normal break-words" id="smart-title">
+                                Smart Medlevensohn
+                            </h5>
+                            <p class="text-base  sm:text-sm text-gray-500 leading-relaxed max-w-[240px] mx-auto" id="smart-description">
+                                Tutoriais sobre Smart Medlevensohn
+                            </p>
                         </div>
                     </div>
-                    <h5 class="card-title text-xl font-bold text-gray-900 mb-3 group-hover:text-diabetes-primary transition-colors" id="smart-title">
-                        Smart Medlevensohn
-                    </h5>
-                    <p class="card-text text-gray-600 mb-6" id="smart-description">
-                        Tutoriais sobre Smart Medlevensohn
-                    </p>
-                    <a href="item-tutorial-smart.html" id="open-smart" class="btn btn-primary w-full">
-                        Acessar Tutoriais
+                    
+                    <a href="item-tutorial-smart.html" id="open-smart" class="w-full flex items-center justify-center gap-1.5 sm:gap-2 text-white bg-teal-500 hover:bg-teal-600 rounded-xl py-2.5 px-3 sm:py-3 sm:px-4 text-sm sm:text-base font-bold transition-all shadow-sm hover:shadow-md active:scale-95 group/btn">
+                        <span>Acessar Tutoriais</span>
+                        <svg class="w-4 h-4 sm:w-5 sm:h-5 group-hover/btn:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/>
+                        </svg>
                     </a>
                 </div>
             </div>
 
             <!-- Sibionics -->
-            <div class="card p-3 card-hover group text-center animate-slide-up" style="animation-delay: 0.2s;" id="card-sibionics">
-                <div id="card-sibionics-inner">
-                    <div class="flex justify-center mb-4">
-                        <div class="w-24 h-24 flex items-center justify-center bg-purple-100 rounded-2xl group-hover:scale-110 transition-transform">
-                            <img src="img/icons/icon-sibionics.png" alt="Sibionics" class="tutorial-menu category-icon max-w-[80px] max-h-[80px]" id="sibionics-icon" />
+            <div class="card premium-card group rounded-2xl flex flex-col justify-between animate-slide-up" style="animation-delay: 0.2s;" id="card-sibionics">
+                <div class="card-body flex flex-col h-full justify-between p-4 sm:p-6 text-center">
+                    <div class="flex-grow flex flex-col justify-center mb-4 sm:mb-6">
+                        <div class="flex flex-col items-center gap-3">
+                            <div class="w-16 h-16 sm:w-20 sm:h-20 flex items-center justify-center bg-purple-50 rounded-2xl group-hover:scale-110 transition-transform duration-300 shadow-inner">
+                                <img src="img/icons/icon-sibionics.png" alt="Sibionics" class="tutorial-menu category-icon max-w-[50px] max-h-[50px] sm:max-w-[70px] sm:max-h-[70px] object-contain" id="sibionics-icon" />
+                            </div>
+                            
+                            <h5 class="card-title text-base sm:text-lg font-bold text-gray-800 leading-snug whitespace-normal break-words" id="sibionics-title">
+                                Sibionics
+                            </h5>
+                            <p class="text-base sm:text-sm text-gray-500 leading-relaxed max-w-[240px] mx-auto" id="sibionics-description">
+                                Tutoriais sobre Sibionics
+                            </p>
                         </div>
                     </div>
-                    <h5 class="card-title text-xl font-bold text-gray-900 mb-3 group-hover:text-diabetes-primary transition-colors" id="sibionics-title">
-                        Sibionics
-                    </h5>
-                    <p class="card-text text-gray-600 mb-6" id="sibionics-description">
-                        Tutoriais sobre Sibionics
-                    </p>
-                    <a href="item-tutorial-sibionics.html" id="open-sibionics" class="btn btn-primary w-full">
-                        Acessar Tutoriais
+                    
+                    <a href="item-tutorial-sibionics.html" id="open-sibionics" class="w-full flex items-center justify-center gap-1.5 sm:gap-2 text-white bg-teal-500 hover:bg-teal-600 rounded-xl py-2.5 px-3 sm:py-3 sm:px-4 text-sm sm:text-base font-bold transition-all shadow-sm hover:shadow-md active:scale-95 group/btn">
+                        <span>Acessar Tutoriais</span>
+                        <svg class="w-4 h-4 sm:w-5 sm:h-5 group-hover/btn:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/>
+                        </svg>
                     </a>
                 </div>
             </div>
 
             <!-- Accu-Chek SmartGuide -->
-            <div class="card p-3 card-hover group text-center animate-slide-up" style="animation-delay: 0.2s;" id="card-accu-chek-smartguide">
-                <div id="card-accu-chek-smartguide-inner">
-                    <div class="flex justify-center mb-4">
-                        <div class="w-24 h-24 flex items-center justify-center bg-purple-100 rounded-2xl group-hover:scale-110 transition-transform">
-                            <img src="img/icons/icon-accu-chek-smartguide.png" alt="Accu-Chek SmartGuide" class="tutorial-menu category-icon max-w-[80px] max-h-[80px]" id="accu-chek-smartguide-icon" />
+            <div class="card premium-card group rounded-2xl flex flex-col justify-between animate-slide-up" style="animation-delay: 0.3s;" id="card-accu-chek-smartguide">
+                <div class="card-body flex flex-col h-full justify-between p-4 sm:p-6 text-center">
+                    <div class="flex-grow flex flex-col justify-center mb-4 sm:mb-6">
+                        <div class="flex flex-col items-center gap-3">
+                            <div class="w-16 h-16 sm:w-20 sm:h-20 flex items-center justify-center bg-orange-50 rounded-2xl group-hover:scale-110 transition-transform duration-300 shadow-inner">
+                                <img src="img/icons/icon-accu-chek-smartguide.png" alt="Accu-Chek SmartGuide" class="tutorial-menu category-icon max-w-[50px] max-h-[50px] sm:max-w-[70px] sm:max-h-[70px] object-contain" id="accu-chek-smartguide-icon" />
+                            </div>
+                            
+                            <h5 class="card-title text-base sm:text-lg font-bold text-gray-800 leading-snug whitespace-normal break-words" id="accu-chek-smartguide-title">
+                                Accu-Chek SmartGuide
+                            </h5>
+                            <p class="text-base sm:text-sm text-gray-500 leading-relaxed max-w-[240px] mx-auto" id="accu-chek-smartguide-description">
+                                Tutoriais sobre Accu-Chek SmartGuide
+                            </p>
                         </div>
                     </div>
-                    <h5 class="card-title text-xl font-bold text-gray-900 mb-3 group-hover:text-diabetes-primary transition-colors" id="accu-chek-smartguide-title">
-                        Accu-Chek SmartGuide
-                    </h5>
-                    <p class="card-text text-gray-600 mb-6" id="accu-chek-smartguide-description">
-                        Tutoriais sobre Accu-Chek SmartGuide
-                    </p>
-                    <a href="item-tutorial-accu-chek-smartguide.html" id="open-accu-chek-smartguide" class="btn btn-primary w-full">
-                        Acessar Tutoriais
+                    
+                    <a href="item-tutorial-accu-chek-smartguide.html" id="open-accu-chek-smartguide" class="w-full flex items-center justify-center gap-1.5 sm:gap-2 text-white bg-teal-500 hover:bg-teal-600 rounded-xl py-2.5 px-3 sm:py-3 sm:px-4 text-sm sm:text-base font-bold transition-all shadow-sm hover:shadow-md active:scale-95 group/btn">
+                        <span>Acessar Tutoriais</span>
+                        <svg class="w-4 h-4 sm:w-5 sm:h-5 group-hover/btn:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/>
+                        </svg>
                     </a>
                 </div>
             </div>
@@ -132,5 +173,31 @@
         };
     </script>
     <script src="./js/geral.js"></script>
+    
+    <style>
+        .premium-card {
+            background: #ffffff;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            z-index: 1;
+        }
+        
+        .premium-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 25px -5px rgba(13, 148, 136, 0.1), 0 10px 10px -5px rgba(13, 148, 136, 0.04);
+            border-color: rgba(13, 148, 136, 0.2);
+        }
+
+        .premium-card .category-icon {
+            width: 100% !important;
+            height: 100% !important;
+            max-width: 65% !important;
+            max-height: 65% !important;
+            background-color: transparent !important;
+            border-radius: 0 !important;
+            object-fit: contain !important;
+        }
+    </style>
 </body>
 </html>

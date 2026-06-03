@@ -14,6 +14,24 @@
     <link rel="manifest" href="./img/site.webmanifest" />
     <link rel="stylesheet" href="./css/tailwind.css">
     <link rel="stylesheet" href="./css/geral.css">
+    <style>
+        .notification.read {
+            opacity: 0.75;
+            background-color: #f8fafc !important; /* bg-slate-50 */
+            border-left-color: #cbd5e1 !important; /* border-slate-300 */
+            box-shadow: none !important;
+            transform: none !important;
+        }
+        .notification.read .notification-badge {
+            display: none !important;
+        }
+        .notification.read p {
+            color: #64748b !important; /* text-slate-500 */
+        }
+        .notification.read a {
+            color: #64748b !important; /* text-slate-500 */
+        }
+    </style>
 </head>
 
 <body class="bg-gray-50">
@@ -40,15 +58,38 @@
         </div>
 
         <!-- Hero Section -->
-        <div class="bg-gradient-to-r from-orange-500 to-red-500 text-white py-12 md:py-16 mt-6 mx-4 md:mx-auto md:max-w-7xl rounded-2xl shadow-xl animate-scale-in">
-            <div class="container-custom text-center">
-                <div class="text-6xl mb-4 animate-bounce">🔔</div>
-                <h1 class="text-4xl md:text-5xl font-bold mb-4 text-white">
+        <div class="hero mb-12 relative overflow-hidden rounded-3xl bg-gradient-to-br from-orange-500 to-red-600 shadow-2xl mx-4 md:mx-auto md:max-w-7xl animate-fade-in mt-6" id="hero-section">
+            <div class="absolute inset-0 opacity-10" style="background-image: radial-gradient(circle at 2px 2px, white 1px, transparent 0); background-size: 32px 32px;"></div>
+            
+            <div class="container-custom relative z-10 md:py-20 text-center max-w-5xl mx-auto pl-0 pr-0">
+                <div class="w-14 h-14 mx-auto mb-6 rounded-2xl bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center text-white shadow-lg animate-bounce">
+                    <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"/>
+                    </svg>
+                </div>
+                
+                <h1 class="text-3xl md:text-5xl font-extrabold mb-4 tracking-tight text-white animate-slide-up">
                     Notificações e Avisos
                 </h1>
-                <p class="text-xl md:text-2xl opacity-90 max-w-3xl mx-auto">
+                
+                <p class="text-sm md:text-xl mb-8 text-orange-100 max-w-2xl mx-auto leading-relaxed animate-slide-up" style="animation-delay: 0.1s;">
                     Fique atualizado com as últimas novidades e informações importantes
                 </p>
+
+                <div class="flex flex-wrap items-center justify-center gap-2.5 md:gap-3 text-xs md:text-sm font-semibold animate-slide-up" style="animation-delay: 0.2s;">
+                    <div class="bg-white/10 backdrop-blur-md border border-white/10 rounded-full px-3.5 py-1.5 text-white flex items-center gap-1.5">
+                        <span>🔔</span>
+                        <span>Avisos Oficiais</span>
+                    </div>
+                    <div class="bg-white/10 backdrop-blur-md border border-white/10 rounded-full px-3.5 py-1.5 text-white flex items-center gap-1.5">
+                        <span>🚀</span>
+                        <span>Atualizações</span>
+                    </div>
+                    <div class="bg-white/10 backdrop-blur-md border border-white/10 rounded-full px-3.5 py-1.5 text-white flex items-center gap-1.5">
+                        <span>📅</span>
+                        <span>Fique por Dentro</span>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -57,25 +98,25 @@
             <div class="max-w-4xl mx-auto">
                 <div class="notifications space-y-4">
                     {{#each notifications}}
-                    <div class="notification bg-white rounded-xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden border-l-4 border-diabetes-primary animate-slide-up" 
+                    <div class="notification bg-white rounded-2xl shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-300 overflow-hidden border-l-4 border-orange-500 animate-slide-up" 
                          style="animation-delay: {{@index}}00ms;"
                          data-id="{{this.id}}">
                         <div class="p-6">
                             <div class="flex items-start justify-between gap-4 mb-3">
-                                <div class="flex items-center gap-2 text-sm text-gray-500">
-                                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd"/>
+                                <div class="flex items-center gap-2 text-xs md:text-sm text-gray-400">
+                                    <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
                                     </svg>
-                                    <h3 class="font-medium">{{this.date}}</h3>
+                                    <h3 class="font-medium text-gray-500">{{this.date}}</h3>
                                 </div>
-                                <span class="notification-badge px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-xs font-semibold">Novo</span>
+                                <span class="notification-badge px-3 py-1 bg-orange-50 text-orange-600 border border-orange-100 rounded-full text-xs font-semibold uppercase tracking-wider">Novo</span>
                             </div>
-                            <p class="text-lg font-semibold text-gray-800 mb-4">{{this.title}}</p>
+                            <p class="text-base md:text-lg font-bold text-gray-800 mb-4 hover:text-orange-500 transition-colors">{{this.title}}</p>
                             <a href="detalhes-aviso-{{this.id}}.html" 
-                               class="mark-as-read inline-flex items-center gap-2 text-diabetes-primary hover:text-diabetes-accent font-medium transition-colors group" 
+                               class="mark-as-read inline-flex items-center gap-2 text-orange-500 hover:text-orange-600 font-semibold text-sm transition-colors group" 
                                data-id="{{this.id}}">
                                 <span>Leia mais</span>
-                                <svg class="w-5 h-5 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <svg class="w-4 h-4 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
                                 </svg>
                             </a>
@@ -86,10 +127,14 @@
 
                 <!-- Empty State -->
                 {{#unless notifications}}
-                <div class="text-center py-16">
-                    <div class="text-6xl mb-4">📭</div>
-                    <h3 class="text-2xl font-bold text-gray-700 mb-2">Nenhuma notificação no momento</h3>
-                    <p class="text-gray-600">Quando houver novidades, elas aparecerão aqui</p>
+                <div class="text-center py-16 px-6 bg-white rounded-2xl border border-gray-100 shadow-sm animate-scale-in">
+                    <div class="w-16 h-16 mx-auto mb-6 rounded-2xl bg-orange-50 text-orange-500 flex items-center justify-center shadow-inner">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0a2 2 0 01-2 2H6a2 2 0 01-2-2m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5a2 2 0 012-2h2m2 4h4a2 2 0 002-2v-3a2 2 0 00-2-2h-3V3.5a.5.5 0 00-.5-.5h-1a.5.5 0 00-.5.5V10H7a2 2 0 00-2 2v3a2 2 0 002 2h4"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-2">Nenhuma notificação no momento</h3>
+                    <p class="text-gray-500 max-w-sm mx-auto">Quando novas atualizações ou avisos importantes forem publicados, eles aparecerão aqui.</p>
                 </div>
                 {{/unless}}
             </div>

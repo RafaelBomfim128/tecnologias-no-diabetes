@@ -42,59 +42,53 @@
         {{> notificacoes }}
 
         <!-- Hero Section -->
-        <div class="hero mb-8 mt-6 mx-4 md:mx-auto md:max-w-7xl">
-            <div class="container-custom text-center">
-                <div class="text-6xl mb-4 animate-bounce">📱</div>
-                <h1 class="text-4xl md:text-5xl font-bold mb-4">
+        <div class="hero mb-12 relative overflow-hidden rounded-3xl bg-gradient-to-br from-[#3b82f6] to-[#4f46e5] shadow-2xl mx-4 md:mx-auto md:max-w-7xl animate-fade-in" id="hero-section">
+            <div class="absolute inset-0 opacity-10" style="background-image: radial-gradient(circle at 2px 2px, white 1px, transparent 0); background-size: 32px 32px;"></div>
+            
+            <div class="container-custom relative z-10 md:py-20 text-center max-w-5xl mx-auto pl-0 pr-0">
+                <div class="w-14 h-14 mx-auto mb-6 rounded-2xl bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center text-white shadow-lg animate-bounce">
+                    <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/>
+                    </svg>
+                </div>
+                
+                <h1 class="text-3xl md:text-5xl font-extrabold mb-4 tracking-tight text-white animate-slide-up">
                     Downloads de Aplicativos
                 </h1>
-                <p class="text-xl md:text-2xl opacity-90 mb-6">
-                    Encontre aqui os aplicativos essenciais para gerenciamento do diabetes com tecnologia
+                
+                <p class="text-sm md:text-xl mb-8 text-blue-100 max-w-2xl mx-auto leading-relaxed animate-slide-up" style="animation-delay: 0.1s;">
+                    Encontre aqui os aplicativos essenciais para o gerenciamento do diabetes com tecnologia, com links diretos e seguros.
                 </p>
-                <div class="flex flex-wrap justify-center gap-4 text-sm md:text-base">
-                    <div class="flex items-center bg-white bg-opacity-20 rounded-full px-4 py-2">
-                    <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
-                    </svg>
-                    <span>Links Verificados</span>
-                </div>
-                <div class="flex items-center bg-white bg-opacity-20 rounded-full px-4 py-2">
-                    <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                        <path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd"/>
-                    </svg>
-                    <span>Downloads Seguros</span>
-                </div>
-                <div class="flex items-center bg-white bg-opacity-20 rounded-full px-4 py-2">
-                    <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                        <path d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3zM6 8a2 2 0 11-4 0 2 2 0 014 0zM16 18v-3a5.972 5.972 0 00-.75-2.906A3.005 3.005 0 0119 15v3h-3zM4.75 12.094A5.973 5.973 0 004 15v3H1v-3a3 3 0 013.75-2.906z"/>
-                    </svg>
-                    <span id="total-downloads">{{links.length}} Aplicativos</span>
+                
+                <div class="flex flex-wrap justify-center gap-2 sm:gap-3 text-xs md:text-sm animate-slide-up" style="animation-delay: 0.2s;">
+                    <div class="flex items-center bg-white/10 backdrop-blur-md border border-white/10 rounded-full px-3.5 py-1.5 text-white font-medium shadow-sm">
+                        <svg class="w-4 h-4 mr-1.5 text-green-400" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                        </svg>
+                        <span>Links Verificados</span>
+                    </div>
+                    <div class="flex items-center bg-white/10 backdrop-blur-md border border-white/10 rounded-full px-3.5 py-1.5 text-white font-medium shadow-sm">
+                        <svg class="w-4 h-4 mr-1.5 text-blue-400" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd"/>
+                        </svg>
+                        <span>Downloads Seguros</span>
+                    </div>
+                    <div class="flex items-center bg-white/10 backdrop-blur-md border border-white/10 rounded-full px-3.5 py-1.5 text-white font-medium shadow-sm">
+                        <svg class="w-4 h-4 mr-1.5 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"/>
+                        </svg>
+                        <span id="total-downloads">{{links.length}} Aplicativos</span>
+                    </div>
                 </div>
             </div>
         </div>
 
-        <!-- Search and Filter Section -->
-        <div class="container-custom mb-4 mt-4">
-            <div class="bg-white rounded-xl shadow-card p-6 animate-slide-up">
-                <div class="flex flex-col md:flex-row gap-4">
-                    <!-- Search Bar -->
-                    <div class="flex-1">
-                        <div class="relative">
-                            <input 
-                                type="text" 
-                                id="search-bar" 
-                                placeholder="🔍 Pesquise por nome do aplicativo..." 
-                                class="w-full pl-12 pr-4 py-3 border border-gray-300 text-gray-800 rounded-lg focus:ring-2 focus:ring-diabetes-primary focus:border-transparent outline-none transition-all"
-                                aria-label="Pesquisar aplicativos"
-                            />
-                        </div>
-                    </div>
-                    
-                    <!-- Results Counter -->
-                    <div class="flex items-center justify-center md:justify-start">
-                        <span class="text-gray-600 font-medium" id="results-counter">
-                            Mostrando <span id="visible-count">{{links.length}}</span> de <span id="total-count">{{links.length}}</span>
-                        </span>
+        <!-- Search and Filter Section (uses partial) -->
+        <div class="container-custom mb-6 mt-4">
+            <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-4 md:p-6 animate-slide-up" style="animation-delay: 0.1s;">
+                <div class="flex flex-col gap-4 items-center">
+                    <div class="w-full">
+                        {{> search-bar }}
                     </div>
                 </div>
             </div>
@@ -102,69 +96,77 @@
 
         <!-- Downloads Grid -->
         <div class="container-custom pb-12">
-            <div id="downloads-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 animate-scale-in">
+            <div id="downloads-grid" class="grid grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-6 animate-scale-in" style="animation-delay: 0.2s;">
                 {{#each links}}
-                <article class="card card-hover group download-item" data-title="{{this.title}}">
-                    <div class="card-body">
-                        <!-- Icon -->
-                        <div class="w-16 h-16 bg-gradient-to-br from-diabetes-primary to-diabetes-accent rounded-2xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300 shadow-lg">
-                            <svg class="w-9 h-9 text-white" fill="currentColor" viewBox="0 0 24 24">
-                                <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8l-6-6z"/>
-                                <path d="M14 2v6h6M12 18v-6M9 15l3 3 3-3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-                            </svg>
+                <article class="premium-card group download-item rounded-2xl flex flex-col justify-between" data-title="{{this.title}}">
+                    <div class="card-body flex flex-col h-full justify-between p-4 sm:p-6">
+                        <!-- Header Section: Centered vertically in available space -->
+                        <div class="flex-grow flex flex-col justify-center mb-6">
+                            <div class="flex flex-col items-center text-center gap-3.5">
+                                <!-- Icon Container -->
+                                <div class="w-12 h-12 sm:w-14 sm:h-14 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-xl flex items-center justify-center flex-shrink-0 shadow-md group-hover:scale-115 group-hover:rotate-3 transition-all duration-300">
+                                    <svg class="w-6 h-6 sm:w-7 sm:h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+                                    </svg>
+                                </div>
+                                
+                                <!-- Title -->
+                                <h3 class="text-base sm:text-lg text-gray-800 leading-snug whitespace-normal break-words">
+                                    {{this.title}}
+                                </h3>
+                            </div>
                         </div>
                         
-                        <!-- Title -->
-                        <h3 class="text-lg font-semibold text-gray-800 mb-4 whitespace-normal break-words">
-                            {{this.title}}
-                        </h3>
-                        
-                        <!-- Buttons -->
-                        <div class="flex flex-col sm:flex-row gap-3">
-                            <button 
-                                data-cy="download"
-                                onclick="window.open('{{this.fullUrl}}', '_blank')" 
-                                class="btn btn-primary flex-1 flex items-center justify-center gap-2 group/btn"
-                                aria-label="Baixar {{this.title}}"
-                            >
-                                <svg class="w-5 h-5 group-hover/btn:animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/>
-                                </svg>
-                                <span>Baixar</span>
-                            </button>
+                        <!-- Buttons and Short Link -->
+                        <div class="mt-auto">
+                            <!-- Buttons -->
+                            <div class="flex flex-col sm:flex-row gap-2.5 sm:gap-3">
+                                <button 
+                                    data-cy="download"
+                                    onclick="window.open('{{this.fullUrl}}', '_blank')" 
+                                    class="flex-1 flex items-center justify-center gap-1.5 sm:gap-2 text-white bg-blue-500 hover:bg-blue-600 rounded-xl py-2.5 px-3 sm:py-3 sm:px-4 text-sm sm:text-base font-bold transition-all shadow-sm hover:shadow-md active:scale-95 group/btn"
+                                    aria-label="Baixar {{this.title}}"
+                                >
+                                    <svg class="w-4 h-4 sm:w-5 sm:h-5 group-hover/btn:animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/>
+                                    </svg>
+                                    <span>Baixar</span>
+                                </button>
+                                
+                                <button 
+                                    data-cy="copy"
+                                    onclick="copyDownloadLink('{{this.newLink}}', this)" 
+                                    class="flex-1 flex items-center justify-center gap-1.5 sm:gap-2 text-gray-700 border border-gray-300 bg-gray-100 hover:bg-gray-200 rounded-xl py-2.5 px-3 sm:py-3 sm:px-4 text-sm sm:text-base font-bold transition-all active:scale-95 group/btn"
+                                    aria-label="Copiar link de {{this.title}}"
+                                    title="Copiar link curto"
+                                >
+                                    <svg class="w-4 h-4 sm:w-5 sm:h-5 group-hover/btn:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/>
+                                    </svg>
+                                    <span class="copy-text">Copiar</span>
+                                </button>
+                            </div>
                             
-                            <button 
-                                data-cy="copy"
-                                onclick="copyDownloadLink('{{this.newLink}}', this)" 
-                                class="btn btn-secondary flex-1 flex items-center justify-center gap-2 group/btn"
-                                aria-label="Copiar link de {{this.title}}"
-                                title="Copiar link curto"
-                            >
-                                <svg class="w-5 h-5 group-hover/btn:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/>
-                                </svg>
-                                <span class="copy-text">Copiar</span>
-                            </button>
-                        </div>
-                        
-                        <!-- Short Link Display -->
-                        <div class="mt-3 pt-3 border-t border-gray-100">
-                            <p data-cy="short-link" class="text-xs text-gray-600 break-all">
-                                <span class="font-medium text-gray-700">Link curto:</span> {{this.newLink}}
-                            </p>
+                            <!-- Short Link Display -->
+                            <div class="mt-3.5 pt-3.5 border-t border-gray-100">
+                                <p data-cy="short-link" class="text-xs sm:text-sm text-gray-500 break-all leading-normal">
+                                    <span class="font-medium text-gray-700">Link curto:</span> {{this.newLink}}
+                                </p>
+                            </div>
                         </div>
                     </div>
                 </article>
                 {{/each}}
-            
+            </div>
+
             <!-- No Results Message -->
-            <div id="no-results" class="hidden text-center py-12">
+            <div id="no-results" class="hidden text-center py-16">
                 <div class="animate-scale-in">
-                    <svg class="w-24 h-24 mx-auto text-gray-300 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg class="w-20 h-20 mx-auto text-gray-300 mb-4 animate-pulse" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
                     </svg>
-                    <h3 class="text-xl font-semibold text-gray-600 mb-2">Nenhum aplicativo encontrado</h3>
-                    <p class="text-gray-500">Tente buscar por outro termo</p>
+                    <h3 class="text-xl font-bold text-gray-700 mb-2">Nenhum aplicativo encontrado</h3>
+                    <p class="text-gray-500">Tente buscar por outro termo ou palavra-chave.</p>
                 </div>
             </div>
         </div>
@@ -183,22 +185,22 @@
     <script src="./js/geral.js"></script>
     
     <script>
-        // Enhanced copy function for downloads page
+        // Enhanced copy function for downloads page using utility Tailwind classes
         function copyDownloadLink(link, button) {
             navigator.clipboard.writeText(link).then(() => {
                 const originalText = button.querySelector('.copy-text').textContent;
                 const copyText = button.querySelector('.copy-text');
                 
-                // Change button state
+                // Change button state visually
                 copyText.textContent = '✓ Copiado!';
-                button.classList.remove('btn-secondary');
-                button.classList.add('btn-success');
+                button.classList.remove('text-gray-700', 'border-gray-300', 'bg-gray-100', 'hover:bg-gray-200');
+                button.classList.add('text-white', 'bg-green-600', 'border-transparent', 'hover:bg-green-700');
                 
                 // Reset after 2 seconds
                 setTimeout(() => {
                     copyText.textContent = originalText;
-                    button.classList.remove('btn-success');
-                    button.classList.add('btn-secondary');
+                    button.classList.remove('text-white', 'bg-green-600', 'border-transparent', 'hover:bg-green-700');
+                    button.classList.add('text-gray-700', 'border-gray-300', 'bg-gray-100', 'hover:bg-gray-200');
                 }, 2000);
             }).catch(err => {
                 console.error('Erro ao copiar:', err);
@@ -206,13 +208,11 @@
             });
         }
 
-        // Enhanced search functionality
+        // Enhanced search functionality (uses partial search-bar).
         document.addEventListener('DOMContentLoaded', function() {
             const searchBar = document.getElementById('search-bar');
             const downloadItems = document.querySelectorAll('.download-item');
             const noResults = document.getElementById('no-results');
-            const visibleCount = document.getElementById('visible-count');
-            const totalCount = document.getElementById('total-count');
             
             if (searchBar) {
                 searchBar.addEventListener('input', function(e) {
@@ -220,7 +220,7 @@
                     let visibleItems = 0;
                     
                     downloadItems.forEach(item => {
-                        const title = item.getAttribute('data-title').toLowerCase();
+                        const title = (item.getAttribute('data-title') || '').toLowerCase();
                         const matches = title.includes(searchTerm);
                         
                         if (matches) {
@@ -231,9 +231,6 @@
                             item.style.display = 'none';
                         }
                     });
-                    
-                    // Update counter
-                    visibleCount.textContent = visibleItems;
                     
                     // Show/hide no results message
                     if (visibleItems === 0) {
@@ -254,10 +251,30 @@
             
             // Add stagger animation to cards
             downloadItems.forEach((item, index) => {
-                item.style.animationDelay = `${index * 50}ms`;
+                item.style.animationDelay = `${index * 40}ms`;
             });
         });
     </script>
+
+    <style>
+        .premium-card {
+            background: #ffffff;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            z-index: 1;
+        }
+        
+        .premium-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 25px -5px rgba(0, 120, 215, 0.1), 0 10px 10px -5px rgba(0, 120, 215, 0.04);
+            border-color: rgba(0, 120, 215, 0.2);
+        }
+        
+        .hover\:scale-115:hover {
+            transform: scale(1.15);
+        }
+    </style>
 </body>
 
 </html>

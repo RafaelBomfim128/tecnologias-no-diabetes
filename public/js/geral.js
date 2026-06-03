@@ -59,20 +59,34 @@ function copyLink(link, button, completeLink = false) {
     }
     navigator.clipboard.writeText(link)
         .then(() => {
-            button.style.backgroundColor = 'green';
-            button.textContent = 'Link copiado!';
+            const copyText = button.querySelector('.copy-text');
+            const originalText = copyText ? copyText.textContent : button.textContent;
+
+            if (copyText) copyText.textContent = '✓ Copiado!';
+
+            button.classList.remove('text-gray-700', 'border-gray-300', 'bg-gray-100', 'hover:bg-gray-200');
+            button.classList.add('text-white', 'bg-green-600', 'border-transparent', 'hover:bg-green-700');
+
             setTimeout(() => {
-                button.style.backgroundColor = '';
-                button.textContent = 'Copiar Link';
-            }, 3000);
+                if (copyText) copyText.textContent = originalText;
+                button.classList.remove('text-white', 'bg-green-600', 'border-transparent', 'hover:bg-green-700');
+                button.classList.add('text-gray-700', 'border-gray-300', 'bg-gray-100', 'hover:bg-gray-200');
+            }, 2000);
         })
         .catch(() => {
-            button.style.backgroundColor = 'red';
-            button.textContent = 'Erro!';
+            const copyText = button.querySelector('.copy-text');
+            const originalText = copyText ? copyText.textContent : button.textContent;
+
+            if (copyText) copyText.textContent = 'Erro!';
+
+            button.classList.remove('text-gray-700', 'border-gray-300', 'bg-gray-100', 'hover:bg-gray-200');
+            button.classList.add('text-white', 'bg-red-600', 'border-transparent');
+
             setTimeout(() => {
-                button.style.backgroundColor = '';
-                button.textContent = 'Copiar Link';
-            }, 3000);
+                if (copyText) copyText.textContent = originalText;
+                button.classList.remove('text-white', 'bg-red-600', 'border-transparent');
+                button.classList.add('text-gray-700', 'border-gray-300', 'bg-gray-100', 'hover:bg-gray-200');
+            }, 2000);
         });
 }
 
