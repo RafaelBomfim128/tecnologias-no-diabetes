@@ -228,6 +228,8 @@ pre {
     border: 1px solid #dbe5ef;
     box-shadow: none;
     white-space: pre-wrap;
+    max-height: none;
+    overflow: visible;
 }
 
 #resume a {
