@@ -176,11 +176,11 @@
         }
 
         if (mongoDbUriInvalid) {
-            return {
-                ok: false,
-                message: '❌ As credenciais do MongoDB foram definidas incorretamente durante a criação do seu Nightscout na variável MONGODB_URI.',
-                requestState
-            };
+                return {
+                    ok: false,
+                    message: '❌ Falha! Duas possibilidades:<br><br>1: As credenciais do MongoDB foram definidas incorretamente durante a criação do seu Nightscout na variável MONGODB_URI.<br><br>2: Você ficou muito tempo sem acessar seu Nightscout e o provedor do banco de dados MongoDB suspendeu o serviço por inatividade.',
+                    requestState
+                };
         }
 
         if (shortApiSecret) {
