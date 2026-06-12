@@ -1,5 +1,5 @@
 [build]
-  command = "node src/main.js"
+  command = "npm run build"
   publish = "public"
 
 [environment]

@@ -4,6 +4,7 @@
   "description": "",
   "main": "main.js",
   "scripts": {
+    "build": "npm run build:css && node src/main.js",
     "build:css": "npx tailwindcss -i ./src/styles/main.css -o ./public/css/tailwind.css --minify",
     "watch:css": "npx tailwindcss -i ./src/styles/main.css -o ./public/css/tailwind.css --watch",
     "dev": "npm run build:css && cross-env NODE_ENV=development node src/main.js",
