@@ -27,7 +27,7 @@ jobs:
       run: echo "NODE_ENV=production" >> $GITHUB_ENV  # Definir NODE_ENV como 'production'
 
     - name: Executar o script main.js
-      run: node src/main.js  # Executa o script para gerar o HTML
+      run: npm run build  # Executa o script para gerar o HTML
       env:
         GOOGLE_SHEET_ID: ${{ secrets.GOOGLE_SHEET_ID }}
         GOOGLE_CREDENTIALS_BASE64: ${{ secrets.GOOGLE_CREDENTIALS_BASE64 }}
