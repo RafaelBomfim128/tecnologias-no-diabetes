@@ -101,6 +101,8 @@ Thumbs.db
 !/public/img
 !/public/js
 !/public/pdfs
+# Ignorar o arquivo tailwind.css dentro da pasta css
+/public/css/tailwind.css
 
 # Cypress specific files and folders
 cypress/screenshots/
