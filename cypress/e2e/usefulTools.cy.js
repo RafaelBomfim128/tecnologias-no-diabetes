@@ -34,10 +34,10 @@ describe('Useful Tools section', () => {
         cy.get(usefulTools.info_box_div).should('be.visible').highlight()
     })
 
-    it.only('validate QR Code Generator for Juggluco', () => {
+    it('validate QR Code Generator for Juggluco with Sibionics', () => {
         cy.visit('/')
         cy.get(home.useful_tools_open_a).click()
-        cy.get(usefulTools.qr_code_generator_open_btn).click()
+        cy.get(usefulTools.qr_code_generator_sibionics_open_btn).click()
         cy.get(usefulTools.title_h1).should('be.visible')
         cy.get(usefulTools.qr_code_image_img).should('have.attr', 'src', '')
         cy.get(usefulTools.qr_code_generator_1_ipt).should('have.attr', 'maxlength', 2).type('12')
