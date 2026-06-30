@@ -12,16 +12,68 @@ function getCategoryGradient(category) {
         'Relógios': 'hero-teal',
         'Bombas': 'hero-orange',
         'Ponto de partida': 'hero-gradient-soft',
-        'Libre': 'hero-blue',
-        'Smart': 'hero-green',
-        'Sibionics': 'hero-purple',
-        'Accu-Chek SmartGuide': 'hero-blue',
+        'Libre': '!bg-none !bg-[#ffd100]',
+        'Smart': '!bg-none !bg-[#0e163b]',
+        'Sibionics': '!bg-none !bg-[#06bf9d]',
+        'Accu-Chek SmartGuide': '!bg-none !bg-[#004969]',
         'Sensores': 'hero-indigo',
         'Dicas e truques': 'hero-pink',
         'Outros': 'hero-teal',
         'Todos os tutoriais': 'hero-gradient-soft'
     };
     return gradientMap[category] || 'hero-blue';
+}
+
+// Helper function to get hero text color based on category
+function getCategoryTextColor(category) {
+    const textColorMap = {
+        'Libre': '!text-gray-900',
+        'Smart': 'text-white',
+        'Sibionics': 'text-white',
+        'Accu-Chek SmartGuide': 'text-white'
+    };
+    return textColorMap[category] || 'text-white';
+}
+
+// Helper function to get card icon background based on category
+function getCategoryIconBg(category) {
+    const iconBgMap = {
+        'Libre': 'bg-[#ffd100]',
+        'Smart': 'bg-[#0e163b]',
+        'Sibionics': 'bg-[#06bf9d]',
+        'Accu-Chek SmartGuide': 'bg-[#004969]'
+    };
+    return iconBgMap[category] || 'bg-gradient-to-br from-teal-500 to-emerald-600';
+}
+
+// Helper function to get card icon SVG text color based on category
+function getCategoryIconTextColor(category) {
+    const iconTextMap = {
+        'Libre': '!text-gray-900',
+        'Smart': 'text-white',
+        'Sibionics': 'text-white',
+        'Accu-Chek SmartGuide': 'text-white'
+    };
+    return iconTextMap[category] || 'text-white';
+}
+
+// Helper function to get button background based on category
+function getCategoryButtonBg(category) {
+    const buttonBgMap = {
+        'Libre': 'bg-[#ffd100] hover:bg-[#e6bc00]',
+        'Smart': 'bg-[#0e163b] hover:bg-[#0a102c]',
+        'Sibionics': 'bg-[#06bf9d] hover:bg-[#05a688]',
+        'Accu-Chek SmartGuide': 'bg-[#004969] hover:bg-[#00364d]'
+    };
+    return buttonBgMap[category] || 'bg-teal-500 hover:bg-teal-600';
+}
+
+// Helper function to get button text color based on category
+function getCategoryButtonTextColor(category) {
+    const buttonTextColorMap = {
+        'Libre': '!text-gray-900'
+    };
+    return buttonTextColorMap[category] || 'text-white';
 }
 
 module.exports = function buildPages({
@@ -83,6 +135,11 @@ module.exports = function buildPages({
                 desc: labels.tutorials.find(t => t.category === category)?.description || '',
                 image: labels.tutorials.find(t => t.category === category)?.image || '',
                 heroGradient: getCategoryGradient(category),
+                heroTextColor: getCategoryTextColor(category),
+                iconBg: getCategoryIconBg(category),
+                iconTextColor: getCategoryIconTextColor(category),
+                buttonBg: getCategoryButtonBg(category),
+                buttonTextColor: getCategoryButtonTextColor(category),
                 apiBaseUrl, apiKey, mostRecentNotificationId
             }
         });
@@ -97,6 +154,11 @@ module.exports = function buildPages({
             title: 'Todos os tutoriais',
             desc: 'Todos os tutoriais disponíveis em uma única página.',
             heroGradient: getCategoryGradient('Todos os tutoriais'),
+            heroTextColor: getCategoryTextColor('Todos os tutoriais'),
+            iconBg: getCategoryIconBg('Todos os tutoriais'),
+            iconTextColor: getCategoryIconTextColor('Todos os tutoriais'),
+            buttonBg: getCategoryButtonBg('Todos os tutoriais'),
+            buttonTextColor: getCategoryButtonTextColor('Todos os tutoriais'),
             apiBaseUrl, apiKey, mostRecentNotificationId
         }
     });
@@ -111,6 +173,11 @@ module.exports = function buildPages({
             desc: labels.tutorials.find(item => item.category === 'Libre').description,
             image: labels.tutorials.find(item => item.category === 'Libre').image,
             heroGradient: getCategoryGradient('Libre'),
+            heroTextColor: getCategoryTextColor('Libre'),
+            iconBg: getCategoryIconBg('Libre'),
+            iconTextColor: getCategoryIconTextColor('Libre'),
+            buttonBg: getCategoryButtonBg('Libre'),
+            buttonTextColor: getCategoryButtonTextColor('Libre'),
             apiBaseUrl, apiKey, mostRecentNotificationId
         }
     });
@@ -125,6 +192,11 @@ module.exports = function buildPages({
             desc: labels.tutorials.find(item => item.category === 'Smart').description,
             image: labels.tutorials.find(item => item.category === 'Smart').image,
             heroGradient: getCategoryGradient('Smart'),
+            heroTextColor: getCategoryTextColor('Smart'),
+            iconBg: getCategoryIconBg('Smart'),
+            iconTextColor: getCategoryIconTextColor('Smart'),
+            buttonBg: getCategoryButtonBg('Smart'),
+            buttonTextColor: getCategoryButtonTextColor('Smart'),
             apiBaseUrl, apiKey, mostRecentNotificationId
         }
     });
@@ -139,6 +211,11 @@ module.exports = function buildPages({
             desc: labels.tutorials.find(item => item.category === 'Sibionics').description,
             image: labels.tutorials.find(item => item.category === 'Sibionics').image,
             heroGradient: getCategoryGradient('Sibionics'),
+            heroTextColor: getCategoryTextColor('Sibionics'),
+            iconBg: getCategoryIconBg('Sibionics'),
+            iconTextColor: getCategoryIconTextColor('Sibionics'),
+            buttonBg: getCategoryButtonBg('Sibionics'),
+            buttonTextColor: getCategoryButtonTextColor('Sibionics'),
             apiBaseUrl, apiKey, mostRecentNotificationId
         }
     });
@@ -153,6 +230,11 @@ module.exports = function buildPages({
             desc: labels.tutorials.find(item => item.category === 'Accu-Chek SmartGuide').description,
             image: labels.tutorials.find(item => item.category === 'Accu-Chek SmartGuide').image,
             heroGradient: getCategoryGradient('Accu-Chek SmartGuide'),
+            heroTextColor: getCategoryTextColor('Accu-Chek SmartGuide'),
+            iconBg: getCategoryIconBg('Accu-Chek SmartGuide'),
+            iconTextColor: getCategoryIconTextColor('Accu-Chek SmartGuide'),
+            buttonBg: getCategoryButtonBg('Accu-Chek SmartGuide'),
+            buttonTextColor: getCategoryButtonTextColor('Accu-Chek SmartGuide'),
             apiBaseUrl, apiKey, mostRecentNotificationId
         }
     });
@@ -270,10 +352,17 @@ module.exports = function buildPages({
         data: { apiBaseUrl, apiKey, mostRecentNotificationId }
     });
 
-    // tool qr code generator for Juggluco
+    // tool qr code generator for Juggluco Sibionics
     pages.push({
-        template: 'template-gerador-qr-code-juggluco.html',
-        output: 'gerador-qr-code-juggluco.html',
+        template: 'template-gerador-qr-code-juggluco-sibionics.html',
+        output: 'gerador-qr-code-juggluco-sibionics.html',
+        data: { apiBaseUrl, apiKey, mostRecentNotificationId }
+    });
+
+    // tool qr code generator for Juggluco Smart 2
+    pages.push({
+        template: 'template-gerador-qr-code-juggluco-smart2.html',
+        output: 'gerador-qr-code-juggluco-smart2.html',
         data: { apiBaseUrl, apiKey, mostRecentNotificationId }
     });
 

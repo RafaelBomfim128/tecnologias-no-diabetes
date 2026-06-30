@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerador de QR Code Juggluco - Tecnologias no Diabetes</title>
+    <link rel="icon" type="image/png" href="./img/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="./img/favicon.svg" />
+    <link rel="shortcut icon" href="./img/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="./img/apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-title" content="Tecnologias no Diabetes" />
+    <link rel="manifest" href="./img/site.webmanifest" />
+    <link rel="stylesheet" href="./css/tailwind.css">
+    <link rel="stylesheet" href="./css/geral.css">
+    <link rel="stylesheet" href="./css/gerador-qr-code-juggluco.css">
+</head>
+
+<body class="bg-gray-50" id="page-tools-qr">
+    {{> view-counter }}
+    {{> menu }} <!-- Conteúdo Principal -->
+    <main class="container-custom animate-fade-in">
+        <!-- Breadcrumb -->
+        <div class="bg-white border-b">
+            <div class="container-custom py-3">
+                <nav class="flex flex-wrap items-center text-sm text-gray-600 gap-1" aria-label="Breadcrumb">
+                    <a href="index.html" class="hover:text-diabetes-primary transition-colors flex-shrink-0">
+                        <svg class="w-4 h-4 inline mr-1" fill="currentColor" viewBox="0 0 20 20">
+                            <path
+                                d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z" />
+                        </svg>
+                        Início
+                    </a>
+                    <svg class="w-4 h-4 mx-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd"
+                            d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                            clip-rule="evenodd" />
+                    </svg>
+                    <a href="ferramentas.html" class="hover:text-diabetes-primary transition-colors flex-shrink-0">
+                        Ferramentas
+                    </a>
+                    <svg class="w-4 h-4 mx-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd"
+                            d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                            clip-rule="evenodd" />
+                    </svg>
+                    <span
+                        class="text-diabetes-primary font-medium truncate overflow-hidden text-ellipsis whitespace-nowrap"
+                        style="max-width: calc(100vw - 200px);">Gerador de QR Code</span>
+                </nav>
+            </div>
+        </div>
+
+        {{> notificacoes }}
+
+        <!-- Hero Section -->
+        <div class="hero mb-12 relative overflow-hidden rounded-3xl !bg-none !bg-[#0e163b] shadow-2xl animate-fade-in">
+            <div class="absolute inset-0 opacity-10" style="background-image: radial-gradient(circle at 2px 2px, white 1px, transparent 0); background-size: 32px 32px;"></div>
+            
+            <div class="relative z-10 text-center w-full">
+                <div class="w-14 h-14 mx-auto mb-6 rounded-2xl bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center text-white shadow-lg animate-bounce">
+                    <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v1m6 11h2m-6 0h-2v4m0-11v3m0 0h.01M12 12h4.01M16 20h4M4 12h4m12 0h.01M5 8h2a1 1 0 001-1V5a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1zm12 0h2a1 1 0 001-1V5a1 1 0 00-1-1h-2a1 1 0 00-1 1v2a1 1 0 001 1zM5 20h2a1 1 0 001-1v-2a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1z"/>
+                    </svg>
+                </div>
+                
+                <h1 class="text-3xl md:text-5xl font-extrabold mb-4 tracking-tight text-white animate-slide-up">
+                    Gerador de QR Code para Smart 2 com Juggluco
+                </h1>
+                
+                <p class="text-sm md:text-xl mb-8 text-white/95 max-w-2xl mx-auto leading-relaxed animate-slide-up" style="animation-delay: 0.1s;">
+                    Utilize esta ferramenta quando estiver com dificuldades para escanear o QR Code do Smart 2 no aplicativo Juggluco
+                </p>
+            </div>
+        </div>
+
+        <!-- Card Principal -->
+        <div class="card max-w-3xl mx-auto animate-slide-up">
+            <div class="bg-[#0e163b]/10 border-l-4 border-[#0e163b] p-4 rounded-lg mb-6">
+                <div class="flex items-start space-x-3">
+                    <span class="text-2xl">💡</span>
+                    <p class="text-gray-700 leading-relaxed">
+                        Este é um método utilizado quando você está com dificuldades de ler o QR Code apresentado na
+                        caixa do
+                        Smart 2 com o Juggluco. Deve ser feito em um computador, celular ou tablet diferente do
+                        celular que
+                        está sendo escaneado.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Imagem de Referência -->
+            <div class="text-center mb-8">
+                <img alt="Local dos dígitos na caixa" src="./img/qr-code-smart2.png"
+                    class="box-smart2-model inline-block max-w-full h-auto rounded-xl shadow-lg md:max-w-sm">
+                <p class="text-sm text-gray-600 mt-3">Local dos dígitos na caixa do Smart 2</p>
+            </div>
+
+            <p class="text-gray-700 text-center mb-6">
+                De acordo com o local indicado na imagem acima, insira os dígitos correspondentes no campo abaixo:
+            </p>
+
+            <!-- Formulário de Entrada -->
+            <div class="category-content" id="content-qrcode">
+                <div class="flex justify-center items-center flex-wrap gap-3 mb-8 text-xl">
+                    <input type="text" id="qrInput" maxlength="10" oninput="gerarQRCode()"
+                        class="flex-1 max-w-xs px-3 py-2 text-center text-lg border-2 border-[#0e163b] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#0e163b]/50 transition-all"
+                        placeholder="10 dígitos">
+                </div>
+
+                <!-- QR Code Gerado -->
+                <div class="qrcode-output flex justify-center items-center py-6">
+                    <div
+                        class="bg-white p-6 rounded-xl shadow-lg border-2 border-gray-200 hover:border-diabetes-accent transition-all">
+                        <img id="qrCode" src="" alt="QR Code será exibido aqui" class="max-w-[250px] w-full">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Instruções Adicionais -->
+            <div class="bg-green-50 border-l-4 border-green-500 p-4 rounded-lg mt-6">
+                <div class="flex items-start space-x-3">
+                    <svg class="w-6 h-6 text-green-600 flex-shrink-0 mt-1" fill="none" stroke="currentColor"
+                        viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    <div>
+                        <h3 class="text-green-900 font-semibold mb-1">Como usar:</h3>
+                        <ol class="text-green-800 text-sm space-y-1 list-decimal list-inside">
+                            <li>Insira os dígitos exatamente como aparecem na caixa ou no aplicativo Smart</li>
+                            <li>O QR Code será gerado automaticamente</li>
+                            <li>Escaneie o QR Code gerado com o aplicativo Juggluco</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    {{> social-media }}
+    {{> footer }}
+    <script>
+        window.env = {
+            API_BASE_URL: "{{apiBaseUrl}}",
+            API_KEY: "{{apiKey}}",
+            MOST_RECENT_NOTIFICATION_ID: "{{mostRecentNotificationId}}"
+        };
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+    <script src="./js/geral.js"></script>
+    <script src="./js/gerador-qr-code-juggluco-smart2.js"></script>
+</body>
+
+</html>
