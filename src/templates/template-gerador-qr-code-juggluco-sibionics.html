@@ -54,7 +54,7 @@
         {{> notificacoes }}
 
         <!-- Hero Section -->
-        <div class="hero mb-12 relative overflow-hidden rounded-3xl bg-gradient-to-br from-[#6366f1] to-[#a855f7] shadow-2xl animate-fade-in">
+        <div class="hero mb-12 relative overflow-hidden rounded-3xl !bg-none !bg-[#06bf9d] shadow-2xl animate-fade-in">
             <div class="absolute inset-0 opacity-10" style="background-image: radial-gradient(circle at 2px 2px, white 1px, transparent 0); background-size: 32px 32px;"></div>
             
             <div class="relative z-10 text-center w-full">
@@ -77,7 +77,7 @@
 
         <!-- Card Principal -->
         <div class="card max-w-3xl mx-auto animate-slide-up">
-            <div class="bg-indigo-50/50 border-l-4 border-indigo-500 p-4 rounded-lg mb-6">
+            <div class="bg-[#06bf9d]/10 border-l-4 border-[#06bf9d] p-4 rounded-lg mb-6">
                 <div class="flex items-start space-x-3">
                     <span class="text-2xl">💡</span>
                     <p class="text-gray-700 leading-relaxed">
@@ -106,11 +106,11 @@
                 <div class="flex justify-center items-center flex-wrap gap-3 mb-8 text-xl">
                     <span class="text-gray-600 font-medium">(</span>
                     <input type="text" id="qrInput1" maxlength="2" oninput="gerarQRCode()"
-                        class="w-16 px-3 py-2 text-center text-lg border-2 border-diabetes-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-diabetes-accent transition-all"
+                        class="w-16 px-3 py-2 text-center text-lg border-2 border-[#06bf9d] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#06bf9d]/50 transition-all"
                         placeholder="00">
                     <span class="text-gray-600 font-medium">)</span>
                     <input type="text" id="qrInput2" maxlength="18" oninput="gerarQRCode()"
-                        class="flex-1 max-w-xs px-3 py-2 text-center text-lg border-2 border-diabetes-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-diabetes-accent transition-all"
+                        class="flex-1 max-w-xs px-3 py-2 text-center text-lg border-2 border-[#06bf9d] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#06bf9d]/50 transition-all"
                         placeholder="18 dígitos">
                 </div>
 
@@ -155,7 +155,7 @@
     </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
     <script src="./js/geral.js"></script>
-    <script src="./js/gerador-qr-code-juggluco.js"></script>
+    <script src="./js/gerador-qr-code-juggluco-sibionics.js"></script>
 </body>
 
 </html>
