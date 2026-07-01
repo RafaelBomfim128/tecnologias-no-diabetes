@@ -42,6 +42,12 @@ jobs:
 
       - name: Build app
         run: npm run build
+        env:
+            GOOGLE_SHEET_ID: ${{ secrets.GOOGLE_SHEET_ID }}
+            GOOGLE_CREDENTIALS_BASE64: ${{ secrets.GOOGLE_CREDENTIALS_BASE64 }}
+            API_BASE_URL: ${{ secrets.API_BASE_URL_DEV }}
+            API_KEY: ${{ secrets.API_KEY }}
+            NODE_ENV: ${{ env.NODE_ENV }}
 
   e2e:
     name: E2E - ${{ matrix.spec }}
