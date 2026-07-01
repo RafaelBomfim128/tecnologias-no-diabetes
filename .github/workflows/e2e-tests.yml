@@ -75,6 +75,11 @@ jobs:
           SPLIT: ${{ strategy.job-total }}
           SPLIT_INDEX: ${{ strategy.job-index }}
 
+          GOOGLE_SHEET_ID: ${{ secrets.GOOGLE_SHEET_ID }}
+          GOOGLE_CREDENTIALS_BASE64: ${{ secrets.GOOGLE_CREDENTIALS_BASE64 }}
+          API_BASE_URL: ${{ secrets.API_BASE_URL_DEV }}
+          API_KEY: ${{ secrets.API_KEY }}
+
       - name: Upload Cypress Artifacts
         if: always()
 

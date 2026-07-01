@@ -32,19 +32,19 @@ Cypress.Commands.add('validateLayout', (returnBtn = true, searchBar = true) => {
 })
 
 Cypress.Commands.add('getDownloadsDataSheet', () => {
-    cy.task('getSheedData', 'Downloads!A:C').then(result => {
+    cy.task('getSheetData', 'Downloads!A:C').then(result => {
         return downloadsFormatter(result)
     })
 })
 
 Cypress.Commands.add('getTutorialsDataSheet', () => {
-    cy.task('getSheedData', 'Tutoriais!A:D').then(result => {
+    cy.task('getSheetData', 'Tutoriais!A:D').then(result => {
         return tutorialsFormatter(result)
     })
 })
 
 Cypress.Commands.add('getFaqDataSheet', () => {
-    cy.task('getSheedData', 'FAQ!A:C').then(result => {
+    cy.task('getSheetData', 'FAQ!A:C').then(result => {
         return faqFormatter(result)
     })
 })
