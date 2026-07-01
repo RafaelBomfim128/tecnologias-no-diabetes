@@ -3,7 +3,7 @@ const usefulTools = require('../support/elements/usefulTools.json')
 
 const macroCategories = {
     qrCodeGenerator: {
-        title: "Gerador de QR Code Juggluco",
+        title: "Gerador de QR Code para Sibionics com Juggluco",
         description: "Gere QR Codes para configurar o sensor Sibionics no aplicativo Juggluco"
     },
     nightscoutTester: {
