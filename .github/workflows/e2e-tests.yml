@@ -8,9 +8,49 @@ on:
   workflow_dispatch:
 
 jobs:
-  e2e:
-    name: End-to-End Tests
+  discover-specs:
+    name: Discover Test Specs
     runs-on: ubuntu-latest
+    outputs:
+      specs: ${{ steps.discover.outputs.specs }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Discover all spec files
+        id: discover
+        run: |
+          $specs = @(Get-ChildItem -Path "cypress/e2e" -Filter "*.cy.js" | ForEach-Object { $_.FullName -replace '\\', '/' } | Sort-Object)
+          $json = ConvertTo-Json -InputObject $specs -Compress
+          "specs=$json" | Out-File -FilePath $env:GITHUB_OUTPUT -Append
+        shell: pwsh
+
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Config Node.js
+        uses: actions/setup-node@v4
+        with:
+            node-version: '24.13.0'
+            cache: 'npm'
+
+      - name: Install dependences
+        run: npm ci
+
+      - name: Build app
+        run: npm run build
+
+  e2e:
+    name: E2E - ${{ matrix.spec }}
+    runs-on: ubuntu-latest
+    needs: [discover-specs, build]
+    strategy:
+      fail-fast: false
+      matrix:
+        spec: ${{ fromJSON(needs.discover-specs.outputs.specs) }}
 
     steps:
       - uses: actions/checkout@v4
@@ -24,8 +64,17 @@ jobs:
       - name: Install dependences
         run: npm ci
 
-      - name: Run E2E tests with build
-        run: npm run test:build-e2e
+      - name: Start server & run E2E tests
+        run: npm run serve-site &
+        env:
+            GOOGLE_SHEET_ID: ${{ secrets.GOOGLE_SHEET_ID }}
+            GOOGLE_CREDENTIALS_BASE64: ${{ secrets.GOOGLE_CREDENTIALS_BASE64 }}
+            API_BASE_URL: ${{ secrets.API_BASE_URL_DEV }}
+            API_KEY: ${{ secrets.API_KEY }}
+            NODE_ENV: ${{ env.NODE_ENV }}
+
+      - name: Run Cypress spec
+        run: npx cypress run --spec "${{ matrix.spec }}"
         env:
             GOOGLE_SHEET_ID: ${{ secrets.GOOGLE_SHEET_ID }}
             GOOGLE_CREDENTIALS_BASE64: ${{ secrets.GOOGLE_CREDENTIALS_BASE64 }}
@@ -37,7 +86,7 @@ jobs:
         if: failure()
         uses: actions/upload-artifact@v4
         with:
-          name: cypress-screenshots
+          name: cypress-artifacts-${{ matrix.spec }}
           path: |
             cypress/screenshots
             cypress/videos
