@@ -12,11 +12,11 @@ on:
 jobs:
 
   build:
+    name: Build Site
 
     runs-on: ubuntu-latest
 
     steps:
-
       - uses: actions/checkout@v4
 
       - uses: actions/setup-node@v4
@@ -41,20 +41,19 @@ jobs:
           path: public
 
   e2e:
+    name: Cypress (${{ matrix.runner }}/4)
 
     needs: build
 
     runs-on: ubuntu-latest
 
     strategy:
-
       fail-fast: false
 
       matrix:
-        runner: [1,2,3,4]
+        runner: [1, 2, 3, 4]
 
     steps:
-
       - uses: actions/checkout@v4
 
       - uses: actions/setup-node@v4
@@ -81,17 +80,11 @@ jobs:
           API_KEY: ${{ secrets.API_KEY }}
 
       - name: Upload Cypress Artifacts
-        if: always()
-
+        if: failure()
         uses: actions/upload-artifact@v4
-
         with:
-
           name: cypress-${{ matrix.runner }}
-
           path: |
             cypress/screenshots
             cypress/videos
-            cypress/results
-
           if-no-files-found: ignore
