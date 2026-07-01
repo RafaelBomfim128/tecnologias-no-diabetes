@@ -1,7 +1,7 @@
 const { defineConfig } = require("cypress");
+const cypressSplit = require("cypress-split");
 const { beforeRunHook, afterRunHook } = require('cypress-mochawesome-reporter/lib');
 require('dotenv').config();
-const readSheetData = require('./src/utils/readSheetData');
 const { removeDirectory } = require('cypress-delete-downloads-folder');
 const fs = require('fs')
 const path = require('path')
@@ -19,8 +19,10 @@ module.exports = defineConfig({
     e2e: {
         setupNodeEvents(on, config) {
             require('cypress-mochawesome-reporter/plugin')(on)
+            cypressSplit(on, config)
             on('task', {
-                getSheedData(range) {
+                getSheetData(range) {
+                    const readSheetData = require('./src/utils/readSheetData');
                     return readSheetData(range)
                 },
                 removeDirectory,
@@ -36,12 +38,15 @@ module.exports = defineConfig({
                     return files
                 }
             })
+            return config
         },
         watchForFileChanges: false,
         baseUrl: 'http://localhost:8080/',
         viewportWidth: 440,
         viewportHeight: 845,
         defaultCommandTimeout: 20000,
+        requestTimeout: 20000,
+        responseTimeout: 20000,
         video: true
     },
 });

@@ -2,43 +2,96 @@ name: End-to-End Tests
 
 on:
   push:
-    branches: [ main ]
+    branches: [main]
+
   pull_request:
-    branches: [ main ]
+    branches: [main]
+
   workflow_dispatch:
 
 jobs:
-  e2e:
-    name: End-to-End Tests
+
+  build:
+
     runs-on: ubuntu-latest
 
     steps:
+
       - uses: actions/checkout@v4
 
-      - name: Config Node.js
-        uses: actions/setup-node@v4
+      - uses: actions/setup-node@v4
         with:
-            node-version: '24.13.0'
-            cache: 'npm'
+          node-version: 24.13.0
+          cache: npm
 
-      - name: Install dependences
-        run: npm ci
+      - run: npm ci
 
-      - name: Run E2E tests with build
-        run: npm run test:build-e2e
+      - name: Build
+        run: npm run build
         env:
-            GOOGLE_SHEET_ID: ${{ secrets.GOOGLE_SHEET_ID }}
-            GOOGLE_CREDENTIALS_BASE64: ${{ secrets.GOOGLE_CREDENTIALS_BASE64 }}
-            API_BASE_URL: ${{ secrets.API_BASE_URL_DEV }}
-            API_KEY: ${{ secrets.API_KEY }}
-            NODE_ENV: ${{ env.NODE_ENV }}
+          GOOGLE_SHEET_ID: ${{ secrets.GOOGLE_SHEET_ID }}
+          GOOGLE_CREDENTIALS_BASE64: ${{ secrets.GOOGLE_CREDENTIALS_BASE64 }}
+          API_BASE_URL: ${{ secrets.API_BASE_URL_DEV }}
+          API_KEY: ${{ secrets.API_KEY }}
 
-      - name: 📤 Failure artifacts (if exists)
-        if: failure()
+      - name: Upload build
         uses: actions/upload-artifact@v4
         with:
-          name: cypress-screenshots
+          name: public-site
+          path: public
+
+  e2e:
+
+    needs: build
+
+    runs-on: ubuntu-latest
+
+    strategy:
+
+      fail-fast: false
+
+      matrix:
+        runner: [1,2,3,4]
+
+    steps:
+
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24.13.0
+          cache: npm
+
+      - run: npm ci
+
+      - uses: actions/download-artifact@v4
+        with:
+          name: public-site
+          path: public
+
+      - name: Run Cypress
+        run: npm run e2e:serve
+        env:
+          SPLIT: ${{ strategy.job-total }}
+          SPLIT_INDEX: ${{ strategy.job-index }}
+
+          GOOGLE_SHEET_ID: ${{ secrets.GOOGLE_SHEET_ID }}
+          GOOGLE_CREDENTIALS_BASE64: ${{ secrets.GOOGLE_CREDENTIALS_BASE64 }}
+          API_BASE_URL: ${{ secrets.API_BASE_URL_DEV }}
+          API_KEY: ${{ secrets.API_KEY }}
+
+      - name: Upload Cypress Artifacts
+        if: always()
+
+        uses: actions/upload-artifact@v4
+
+        with:
+
+          name: cypress-${{ matrix.runner }}
+
           path: |
             cypress/screenshots
             cypress/videos
+            cypress/results
+
           if-no-files-found: ignore

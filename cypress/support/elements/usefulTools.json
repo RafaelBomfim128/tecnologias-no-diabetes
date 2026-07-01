@@ -6,7 +6,8 @@
     "all_access_button_btn": "button:contains(Acessar)",
     "all_copy_button_btn": "button:contains(Copiar)",
     "info_box_div": "#info-box",
-    "qr_code_generator_open_btn": ".card:contains(Gerador de QR Code Juggluco) button:contains(Acessar)",
+    "qr_code_generator_sibionics_open_btn": ".card:contains(Gerador de QR Code para Sibionics com Juggluco) button:contains(Acessar)",
+    "qr_code_generator_smart_open_btn": ".card:contains(Gerador de QR Code para Smart 2 com Juggluco) button:contains(Acessar)",
     "qr_code_generator_1_ipt": "#qrInput1",
     "qr_code_generator_2_ipt": "#qrInput2",
     "qr_code_image_img": "#qrCode"

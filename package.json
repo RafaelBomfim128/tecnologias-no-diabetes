@@ -19,7 +19,7 @@
     "cy:open": "cypress open",
     "cy:run": "cypress run",
     "cy:run:html": "cypress run --reporter mochawesome",
-    "test:e2e-only": "wait-on http://localhost:8080 && cypress run",
+    "test:e2e-only": "wait-on http://localhost:8080 && cypress run --env split=true",
     "e2e:serve": "npm-run-all --parallel --race serve-site test:e2e-only",
     "test:build-e2e": "npm run dev && npm run e2e:serve"
   },
@@ -32,8 +32,8 @@
     "googleapis": "^149.0.0",
     "handlebars": "^4.7.8",
     "pdf-to-png-converter": "^3.6.5",
-    "tailwindcss": "^3.4.18",
-    "sharp": "^0.34.2"
+    "sharp": "^0.34.2",
+    "tailwindcss": "^3.4.18"
   },
   "devDependencies": {
     "@types/jest": "^29.5.14",
@@ -42,6 +42,7 @@
     "cypress": "15.2.0",
     "cypress-delete-downloads-folder": "^0.0.6",
     "cypress-mochawesome-reporter": "^3.8.2",
+    "cypress-split": "^1.25.0",
     "http-server": "^14.1.1",
     "jest": "^30.0.0",
     "kill-port": "^2.0.1",
