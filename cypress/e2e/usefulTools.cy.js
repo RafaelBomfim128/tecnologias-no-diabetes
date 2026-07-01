@@ -2,9 +2,13 @@ const home = require('../support/elements/home.json')
 const usefulTools = require('../support/elements/usefulTools.json')
 
 const macroCategories = {
-    qrCodeGenerator: {
+    qrCodeGeneratorSibionics: {
         title: "Gerador de QR Code para Sibionics com Juggluco",
         description: "Gere QR Codes para configurar o sensor Sibionics no aplicativo Juggluco"
+    },
+    qrCodeGeneratorSmart: {
+        title: "Gerador de QR Code para Smart 2 com Juggluco",
+        description: "Gere QR Codes para configurar o sensor Smart 2 no aplicativo Juggluco"
     },
     nightscoutTester: {
         title: "Testador de Nightscout",

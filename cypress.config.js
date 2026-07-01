@@ -45,6 +45,8 @@ module.exports = defineConfig({
         viewportWidth: 440,
         viewportHeight: 845,
         defaultCommandTimeout: 20000,
+        requestTimeout: 20000,
+        responseTimeout: 20000,
         video: true
     },
 });

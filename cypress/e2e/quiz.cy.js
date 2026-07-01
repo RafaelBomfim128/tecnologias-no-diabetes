@@ -76,9 +76,9 @@ describe('Quiz section', () => {
         cy.wait('@startQuiz');
 
         for (let i = 0; i < 10; i++) {
-            cy.get(quiz.quiz_option_1_btn).click().scrollIntoView({ offset: { top: -300 } }).wait(700)
-            cy.get(quiz.quiz_submit_answer_btn).click().scrollIntoView({ offset: { top: 800 } }).wait(700)
-            cy.get(quiz.quiz_next_question_p).click().scrollIntoView({ offset: { top: 800 } }).wait(700)
+            cy.get(quiz.quiz_option_1_btn).click().scrollIntoView({ offset: { top: -300 } }).wait(500)
+            cy.get(quiz.quiz_submit_answer_btn).click().scrollIntoView({ offset: { top: 800 } }).wait(500)
+            cy.get(quiz.quiz_next_question_p).click().scrollIntoView({ offset: { top: 800 } }).wait(500)
         }
 
         cy.get(quiz.quiz_send_ranking_btn).click()
