@@ -1,4 +1,5 @@
 const { defineConfig } = require("cypress");
+const cypressSplit = require("cypress-split");
 const { beforeRunHook, afterRunHook } = require('cypress-mochawesome-reporter/lib');
 require('dotenv').config();
 const readSheetData = require('./src/utils/readSheetData');
@@ -19,6 +20,7 @@ module.exports = defineConfig({
     e2e: {
         setupNodeEvents(on, config) {
             require('cypress-mochawesome-reporter/plugin')(on)
+            cypressSplit(on, config)
             on('task', {
                 getSheedData(range) {
                     return readSheetData(range)
@@ -36,6 +38,7 @@ module.exports = defineConfig({
                     return files
                 }
             })
+            return config
         },
         watchForFileChanges: false,
         baseUrl: 'http://localhost:8080/',
