@@ -14,12 +14,11 @@ describe('readSheetData', () => {
         jest.clearAllMocks();
     });
 
-    it('Returns the data starting from the third row, if there is any data', async () => {
+    it('Returns the data starting from the second row, if there is any data', async () => {
         sheets.spreadsheets.values.get.mockResolvedValue({
             data: {
                 values: [
                     ['Title', 'Short path to link', 'Full link'],
-                    [],
                     ['Line 1'],
                     ['Line 2']
                 ]

@@ -9,9 +9,16 @@ describe('formatLinksDownloads', () => {
                 title: 'File 1',
                 shortPath: 'path-1',
                 fullUrl: 'https://example.com/1',
-                newLink: expect.stringContaining('path-1')
+                newLink: expect.stringContaining('path-1'),
+                description: ''
             }
         ]);
+    });
+
+    it('trims and includes the description when provided', () => {
+        const input = [['File 1', 'Path 1', 'https://example.com/1', '  Um app para monitorar a glicemia.  ']];
+        const result = formatLinksDownloads(input);
+        expect(result[0].description).toBe('Um app para monitorar a glicemia.');
     });
 
     it('returns empty string for item with missing fields', () => {

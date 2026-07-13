@@ -36,7 +36,7 @@ describe('updateSheetLinks', () => {
 
         expect(sheets.spreadsheets.values.update).toHaveBeenCalledWith({
             spreadsheetId,
-            range: 'Downloads!D3',
+            range: 'Downloads!D2',
             valueInputOption: 'USER_ENTERED',
             requestBody: {
                 values: [
@@ -59,7 +59,7 @@ describe('updateSheetLinks', () => {
 
         expect(sheets.spreadsheets.values.update).toHaveBeenCalledWith({
             spreadsheetId,
-            range: 'Tutoriais!E3',
+            range: 'Tutoriais!E2',
             valueInputOption: 'USER_ENTERED',
             requestBody: {
                 values: [
