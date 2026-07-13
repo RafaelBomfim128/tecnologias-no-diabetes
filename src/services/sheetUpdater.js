@@ -10,7 +10,7 @@ async function updateSheetLinks(sheetName, column, links) {
 
     await sheets.spreadsheets.values.update({
         spreadsheetId,
-        range: `${sheetName}!${column}3`,
+        range: `${sheetName}!${column}2`,
         valueInputOption: 'USER_ENTERED',
         requestBody: { values: updatedLinks },
     });

@@ -15,8 +15,8 @@ const { renderToFile } = require('./templates/htmlCompiler');
 const exportToTempFile = require('./utils/debugExporter.js');
 
 async function main() {
-    const downloads = await readSheetData('Downloads!A:C');
-    const tutorials = await readSheetData('Tutoriais!A:D');
+    const downloads = await readSheetData('Downloads!A:D');
+    const tutorials = await readSheetData('Tutoriais!A:E');
     const faq = await readSheetData('FAQ!A:C');
     const notifications = await readSheetData('Avisos!A:D');
     const quiz = await readSheetData('Quiz!A:J');
@@ -30,8 +30,8 @@ async function main() {
     await generateEncryptedQuizFile(quiz);
 
     if (NODE_ENV !== 'read_only') {
-        await updateSheetLinks('Downloads', 'D', downloads);
-        await updateSheetLinks('Tutoriais', 'E', tutorials);
+        await updateSheetLinks('Downloads', 'E', downloads);
+        await updateSheetLinks('Tutoriais', 'F', tutorials);
     }
 
     const pdfDataToHtml = await generateAllThumbnails();

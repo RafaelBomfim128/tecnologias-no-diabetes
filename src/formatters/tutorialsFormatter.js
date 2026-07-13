@@ -4,7 +4,7 @@ const formatPath = require('../utils/formatPath');
 function formatLinksTutorials(arrItemsSheet) {
     const formattedObj = {};
 
-    arrItemsSheet.forEach(([title, shortPath, fullUrl, categories]) => {
+    arrItemsSheet.forEach(([title, shortPath, fullUrl, categories, description]) => {
         if (!title || !shortPath || !fullUrl || !categories) return;
 
         const categoryList = categories.split(',').map(cat => cat.trim());
@@ -19,7 +19,8 @@ function formatLinksTutorials(arrItemsSheet) {
                 shortPath: formatPath(shortPath),
                 fullUrl,
                 category,
-                newLink: `${domainSite}${formatPath(shortPath)}`
+                newLink: `${domainSite}${formatPath(shortPath)}`,
+                description: description ? description.trim() : ''
             });
         });
     });

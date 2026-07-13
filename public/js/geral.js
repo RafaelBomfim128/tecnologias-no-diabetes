@@ -266,3 +266,43 @@ document.addEventListener("DOMContentLoaded", () => {
     document.querySelector('.share-btn.whatsapp').href = `https://wa.me/?text=${pageTitle}%20${currentUrl}`;
     document.querySelector('.share-btn.linkedin').href = `https://www.linkedin.com/sharing/share-offsite/?url=${currentUrl}&title=${pageTitle}`;
 });
+
+document.addEventListener('DOMContentLoaded', () => {
+    const modal = document.getElementById('description-modal');
+    if (!modal) return;
+
+    const modalTitle = document.getElementById('description-modal-title');
+    const modalText = document.getElementById('description-modal-text');
+    const closeBtn = document.getElementById('close-description-modal');
+
+    function openDescriptionModal(title, description) {
+        modalTitle.textContent = title || '';
+        modalText.textContent = description || '';
+        modal.style.display = 'flex';
+    }
+
+    function closeDescriptionModal() {
+        modal.style.display = 'none';
+    }
+
+    document.addEventListener('click', (event) => {
+        const trigger = event.target.closest('.description-trigger');
+        if (trigger) {
+            openDescriptionModal(trigger.dataset.title, trigger.dataset.description);
+        }
+    });
+
+    closeBtn.addEventListener('click', closeDescriptionModal);
+
+    modal.addEventListener('click', (event) => {
+        if (event.target === modal) {
+            closeDescriptionModal();
+        }
+    });
+
+    document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape' && modal.style.display === 'flex') {
+            closeDescriptionModal();
+        }
+    });
+});

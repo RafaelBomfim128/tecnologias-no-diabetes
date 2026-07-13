@@ -64,4 +64,11 @@ describe('formatLinksTutorials', () => {
         expect(result).toEqual({});
     });
 
+    it('trims and includes the description when provided', () => {
+        const input = [['Tutorial 1', 'Path 1', 'https://example.com/1', 'Category 1', '  Explica como configurar o sensor.  ']];
+        const result = formatLinksTutorials(input);
+
+        expect(result['Category 1'][0].description).toBe('Explica como configurar o sensor.');
+    });
+
 });

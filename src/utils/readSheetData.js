@@ -7,7 +7,7 @@ async function readSheetData(range) {
         range,
     });
 
-    return res.data.values ? res.data.values.slice(2) : [];
+    return res.data.values ? res.data.values.slice(1) : [];
 }
 
 module.exports = readSheetData;
