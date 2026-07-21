@@ -551,3 +551,102 @@ pre {
     from { opacity: 0; transform: translateY(-6px); }
     to { opacity: 1; transform: translateY(0); }
 }
+
+html.night #resume {
+    background: #1e293b;
+    color: #e2e8f0;
+    border-color: #334155;
+}
+
+html.night .viewer-results {
+    background: #1e293b;
+    border-color: rgba(77, 171, 255, 0.18);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+}
+
+html.night .viewer-results__title,
+html.night .viewer-day-group__title {
+    color: #f1f5f9;
+}
+
+html.night .viewer-results__meta {
+    color: #94a3b8;
+}
+
+html.night .viewer-results__empty {
+    background: #0f172a;
+    border-color: #334155;
+    color: #94a3b8;
+}
+
+html.night .viewer-table-wrapper {
+    border-color: #334155;
+}
+
+html.night .viewer-results-table {
+    background: #1e293b;
+}
+
+html.night .viewer-results-table th,
+html.night .viewer-results-table td {
+    border-color: #334155;
+}
+
+html.night .viewer-results-table th {
+    background: rgba(77, 171, 255, 0.12);
+    color: #93c5fd;
+}
+
+html.night .viewer-results-table__datetime {
+    color: #cbd5e1;
+}
+
+html.night .viewer-results-table__value {
+    color: #f1f5f9;
+}
+
+html.night .ns-date-range {
+    background: linear-gradient(135deg, rgba(30, 41, 59, 0.9), rgba(15, 23, 42, 0.95));
+    border-color: rgba(77, 171, 255, 0.18);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
+}
+
+html.night .ns-date-badge {
+    background: rgba(15, 23, 42, 0.6);
+    color: #7cc0ff;
+    border-color: rgba(77, 171, 255, 0.2);
+}
+
+html.night .ns-date-input {
+    background: #0f172a;
+    color: #e2e8f0;
+    border-color: rgba(77, 171, 255, 0.35);
+}
+
+html.night .ns-date-input::placeholder {
+    color: #64748b;
+}
+
+html.night .ns-date-trigger {
+    background: rgba(77, 171, 255, 0.12);
+}
+
+html.night .ns-date-trigger:hover {
+    background: rgba(77, 171, 255, 0.2);
+}
+
+html.night .ns-date-input:disabled {
+    background: linear-gradient(135deg, #1e293b, #0f172a);
+    border-color: #334155;
+    color: #64748b;
+}
+
+html.night .ns-date-trigger:disabled {
+    background: #1e293b;
+    color: #64748b;
+}
+
+html.night .toast {
+    background: #1e293b;
+    color: #e2e8f0;
+}

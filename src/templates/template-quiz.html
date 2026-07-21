@@ -16,6 +16,15 @@
     <link rel="stylesheet" href="./css/tailwind.css">
     <link rel="stylesheet" href="./css/geral.css">
     <link rel="stylesheet" href="./css/quiz.css">
+    <script id="theme-init-script">
+        (function () {
+            try {
+                if (localStorage.getItem('theme') === 'night') {
+                    document.documentElement.classList.add('night');
+                }
+            } catch (e) {}
+        })();
+    </script>
 </head>
 
 <body class="bg-gray-50">

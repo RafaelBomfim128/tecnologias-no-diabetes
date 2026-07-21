@@ -15,6 +15,80 @@ try {
     console.error('Erro ao obter variáveis de ambiente:', error);
 }
 
+const THEME_STORAGE_KEY = 'theme';
+
+function getStoredTheme() {
+    try {
+        return localStorage.getItem(THEME_STORAGE_KEY);
+    } catch (error) {
+        return null;
+    }
+}
+
+function applyTheme(theme) {
+    document.documentElement.classList.toggle('night', theme === 'night');
+}
+
+function setTheme(theme) {
+    try {
+        localStorage.setItem(THEME_STORAGE_KEY, theme);
+    } catch (error) {
+        console.debug('Não foi possível salvar a preferência de tema:', error);
+    }
+    applyTheme(theme);
+}
+
+applyTheme(getStoredTheme() === 'night' ? 'night' : 'light');
+
+function createThemeToggleButton() {
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.id = 'theme-toggle-btn';
+    button.className = 'theme-toggle-btn';
+    button.setAttribute('aria-label', 'Alternar entre modo claro e escuro');
+    button.title = 'Alternar entre modo claro e escuro';
+    button.innerHTML = `
+        <svg class="icon-sun" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/>
+        </svg>
+        <svg class="icon-moon" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 1020.354 15.354z"/>
+        </svg>
+    `;
+    button.addEventListener('click', function () {
+        const isNight = document.documentElement.classList.contains('night');
+        setTheme(isNight ? 'light' : 'night');
+    });
+    return button;
+}
+
+function injectThemeToggle() {
+    if (document.getElementById('theme-toggle-btn')) return;
+
+    const nav = document.getElementById('main-nav');
+    if (!nav) return;
+
+    const themeToggleBtn = createThemeToggleButton();
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+
+    if (mobileMenuBtn && mobileMenuBtn.parentElement) {
+        const wrapper = document.createElement('div');
+        wrapper.className = 'flex items-center gap-1 sm:gap-2';
+        mobileMenuBtn.parentElement.insertBefore(wrapper, mobileMenuBtn);
+        wrapper.appendChild(themeToggleBtn);
+        wrapper.appendChild(mobileMenuBtn);
+    } else {
+        const row = nav.querySelector('.flex.justify-between.items-center');
+        if (row) row.appendChild(themeToggleBtn);
+    }
+}
+
+if (document.getElementById('main-nav')) {
+    injectThemeToggle();
+} else {
+    document.addEventListener('DOMContentLoaded', injectThemeToggle);
+}
+
 function toggleCategory(element, categoryName) {
     const content = document.getElementById('content-' + categoryName);
     const arrow = element.querySelector('.arrow');
