@@ -32,6 +32,15 @@
             color: #64748b !important; /* text-slate-500 */
         }
     </style>
+    <script id="theme-init-script">
+        (function () {
+            try {
+                if (localStorage.getItem('theme') === 'night') {
+                    document.documentElement.classList.add('night');
+                }
+            } catch (e) {}
+        })();
+    </script>
 </head>
 
 <body class="bg-gray-50">

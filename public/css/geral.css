@@ -508,3 +508,257 @@ button.menu-icon {
         background-color: transparent;
     }
 }
+
+html.night {
+    color-scheme: dark;
+    --primary-color: #4dabff;
+    --white-color: #1e293b;
+    --secondary-color: #b6c2cf;
+    --background-color: #0f172a;
+    --text-color: #e2e8f0;
+    --container-bg: #1e293b;
+    --container-shadow: rgba(0, 0, 0, 0.45);
+    --button-bg: linear-gradient(to right, #2b7fd1 0%, #114a7d 100%);
+    --button-hover-bg: #114a7d;
+    --light-bg: rgba(77, 171, 255, 0.08);
+    --border-color: #334155;
+    --faq-question-bg: rgba(77, 171, 255, 0.12);
+    --faq-question-hover-bg: rgba(77, 171, 255, 0.28);
+    --faq-answer-bg: #1e293b;
+    --success-color: #34d399;
+    --error-color: #f87171;
+    --accent-color: #fbbf24;
+}
+
+/* Transições suaves ao alternar tema */
+html {
+    transition: background-color 0.3s ease;
+}
+
+body,
+#main-nav,
+#mobile-menu,
+footer,
+.premium-card,
+.card,
+.list-item,
+.modal-content,
+.view-counter,
+input,
+textarea,
+select,
+.theme-toggle-btn {
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Utilitários Tailwind mais comuns pelo site (sobrescritos com maior especificidade) */
+html.night .bg-white { background-color: #1e293b; }
+html.night .bg-gray-50 { background-color: #0f172a; }
+html.night .bg-gray-100 { background-color: #1e293b; }
+html.night .bg-gray-200 { background-color: #334155; }
+
+html.night .text-gray-900 { color: #f1f5f9; }
+html.night .text-gray-800 { color: #e2e8f0; }
+html.night .text-gray-700 { color: #cbd5e1; }
+html.night .text-gray-600 { color: #94a3b8; }
+html.night .text-gray-500 { color: #94a3b8; }
+
+html.night .border-gray-100,
+html.night .border-gray-200,
+html.night .border-gray-300 { border-color: #334155; }
+
+/* Componentes Tailwind cuja cor é "assada" no próprio seletor (@apply) */
+html.night h3,
+html.night h4 { color: #cbd5e1; }
+
+html.night .nav-link { color: #cbd5e1; }
+html.night .nav-link:hover,
+html.night .nav-link-active { color: #60a5fa; }
+
+html.night #mobile-menu-btn { background-color: #334155; }
+
+/* Cards "premium" (definidos inline em vários templates) */
+html.night .premium-card {
+    background: #1e293b;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.35), 0 2px 4px -1px rgba(0, 0, 0, 0.25);
+}
+
+html.night .premium-card:hover {
+    box-shadow: 0 20px 25px -5px rgba(37, 99, 235, 0.25), 0 10px 10px -5px rgba(37, 99, 235, 0.12);
+}
+
+/* Contador de views */
+html.night .view-counter {
+    background-color: #1e293b;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.45);
+}
+
+html.night .view-counter .title,
+html.night .view-counter .values {
+    color: #7cc0ff;
+    border-right-color: rgba(77, 171, 255, 0.3);
+}
+
+html.night #view-counter > span {
+    border-right-color: rgba(77, 171, 255, 0.3);
+}
+
+/* Outros elementos com cores fixas */
+html.night .category-icon {
+    background-color: #334155;
+}
+
+html.night .container .col-md-4 .card {
+    background-color: rgba(30, 41, 59, 0.6);
+}
+
+html.night #search-bar,
+html.night .input,
+html.night input[type="text"],
+html.night input[type="email"],
+html.night input[type="search"],
+html.night input[type="number"],
+html.night textarea,
+html.night select {
+    background-color: #1e293b;
+    color: #e2e8f0;
+    border-color: #334155;
+}
+
+html.night ::-webkit-scrollbar-track {
+    background-color: #1e293b;
+}
+
+html.night ::-webkit-scrollbar-thumb {
+    background-color: #475569;
+}
+
+/* Botão de alternância de tema (injetado via js/geral.js) */
+.theme-toggle-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.25rem;
+    height: 2.25rem;
+    flex-shrink: 0;
+    padding: 0;
+    border: 1.5px solid rgba(0, 120, 215, 0.25);
+    border-radius: 9999px;
+    background-color: #eef2f7;
+    color: #0078d7;
+    cursor: pointer;
+}
+
+.theme-toggle-btn:hover {
+    background-color: #dbeafe;
+    border-color: rgba(0, 120, 215, 0.45);
+}
+
+.theme-toggle-btn svg {
+    width: 1.15rem;
+    height: 1.15rem;
+    pointer-events: none;
+}
+
+.theme-toggle-btn .icon-sun { display: none; }
+.theme-toggle-btn .icon-moon { display: block; }
+
+html.night .theme-toggle-btn {
+    background-color: #1e293b;
+    color: #fbbf24;
+    border-color: rgba(251, 191, 36, 0.3);
+}
+
+html.night .theme-toggle-btn:hover {
+    background-color: #334155;
+    border-color: rgba(251, 191, 36, 0.5);
+}
+
+html.night .theme-toggle-btn .icon-sun { display: block; }
+html.night .theme-toggle-btn .icon-moon { display: none; }
+
+/* Ajustes finos de contraste no modo escuro */
+
+/* Botão "O que é isso?" (.description-trigger, downloads/tutoriais): o azul padrão
+   (text-blue-600 / text-diabetes-primary) fica escuro demais sobre o card escuro. */
+html.night .description-trigger,
+html.night .description-trigger:hover {
+    color: #37a5ff;
+}
+
+/* Card iOS (template-tutoriais.html): ao contrário dos outros cards, o ícone e o
+   badge "Apple" usam bg-gray-50 (sem cor própria), então o override genérico de
+   .bg-gray-50 deixa o fundo escuro demais e o logo (escuro) some. Mantém um fundo
+   claro atrás do logo, igual aos demais cards (que usam bg-blue-50, bg-sky-50 etc,
+   não afetados pelo override genérico). */
+html.night #card-ios .bg-gray-50 {
+    background-color: #f1f5f9;
+}
+
+html.night #card-ios .text-gray-700 {
+    color: #334155;
+}
+
+/* Botão "Comece Agora" (#start-now, index): fica sempre sobre o gradiente azul fixo
+   do hero (que não muda com o tema), então o fundo deve continuar branco também no
+   modo escuro — sem o #1e293b do override genérico de .bg-white. */
+html.night #start-now {
+    background-color: #ffffff;
+    color: #1d4ed8;
+}
+
+html.night #start-now:hover {
+    background-color: #f8fafc;
+}
+
+/* Componente Tailwind ".card" (@apply bg-white ...): o fundo branco é "assado" no
+   próprio seletor (não existe classe literal bg-white no HTML), então o override
+   genérico de .bg-white não pegava esses cards (gerador de QR Code, testador
+   Nightscout, visualizador de glicemias etc.), deixando texto cinza claro sobre
+   fundo branco. */
+html.night .card {
+    background-color: #1e293b;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.35), 0 2px 4px -1px rgba(0, 0, 0, 0.25);
+}
+
+html.night .card:hover {
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.35);
+}
+
+html.night .modal-content {
+    background-color: #1e293b;
+}
+
+/* Ícones das ferramentas "QR Code Sibionics" (teal) e "QR Code Smart 2" (azul-marinho
+   quase preto) usam bg-[cor]/10 (10% de opacidade), então ficam escuros demais em
+   cima do card já escurecido no modo escuro — precisam de uma versão mais visível. */
+html.night .bg-\[\#06bf9d\]\/10 {
+    background-color: rgba(6, 191, 157, 0.22);
+}
+
+html.night .text-\[\#06bf9d\] {
+    color: #2dd4bf;
+}
+
+html.night .bg-\[\#0e163b\]\/10 {
+    background-color: rgba(96, 165, 250, 0.18);
+}
+
+html.night .text-\[\#0e163b\] {
+    color: #93c5fd;
+}
+
+/* Caixa "Transparência e Responsabilidade" (testador/visualizador Nightscout):
+   bg-indigo-50/50 não é afetado pelos overrides genéricos (não é bg-white/gray-*),
+   então ficava clara enquanto o texto (text-gray-900/700) escurecia — resultado:
+   fundo cinza claro com letra cinza clara, quase ilegível. */
+html.night .bg-indigo-50\/50 {
+    background-color: rgba(99, 102, 241, 0.14);
+}
+
+/* Título "Como usar:" (geradores de QR Code): o override genérico html.night h3
+   (mais específico que a classe utilitária) estava sobrescrevendo o text-green-900
+   original, deixando o título cinza claro em vez de verde. */
+html.night h3.text-green-900 {
+    color: #4ade80;
+}
