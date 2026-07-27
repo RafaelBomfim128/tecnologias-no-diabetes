@@ -748,17 +748,18 @@ html.night .text-\[\#0e163b\] {
     color: #93c5fd;
 }
 
-/* Caixa "Transparência e Responsabilidade" (testador/visualizador Nightscout):
-   bg-indigo-50/50 não é afetado pelos overrides genéricos (não é bg-white/gray-*),
-   então ficava clara enquanto o texto (text-gray-900/700) escurecia — resultado:
-   fundo cinza claro com letra cinza clara, quase ilegível. */
 html.night .bg-indigo-50\/50 {
     background-color: rgba(99, 102, 241, 0.14);
 }
 
-/* Título "Como usar:" (geradores de QR Code): o override genérico html.night h3
-   (mais específico que a classe utilitária) estava sobrescrevendo o text-green-900
-   original, deixando o título cinza claro em vez de verde. */
 html.night h3.text-green-900 {
     color: #4ade80;
+}
+
+html.night #quiz-feedback {
+    background-color: rgba(59, 130, 246, 0.12);
+}
+
+html.night .feedback-normal {
+    color: #cbd5e1;
 }
