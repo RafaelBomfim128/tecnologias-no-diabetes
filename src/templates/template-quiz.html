@@ -139,14 +139,14 @@
                 </div>
 
                 <!-- Quiz Main Card -->
-                <div class="card premium-card group rounded-3xl overflow-hidden animate-scale-in" id="quiz-container">
+                <div class="card premium-card rounded-3xl overflow-hidden animate-scale-in" id="quiz-container">
                     <!-- Quiz Header with Progress -->
                     <div class="bg-gradient-to-r from-[#7c3aed] to-[#db2777] text-white p-6" id="quiz-header">
                         <div class="flex justify-between items-center mb-4">
                             <span id="category"
                                 class="px-4 py-1.5 bg-white/20 backdrop-blur-sm border border-white/10 rounded-full text-xs font-bold uppercase tracking-wider">Diabetes</span>
                             <div id="question-numbers"
-                                class="text-xl font-extrabold flex items-center gap-1 bg-white/20 backdrop-blur-sm px-3.5 py-1.5 rounded-full border border-white/10 text-sm">
+                                class="font-extrabold flex items-center gap-1 bg-white/20 backdrop-blur-sm px-3.5 py-1.5 rounded-full border border-white/10 text-sm">
                                 Questão: <span id="current-question"
                                     class="text-base text-yellow-300 font-black">0</span>/<span id="total-questions"
                                     class="text-base">0</span>
@@ -206,10 +206,10 @@
                                 </div>
                             </div>
                             <div
-                                class="container-question-data bg-gradient-to-br from-indigo-500 to-purple-600 text-white rounded-2xl p-3 sm:p-4 text-center shadow-md flex flex-col justify-center items-center">
-                                <div class="text-xs opacity-90 mb-1 leading-snug">Dificuldade</div>
+                                class="container-question-data min-h-[96px] bg-gradient-to-br from-indigo-500 to-purple-600 text-white rounded-2xl p-4 text-center shadow-md flex flex-col justify-center items-center">
+                                <div class="difficulty-label text-xs font-bold uppercase tracking-wider leading-snug">Dificuldade</div>
                                 <div id="question-difficulty"
-                                    class="text-xs sm:text-sm font-black uppercase tracking-wide"></div>
+                                    class="mt-2 rounded-lg bg-white/20 px-3 py-1.5 text-sm sm:text-base font-black uppercase tracking-wide text-white shadow-inner"></div>
                             </div>
                         </div>
 
@@ -279,7 +279,7 @@
                     class="border border-purple-100 rounded-2xl p-5 mb-8 max-w-xl mx-auto text-left">
                     <p class="text-gray-700 leading-relaxed text-sm sm:text-base">
                         💡 <strong>Desempenho:</strong> <span id="quiz-results-feedback"
-                            class="text-purple-950 font-medium"></span>
+                            class="font-medium"></span>
                     </p>
                 </div>
 
@@ -597,6 +597,14 @@
             transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             position: relative;
             z-index: 1;
+        }
+
+        #quiz-container.card:hover {
+            transform: none;
+        }
+
+        .container-question-data .difficulty-label {
+            color: rgba(255, 255, 255, 0.85) !important;
         }
 
         #quiz-options li {
