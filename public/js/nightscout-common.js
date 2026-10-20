@@ -292,6 +292,21 @@
         }
 
         if (!(response && response.ok && response.status === 200)) {
+            let errorData;
+
+            try {
+                errorData = await response?.json();
+            } catch (error) {
+                errorData = null;
+            }
+
+            if (response && response.status === 503 && errorData?.error?.code === 'storage_quota_exceeded' && errorData?.error?.message?.includes('Cloudflare')) {
+                return {
+                    ok: false,
+                    message: '❌ Seu Nightscout excedeu a cota gratuita do Cloudflare. Peça ajuda no grupo do Tecnologias no Diabetes para maior investigação do motivo.',
+                    requestState
+                };
+            }
             return {
                 ok: false,
                 message: '❌ Ocorreu um erro ao buscar dados da API Secret. Verifique se você está conectado à internet.',
