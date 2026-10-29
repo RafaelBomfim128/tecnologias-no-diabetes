@@ -41,6 +41,11 @@
             "image": "img/icons/icon-accu-chek-smartguide.png"
         },
         {
+            "category": "Anytime (Yuwell)",
+            "description": "Tutoriais sobre Anytime (Yuwell)",
+            "image": "img/icons/icon-anytime-5pro.png"
+        },
+        {
             "category": "Nightscout",
             "description": "Monitoramento remoto e compartilhamento de dados",
             "image": "img/icons/icon-nightscout.png"
