@@ -16,6 +16,7 @@ function getCategoryGradient(category) {
         'Smart': '!bg-none !bg-[#0e163b]',
         'Sibionics': '!bg-none !bg-[#06bf9d]',
         'Accu-Chek SmartGuide': '!bg-none !bg-[#004969]',
+        'Anytime (Yuwell)': '!bg-none !bg-[#8ACD2B]',
         'Sensores': 'hero-indigo',
         'Dicas e truques': 'hero-pink',
         'Outros': 'hero-teal',
@@ -30,7 +31,8 @@ function getCategoryTextColor(category) {
         'Libre': '!text-gray-900',
         'Smart': 'text-white',
         'Sibionics': 'text-white',
-        'Accu-Chek SmartGuide': 'text-white'
+        'Accu-Chek SmartGuide': 'text-white',
+        'Anytime (Yuwell)': 'text-white'
     };
     return textColorMap[category] || 'text-white';
 }
@@ -41,7 +43,8 @@ function getCategoryIconBg(category) {
         'Libre': 'bg-[#ffd100]',
         'Smart': 'bg-[#0e163b]',
         'Sibionics': 'bg-[#06bf9d]',
-        'Accu-Chek SmartGuide': 'bg-[#004969]'
+        'Accu-Chek SmartGuide': 'bg-[#004969]',
+        'Anytime (Yuwell)': 'bg-[#8ACD2B]'
     };
     return iconBgMap[category] || 'bg-gradient-to-br from-teal-500 to-emerald-600';
 }
@@ -52,7 +55,8 @@ function getCategoryIconTextColor(category) {
         'Libre': '!text-gray-900',
         'Smart': 'text-white',
         'Sibionics': 'text-white',
-        'Accu-Chek SmartGuide': 'text-white'
+        'Accu-Chek SmartGuide': 'text-white',
+        'Anytime (Yuwell)': 'text-white'
     };
     return iconTextMap[category] || 'text-white';
 }
@@ -63,7 +67,8 @@ function getCategoryButtonBg(category) {
         'Libre': 'bg-[#ffd100] hover:bg-[#e6bc00]',
         'Smart': 'bg-[#0e163b] hover:bg-[#0a102c]',
         'Sibionics': 'bg-[#06bf9d] hover:bg-[#05a688]',
-        'Accu-Chek SmartGuide': 'bg-[#004969] hover:bg-[#00364d]'
+        'Accu-Chek SmartGuide': 'bg-[#004969] hover:bg-[#00364d]',
+        'Anytime (Yuwell)': 'bg-[#8ACD2B] hover:bg-[#6fae1f]'
     };
     return buttonBgMap[category] || 'bg-teal-500 hover:bg-teal-600';
 }
@@ -235,6 +240,25 @@ module.exports = function buildPages({
             iconTextColor: getCategoryIconTextColor('Accu-Chek SmartGuide'),
             buttonBg: getCategoryButtonBg('Accu-Chek SmartGuide'),
             buttonTextColor: getCategoryButtonTextColor('Accu-Chek SmartGuide'),
+            apiBaseUrl, apiKey, mostRecentNotificationId
+        }
+    });
+
+    // Anytime Yuwell category
+    pages.push({
+        template: 'template-tutoriais-item.html',
+        output: 'item-tutorial-anytime.html',
+        data: {
+            links: tutorialsFormatted['Anytime (Yuwell)'],
+            title: 'Anytime (Yuwell)',
+            desc: labels.tutorials.find(item => item.category === 'Anytime (Yuwell)').description,
+            image: labels.tutorials.find(item => item.category === 'Anytime (Yuwell)').image,
+            heroGradient: getCategoryGradient('Anytime (Yuwell)'),
+            heroTextColor: getCategoryTextColor('Anytime (Yuwell)'),
+            iconBg: getCategoryIconBg('Anytime (Yuwell)'),
+            iconTextColor: getCategoryIconTextColor('Anytime (Yuwell)'),
+            buttonBg: getCategoryButtonBg('Anytime (Yuwell)'),
+            buttonTextColor: getCategoryButtonTextColor('Anytime (Yuwell)'),
             apiBaseUrl, apiKey, mostRecentNotificationId
         }
     });

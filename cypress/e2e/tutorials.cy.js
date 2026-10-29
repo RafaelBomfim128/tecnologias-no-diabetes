@@ -46,7 +46,8 @@ describe('Tutorials section', () => {
                     libre: { screen: 'Freestyle Libre 1 e 2', sheet: 'Libre' },
                     smart: { screen: 'Smart Medlevensohn', sheet: 'Smart' },
                     sibionics: { screen: 'Sibionics', sheet: 'Sibionics' },
-                    accuChekSmartGuide: { screen: 'Accu-Chek SmartGuide', sheet: 'Accu-Chek SmartGuide' }
+                    accuChekSmartGuide: { screen: 'Accu-Chek SmartGuide', sheet: 'Accu-Chek SmartGuide' },
+                    anytimeYuwell: { screen: 'Anytime (Yuwell)', sheet: 'Anytime (Yuwell)' }
                 }
             },
             nightscout: { screen: 'Nightscout', sheet: 'Nightscout' },
@@ -109,4 +110,5 @@ describe('Tutorials section', () => {
             cy.get(tutorials.all_cards_div).should('have.length', uniqueLinks.length)
         })
     })
+
 })

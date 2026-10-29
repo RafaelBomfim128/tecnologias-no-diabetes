@@ -9,6 +9,10 @@
     @apply bg-gray-50 text-gray-800 antialiased;
   }
 
+  main {
+    @apply w-full min-w-0;
+  }
+
   h1 {
     @apply text-3xl md:text-4xl lg:text-5xl font-bold text-diabetes-primary;
   }
