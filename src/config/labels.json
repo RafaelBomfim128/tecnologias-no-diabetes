@@ -21,6 +21,21 @@
             "image": "img/icons/icon-sensores.png"
         },
         {
+            "category": "Juggluco",
+            "description": "Tutoriais para Juggluco tradicional e JugglucoNG",
+            "image": "img/icons/icon-jugglucong.png"
+        },
+        {
+            "category": "Juggluco (tradicional)",
+            "description": "Tutoriais sobre o aplicativo Juggluco tradicional",
+            "image": "img/icons/icon-juggluco.png"
+        },
+        {
+            "category": "JugglucoNG",
+            "description": "Tutoriais sobre o aplicativo JugglucoNG",
+            "image": "img/icons/icon-jugglucong.png"
+        },
+        {
             "category": "Libre",
             "description": "Tutoriais sobre Freestyle Libre 1 e 2",
             "image": "img/icons/icon-libre.png"
