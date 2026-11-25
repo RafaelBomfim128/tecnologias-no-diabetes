@@ -13,6 +13,8 @@ function getCategoryGradient(category) {
         'Bombas': 'hero-orange',
         'Ponto de partida': 'hero-gradient-soft',
         'Libre': '!bg-none !bg-[#ffd100]',
+        'Juggluco (tradicional)': '!bg-none !bg-[#5e8ce1]',
+        'JugglucoNG': '!bg-none !bg-[#a8c6f4]',
         'Smart': '!bg-none !bg-[#0e163b]',
         'Sibionics': '!bg-none !bg-[#06bf9d]',
         'Accu-Chek SmartGuide': '!bg-none !bg-[#004969]',
@@ -29,6 +31,7 @@ function getCategoryGradient(category) {
 function getCategoryTextColor(category) {
     const textColorMap = {
         'Libre': '!text-gray-900',
+        'JugglucoNG': '!text-[#18345f]',
         'Smart': 'text-white',
         'Sibionics': 'text-white',
         'Accu-Chek SmartGuide': 'text-white',
@@ -41,6 +44,8 @@ function getCategoryTextColor(category) {
 function getCategoryIconBg(category) {
     const iconBgMap = {
         'Libre': 'bg-[#ffd100]',
+        'Juggluco (tradicional)': 'bg-[#5e8ce1]',
+        'JugglucoNG': 'bg-[#a8c6f4]',
         'Smart': 'bg-[#0e163b]',
         'Sibionics': 'bg-[#06bf9d]',
         'Accu-Chek SmartGuide': 'bg-[#004969]',
@@ -53,6 +58,8 @@ function getCategoryIconBg(category) {
 function getCategoryIconTextColor(category) {
     const iconTextMap = {
         'Libre': '!text-gray-900',
+        'Juggluco (tradicional)': 'text-white',
+        'JugglucoNG': '!text-[#18345f]',
         'Smart': 'text-white',
         'Sibionics': 'text-white',
         'Accu-Chek SmartGuide': 'text-white',
@@ -65,6 +72,8 @@ function getCategoryIconTextColor(category) {
 function getCategoryButtonBg(category) {
     const buttonBgMap = {
         'Libre': 'bg-[#ffd100] hover:bg-[#e6bc00]',
+        'Juggluco (tradicional)': 'bg-[#5e8ce1] hover:bg-[#4d7bd0]',
+        'JugglucoNG': 'bg-[#a8c6f4] hover:bg-[#96b8ef]',
         'Smart': 'bg-[#0e163b] hover:bg-[#0a102c]',
         'Sibionics': 'bg-[#06bf9d] hover:bg-[#05a688]',
         'Accu-Chek SmartGuide': 'bg-[#004969] hover:bg-[#00364d]',
@@ -76,7 +85,9 @@ function getCategoryButtonBg(category) {
 // Helper function to get button text color based on category
 function getCategoryButtonTextColor(category) {
     const buttonTextColorMap = {
-        'Libre': '!text-gray-900'
+        'Libre': '!text-gray-900',
+        'Juggluco (tradicional)': '!text-[#10254a]',
+        'JugglucoNG': '!text-[#18345f]'
     };
     return buttonTextColorMap[category] || 'text-white';
 }
@@ -121,6 +132,13 @@ module.exports = function buildPages({
         data: { apiBaseUrl, apiKey, mostRecentNotificationId }
     });
 
+    // Juggluco tutorial categories
+    pages.push({
+        template: 'template-tutoriais-juggluco.html',
+        output: 'tutoriais-juggluco.html',
+        data: { apiBaseUrl, apiKey, mostRecentNotificationId }
+    });
+
     // category of tutorials
     const tutorialsTotal = [];
     const addedShortPaths = new Set();
@@ -138,7 +156,7 @@ module.exports = function buildPages({
                 links,
                 title: category,
                 desc: labels.tutorials.find(t => t.category === category)?.description || '',
-                image: labels.tutorials.find(t => t.category === category)?.image || '',
+                image: labels.tutorials.find(t => t.category === category)?.image || 'img/icons/icon-tutorial-default.png',
                 heroGradient: getCategoryGradient(category),
                 heroTextColor: getCategoryTextColor(category),
                 iconBg: getCategoryIconBg(category),
@@ -158,6 +176,7 @@ module.exports = function buildPages({
             links: tutorialsTotal,
             title: 'Todos os tutoriais',
             desc: 'Todos os tutoriais disponíveis em uma única página.',
+            image: 'img/icons/icon-tutorial-default.png',
             heroGradient: getCategoryGradient('Todos os tutoriais'),
             heroTextColor: getCategoryTextColor('Todos os tutoriais'),
             iconBg: getCategoryIconBg('Todos os tutoriais'),
