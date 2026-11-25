@@ -15,6 +15,7 @@ describe('Tutorials section', () => {
             'xDrip',
             'Android APS',
             'Sensores',
+            'Juggluco',
             'Nightscout',
             'iOS',
             'Relógios',
@@ -50,6 +51,7 @@ describe('Tutorials section', () => {
                     anytimeYuwell: { screen: 'Anytime (Yuwell)', sheet: 'Anytime (Yuwell)' }
                 }
             },
+            juggluco: { screen: 'Juggluco', sheet: 'Juggluco' },
             nightscout: { screen: 'Nightscout', sheet: 'Nightscout' },
             ios: { screen: 'iOS', sheet: 'iOS' },
             watches: { screen: 'Relógios', sheet: 'Relógios' },

@@ -21,6 +21,11 @@
             "image": "img/icons/icon-sensores.png"
         },
         {
+            "category": "Juggluco",
+            "description": "Tutoriais para Juggluco tradicional e JugglucoNG",
+            "image": "img/icons/icon-jugglucong.png"
+        },
+        {
             "category": "Juggluco (tradicional)",
             "description": "Tutoriais sobre o aplicativo Juggluco tradicional",
             "image": "img/icons/icon-juggluco.png"
